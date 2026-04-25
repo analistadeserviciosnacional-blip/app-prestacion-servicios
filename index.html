@@ -1492,14 +1492,15 @@ async function cargarPrestaciones(regional) {
     if (res && res.ok && Array.isArray(res.datos)) {
       prestaciones = res.datos.map((d, i) => ({
         id: i.toString(),
-        numPrestacion: d['N° Prestación'] || '',
-        fechaReporte: d['Fecha Reporte'] || '',
-        regional: d['Regional'] || regional,
-        nombreFallecido: d['Nombre Fallecido'] || '',
-        apellidosFallecido: d['Apellidos Fallecido'] || '',
-        numContrato: d['N° Contrato'] || '',
+        // Soporta nombres de columna del Sheet original Y los nuevos
+        numPrestacion: d['Nº Prestacion'] || d['N° Prestación'] || d['N Prestacion'] || '',
+        fechaReporte: d['Fecha Y Hora de Reporte'] || d['Fecha Reporte'] || '',
+        regional: d['Regional'] || d['INFORMACIÓN SOLI'] || regional,
+        nombreFallecido: d['Nombre Del Fallecido'] || d['Nombre Fallecido'] || '',
+        apellidosFallecido: d['Apellidos Del Fallecido'] || d['Apellidos Fallecido'] || '',
+        numContrato: d['Nº De Contrato'] || d['N° Contrato'] || '',
         sede: d['Sede'] || '',
-        estadoPrestacion: d['Estado Prestación'] || 'En proceso',
+        estadoPrestacion: d['Reporte de Servicio Por el Call o Regional'] || d['Estado Prestación'] || 'En proceso',
       }));
     } else {
       prestaciones = [];
