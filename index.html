@@ -1301,53 +1301,61 @@ let prestaciones = [];
 let cargando = false;
 
 // URL del Google Apps Script
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyypF1l5NVO3epLx6qqdV-RhpOA98UViVQ6-XRzimd5amvNWXZwnMM1kxtRaTklRHxs/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzeY69-xI-sgbPLt3BBBD3LdJhkGk4amBjOtNDpukSdDRaAp4ASGG8PU1iEZZQWBA8u/exec';
 
 // ===== API GOOGLE SHEETS =====
+// ===== API GOOGLE SHEETS =====
+// POST para guardar (no-cors, no devuelve respuesta pero guarda)
 async function apiSheets(payload) {
   try {
-    const res = await fetch(SCRIPT_URL, {
+    await fetch(SCRIPT_URL, {
       method: 'POST',
-      mode: 'no-cors', // Google Apps Script requiere no-cors
-      headers: { 'Content-Type': 'application/json' },
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify(payload)
     });
-    // no-cors no devuelve body, asumimos éxito
     return { ok: true };
   } catch (err) {
-    console.error('Error API:', err);
+    console.error('Error guardando:', err);
     return { ok: false, error: err.toString() };
   }
 }
 
+// GET para leer via JSONP (evita CORS)
 function apiSheetsLeer(payload) {
-  // Usamos JSONP para evitar CORS en Google Apps Script
   return new Promise((resolve) => {
-    const cbName = 'cb_' + Date.now();
-    const params = new URLSearchParams({ ...payload, callback: cbName, t: Date.now() });
+    const cbName = 'gs_cb_' + Date.now();
+    const params = new URLSearchParams({
+      accion: payload.accion,
+      regional: payload.regional || '',
+      callback: cbName
+    });
     const url = SCRIPT_URL + '?' + params.toString();
+    console.log('Leyendo:', url);
 
     window[cbName] = function(data) {
+      console.log('Respuesta JSONP:', data);
+      try { document.getElementById('jsonp-container').removeChild(script); } catch(e) {}
       delete window[cbName];
-      document.getElementById('jsonp-container').removeChild(script);
       resolve(data);
     };
 
     const script = document.createElement('script');
     script.src = url;
-    script.onerror = function() {
+    script.onerror = function(e) {
+      console.error('Error JSONP:', e);
       delete window[cbName];
       resolve({ ok: false, datos: [] });
     };
     document.getElementById('jsonp-container').appendChild(script);
 
-    // Timeout 10 segundos
     setTimeout(() => {
       if (window[cbName]) {
+        console.warn('Timeout JSONP');
         delete window[cbName];
         resolve({ ok: false, datos: [] });
       }
-    }, 10000);
+    }, 15000);
   });
 }
 
