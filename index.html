@@ -1321,42 +1321,23 @@ async function apiSheets(payload) {
   }
 }
 
-// GET para leer via JSONP (evita CORS)
-function apiSheetsLeer(payload) {
-  return new Promise((resolve) => {
-    const cbName = 'gs_cb_' + Date.now();
+// GET para leer - fetch directo al Apps Script
+async function apiSheetsLeer(payload) {
+  try {
     const params = new URLSearchParams({
       accion: payload.accion,
-      regional: payload.regional || '',
-      callback: cbName
+      regional: payload.regional || ''
     });
     const url = SCRIPT_URL + '?' + params.toString();
     console.log('Leyendo:', url);
-
-    window[cbName] = function(data) {
-      console.log('Respuesta JSONP:', data);
-      try { document.getElementById('jsonp-container').removeChild(script); } catch(e) {}
-      delete window[cbName];
-      resolve(data);
-    };
-
-    const script = document.createElement('script');
-    script.src = url;
-    script.onerror = function(e) {
-      console.error('Error JSONP:', e);
-      delete window[cbName];
-      resolve({ ok: false, datos: [] });
-    };
-    document.getElementById('jsonp-container').appendChild(script);
-
-    setTimeout(() => {
-      if (window[cbName]) {
-        console.warn('Timeout JSONP');
-        delete window[cbName];
-        resolve({ ok: false, datos: [] });
-      }
-    }, 15000);
-  });
+    const res = await fetch(url);
+    const data = await res.json();
+    console.log('Respuesta:', data);
+    return data;
+  } catch (err) {
+    console.error('Error lectura:', err);
+    return { ok: false, datos: [] };
+  }
 }
 
 const REGIONALES = [
