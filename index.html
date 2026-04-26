@@ -6,813 +6,2296 @@
 <title>App Prestación De Servicios - Jardines del Renacer</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--negro:#0a0a0a;--blanco:#f5f5f0;--verde:#2d6a4f;--verde-claro:#40916c;--verde-suave:#d8f3dc;--dorado:#b5883e;--dorado-claro:#f0c96b;--gris:#6b7280;--gris-claro:#e5e7eb;--rojo:#dc2626;--fondo:#f0f0ea;--sombra:0 4px 24px rgba(0,0,0,.1);--radio:14px;--tr:.22s cubic-bezier(.4,0,.2,1)}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro);min-height:100vh;overflow-x:hidden}
-#login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0a2e1a,#1a4731 40%,#2d6a4f);position:relative;overflow:hidden}
-#login-screen::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")}
-.login-card{background:rgba(255,255,255,.97);border-radius:24px;padding:48px 40px 40px;width:100%;max-width:420px;box-shadow:0 32px 80px rgba(0,0,0,.4);position:relative;z-index:1;animation:fu .6s ease}
-@keyframes fu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-.login-logo{text-align:center;margin-bottom:28px;cursor:pointer;user-select:none}
-.login-logo .icono{width:68px;height:68px;background:linear-gradient(135deg,var(--verde),var(--verde-claro));border-radius:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:34px;box-shadow:0 8px 24px rgba(45,106,79,.35);transition:var(--tr)}
-.login-logo:hover .icono{transform:scale(1.05)}
-.login-logo h1{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:var(--verde);line-height:1.1}
-.login-logo p{font-size:13px;color:var(--gris);margin-top:4px;font-weight:500}
-.login-info{background:var(--verde-suave);border-left:4px solid var(--verde);border-radius:8px;padding:12px 14px;margin-bottom:24px;font-size:13px;color:var(--verde);line-height:1.5}
-.login-error-box{background:#fef2f2;border:1.5px solid #fecaca;border-radius:10px;padding:12px 14px;margin-bottom:12px;display:none}
-.login-error-box .et{font-size:13px;font-weight:700;color:var(--rojo);margin-bottom:4px}
-.login-error-box .ed{font-size:11.5px;color:#991b1b;font-family:'DM Mono',monospace;word-break:break-all;line-height:1.5;white-space:pre-wrap}
-.demo-inputs{display:flex;flex-direction:column;gap:10px}
-.demo-inputs input{border:1.5px solid var(--gris-claro);border-radius:10px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:var(--tr)}
-.demo-inputs input:focus{border-color:var(--verde);box-shadow:0 0 0 3px rgba(45,106,79,.1)}
-.demo-inputs input.ie{border-color:var(--rojo);box-shadow:0 0 0 3px rgba(220,38,38,.1)}
-.btn-login{width:100%;background:var(--verde);color:#fff;border:none;border-radius:12px;padding:14px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:var(--tr);margin-top:4px}
-.btn-login:hover{background:var(--verde-claro);transform:translateY(-1px)}
-.btn-login:disabled{background:var(--gris);cursor:not-allowed;transform:none}
-.btn-demo{width:100%;background:0 0;color:var(--gris);border:1.5px dashed var(--gris-claro);border-radius:12px;padding:12px;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;transition:var(--tr);margin-top:8px}
-.btn-demo:hover{border-color:var(--verde);color:var(--verde);background:var(--verde-suave)}
-.demo-indicator{background:#f59e0b;color:#fff;border-radius:20px;padding:3px 10px;font-size:10px;font-weight:700;letter-spacing:.5px;animation:pd 2s infinite}
-@keyframes pd{0%,100%{opacity:1}50%{opacity:.6}}
-#app{display:none;min-height:100vh}
-.topbar{background:var(--negro);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
-.topbar-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--dorado-claro);display:flex;align-items:center;gap:10px}
-.topbar-user{display:flex;align-items:center;gap:10px;font-size:13px}
-.avatar{width:32px;height:32px;background:var(--verde);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:#fff}
-.rb{background:var(--dorado);color:#fff;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:600;letter-spacing:.5px}
-.btn-cerrar{background:rgba(255,255,255,.1);border:none;color:#fff;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;transition:var(--tr);font-family:'DM Sans',sans-serif}
-.btn-cerrar:hover{background:rgba(255,255,255,.2)}
-.main-layout{display:flex;min-height:calc(100vh - 56px)}
-.sidebar{width:218px;background:#fff;border-right:1.5px solid var(--gris-claro);padding:18px 0;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;flex-shrink:0}
-.ss{padding:8px 16px 4px;font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--gris);text-transform:uppercase}
-.si{display:flex;align-items:center;gap:10px;padding:9px 18px;font-size:13px;font-weight:500;color:var(--negro);cursor:pointer;transition:var(--tr);border-left:3px solid transparent;user-select:none}
-.si:hover{background:var(--verde-suave);color:var(--verde);border-left-color:var(--verde)}
-.si.active{background:var(--verde-suave);color:var(--verde);border-left-color:var(--verde);font-weight:600}
-.si .dot{width:7px;height:7px;border-radius:50%;background:var(--gris-claro);flex-shrink:0}
-.si.active .dot,.si:hover .dot{background:var(--verde)}
-.content{flex:1;padding:28px;overflow-y:auto}
-.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:18px;margin-top:8px}
-.mc{background:#fff;border-radius:var(--radio);overflow:hidden;cursor:pointer;transition:var(--tr);box-shadow:var(--sombra);position:relative}
-.mc:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.15)}
-.mc-img{height:130px;display:flex;align-items:center;justify-content:center;font-size:44px;position:relative}
-.mc-img.risaralda{background:linear-gradient(135deg,#1e3a5f,#2563eb)}.mc-img.antioquia{background:linear-gradient(135deg,#92400e,#d97706)}.mc-img.caldas{background:linear-gradient(135deg,#14532d,#16a34a)}.mc-img.valle-centro{background:linear-gradient(135deg,#1e1b4b,#4338ca)}.mc-img.valle-sur{background:linear-gradient(135deg,#0f172a,#334155)}.mc-img.valle-norte{background:linear-gradient(135deg,#7f1d1d,#dc2626)}.mc-img.palmira{background:linear-gradient(135deg,#831843,#db2777)}.mc-img.quindio{background:linear-gradient(135deg,#3f1d0d,#c2410c)}.mc-img.cmarca{background:linear-gradient(135deg,#1c1917,#78716c)}.mc-img.tolima{background:linear-gradient(135deg,#064e3b,#059669)}.mc-img.apoyo{background:linear-gradient(135deg,#1e3a5f,#0ea5e9)}.mc-img.errores{background:linear-gradient(135deg,#7f1d1d,#f87171)}.mc-img.cotizacion{background:linear-gradient(135deg,#1a2e05,#65a30d)}
-.mc-label{padding:12px 14px;font-weight:600;font-size:13.5px;display:flex;align-items:center;justify-content:space-between}
-.mc-label .arrow{color:var(--gris);font-size:16px}
-.mrb{position:absolute;top:8px;right:8px;background:var(--dorado);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;letter-spacing:.5px}
-.page-header{display:flex;align-items:center;gap:14px;margin-bottom:24px}
-.page-header h2{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px}
-.back-btn{background:#fff;border:1.5px solid var(--gris-claro);border-radius:10px;padding:8px 14px;font-size:13px;cursor:pointer;transition:var(--tr);display:flex;align-items:center;gap:6px;font-family:'DM Sans',sans-serif;font-weight:500}
-.back-btn:hover{background:var(--verde-suave);border-color:var(--verde);color:var(--verde)}
-.tabs{display:flex;gap:4px;background:#fff;border-radius:12px;padding:4px;box-shadow:var(--sombra);margin-bottom:24px;width:fit-content}
-.tab{padding:10px 22px;border-radius:9px;font-size:14px;font-weight:500;cursor:pointer;transition:var(--tr);color:var(--gris)}
-.tab.active{background:var(--verde);color:#fff;font-weight:600}
-.tab:hover:not(.active){background:var(--verde-suave);color:var(--verde)}
-.tw{background:#fff;border-radius:var(--radio);box-shadow:var(--sombra);overflow:hidden}
-.tt{padding:14px 18px;display:flex;align-items:center;gap:12px;border-bottom:1.5px solid var(--gris-claro);flex-wrap:wrap}
-.busqueda{flex:1;min-width:200px;border:1.5px solid var(--gris-claro);border-radius:10px;padding:9px 14px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;transition:var(--tr)}
-.busqueda:focus{border-color:var(--verde)}
-.btn-nuevo{background:var(--verde);color:#fff;border:none;border-radius:10px;padding:10px 18px;font-size:14px;font-weight:600;cursor:pointer;transition:var(--tr);font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:6px;white-space:nowrap}
-.btn-nuevo:hover{background:var(--verde-claro)}.btn-nuevo:disabled{background:var(--gris);cursor:not-allowed}
-table{width:100%;border-collapse:collapse}
-th{background:var(--fondo);padding:11px 14px;text-align:left;font-size:11.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--gris);border-bottom:1.5px solid var(--gris-claro)}
-td{padding:12px 14px;font-size:13px;border-bottom:1px solid var(--gris-claro);vertical-align:middle}
-tr:last-child td{border-bottom:none}tr:hover td{background:var(--verde-suave)}
-.ec{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
-.ec-a{background:#d1fae5;color:#065f46}.ec-p{background:#fef3c7;color:#92400e}.ec-f{background:#e0e7ff;color:#3730a3}.ec-c{background:#fee2e2;color:#991b1b}
-.btn-ed{background:var(--verde);color:#fff;border:none;border-radius:7px;padding:5px 12px;font-size:12px;cursor:pointer;transition:var(--tr);font-family:'DM Sans',sans-serif;font-weight:600}
-.btn-ed:hover{background:var(--verde-claro)}
-.btn-vr{background:0 0;border:1.5px solid var(--gris-claro);border-radius:7px;padding:5px 12px;font-size:12px;cursor:pointer;transition:var(--tr);font-family:'DM Sans',sans-serif}
-.btn-vr:hover{border-color:var(--verde);color:var(--verde);background:var(--verde-suave)}
-.stats-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;margin-bottom:24px}
-.stat-card{background:#fff;border-radius:var(--radio);padding:18px;box-shadow:var(--sombra)}
-.stat-card .num{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--verde);line-height:1}
-.stat-card .lbl{font-size:12px;color:var(--gris);margin-top:4px;font-weight:500}
-.aviso-lectura{background:#fef3c7;border:1.5px solid #f59e0b;border-radius:10px;padding:12px 16px;font-size:13px;color:#92400e;margin-bottom:20px;display:flex;align-items:center;gap:8px}
-.aviso-edicion{background:#dbeafe;border:1.5px solid #3b82f6;border-radius:10px;padding:12px 16px;font-size:14px;color:#1e40af;margin-bottom:20px;display:flex;align-items:center;gap:10px;font-weight:600}
-.aviso-edicion button{background:#3b82f6;color:#fff;border:none;border-radius:6px;padding:5px 14px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-left:auto;white-space:nowrap}
-.aviso-edicion button:hover{background:#2563eb}
-.toast{position:fixed;bottom:28px;right:28px;background:var(--negro);color:#fff;padding:14px 22px;border-radius:12px;font-size:14px;font-weight:500;z-index:9999;display:flex;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(0,0,0,.25);transform:translateY(80px);opacity:0;transition:all .35s cubic-bezier(.4,0,.2,1)}
-.toast.show{transform:translateY(0);opacity:1}.toast.exito{border-left:4px solid #22c55e}.toast.error{border-left:4px solid var(--rojo)}.toast.info{border-left:4px solid #3b82f6}
-.fw{background:#fff;border-radius:var(--radio);box-shadow:var(--sombra);overflow:hidden}
-.fs{border-bottom:1.5px solid var(--gris-claro)}
-.fsh{padding:14px 22px;background:var(--verde);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none}
-.fsh .tg{margin-left:auto;transition:transform .2s;font-size:12px}
-.fsh.col .tg{transform:rotate(-90deg)}
-.fsb{padding:18px 22px;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
-.fsb.oc{display:none}
-.campo{display:flex;flex-direction:column;gap:4px}
-.campo.anc{grid-column:1/-1}
-.campo label{font-size:11px;font-weight:700;color:var(--gris);text-transform:uppercase;letter-spacing:.5px}
-.campo label .req{color:var(--rojo)}
-.campo input,.campo select,.campo textarea{border:1.5px solid var(--gris-claro);border-radius:8px;padding:9px 11px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;transition:var(--tr);background:#fff;width:100%}
-.campo input:focus,.campo select:focus,.campo textarea:focus{border-color:var(--verde);box-shadow:0 0 0 3px rgba(45,106,79,.1)}
-.campo textarea{resize:vertical;min-height:72px}
-.sn{display:inline-block;background:rgba(255,255,255,.25);color:#fff;border-radius:4px;padding:1px 6px;font-size:10px;font-weight:700;margin-left:6px}
-.fa{padding:18px 22px;display:flex;gap:12px;justify-content:flex-end;background:var(--fondo);border-top:1.5px solid var(--gris-claro);flex-wrap:wrap}
-.btn-g{background:var(--verde);color:#fff;border:none;border-radius:10px;padding:12px 28px;font-size:15px;font-weight:600;cursor:pointer;transition:var(--tr);font-family:'DM Sans',sans-serif}
-.btn-g:hover{background:var(--verde-claro);transform:translateY(-1px)}.btn-g:disabled{background:var(--gris);cursor:not-allowed;transform:none}
-.btn-g.actualizar{background:#2563eb}.btn-g.actualizar:hover{background:#1d4ed8}
-.btn-c{background:#fff;color:var(--negro);border:1.5px solid var(--gris-claro);border-radius:10px;padding:12px 22px;font-size:15px;font-weight:500;cursor:pointer;transition:var(--tr);font-family:'DM Sans',sans-serif}
-.btn-c:hover{border-color:var(--rojo);color:var(--rojo)}
-.mo{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000}
-.mb{position:fixed;top:50%;left:50%;transform:translate(-50%,-48%);background:#fff;border-radius:16px;width:92%;max-width:840px;max-height:85vh;display:flex;flex-direction:column;z-index:1001;box-shadow:0 24px 80px rgba(0,0,0,.3);opacity:0;transition:opacity .2s,transform .2s}
-.md.show .mb{opacity:1;transform:translate(-50%,-50%)}
-.mh{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1.5px solid var(--gris-claro);font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:var(--verde)}
-.mx{background:var(--gris-claro);border:none;border-radius:8px;width:32px;height:32px;cursor:pointer;font-size:14px;transition:var(--tr)}.mx:hover{background:var(--rojo);color:#fff}
-.mbo{padding:18px 22px;overflow-y:auto}
-.mst{font-family:'Bebas Neue',sans-serif;font-size:15px;color:var(--verde);letter-spacing:1px;margin:14px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--verde-suave)}
-.mst:first-child{margin-top:0}
-.dg{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
-.dc{background:var(--fondo);border-radius:8px;padding:9px 13px}
-.dc .dl{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--gris);margin-bottom:3px}
-.dc .dv{font-size:13px;font-weight:500;color:var(--negro);word-break:break-word}
-.firma-wrap{background:var(--fondo);border:2px dashed var(--gris-claro);border-radius:8px;padding:14px}
-.firma-wrap canvas{display:block;width:100%;height:auto}
-.btn-lf{background:var(--gris-claro);border:none;border-radius:6px;padding:5px 14px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:6px}
-@media(max-width:700px){.sidebar{display:none}.content{padding:14px}.menu-grid{grid-template-columns:repeat(2,1fr);gap:10px}.fsb{grid-template-columns:1fr}}
+:root {
+  --negro: #0a0a0a;
+  --blanco: #f5f5f0;
+  --verde: #2d6a4f;
+  --verde-claro: #40916c;
+  --verde-suave: #d8f3dc;
+  --dorado: #b5883e;
+  --dorado-claro: #f0c96b;
+  --gris: #6b7280;
+  --gris-claro: #e5e7eb;
+  --rojo: #dc2626;
+  --fondo: #f0f0ea;
+  --sombra: 0 4px 24px rgba(0,0,0,0.10);
+  --radio: 14px;
+  --transicion: 0.22s cubic-bezier(.4,0,.2,1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--fondo);
+  color: var(--negro);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===== PANTALLA LOGIN ===== */
+#login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a2e1a 0%, #1a4731 40%, #2d6a4f 100%);
+  position: relative;
+  overflow: hidden;
+}
+#login-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.login-card {
+  background: rgba(255,255,255,0.97);
+  border-radius: 24px;
+  padding: 52px 44px 44px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.4);
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.6s ease;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.login-logo {
+  text-align: center;
+  margin-bottom: 32px;
+  cursor: pointer;
+  user-select: none;
+}
+.login-logo .icono {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, var(--verde), var(--verde-claro));
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 36px;
+  box-shadow: 0 8px 24px rgba(45,106,79,0.35);
+  transition: var(--transicion);
+}
+.login-logo:hover .icono { transform: scale(1.05); }
+.login-logo h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 2px;
+  color: var(--verde);
+  line-height: 1.1;
+}
+.login-logo p {
+  font-size: 13px;
+  color: var(--gris);
+  margin-top: 4px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.login-info {
+  background: var(--verde-suave);
+  border-left: 4px solid var(--verde);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 28px;
+  font-size: 13.5px;
+  color: var(--verde);
+  line-height: 1.5;
+}
+.login-error-box {
+  background: #fef2f2;
+  border: 1.5px solid #fecaca;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  display: none;
+}
+.login-error-box .error-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--rojo);
+  margin-bottom: 4px;
+}
+.login-error-box .error-detail {
+  font-size: 12px;
+  color: #991b1b;
+  font-family: 'DM Mono', monospace;
+  word-break: break-all;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+.demo-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.demo-inputs input {
+  border: 1.5px solid var(--gris-claro);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: var(--transicion);
+}
+.demo-inputs input:focus {
+  border-color: var(--verde);
+  box-shadow: 0 0 0 3px rgba(45,106,79,0.1);
+}
+.demo-inputs input.input-error {
+  border-color: var(--rojo);
+  box-shadow: 0 0 0 3px rgba(220,38,38,0.1);
+}
+.btn-login {
+  width: 100%;
+  background: var(--verde);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transicion);
+  margin-top: 4px;
+}
+.btn-login:hover { background: var(--verde-claro); transform: translateY(-1px); }
+.btn-login:disabled { background: var(--gris); cursor: not-allowed; transform: none; }
+.btn-demo {
+  width: 100%;
+  background: transparent;
+  color: var(--gris);
+  border: 1.5px dashed var(--gris-claro);
+  border-radius: 12px;
+  padding: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  transition: var(--transicion);
+  margin-top: 8px;
+}
+.btn-demo:hover { border-color: var(--verde); color: var(--verde); background: var(--verde-suave); }
+
+/* ===== INDICADOR DEMO ===== */
+.demo-indicator {
+  background: #f59e0b;
+  color: white;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  animation: pulse-demo 2s infinite;
+}
+@keyframes pulse-demo { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+
+/* ===== APP PRINCIPAL ===== */
+#app { display: none; min-height: 100vh; }
+.topbar {
+  background: var(--negro);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 58px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+.topbar-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: var(--dorado-claro);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.topbar-user { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+.avatar {
+  width: 34px;
+  height: 34px;
+  background: var(--verde);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  color: white;
+}
+.regional-badge {
+  background: var(--dorado);
+  color: white;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.btn-cerrar {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: white;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: var(--transicion);
+  font-family: 'DM Sans', sans-serif;
+}
+.btn-cerrar:hover { background: rgba(255,255,255,0.2); }
+.main-layout { display: flex; min-height: calc(100vh - 58px); }
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 220px;
+  background: white;
+  border-right: 1.5px solid var(--gris-claro);
+  padding: 20px 0;
+  position: sticky;
+  top: 58px;
+  height: calc(100vh - 58px);
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+.sidebar-section {
+  padding: 8px 16px 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--gris);
+  text-transform: uppercase;
+}
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--negro);
+  cursor: pointer;
+  transition: var(--transicion);
+  border-left: 3px solid transparent;
+  user-select: none;
+}
+.sidebar-item:hover { background: var(--verde-suave); color: var(--verde); border-left-color: var(--verde); }
+.sidebar-item.active { background: var(--verde-suave); color: var(--verde); border-left-color: var(--verde); font-weight: 600; }
+.sidebar-item .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gris-claro); flex-shrink: 0; }
+.sidebar-item.active .dot, .sidebar-item:hover .dot { background: var(--verde); }
+
+/* ===== CONTENIDO ===== */
+.content { flex: 1; padding: 28px; overflow-y: auto; }
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 8px;
+}
+.menu-card {
+  background: white;
+  border-radius: var(--radio);
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transicion);
+  box-shadow: var(--sombra);
+  position: relative;
+}
+.menu-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.15); }
+.menu-card-img {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  position: relative;
+}
+.menu-card-img.risaralda { background: linear-gradient(135deg, #1e3a5f, #2563eb); }
+.menu-card-img.antioquia { background: linear-gradient(135deg, #92400e, #d97706); }
+.menu-card-img.caldas { background: linear-gradient(135deg, #14532d, #16a34a); }
+.menu-card-img.valle-centro { background: linear-gradient(135deg, #1e1b4b, #4338ca); }
+.menu-card-img.valle-sur { background: linear-gradient(135deg, #0f172a, #334155); }
+.menu-card-img.valle-norte { background: linear-gradient(135deg, #7f1d1d, #dc2626); }
+.menu-card-img.palmira { background: linear-gradient(135deg, #831843, #db2777); }
+.menu-card-img.quindio { background: linear-gradient(135deg, #3f1d0d, #c2410c); }
+.menu-card-img.cmarca { background: linear-gradient(135deg, #1c1917, #78716c); }
+.menu-card-img.tolima { background: linear-gradient(135deg, #064e3b, #059669); }
+.menu-card-img.apoyo { background: linear-gradient(135deg, #1e3a5f, #0ea5e9); }
+.menu-card-img.errores { background: linear-gradient(135deg, #7f1d1d, #f87171); }
+.menu-card-img.cotizacion { background: linear-gradient(135deg, #1a2e05, #65a30d); }
+.menu-card-label {
+  padding: 14px 16px;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.menu-card-label .arrow { color: var(--gris); font-size: 18px; }
+.mi-regional-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--dorado);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* ===== PAGE HEADER ===== */
+.page-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.page-header h2 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 1px; color: var(--negro); }
+.back-btn {
+  background: white;
+  border: 1.5px solid var(--gris-claro);
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: var(--transicion);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+}
+.back-btn:hover { background: var(--verde-suave); border-color: var(--verde); color: var(--verde); }
+
+/* ===== STATS ===== */
+.stats-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.stat-card { background: white; border-radius: var(--radio); padding: 20px; box-shadow: var(--sombra); }
+.stat-card .num { font-family: 'Bebas Neue', sans-serif; font-size: 38px; color: var(--verde); line-height: 1; }
+.stat-card .lbl { font-size: 12px; color: var(--gris); margin-top: 4px; font-weight: 500; }
+
+/* ===== TABS ===== */
+.tabs { display: flex; gap: 4px; background: white; border-radius: 12px; padding: 4px; box-shadow: var(--sombra); margin-bottom: 24px; width: fit-content; }
+.tab { padding: 10px 22px; border-radius: 9px; font-size: 14px; font-weight: 500; cursor: pointer; transition: var(--transicion); color: var(--gris); }
+.tab.active { background: var(--verde); color: white; font-weight: 600; }
+.tab:hover:not(.active) { background: var(--verde-suave); color: var(--verde); }
+
+/* ===== TABLA ===== */
+.tabla-wrap { background: white; border-radius: var(--radio); box-shadow: var(--sombra); overflow: hidden; }
+.tabla-toolbar { padding: 16px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 1.5px solid var(--gris-claro); flex-wrap: wrap; }
+.busqueda { flex: 1; min-width: 200px; border: 1.5px solid var(--gris-claro); border-radius: 10px; padding: 9px 14px; font-size: 14px; font-family: 'DM Sans', sans-serif; outline: none; transition: var(--transicion); }
+.busqueda:focus { border-color: var(--verde); }
+.btn-nuevo { background: var(--verde); color: white; border: none; border-radius: 10px; padding: 10px 20px; font-size: 14px; font-weight: 600; cursor: pointer; transition: var(--transicion); font-family: 'DM Sans', sans-serif; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.btn-nuevo:hover { background: var(--verde-claro); }
+.btn-nuevo:disabled { background: var(--gris); cursor: not-allowed; }
+table { width: 100%; border-collapse: collapse; }
+th { background: var(--fondo); padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: var(--gris); border-bottom: 1.5px solid var(--gris-claro); }
+td { padding: 13px 16px; font-size: 13.5px; border-bottom: 1px solid var(--gris-claro); vertical-align: middle; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--verde-suave); }
+.estado-chip { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11.5px; font-weight: 600; }
+.estado-activo { background: #d1fae5; color: #065f46; }
+.estado-pendiente { background: #fef3c7; color: #92400e; }
+.estado-finalizado { background: #e0e7ff; color: #3730a3; }
+.estado-cancelado { background: #fee2e2; color: #991b1b; }
+.btn-editar { background: var(--verde); color: white; border: none; border-radius: 7px; padding: 5px 12px; font-size: 12px; cursor: pointer; transition: var(--transicion); font-family: 'DM Sans', sans-serif; font-weight: 600; }
+.btn-editar:hover { background: var(--verde-claro); }
+.btn-ver { background: none; border: 1.5px solid var(--gris-claro); border-radius: 7px; padding: 5px 12px; font-size: 12px; cursor: pointer; transition: var(--transicion); font-family: 'DM Sans', sans-serif; }
+.btn-ver:hover { border-color: var(--verde); color: var(--verde); background: var(--verde-suave); }
+
+/* ===== AVISOS ===== */
+.aviso-lectura { background: #fef3c7; border: 1.5px solid #f59e0b; border-radius: 10px; padding: 12px 18px; font-size: 13px; color: #92400e; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+.aviso-edicion { background: #dbeafe; border: 1.5px solid #3b82f6; border-radius: 10px; padding: 12px 18px; font-size: 14px; color: #1e40af; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; font-weight: 600; }
+.aviso-edicion button { background: #3b82f6; color: white; border: none; border-radius: 6px; padding: 5px 14px; font-size: 12px; cursor: pointer; font-family: 'DM Sans', sans-serif; margin-left: auto; white-space: nowrap; }
+.aviso-edicion button:hover { background: #2563eb; }
+
+/* ===== TOAST ===== */
+.toast { position: fixed; bottom: 28px; right: 28px; background: var(--negro); color: white; padding: 14px 22px; border-radius: 12px; font-size: 14px; font-weight: 500; z-index: 9999; display: flex; align-items: center; gap: 10px; box-shadow: 0 8px 32px rgba(0,0,0,0.25); transform: translateY(80px); opacity: 0; transition: all 0.35s cubic-bezier(.4,0,.2,1); }
+.toast.show { transform: translateY(0); opacity: 1; }
+.toast.exito { border-left: 4px solid #22c55e; }
+.toast.error { border-left: 4px solid var(--rojo); }
+.toast.info { border-left: 4px solid #3b82f6; }
+
+/* ===== FORMULARIO ===== */
+.form-wrap { background: white; border-radius: var(--radio); box-shadow: var(--sombra); overflow: hidden; }
+.form-section { border-bottom: 1.5px solid var(--gris-claro); }
+.form-section-header { padding: 16px 24px; background: var(--verde); color: white; font-family: 'Bebas Neue', sans-serif; font-size: 17px; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; cursor: pointer; user-select: none; }
+.form-section-header .toggle { margin-left: auto; transition: transform 0.2s; font-size: 12px; }
+.form-section-header.collapsed .toggle { transform: rotate(-90deg); }
+.form-section-body { padding: 20px 24px; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.form-section-body.oculto { display: none; }
+.campo { display: flex; flex-direction: column; gap: 5px; }
+.campo.ancho { grid-column: 1 / -1; }
+.campo label { font-size: 11px; font-weight: 700; color: var(--gris); text-transform: uppercase; letter-spacing: 0.5px; }
+.campo label .req { color: var(--rojo); }
+.campo input, .campo select, .campo textarea { border: 1.5px solid var(--gris-claro); border-radius: 8px; padding: 9px 12px; font-size: 13.5px; font-family: 'DM Sans', sans-serif; outline: none; transition: var(--transicion); background: white; width: 100%; }
+.campo input:focus, .campo select:focus, .campo textarea:focus { border-color: var(--verde); box-shadow: 0 0 0 3px rgba(45,106,79,0.1); }
+.campo textarea { resize: vertical; min-height: 80px; }
+.seccion-numero { display: inline-block; background: rgba(255,255,255,0.25); color: white; border-radius: 4px; padding: 1px 6px; font-size: 10px; font-weight: 700; margin-left: 6px; }
+.form-actions { padding: 20px 24px; display: flex; gap: 12px; justify-content: flex-end; background: var(--fondo); border-top: 1.5px solid var(--gris-claro); flex-wrap: wrap; }
+.btn-guardar { background: var(--verde); color: white; border: none; border-radius: 10px; padding: 12px 28px; font-size: 15px; font-weight: 600; cursor: pointer; transition: var(--transicion); font-family: 'DM Sans', sans-serif; }
+.btn-guardar:hover { background: var(--verde-claro); transform: translateY(-1px); }
+.btn-guardar:disabled { background: var(--gris); cursor: not-allowed; transform: none; }
+.btn-guardar.actualizando { background: #2563eb; }
+.btn-guardar.actualizando:hover { background: #1d4ed8; }
+.btn-cancelar { background: white; color: var(--negro); border: 1.5px solid var(--gris-claro); border-radius: 10px; padding: 12px 24px; font-size: 15px; font-weight: 500; cursor: pointer; transition: var(--transicion); font-family: 'DM Sans', sans-serif; }
+.btn-cancelar:hover { border-color: var(--rojo); color: var(--rojo); }
+
+/* ===== MODAL ===== */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; }
+.modal-box { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -48%); background: white; border-radius: 16px; width: 92%; max-width: 840px; max-height: 85vh; display: flex; flex-direction: column; z-index: 1001; box-shadow: 0 24px 80px rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.2s, transform 0.2s; }
+.modal-detalle.show .modal-box { opacity: 1; transform: translate(-50%, -50%); }
+.modal-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 22px; border-bottom: 1.5px solid var(--gris-claro); font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; color: var(--verde); }
+.modal-cerrar { background: var(--gris-claro); border: none; border-radius: 8px; width: 32px; height: 32px; cursor: pointer; font-size: 14px; transition: var(--transicion); }
+.modal-cerrar:hover { background: var(--rojo); color: white; }
+.modal-body { padding: 18px 22px; overflow-y: auto; }
+.modal-section-title { font-family: 'Bebas Neue', sans-serif; font-size: 15px; color: var(--verde); letter-spacing: 1px; margin: 14px 0 8px; padding-bottom: 4px; border-bottom: 1px solid var(--verde-suave); }
+.modal-section-title:first-child { margin-top: 0; }
+.detalle-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 8px; }
+.detalle-campo { background: var(--fondo); border-radius: 8px; padding: 9px 13px; }
+.detalle-label { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gris); margin-bottom: 3px; }
+.detalle-valor { font-size: 13px; font-weight: 500; color: var(--negro); word-break: break-word; }
+
+/* ===== FIRMAS ===== */
+.firma-wrap { background: var(--fondo); border: 2px dashed var(--gris-claro); border-radius: 8px; padding: 14px; }
+.firma-wrap canvas { display: block; width: 100%; height: auto; }
+.btn-limpiar-firma { background: var(--gris-claro); border: none; border-radius: 6px; padding: 5px 14px; font-size: 12px; cursor: pointer; font-family: 'DM Sans', sans-serif; margin-top: 6px; }
+.btn-limpiar-firma:hover { background: var(--gris); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 700px) {
+  .sidebar { display: none; }
+  .content { padding: 16px; }
+  .menu-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .form-section-body { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
 
+<!-- ============================================================ -->
+<!-- PANTALLA DE LOGIN -->
+<!-- ============================================================ -->
 <div id="login-screen">
-<div class="login-card">
-  <div class="login-logo" id="login-logo" title="5 clics = modo demo">
-    <div class="icono">🌿</div>
-    <h1>PRESTACIÓN DE SERVICIOS</h1>
-    <p>Jardines del Renacer</p>
+  <div class="login-card">
+    <div class="login-logo" id="login-logo" title="Haz clic 5 veces para modo demo">
+      <div class="icono">🌿</div>
+      <h1>PRESTACIÓN DE SERVICIOS</h1>
+      <p>Jardines del Renacer</p>
+    </div>
+    <div class="login-info">🔐 Acceso restringido. Solo personal autorizado de Jardines del Renacer.</div>
+
+    <div class="login-error-box" id="login-error-box">
+      <div class="error-title" id="error-title">Error</div>
+      <div class="error-detail" id="error-detail"></div>
+    </div>
+
+    <div class="demo-inputs">
+      <input type="text" id="input-usuario" placeholder="Usuario" autocomplete="username" />
+      <input type="password" id="input-password" placeholder="Contraseña" autocomplete="current-password" onkeydown="if(event.key==='Enter') doLogin()" />
+      <button class="btn-login" id="btn-login" onclick="doLogin()">Entrar →</button>
+      <button class="btn-demo" onclick="entrarDemo()">🛠️ Entrar en Modo Demo (sin servidor)</button>
+    </div>
   </div>
-  <div class="login-info">🔐 Acceso restringido. Solo personal autorizado.</div>
-  <div class="login-error-box" id="leb"><div class="et" id="let"></div><div class="ed" id="led"></div></div>
-  <div class="demo-inputs">
-    <input type="text" id="iu" placeholder="Usuario" autocomplete="username"/>
-    <input type="password" id="ip" placeholder="Contraseña" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"/>
-    <button class="btn-login" id="bl" onclick="doLogin()">Entrar →</button>
-    <button class="btn-demo" onclick="entrarDemo()">🛠️ Entrar en Modo Demo</button>
-  </div>
-</div>
 </div>
 
+<!-- ============================================================ -->
+<!-- APP PRINCIPAL -->
+<!-- ============================================================ -->
 <div id="app">
-<div class="topbar">
-  <div class="topbar-logo"><span>🌿</span> PRESTACIÓN DE SERVICIOS <span class="demo-indicator" id="di" style="display:none">DEMO</span></div>
-  <div class="topbar-user">
-    <span class="rb" id="rb">QUINDIO</span>
-    <div class="avatar" id="av">Q</div>
-    <span id="un" style="font-size:13px;font-weight:500">Analista</span>
-    <button class="btn-cerrar" onclick="cerrarSesion()">✕ Salir</button>
-  </div>
-</div>
-<div class="main-layout">
-<div class="sidebar">
-  <div class="ss">Principal</div>
-  <div class="si active" onclick="mostrarVista('menu')" id="nav-menu"><div class="dot"></div>Menú Principal</div>
-  <div class="ss" style="margin-top:8px">Regionales</div>
-  <div class="si" onclick="mostrarRegional('RISARALDA')" id="nav-RISARALDA"><div class="dot"></div>Risaralda</div>
-  <div class="si" onclick="mostrarRegional('ANTIOQUIA')" id="nav-ANTIOQUIA"><div class="dot"></div>Antioquia</div>
-  <div class="si" onclick="mostrarRegional('CALDAS')" id="nav-CALDAS"><div class="dot"></div>Caldas</div>
-  <div class="si" onclick="mostrarRegional('VALLE CENTRO')" id="nav-VALLE CENTRO"><div class="dot"></div>Valle Centro</div>
-  <div class="si" onclick="mostrarRegional('VALLE SUR')" id="nav-VALLE SUR"><div class="dot"></div>Valle Sur</div>
-  <div class="si" onclick="mostrarRegional('VALLE NORTE')" id="nav-VALLE NORTE"><div class="dot"></div>Valle Norte</div>
-  <div class="si" onclick="mostrarRegional('VALLE CENTRO-PALMIRA')" id="nav-VALLE CENTRO-PALMIRA"><div class="dot"></div>Valle C. Palmira</div>
-  <div class="si" onclick="mostrarRegional('QUINDIO')" id="nav-QUINDIO"><div class="dot"></div>Quindío</div>
-  <div class="si" onclick="mostrarRegional('CUNDINAMARCA')" id="nav-CUNDINAMARCA"><div class="dot"></div>C/Marca</div>
-  <div class="si" onclick="mostrarRegional('TOLIMA NORTE')" id="nav-TOLIMA NORTE"><div class="dot"></div>Tolima Norte</div>
-  <div class="ss" style="margin-top:8px">Módulos</div>
-  <div class="si" onclick="mostrarRegional('APOYO')"><div class="dot"></div>Apoyo Exequial</div>
-  <div class="si" onclick="mostrarRegional('ERRORES')"><div class="dot"></div>Errores Digitación</div>
-  <div class="si" onclick="mostrarRegional('COTIZACION')"><div class="dot"></div>Cotización</div>
-</div>
-<div class="content" id="content">
 
-<!-- VISTA MENÚ -->
-<div id="vista-menu">
-  <div class="stats-row">
-    <div class="stat-card"><div class="num" id="st-total">0</div><div class="lbl">Total Prestaciones</div></div>
-    <div class="stat-card"><div class="num" id="st-hoy">0</div><div class="lbl">Registradas Hoy</div></div>
-    <div class="stat-card"><div class="num" id="st-mi">0</div><div class="lbl">Mi Regional</div></div>
-    <div class="stat-card"><div class="num">10</div><div class="lbl">Regionales</div></div>
-  </div>
-  <div class="menu-grid" id="mg"></div>
-</div>
-
-<!-- VISTA REGIONAL -->
-<div id="vista-regional" style="display:none">
-  <div class="page-header">
-    <button class="back-btn" onclick="mostrarVista('menu')">← Menú</button>
-    <h2 id="rt">REGIONAL</h2>
-  </div>
-  <div id="alw"></div>
-  <div class="tabs">
-    <div class="tab active" onclick="cambiarTab('lista')" id="t-lista">📋 Registros</div>
-    <div class="tab" onclick="cambiarTab('nuevo')" id="t-nuevo">➕ Nueva Prestación</div>
-  </div>
-
-  <div id="tc-lista">
-    <div class="tw">
-      <div class="tt">
-        <input class="busqueda" type="text" placeholder="🔍 Buscar por nombre, CC, contrato, N° Prestación, sede..." oninput="filtrarTabla(this.value)"/>
-        <button class="btn-nuevo" id="bnt" onclick="cambiarTab('nuevo')">➕ Nueva Prestación</button>
-      </div>
-      <div style="overflow-x:auto"><table><thead><tr>
-        <th>N° Prestación</th><th>Fallecido</th><th>Fecha Reporte</th><th>Sede</th><th>Estado</th><th>Acciones</th>
-      </tr></thead><tbody id="tb"></tbody></table></div>
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-logo">
+      <span>🌿</span> PRESTACIÓN DE SERVICIOS
+      <span class="demo-indicator" id="demo-indicator" style="display:none;">DEMO</span>
+    </div>
+    <div class="topbar-user">
+      <span class="regional-badge" id="topbar-regional">QUINDIO</span>
+      <div class="avatar" id="topbar-avatar">Q</div>
+      <span id="topbar-nombre" style="font-size:13px;font-weight:500;">Analista</span>
+      <button class="btn-cerrar" onclick="cerrarSesion()">✕ Salir</button>
     </div>
   </div>
 
-  <div id="tc-nuevo" style="display:none">
-    <div id="aeb" style="display:none" class="aviso-edicion">✏️ Modo Edición — Modificando <strong id="enp"></strong><button onclick="cancelarEdicion()">✕ Cancelar</button></div>
-    <div id="ron" style="display:none" class="aviso-lectura">👁️ Solo lectura — Esta regional no es la tuya.</div>
+  <!-- LAYOUT: SIDEBAR + CONTENT -->
+  <div class="main-layout">
 
-    <div class="fw" id="fp">
-      <!-- SECCIÓN 1: INFORMACIÓN DE SOLICITUD -->
-      <div class="fs"><div class="fsh" onclick="toggleSec(this)"><span>📋</span>INFORMACIÓN DE SOLICITUD<span class="sn">Campos 1–17</span><span class="tg">▼</span></div>
-      <div class="fsb">
-        <div class="campo"><label>Fecha Y Hora de Reporte <span class="req">*</span></label><input type="datetime-local" id="f01"/></div>
-        <div class="campo"><label>N° Prestacion <span class="req">*</span></label><input type="text" id="f02" placeholder="Ej: PS-000123, 2025-001..."/></div>
-        <div class="campo"><label>Reporte de Servicio Por el Call o Regional</label><select id="f03"><option value="">Seleccionar...</option><option>Call</option><option>Regional</option></select></div>
-        <div class="campo anc"><label>Observaciones</label><textarea id="f04" placeholder="Observaciones generales..."></textarea></div>
-        <div class="campo"><label>Nombre Del Fallecido <span class="req">*</span></label><input type="text" id="f05" placeholder="Nombre(s)"/></div>
-        <div class="campo"><label>Apellidos Del Fallecido <span class="req">*</span></label><input type="text" id="f06" placeholder="Apellidos"/></div>
-        <div class="campo"><label>CC: Del Fallecido</label><input type="text" id="f07" placeholder="Número de cédula"/></div>
-        <div class="campo"><label>Fecha De Expedicion de la CC</label><input type="date" id="f08"/></div>
-        <div class="campo"><label>Fecha de Nacimiento</label><input type="date" id="f09" onchange="calcEdad()"/></div>
-        <div class="campo"><label>Edad</label><input type="number" id="f10" placeholder="Años" min="0" max="130"/></div>
-        <div class="campo"><label>Nº De Contrato <span class="req">*</span></label><input type="text" id="f11" placeholder="Número de contrato"/></div>
-        <div class="campo"><label>Nombre solicitante</label><input type="text" id="f12" placeholder="Nombre completo"/></div>
-        <div class="campo"><label>CC: Del Solicitante</label><input type="number" id="f13" placeholder="Cédula"/></div>
-        <div class="campo"><label>Parentesco Con El Fallecido</label><select id="f14"><option value="">Seleccionar...</option><option>Abuela</option><option>Abuelo</option><option>Compañera</option><option>Compañero</option><option>Cuñada</option><option>Cuñado</option><option>Empleado</option><option>Esposa</option><option>Esposo</option><option>Hermana</option><option>Hermanastro(a)</option><option>Hermano</option><option>Hija</option><option>Hijastro(a)</option><option>Hijo</option><option>Madrastra</option><option>Madre</option><option>Nieta</option><option>Nieto</option><option>Nuera</option><option>Otro(a)</option><option>Padrastro</option><option>Padre</option><option>Prima</option><option>Primo</option><option>Sobrina</option><option>Sobrino</option><option>Suegra</option><option>Suegro</option><option>Titular</option><option>Tía</option><option>Tío</option><option>Yerno</option></select></div>
-        <div class="campo"><label>Direccion del Solicitante</label><input type="text" id="f15" placeholder="Dirección"/></div>
-        <div class="campo"><label>Nº Telefono Solicitante</label><input type="number" id="f16" placeholder="Teléfono"/></div>
-        <div class="campo"><label>Fecha Y Hora De Digitacion</label><input type="datetime-local" id="f17"/></div>
-      </div></div>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-section">Principal</div>
+      <div class="sidebar-item active" onclick="mostrarVista('menu')" id="nav-menu"><div class="dot"></div> Menú Principal</div>
 
-      <!-- SECCIÓN 2: CONFIGURACIÓN DEL SERVICIO -->
-      <div class="fs"><div class="fsh" onclick="toggleSec(this)"><span>⚙️</span>CONFIGURACIÓN DEL SERVICIO<span class="sn">Campos 18–41</span><span class="tg">▼</span></div>
-      <div class="fsb">
-        <div class="campo"><label>Regional <span class="req">*</span></label><select id="f18"><option value="">Seleccionar...</option><option>ANALISTA</option><option>ANTIOQUIA</option><option>ATLANTICO</option><option>BOGOTA</option><option>CALDAS</option><option>CAUCA</option><option>CUNDINAMARCA</option><option>HUILA</option><option>META</option><option>PUTUMAYO</option><option>QUINDIO</option><option>RISARALDA</option><option>SANTANDER</option><option>TOLIMA NORTE</option><option>TOLIMA SUR</option><option>VALLE CENTRO</option><option>VALLE CENTRO-PALMIRA</option><option>VALLE NORTE</option><option>VALLE SUR</option></select></div>
-        <div class="campo"><label>Departamento De Prestacion</label><select id="f19" onchange="filtrarMuni()"><option value="">Seleccionar...</option><option>Antioquia</option><option>Atlantico</option><option>Bogota</option><option>Bolivar</option><option>Boyaca</option><option>Caldas</option><option>Caqueta</option><option>Casanare</option><option>Cauca</option><option>Cesar</option><option>Choco</option><option>Cordoba</option><option>Cundinamarca</option><option>Huila</option><option>La Guajira</option><option>Magdalena</option><option>Meta</option><option>N. De Santander</option><option>Nariño</option><option>Putumayo</option><option>Quindio</option><option>Risaralda</option><option>Santander</option><option>Sucre</option><option>Tolima</option><option>Valle Del Cauca</option></select></div>
-        <div class="campo"><label>Municipio de Prestacion</label><select id="f20"><option value="">Seleccione depto primero...</option></select></div>
-        <div class="campo"><label>Sede</label><select id="f21"><option value="">Seleccionar...</option><option>Armenia</option><option>Calarca</option><option>Circasia</option><option>Montenegro</option><option>Quimbaya</option><option>La Tebaida</option><option>Genova</option><option>Pijao</option><option>Manizales</option><option>Pereira</option><option>Dosquebradas</option><option>Santa Rosa</option><option>Cali</option><option>Palmira</option><option>Tulua</option><option>Cartago</option><option>Medellin</option><option>Ibague</option><option>Bogotá</option><option>Villavicencio</option></select></div>
-        <div class="campo"><label>Tipo</label><select id="f22"><option value="">Seleccionar...</option><option>Afiliado Cobertura Total</option><option>Afiliado Condicional</option><option>Convenio</option><option>Licitacion</option><option>Mascota</option><option>Particular</option><option>Servicios No Prestados</option></select></div>
-        <div class="campo"><label>Categoria</label><select id="f23" onchange="aplicarReglasCat()"><option value="">Seleccionar...</option><option>Adres</option><option>Afiliado Condicional</option><option>Alcaldia</option><option>Alcaldia Con Excedente</option><option>Asesor Jurídico</option><option>Asesores Externos</option><option>Auxilio Funerario</option><option>Cliente En Mora</option><option>Cobertura Total</option><option>Cobertura Total Con Excedente</option><option>Compra Gastos</option><option>Contrato Retirado</option><option>Convenio</option><option>Convenio Con Excedente</option><option>Donacion</option><option>Donación Particular</option><option>Fallecido No Afiliado</option><option>Mascota Cobertura Total</option><option>Mascota Condicional</option><option>Mascota Convenio</option><option>Mascota Particular</option><option>Particular</option><option>Preexistencias</option><option>Repatriacion</option><option>Servicio En Otra Funeraria</option><option>Soat</option><option>Tiempos De Carencias</option></select></div>
-        <div class="campo" id="wm" style="display:none"><label>Motivo</label><select id="f24"><option value="">Seleccionar...</option><option>Carencia</option><option>Mora</option><option>Preexistencias</option></select></div>
-        <div class="campo" id="we" style="display:none"><label>Entidad</label><select id="f25"><option value="">Seleccionar...</option><option>Adress</option><option>Alcaldía</option><option>Arl Sura</option><option>Casur</option><option>Chubb</option><option>Colfondos</option><option>Colpensiones</option><option>Cremil</option><option>Fomag</option><option>Fonprecon</option><option>Gobernación</option><option>Liberty</option><option>Ministerio De Defensa</option><option>Municipio</option><option>Particular</option><option>Porvenir</option><option>Positiva</option><option>Protección</option><option>Seguros Alfa</option><option>Seguros Bolivar</option><option>Seguros Colmena</option><option>Seguros De Vida Suramericana</option><option>Skandia</option><option>Soat</option><option>Superintendencia De Sociedades</option><option>Ugpp</option><option>Universidad Nacional</option></select></div>
-        <div class="campo" id="wa" style="display:none"><label>Asesor Externo</label><select id="f26"><option value="">Seleccionar...</option><option>Apoyo Funebre Nacional S.a.s</option><option>Aroca Diana Marcela</option><option>Bustamante Carlos</option><option>Cuello Edwin Alberto</option><option>Cuestas German</option><option>La Luz S.a.s.</option><option>La Paz Ecofunerales</option><option>Lizcano Giovanny</option><option>Lizcano Luis Antonio</option><option>Londoño Sandra</option><option>Maria de la Fontana</option><option>Matiz Edison Adrian</option><option>Mejia Gomez Jhon Jairo</option><option>Munevar Giovanny</option><option>Padilla Córdoba William</option><option>Rodriguez Tobon Diana Marcela</option><option>Santa Cruz Funeraria</option><option>Servicios Asistenciales S.A.S La Fe</option><option>Utima Gomez Jose Luis</option></select></div>
-        <div class="campo"><label>Clasificacion</label><select id="f27"><option value="">Seleccionar...</option><option>Basico</option><option>Completo</option><option>Covid-19</option><option>Destino Final</option><option>Finales</option><option>Iniciales</option><option>Mascota</option><option>Parcial</option><option>Post Finales</option></select></div>
-        <div class="campo"><label>Tiene Servicios Adicionales (SI/NO)</label><select id="f28"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
-        <div class="campo"><label>Cuáles</label><input type="text" id="f29" placeholder="Describir..."/></div>
-        <div class="campo"><label>Tiene post finales (SI/NO)</label><select id="f30"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
-        <div class="campo"><label>Nombre Del Titular</label><input type="text" id="f31" placeholder="Nombre completo"/></div>
-        <div class="campo"><label>CC: Del Titular</label><input type="number" id="f32" placeholder="Cédula"/></div>
-        <div class="campo"><label>Direccion Del Titular</label><input type="text" id="f33" placeholder="Dirección"/></div>
-        <div class="campo"><label>Nº Telefono TiTular</label><input type="number" id="f34" placeholder="Teléfono"/></div>
-        <div class="campo"><label>Responsabele a Facturar</label><input type="text" id="f35" placeholder="Nombre completo"/></div>
-        <div class="campo"><label>CC Responsable a Facturar</label><input type="text" id="f36" placeholder="Cédula"/></div>
-        <div class="campo"><label>Direccion Responsable a Facturar</label><input type="text" id="f37" placeholder="Dirección"/></div>
-        <div class="campo"><label>Nº Telefono Responsable a Facturar</label><input type="number" id="f38" placeholder="Teléfono"/></div>
-        <div class="campo"><label>Correo Electronico Responsable a Facturar</label><input type="email" id="f39" placeholder="correo@ejemplo.com"/></div>
-      </div></div>
+      <div class="sidebar-section" style="margin-top:8px;">Regionales</div>
+      <div class="sidebar-item" onclick="mostrarRegional('RISARALDA')" id="nav-RISARALDA"><div class="dot"></div> Risaralda</div>
+      <div class="sidebar-item" onclick="mostrarRegional('ANTIOQUIA')" id="nav-ANTIOQUIA"><div class="dot"></div> Antioquia</div>
+      <div class="sidebar-item" onclick="mostrarRegional('CALDAS')" id="nav-CALDAS"><div class="dot"></div> Caldas</div>
+      <div class="sidebar-item" onclick="mostrarRegional('VALLE CENTRO')" id="nav-VALLE CENTRO"><div class="dot"></div> Valle Centro</div>
+      <div class="sidebar-item" onclick="mostrarRegional('VALLE SUR')" id="nav-VALLE SUR"><div class="dot"></div> Valle Sur</div>
+      <div class="sidebar-item" onclick="mostrarRegional('VALLE NORTE')" id="nav-VALLE NORTE"><div class="dot"></div> Valle Norte</div>
+      <div class="sidebar-item" onclick="mostrarRegional('VALLE CENTRO-PALMIRA')" id="nav-VALLE CENTRO-PALMIRA"><div class="dot"></div> Valle C. Palmira</div>
+      <div class="sidebar-item" onclick="mostrarRegional('QUINDIO')" id="nav-QUINDIO"><div class="dot"></div> Quindío</div>
+      <div class="sidebar-item" onclick="mostrarRegional('CUNDINAMARCA')" id="nav-CUNDINAMARCA"><div class="dot"></div> C/Marca</div>
+      <div class="sidebar-item" onclick="mostrarRegional('TOLIMA NORTE')" id="nav-TOLIMA NORTE"><div class="dot"></div> Tolima Norte</div>
 
-      <!-- SECCIÓN 3: DATOS DEL FALLECIDO -->
-      <div class="fs"><div class="fsh" onclick="toggleSec(this)"><span>👤</span>DATOS DEL FALLECIDO<span class="sn">Campos 42–55</span><span class="tg">▼</span></div>
-      <div class="fsb">
-        <div class="campo"><label>Lugar De Fallecimiento</label><select id="f42"><option value="">Seleccionar...</option><option>Clinica Central Del Quindio</option><option>Clinica Del Cafe</option><option>Clinica Del Parque Armenia</option><option>Clinica Fundadores</option><option>Clinica La Estancia</option><option>Clínica Comfamiliar Risaralda</option><option>Clínica Los Rosales - Pereira</option><option>Hospital San Jorge</option><option>Hospital San Vicente De Paul</option><option>Fundación Valle Del Lili</option><option>Domicilio</option><option>Vía Pública</option><option>Otro</option></select></div>
-        <div class="campo"><label>Tipo de Muerte</label><select id="f43"><option value="">Seleccionar...</option><option>Natural</option><option>Accidente</option><option>Violenta</option><option>Desconocida</option><option>Suicidio</option></select></div>
-        <div class="campo"><label>Posible causa de muerte</label><input type="text" id="f44" placeholder="Causa..."/></div>
-        <div class="campo"><label>Certificado De Defuncion</label><input type="text" id="f45" placeholder="Número certificado"/></div>
-        <div class="campo"><label>Ocupación</label><input type="text" id="f46" placeholder="Ocupación"/></div>
-        <div class="campo"><label>Pensionado (SI/No)</label><select id="f47"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
-        <div class="campo"><label>Nom: del Fondo</label><input type="text" id="f48" placeholder="Fondo de pensiones..."/></div>
-        <div class="campo"><label>Contextura</label><select id="f49"><option value="">Seleccionar...</option><option>Delgado/a</option><option>Normal</option><option>Corpulento/a</option><option>Obeso/a</option></select></div>
-        <div class="campo"><label>Estado civil</label><select id="f50"><option value="">Seleccionar...</option><option>Soltero/a</option><option>Casado/a</option><option>Unión Libre</option><option>Divorciado/a</option><option>Viudo/a</option></select></div>
-        <div class="campo"><label>Nombre cónyuge</label><input type="text" id="f50b" placeholder="Nombre del cónyuge"/></div>
-        <div class="campo"><label>Nombre Del Padre</label><input type="text" id="f52" placeholder="Nombre del padre"/></div>
-        <div class="campo"><label>Nombre De La Madre</label><input type="text" id="f53" placeholder="Nombre de la madre"/></div>
-        <div class="campo"><label>Hijos</label><input type="number" id="f54" placeholder="Número" min="0"/></div>
-        <div class="campo anc"><label>Foto Cedula Fallecido</label><input type="file" id="f55" accept="image/*,.pdf" multiple/></div>
-      </div></div>
-
-      <!-- SECCIÓN 4: DATOS DE COORDINACION -->
-      <div class="fs"><div class="fsh" onclick="toggleSec(this)"><span>🚗</span>DATOS DE COORDINACION<span class="sn">Campos 56–99</span><span class="tg">▼</span></div>
-      <div class="fsb">
-        <div class="campo"><label>Fecha De Recogida</label><input type="date" id="f56"/></div>
-        <div class="campo"><label>Hora Recogida</label><input type="time" id="f57"/></div>
-        <div class="campo"><label>Nombre De Quién Recoge</label><select id="f58"><option value="">Seleccionar...</option><option>900340724-7 - Jardines Del Renacer</option><option>123456789 - Proveedor Externo</option></select></div>
-        <div class="campo"><label>(Recogida) Placa Carroza de Jardines del Renacer</label><select id="f59"><option value="">Seleccionar...</option><option>ARN666</option><option>BRZ208</option><option>CGB340</option><option>CHE809</option><option>CKC858</option><option>CNC123</option><option>CND628</option><option>CPM169</option><option>CUM533</option><option>CUM578</option><option>DCI714</option><option>DCI952</option><option>GJX497</option><option>GJX506</option><option>GJX568</option><option>HWS018</option><option>HWS033</option><option>IGN433</option><option>IGN434</option><option>IGN439</option><option>LXZ504</option><option>LXZ505</option><option>LXZ509</option><option>LXZ512</option><option>No Aplica</option><option>PROVEEDOR</option></select></div>
-        <div class="campo"><label>Traslado Nacional</label><select id="f60"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
-        <div class="campo"><label>Preservación Por</label><select id="f61"><option value="">Seleccionar...</option><option>900340724-7-JARDINES DEL RENACER</option></select></div>
-        <div class="campo"><label>Nº Ref de Cofre</label><input type="number" id="f62" placeholder="Referencia"/></div>
-        <div class="campo"><label>Fecha Inicio de Velación</label><input type="date" id="f63"/></div>
-        <div class="campo"><label>Hora Inicio de Velación</label><input type="time" id="f64"/></div>
-        <div class="campo"><label>Fecha Final de Velación</label><input type="date" id="f65"/></div>
-        <div class="campo"><label>Hora Final de Velación</label><input type="time" id="f66"/></div>
-        <div class="campo"><label>Municipio Velación</label><select id="f67"><option value="">Seleccionar...</option><option>Armenia</option><option>Calarca</option><option>Circasia</option><option>Montenegro</option><option>Quimbaya</option><option>La Tebaida</option><option>Pereira</option><option>Manizales</option><option>Cali</option><option>Palmira</option><option>Tulua</option><option>Medellin</option><option>Ibague</option><option>Bogota, D.c.</option></select></div>
-        <div class="campo"><label>Lugar de Velación</label><select id="f68"><option value="">Seleccionar...</option><option>Armenia Sala 1</option><option>Armenia Sala 2</option><option>Armenia Sala 3</option><option>Armenia Sala 4</option><option>Calarca Sala 1</option><option>Calarca Sala 2</option><option>Montenegro Sala 1</option><option>Montenegro Sala 2</option><option>Montenegro Sala 3</option><option>Quimbaya Sala 1</option><option>Genova Sala 1</option><option>Genova Sala 2</option><option>La 27 Sala 1</option><option>La 27 Sala 2</option><option>Cuba Sala 1</option><option>Cuba Sala 2</option><option>Palmira Sala 1</option><option>Palmira Sala 2</option><option>Renacer Sala 1 (cali)</option><option>Renacer Sala 2 (cali)</option><option>Renacer Sala 1 (tulua)</option><option>Residencia</option><option>Sin Velacion</option></select></div>
-        <div class="campo"><label>Nombre de Aux Cafeteria</label><select id="f69"><option value="">Seleccionar...</option><option>Aguirre Martha Yaneth</option><option>Cardona Maria Irma</option><option>Franco Luz Elena</option><option>Garcia Maya Consuelo</option><option>Gonzalez Gloria Patricia</option><option>Lopez Martha Lucero</option><option>Marin Consuelo</option><option>Martinez Teresa</option><option>Morales Martha Lucia</option><option>Quintero Luz Amparo</option><option>Valencia Claudia Patricia</option></select></div>
-        <div class="campo"><label>Hora Llegada a Sala de la Aux Cafeteria</label><input type="time" id="f70"/></div>
-        <div class="campo"><label>Arreglo Floral</label><select id="f71"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
-        <div class="campo"><label>Carteles</label><select id="f72"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
-        <div class="campo"><label>Kit Velación</label><select id="f73"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
-        <div class="campo"><label>Cinta Fallecido</label><select id="f74"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
-        <div class="campo"><label>Transporte Para Acompañantes</label><select id="f75"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
-        <div class="campo"><label>Nombre de Auxiliar o Proveedor que Pone en Velacion</label><select id="f76"><option value="">Seleccionar...</option><option>900340724-7 - Jardines Del Renacer</option><option>123456789 - Proveedor Externo</option></select></div>
-        <div class="campo"><label>(Velación) Placa Carroza De Jardines Del Renacer</label><select id="f77"><option value="">Seleccionar...</option><option>ARN666</option><option>BRZ208</option><option>CGB340</option><option>GJX497</option><option>GJX506</option><option>LXZ504</option><option>LXZ505</option><option>No Aplica</option><option>PROVEEDOR</option></select></div>
-        <div class="campo"><label>Fecha Exequias</label><input type="date" id="f78"/></div>
-        <div class="campo"><label>Hora Exequias</label><input type="time" id="f79"/></div>
-        <div class="campo"><label>Lugar Exequias</label><select id="f80"><option value="">Seleccionar...</option><option>Basilica Menor La Inmaculada Concepcion</option><option>Capilla Jardines De Armenia</option><option>Capilla Cementerio Central</option><option>Capilla Del Cementerio Jardines De Paz</option><option>Parroquia Nuestra Señora Del Carmen</option><option>Parroquia San Bartolome</option><option>Capilla Cristo Rey</option><option>Capillas Metropolitanos</option><option>Parroquia Cristo Sacerdote</option><option>Parroquia Maria Auxiliadora</option></select></div>
-        <div class="campo"><label>Fecha Destino Final</label><input type="date" id="f81"/></div>
-        <div class="campo"><label>Hora Destino Final</label><input type="time" id="f82"/></div>
-        <div class="campo"><label>Destino Final</label><select id="f83"><option value="">Seleccionar...</option><option>Boveda</option><option>Boveda Pp</option><option>Cremacion</option><option>Cremación</option><option>Fuera De Ciudad</option><option>Inhumación Bóveda</option><option>Inhumación Lote</option><option>Lote Pp</option><option>Lote Temporal</option><option>Mausoleo</option></select></div>
-        <div class="campo"><label>Cementerio</label><select id="f84"><option value="">Seleccionar...</option><option>Cementerio Central</option><option>Cementerio Catolico</option><option>Campos De Cristo - Soacha</option><option>Campos De Paz - Los Olivos</option><option>Cementerio Civil</option><option>Cementerio Comunitario</option><option>Cementerio De Los Olivos</option><option>Campo Santo Jardines De La Aurora</option></select></div>
-        <div class="campo"><label>Quien Culmina</label><select id="f85"><option value="">Seleccionar...</option><option>900340724-7 - Jardines Del Renacer</option><option>123456789 - Proveedor Externo</option></select></div>
-        <div class="campo"><label>(Culminación) Placa Carroza De Jardines Del Renacer</label><select id="f86"><option value="">Seleccionar...</option><option>ARN666</option><option>BRZ208</option><option>CGB340</option><option>GJX497</option><option>LXZ504</option><option>No Aplica</option><option>PROVEEDOR</option></select></div>
-        <div class="campo"><label>Coordinador</label><select id="f87"><option value="">Seleccionar...</option><option>Acosta Pareja Edwin Jeanpoll</option><option>Agudelo Cardenas Joe</option><option>Arango Mejia Ana Karina</option><option>Becerra Cardenas Joanna Paola</option><option>Caicedo Florez John Esteban</option><option>Calderon Bañol Jose Fernando</option><option>Garcia Ossa Paola Andrea</option><option>Gomez Velez Octavio</option><option>Gomez Gonzalez Vanessa</option><option>Henao Isaza Esneydi Patricia</option><option>Hincapié Prieto José Alejandro</option><option>Jaramillo Villada Cristian David</option><option>Mejia Gomez Jhon Jairo</option><option>Morales Perez Diana Maria</option><option>Narvaez Toro Yesica Paola</option><option>Ortega Urrea Erika Jaritza</option><option>Ospina Castaño Cristian Samuel</option><option>Taborda Gonzalez John Fredy</option><option>Valencia Gil Catalina</option><option>Valle Henao Julio Cesar</option></select></div>
-        <div class="campo anc"><label>Firma: Quien Entrega</label><div class="firma-wrap"><canvas id="cfe" width="700" height="120"></canvas><button type="button" class="btn-lf" onclick="limpiarFirma('cfe')">🗑 Limpiar</button></div></div>
-        <div class="campo anc"><label>Firma: Quien Recibe</label><div class="firma-wrap"><canvas id="cfr" width="700" height="120"></canvas><button type="button" class="btn-lf" onclick="limpiarFirma('cfr')">🗑 Limpiar</button></div></div>
-        <div class="campo"><label>Nombre del Agente Call</label><input type="text" id="f41" placeholder="Nombre del agente"/></div>
-        <div class="campo anc"><label>Foto Del Certificado De Defuncion</label><input type="file" id="f98" accept="image/*,.pdf"/></div>
-        <div class="campo"><label>Estado De La Prestacion</label><select id="f40"><option value="">Seleccionar...</option><option>En proceso</option><option>Finalizado</option><option>Pendiente</option><option>Cancelado</option></select></div>
-        <div class="campo"><label>Departamento De Muerte</label><select id="f88" onchange="filtrarMuniMuerte()"><option value="">Seleccionar...</option><option>Antioquia</option><option>Bogota</option><option>Caldas</option><option>Cauca</option><option>Cundinamarca</option><option>Huila</option><option>Meta</option><option>Quindio</option><option>Risaralda</option><option>Santander</option><option>Tolima</option><option>Valle Del Cauca</option></select></div>
-        <div class="campo"><label>Ciudad De Muerte</label><select id="f89"><option value="">Seleccione depto primero...</option></select></div>
-        <div class="campo"><label>Murio En</label><select id="f90"><option value="">Seleccionar...</option><option>Domicilio</option><option>Hospital/Clínica</option><option>Vía Pública</option><option>Otro</option></select></div>
-        <div class="campo"><label>Direccion de Fallecimiento</label><input type="text" id="f91" placeholder="Dirección exacta"/></div>
-        <div class="campo"><label>Fecha Y Hora de Muerte</label><input type="datetime-local" id="f92"/></div>
-        <div class="campo"><label>Lugar De Nacimiento</label><select id="f93"><option value="">Seleccionar...</option><option>Armenia</option><option>Bogota, D.c.</option><option>Calarca</option><option>Cali</option><option>Ibague</option><option>Manizales</option><option>Medellin</option><option>Pereira</option><option>Palmira</option><option>Quimbaya</option><option>Tulua</option></select></div>
-        <div class="campo"><label>Seguridad Social</label><select id="f94"><option value="">Seleccionar...</option><option>Contributivo</option><option>Ignorado</option><option>No Tenia</option><option>Otro</option><option>Particular</option><option>Pensionado</option><option>Sin Informacion</option><option>Subsidiado</option><option>Vinculado</option></select></div>
-      </div></div>
-
-      <div class="fa">
-        <button class="btn-c" onclick="limpiarForm()">🗑 Limpiar</button>
-        <button class="btn-c" onclick="cambiarTab('lista')">← Volver a Lista</button>
-        <button class="btn-g" id="bgf" onclick="guardarPrestacion()">💾 Guardar Prestación</button>
-      </div>
+      <div class="sidebar-section" style="margin-top:8px;">Módulos</div>
+      <div class="sidebar-item" onclick="mostrarRegional('APOYO')"><div class="dot"></div> Apoyo Exequial</div>
+      <div class="sidebar-item" onclick="mostrarRegional('ERRORES')"><div class="dot"></div> Errores Digitación</div>
+      <div class="sidebar-item" onclick="mostrarRegional('COTIZACION')"><div class="dot"></div> Cotización</div>
     </div>
+
+    <!-- CONTENIDO -->
+    <div class="content" id="content-area">
+
+      <!-- ========== VISTA: MENÚ PRINCIPAL ========== -->
+      <div id="vista-menu">
+        <div class="stats-row">
+          <div class="stat-card"><div class="num" id="stat-total">0</div><div class="lbl">Total Prestaciones</div></div>
+          <div class="stat-card"><div class="num" id="stat-hoy">0</div><div class="lbl">Registradas Hoy</div></div>
+          <div class="stat-card"><div class="num" id="stat-mi-regional">0</div><div class="lbl">Mi Regional</div></div>
+          <div class="stat-card"><div class="num">10</div><div class="lbl">Regionales</div></div>
+        </div>
+        <div class="menu-grid" id="menu-grid"></div>
+      </div>
+
+      <!-- ========== VISTA: REGIONAL ========== -->
+      <div id="vista-regional" style="display:none;">
+        <div class="page-header">
+          <button class="back-btn" onclick="mostrarVista('menu')">← Menú</button>
+          <h2 id="regional-titulo">REGIONAL</h2>
+        </div>
+        <div id="aviso-lectura-wrap"></div>
+
+        <div class="tabs">
+          <div class="tab active" onclick="cambiarTab('lista')" id="tab-lista">📋 Registros</div>
+          <div class="tab" onclick="cambiarTab('nuevo')" id="tab-nuevo">➕ Nueva Prestación</div>
+        </div>
+
+        <!-- TAB: LISTA -->
+        <div id="tab-content-lista">
+          <div class="tabla-wrap">
+            <div class="tabla-toolbar">
+              <input class="busqueda" type="text" placeholder="🔍 Buscar por nombre, CC, contrato, N° Prestación, sede..." oninput="filtrarTabla(this.value)" />
+              <button class="btn-nuevo" id="btn-nuevo-top" onclick="cambiarTab('nuevo')">➕ Nueva Prestación</button>
+            </div>
+            <div style="overflow-x:auto;">
+              <table>
+                <thead><tr>
+                  <th>N° Prestación</th>
+                  <th>Fallecido</th>
+                  <th>Fecha Reporte</th>
+                  <th>Sede</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr></thead>
+                <tbody id="tabla-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: NUEVO / EDITAR -->
+        <div id="tab-content-nuevo" style="display:none;">
+
+          <!-- Banner de edición (se muestra solo al editar) -->
+          <div id="aviso-edicion-banner" style="display:none;" class="aviso-edicion">
+            ✏️ Modo Edición — Modificando prestación <strong id="edit-num-prestacion"></strong>
+            <button onclick="cancelarEdicion()">✕ Cancelar edición</button>
+          </div>
+
+          <!-- Aviso solo lectura -->
+          <div id="readonly-notice" style="display:none;" class="aviso-lectura">
+            👁️ Solo lectura — Esta regional no es la tuya. Puedes ver los datos pero no guardar.
+          </div>
+
+          <!-- FORMULARIO COMPLETO -->
+          <div class="form-wrap" id="form-prestacion">
+
+            <!-- ========================================== -->
+            <!-- SECCIÓN 1: INFORMACIÓN DE SOLICITUD        -->
+            <!-- ========================================== -->
+            <div class="form-section">
+              <div class="form-section-header" onclick="toggleSection(this)">
+                <span>📋</span> INFORMACIÓN DE SOLICITUD
+                <span class="seccion-numero">Campos 1–17</span>
+                <span class="toggle">▼</span>
+              </div>
+              <div class="form-section-body">
+                <div class="campo">
+                  <label>Fecha Y Hora de Reporte <span class="req">*</span></label>
+                  <input type="datetime-local" id="f01" />
+                </div>
+                <div class="campo">
+                  <label>N° Prestacion <span class="req">*</span></label>
+                  <input type="text" id="f02" placeholder="Ej: PS-000123, 2025-001..." />
+                </div>
+                <div class="campo">
+                  <label>Reporte de Servicio Por el Call o Regional</label>
+                  <select id="f03">
+                    <option value="">Seleccionar...</option>
+                    <option>Call</option>
+                    <option>Regional</option>
+                  </select>
+                </div>
+                <div class="campo ancho">
+                  <label>Observaciones</label>
+                  <textarea id="f04" placeholder="Observaciones generales..."></textarea>
+                </div>
+                <div class="campo">
+                  <label>Nombre Del Fallecido <span class="req">*</span></label>
+                  <input type="text" id="f05" placeholder="Nombre(s)" />
+                </div>
+                <div class="campo">
+                  <label>Apellidos Del Fallecido <span class="req">*</span></label>
+                  <input type="text" id="f06" placeholder="Apellidos" />
+                </div>
+                <div class="campo">
+                  <label>CC: Del Fallecido</label>
+                  <input type="text" id="f07" placeholder="Número de cédula" />
+                </div>
+                <div class="campo">
+                  <label>Fecha De Expedicion de la CC</label>
+                  <input type="date" id="f08" />
+                </div>
+                <div class="campo">
+                  <label>Fecha de Nacimiento</label>
+                  <input type="date" id="f09" onchange="calcEdad()" />
+                </div>
+                <div class="campo">
+                  <label>Edad</label>
+                  <input type="number" id="f10" placeholder="Años" min="0" max="130" />
+                </div>
+                <div class="campo">
+                  <label>Nº De Contrato <span class="req">*</span></label>
+                  <input type="text" id="f11" placeholder="Número de contrato" />
+                </div>
+                <div class="campo">
+                  <label>Nombre solicitante</label>
+                  <input type="text" id="f12" placeholder="Nombre completo" />
+                </div>
+                <div class="campo">
+                  <label>CC: Del Solicitante</label>
+                  <input type="number" id="f13" placeholder="Cédula" />
+                </div>
+                <div class="campo">
+                  <label>Parentesco Con El Fallecido</label>
+                  <select id="f14">
+                    <option value="">Seleccionar...</option>
+                    <option>Abuela</option><option>Abuelo</option><option>Compañera</option><option>Compañero</option>
+                    <option>Cuñada</option><option>Cuñado</option><option>Empleado</option><option>Esposa</option>
+                    <option>Esposo</option><option>Hermana</option><option>Hermanastro(a)</option><option>Hermano</option>
+                    <option>Hija</option><option>Hijastro(a)</option><option>Hijo</option><option>Madrastra</option>
+                    <option>Madre</option><option>Nieta</option><option>Nieto</option><option>Nuera</option>
+                    <option>Otro(a)</option><option>Padrastro</option><option>Padre</option><option>Prima</option>
+                    <option>Primo</option><option>Sobrina</option><option>Sobrino</option><option>Suegra</option>
+                    <option>Suegro</option><option>Titular</option><option>Tía</option><option>Tío</option><option>Yerno</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Direccion del Solicitante</label>
+                  <input type="text" id="f15" placeholder="Dirección" />
+                </div>
+                <div class="campo">
+                  <label>Nº Telefono Solicitante</label>
+                  <input type="number" id="f16" placeholder="Teléfono" />
+                </div>
+                <div class="campo">
+                  <label>Fecha Y Hora De Digitacion</label>
+                  <input type="datetime-local" id="f17" />
+                </div>
+              </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- SECCIÓN 2: CONFIGURACIÓN DEL SERVICIO      -->
+            <!-- ========================================== -->
+            <div class="form-section">
+              <div class="form-section-header" onclick="toggleSection(this)">
+                <span>⚙️</span> CONFIGURACIÓN DEL SERVICIO
+                <span class="seccion-numero">Campos 18–41</span>
+                <span class="toggle">▼</span>
+              </div>
+              <div class="form-section-body">
+                <div class="campo">
+                  <label>Regional <span class="req">*</span></label>
+                  <select id="f18">
+                    <option value="">Seleccionar...</option>
+                    <option>ANALISTA</option><option>ANTIOQUIA</option><option>ATLANTICO</option><option>BOGOTA</option>
+                    <option>CALDAS</option><option>CAUCA</option><option>CUNDINAMARCA</option><option>HUILA</option>
+                    <option>META</option><option>PUTUMAYO</option><option>QUINDIO</option><option>RISARALDA</option>
+                    <option>SANTANDER</option><option>TOLIMA NORTE</option><option>TOLIMA SUR</option>
+                    <option>VALLE CENTRO</option><option>VALLE CENTRO-PALMIRA</option><option>VALLE NORTE</option><option>VALLE SUR</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Departamento De Prestacion</label>
+                  <select id="f19" onchange="filtrarMunicipios()">
+                    <option value="">Seleccionar...</option>
+                    <option>Antioquia</option><option>Atlantico</option><option>Bogota</option><option>Bolivar</option>
+                    <option>Boyaca</option><option>Caldas</option><option>Caqueta</option><option>Casanare</option>
+                    <option>Cauca</option><option>Cesar</option><option>Choco</option><option>Cordoba</option>
+                    <option>Cundinamarca</option><option>Huila</option><option>La Guajira</option><option>Magdalena</option>
+                    <option>Meta</option><option>N. De Santander</option><option>Nariño</option><option>Putumayo</option>
+                    <option>Quindio</option><option>Risaralda</option><option>Santander</option><option>Sucre</option>
+                    <option>Tolima</option><option>Valle Del Cauca</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Municipio de Prestacion</label>
+                  <select id="f20"><option value="">Seleccione departamento primero...</option></select>
+                </div>
+                <div class="campo">
+                  <label>Sede</label>
+                  <select id="f21">
+                    <option value="">Seleccionar...</option>
+                    <option>Armenia</option><option>Calarca</option><option>Circasia</option><option>Montenegro</option>
+                    <option>Quimbaya</option><option>La Tebaida</option><option>Genova</option><option>Pijao</option>
+                    <option>Manizales</option><option>Pereira</option><option>Dosquebradas</option><option>Santa Rosa</option>
+                    <option>Cali</option><option>Palmira</option><option>Tulua</option><option>Cartago</option>
+                    <option>Medellin</option><option>Ibague</option><option>Bogotá</option><option>Villavicencio</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Tipo</label>
+                  <select id="f22">
+                    <option value="">Seleccionar...</option>
+                    <option>Afiliado Cobertura Total</option><option>Afiliado Condicional</option>
+                    <option>Convenio</option><option>Licitacion</option><option>Mascota</option>
+                    <option>Particular</option><option>Servicios No Prestados</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Categoria</label>
+                  <select id="f23" onchange="aplicarReglasCategoria()">
+                    <option value="">Seleccionar...</option>
+                    <option>Adres</option><option>Afiliado Condicional</option><option>Alcaldia</option>
+                    <option>Alcaldia Con Excedente</option><option>Asesor Jurídico</option><option>Asesores Externos</option>
+                    <option>Auxilio Funerario</option><option>Cliente En Mora</option><option>Cobertura Total</option>
+                    <option>Cobertura Total Con Excedente</option><option>Compra Gastos</option><option>Contrato Retirado</option>
+                    <option>Convenio</option><option>Convenio Con Excedente</option><option>Donacion</option>
+                    <option>Donación Particular</option><option>Fallecido No Afiliado</option><option>Mascota Cobertura Total</option>
+                    <option>Mascota Condicional</option><option>Mascota Convenio</option><option>Mascota Particular</option>
+                    <option>Particular</option><option>Preexistencias</option><option>Repatriacion</option>
+                    <option>Servicio En Otra Funeraria</option><option>Soat</option><option>Tiempos De Carencias</option>
+                  </select>
+                </div>
+                <div class="campo" id="wrap-motivo" style="display:none;">
+                  <label>Motivo</label>
+                  <select id="f24">
+                    <option value="">Seleccionar...</option>
+                    <option>Carencia</option><option>Mora</option><option>Preexistencias</option>
+                  </select>
+                </div>
+                <div class="campo" id="wrap-entidad" style="display:none;">
+                  <label>Entidad</label>
+                  <select id="f25">
+                    <option value="">Seleccionar...</option>
+                    <option>Adress</option><option>Alcaldía</option><option>Arl Sura</option><option>Casur</option>
+                    <option>Chubb</option><option>Colfondos</option><option>Colpensiones</option><option>Cremil</option>
+                    <option>Fomag</option><option>Fonprecon</option><option>Gobernación</option><option>Liberty</option>
+                    <option>Ministerio De Defensa</option><option>Municipio</option><option>Particular</option>
+                    <option>Porvenir</option><option>Positiva</option><option>Protección</option>
+                    <option>Seguros Alfa</option><option>Seguros Bolivar</option><option>Seguros Colmena</option>
+                    <option>Seguros De Vida Suramericana</option><option>Skandia</option><option>Soat</option>
+                    <option>Superintendencia De Sociedades</option><option>Ugpp</option><option>Universidad Nacional</option>
+                  </select>
+                </div>
+                <div class="campo" id="wrap-asesor" style="display:none;">
+                  <label>Asesor Externo</label>
+                  <select id="f26">
+                    <option value="">Seleccionar...</option>
+                    <option>Apoyo Funebre Nacional S.a.s</option><option>Aroca Diana Marcela</option>
+                    <option>Bustamante Carlos</option><option>Cuello Edwin Alberto</option><option>Cuestas German</option>
+                    <option>La Luz S.a.s.</option><option>La Paz Ecofunerales</option><option>Lizcano Giovanny</option>
+                    <option>Lizcano Luis Antonio</option><option>Londoño Sandra</option><option>Maria de la Fontana</option>
+                    <option>Matiz Edison Adrian</option><option>Mejia Gomez Jhon Jairo</option>
+                    <option>Munevar Giovanny</option><option>Padilla Córdoba William</option>
+                    <option>Rodriguez Tobon Diana Marcela</option><option>Santa Cruz Funeraria</option>
+                    <option>Servicios Asistenciales S.A.S La Fe</option><option>Utima Gomez Jose Luis</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Clasificacion</label>
+                  <select id="f27">
+                    <option value="">Seleccionar...</option>
+                    <option>Basico</option><option>Completo</option><option>Covid-19</option><option>Destino Final</option>
+                    <option>Finales</option><option>Iniciales</option><option>Mascota</option><option>Parcial</option><option>Post Finales</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Tiene Servicios Adicionales (SI/NO)</label>
+                  <select id="f28"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select>
+                </div>
+                <div class="campo">
+                  <label>Cuáles</label>
+                  <input type="text" id="f29" placeholder="Describir servicios adicionales..." />
+                </div>
+                <div class="campo">
+                  <label>Tiene post finales (SI/NO)</label>
+                  <select id="f30"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select>
+                </div>
+                <div class="campo">
+                  <label>Nombre Del Titular</label>
+                  <input type="text" id="f31" placeholder="Nombre completo" />
+                </div>
+                <div class="campo">
+                  <label>CC: Del Titular</label>
+                  <input type="number" id="f32" placeholder="Cédula" />
+                </div>
+                <div class="campo">
+                  <label>Direccion Del Titular</label>
+                  <input type="text" id="f33" placeholder="Dirección" />
+                </div>
+                <div class="campo">
+                  <label>Nº Telefono TiTular</label>
+                  <input type="number" id="f34" placeholder="Teléfono" />
+                </div>
+                <div class="campo">
+                  <label>Responsabele a Facturar</label>
+                  <input type="text" id="f35" placeholder="Nombre completo" />
+                </div>
+                <div class="campo">
+                  <label>CC Responsable a Facturar</label>
+                  <input type="text" id="f36" placeholder="Cédula" />
+                </div>
+                <div class="campo">
+                  <label>Direccion Responsable a Facturar</label>
+                  <input type="text" id="f37" placeholder="Dirección" />
+                </div>
+                <div class="campo">
+                  <label>Nº Telefono Responsable a Facturar</label>
+                  <input type="number" id="f38" placeholder="Teléfono" />
+                </div>
+                <div class="campo">
+                  <label>Correo Electronico Responsable a Facturar</label>
+                  <input type="email" id="f39" placeholder="correo@ejemplo.com" />
+                </div>
+              </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- SECCIÓN 3: DATOS DEL FALLECIDO             -->
+            <!-- ========================================== -->
+            <div class="form-section">
+              <div class="form-section-header" onclick="toggleSection(this)">
+                <span>👤</span> DATOS DEL FALLECIDO
+                <span class="seccion-numero">Campos 42–55</span>
+                <span class="toggle">▼</span>
+              </div>
+              <div class="form-section-body">
+                <div class="campo">
+                  <label>Lugar De Fallecimiento</label>
+                  <select id="f42">
+                    <option value="">Seleccionar...</option>
+                    <option>Clinica Central Del Quindio</option><option>Clinica Del Cafe</option>
+                    <option>Clinica Del Parque Armenia</option><option>Clinica Fundadores</option>
+                    <option>Clinica La Estancia</option><option>Clínica Comfamiliar Risaralda</option>
+                    <option>Clínica Los Rosales - Pereira</option><option>Hospital San Jorge</option>
+                    <option>Hospital San Vicente De Paul</option><option>Fundación Valle Del Lili</option>
+                    <option>Domicilio</option><option>Vía Pública</option><option>Otro</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Tipo de Muerte</label>
+                  <select id="f43">
+                    <option value="">Seleccionar...</option>
+                    <option>Natural</option><option>Accidente</option><option>Violenta</option><option>Desconocida</option><option>Suicidio</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Posible causa de muerte</label>
+                  <input type="text" id="f44" placeholder="Causa..." />
+                </div>
+                <div class="campo">
+                  <label>Certificado De Defuncion</label>
+                  <input type="text" id="f45" placeholder="Número certificado" />
+                </div>
+                <div class="campo">
+                  <label>Ocupación</label>
+                  <input type="text" id="f46" placeholder="Ocupación del fallecido" />
+                </div>
+                <div class="campo">
+                  <label>Pensionado (SI/No)</label>
+                  <select id="f47"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select>
+                </div>
+                <div class="campo">
+                  <label>Nom: del Fondo</label>
+                  <input type="text" id="f48" placeholder="Fondo de pensiones..." />
+                </div>
+                <div class="campo">
+                  <label>Contextura</label>
+                  <select id="f49">
+                    <option value="">Seleccionar...</option>
+                    <option>Delgado/a</option><option>Normal</option><option>Corpulento/a</option><option>Obeso/a</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Estado civil</label>
+                  <select id="f50">
+                    <option value="">Seleccionar...</option>
+                    <option>Soltero/a</option><option>Casado/a</option><option>Unión Libre</option><option>Divorciado/a</option><option>Viudo/a</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Nombre cónyuge</label>
+                  <input type="text" id="f50b" placeholder="Nombre del cónyuge" />
+                </div>
+                <div class="campo">
+                  <label>Nombre Del Padre</label>
+                  <input type="text" id="f52" placeholder="Nombre del padre" />
+                </div>
+                <div class="campo">
+                  <label>Nombre De La Madre</label>
+                  <input type="text" id="f53" placeholder="Nombre de la madre" />
+                </div>
+                <div class="campo">
+                  <label>Hijos</label>
+                  <input type="number" id="f54" placeholder="Número de hijos" min="0" />
+                </div>
+                <div class="campo ancho">
+                  <label>Foto Cedula Fallecido</label>
+                  <input type="file" id="f55" accept="image/*,.pdf" multiple />
+                </div>
+              </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- SECCIÓN 4: DATOS DE COORDINACION           -->
+            <!-- ========================================== -->
+            <div class="form-section">
+              <div class="form-section-header" onclick="toggleSection(this)">
+                <span>🚗</span> DATOS DE COORDINACION
+                <span class="seccion-numero">Campos 56–99</span>
+                <span class="toggle">▼</span>
+              </div>
+              <div class="form-section-body">
+                <div class="campo">
+                  <label>Fecha De Recogida</label>
+                  <input type="date" id="f56" />
+                </div>
+                <div class="campo">
+                  <label>Hora Recogida</label>
+                  <input type="time" id="f57" />
+                </div>
+                <div class="campo">
+                  <label>Nombre De Quién Recoge</label>
+                  <select id="f58">
+                    <option value="">Seleccionar...</option>
+                    <option>900340724-7 - Jardines Del Renacer</option>
+                    <option>123456789 - Proveedor Externo</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>(Recogida) Placa Carroza de Jardines del Renacer</label>
+                  <select id="f59">
+                    <option value="">Seleccionar...</option>
+                    <option>ARN666</option><option>BRZ208</option><option>CGB340</option><option>CHE809</option>
+                    <option>CKC858</option><option>CNC123</option><option>CND628</option><option>CPM169</option>
+                    <option>CUM533</option><option>CUM578</option><option>DCI714</option><option>DCI952</option>
+                    <option>GJX497</option><option>GJX506</option><option>GJX568</option><option>HWS018</option>
+                    <option>HWS033</option><option>IGN433</option><option>IGN434</option><option>IGN439</option>
+                    <option>LXZ504</option><option>LXZ505</option><option>LXZ509</option><option>LXZ512</option>
+                    <option>No Aplica</option><option>PROVEEDOR</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Traslado Nacional</label>
+                  <select id="f60"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select>
+                </div>
+                <div class="campo">
+                  <label>Preservación Por</label>
+                  <select id="f61">
+                    <option value="">Seleccionar...</option>
+                    <option>900340724-7-JARDINES DEL RENACER</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Nº Ref de Cofre</label>
+                  <input type="number" id="f62" placeholder="Referencia cofre" />
+                </div>
+                <div class="campo">
+                  <label>Fecha Inicio de Velación</label>
+                  <input type="date" id="f63" />
+                </div>
+                <div class="campo">
+                  <label>Hora Inicio de Velación</label>
+                  <input type="time" id="f64" />
+                </div>
+                <div class="campo">
+                  <label>Fecha Final de Velación</label>
+                  <input type="date" id="f65" />
+                </div>
+                <div class="campo">
+                  <label>Hora Final de Velación</label>
+                  <input type="time" id="f66" />
+                </div>
+                <div class="campo">
+                  <label>Municipio Velación</label>
+                  <select id="f67">
+                    <option value="">Seleccionar...</option>
+                    <option>Armenia</option><option>Calarca</option><option>Circasia</option><option>Montenegro</option>
+                    <option>Quimbaya</option><option>La Tebaida</option><option>Pereira</option><option>Manizales</option>
+                    <option>Cali</option><option>Palmira</option><option>Tulua</option><option>Medellin</option>
+                    <option>Ibague</option><option>Bogota, D.c.</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Lugar de Velación</label>
+                  <select id="f68">
+                    <option value="">Seleccionar...</option>
+                    <option>Armenia Sala 1</option><option>Armenia Sala 2</option><option>Armenia Sala 3</option>
+                    <option>Armenia Sala 4</option><option>Calarca Sala 1</option><option>Calarca Sala 2</option>
+                    <option>Montenegro Sala 1</option><option>Montenegro Sala 2</option><option>Montenegro Sala 3</option>
+                    <option>Quimbaya Sala 1</option><option>Genova Sala 1</option><option>Genova Sala 2</option>
+                    <option>La 27 Sala 1</option><option>La 27 Sala 2</option><option>Cuba Sala 1</option>
+                    <option>Cuba Sala 2</option><option>Palmira Sala 1</option><option>Palmira Sala 2</option>
+                    <option>Renacer Sala 1 (cali)</option><option>Renacer Sala 2 (cali)</option>
+                    <option>Renacer Sala 1 (tulua)</option><option>Residencia</option><option>Sin Velacion</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Nombre de Aux Cafeteria</label>
+                  <select id="f69">
+                    <option value="">Seleccionar...</option>
+                    <option>Aguirre Martha Yaneth</option><option>Cardona Maria Irma</option>
+                    <option>Franco Luz Elena</option><option>Garcia Maya Consuelo</option>
+                    <option>Gonzalez Gloria Patricia</option><option>Lopez Martha Lucero</option>
+                    <option>Marin Consuelo</option><option>Martinez Teresa</option>
+                    <option>Morales Martha Lucia</option><option>Quintero Luz Amparo</option>
+                    <option>Valencia Claudia Patricia</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Hora Llegada a Sala de la Aux Cafeteria</label>
+                  <input type="time" id="f70" />
+                </div>
+                <div class="campo">
+                  <label>Arreglo Floral</label>
+                  <select id="f71"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select>
+                </div>
+                <div class="campo">
+                  <label>Carteles</label>
+                  <select id="f72"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select>
+                </div>
+                <div class="campo">
+                  <label>Kit Velación</label>
+                  <select id="f73"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select>
+                </div>
+                <div class="campo">
+                  <label>Cinta Fallecido</label>
+                  <select id="f74"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select>
+                </div>
+                <div class="campo">
+                  <label>Transporte Para Acompañantes</label>
+                  <select id="f75"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select>
+                </div>
+                <div class="campo">
+                  <label>Nombre de Auxiliar o Proveedor que Pone en Velacion</label>
+                  <select id="f76">
+                    <option value="">Seleccionar...</option>
+                    <option>900340724-7 - Jardines Del Renacer</option>
+                    <option>123456789 - Proveedor Externo</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>(Velación) Placa Carroza De Jardines Del Renacer</label>
+                  <select id="f77">
+                    <option value="">Seleccionar...</option>
+                    <option>ARN666</option><option>BRZ208</option><option>CGB340</option><option>GJX497</option>
+                    <option>GJX506</option><option>LXZ504</option><option>LXZ505</option><option>No Aplica</option><option>PROVEEDOR</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Fecha Exequias</label>
+                  <input type="date" id="f78" />
+                </div>
+                <div class="campo">
+                  <label>Hora Exequias</label>
+                  <input type="time" id="f79" />
+                </div>
+                <div class="campo">
+                  <label>Lugar Exequias</label>
+                  <select id="f80">
+                    <option value="">Seleccionar...</option>
+                    <option>Basilica Menor La Inmaculada Concepcion</option><option>Capilla Jardines De Armenia</option>
+                    <option>Capilla Cementerio Central</option><option>Capilla Del Cementerio Jardines De Paz</option>
+                    <option>Parroquia Nuestra Señora Del Carmen</option><option>Parroquia San Bartolome</option>
+                    <option>Capilla Cristo Rey</option><option>Capillas Metropolitanos</option>
+                    <option>Parroquia Cristo Sacerdote</option><option>Parroquia Maria Auxiliadora</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Fecha Destino Final</label>
+                  <input type="date" id="f81" />
+                </div>
+                <div class="campo">
+                  <label>Hora Destino Final</label>
+                  <input type="time" id="f82" />
+                </div>
+                <div class="campo">
+                  <label>Destino Final</label>
+                  <select id="f83">
+                    <option value="">Seleccionar...</option>
+                    <option>Boveda</option><option>Boveda Pp</option><option>Cremacion</option><option>Cremación</option>
+                    <option>Fuera De Ciudad</option><option>Inhumación Bóveda</option><option>Inhumación Lote</option>
+                    <option>Lote Pp</option><option>Lote Temporal</option><option>Mausoleo</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Cementerio</label>
+                  <select id="f84">
+                    <option value="">Seleccionar...</option>
+                    <option>Cementerio Central</option><option>Cementerio Catolico</option>
+                    <option>Campos De Cristo - Soacha</option><option>Campos De Paz - Los Olivos</option>
+                    <option>Cementerio Civil</option><option>Cementerio Comunitario</option>
+                    <option>Cementerio De Los Olivos</option><option>Campo Santo Jardines De La Aurora</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Quien Culmina</label>
+                  <select id="f85">
+                    <option value="">Seleccionar...</option>
+                    <option>900340724-7 - Jardines Del Renacer</option>
+                    <option>123456789 - Proveedor Externo</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>(Culminación) Placa Carroza De Jardines Del Renacer</label>
+                  <select id="f86">
+                    <option value="">Seleccionar...</option>
+                    <option>ARN666</option><option>BRZ208</option><option>CGB340</option><option>GJX497</option>
+                    <option>LXZ504</option><option>No Aplica</option><option>PROVEEDOR</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Coordinador</label>
+                  <select id="f87">
+                    <option value="">Seleccionar...</option>
+                    <option>Acosta Pareja Edwin Jeanpoll</option><option>Agudelo Cardenas Joe</option>
+                    <option>Arango Mejia Ana Karina</option><option>Becerra Cardenas Joanna Paola</option>
+                    <option>Caicedo Florez John Esteban</option><option>Calderon Bañol Jose Fernando</option>
+                    <option>Garcia Ossa Paola Andrea</option><option>Gomez Velez Octavio</option>
+                    <option>Gomez Gonzalez Vanessa</option><option>Henao Isaza Esneydi Patricia</option>
+                    <option>Hincapié Prieto José Alejandro</option><option>Jaramillo Villada Cristian David</option>
+                    <option>Mejia Gomez Jhon Jairo</option><option>Morales Perez Diana Maria</option>
+                    <option>Narvaez Toro Yesica Paola</option><option>Ortega Urrea Erika Jaritza</option>
+                    <option>Ospina Castaño Cristian Samuel</option><option>Taborda Gonzalez John Fredy</option>
+                    <option>Valencia Gil Catalina</option><option>Valle Henao Julio Cesar</option>
+                  </select>
+                </div>
+                <div class="campo ancho">
+                  <label>Firma: Quien Entrega</label>
+                  <div class="firma-wrap">
+                    <canvas id="canvas-firma-entrega" width="700" height="120"></canvas>
+                    <button type="button" class="btn-limpiar-firma" onclick="limpiarFirma('canvas-firma-entrega')">🗑 Limpiar</button>
+                  </div>
+                </div>
+                <div class="campo ancho">
+                  <label>Firma: Quien Recibe</label>
+                  <div class="firma-wrap">
+                    <canvas id="canvas-firma-recibe" width="700" height="120"></canvas>
+                    <button type="button" class="btn-limpiar-firma" onclick="limpiarFirma('canvas-firma-recibe')">🗑 Limpiar</button>
+                  </div>
+                </div>
+                <div class="campo">
+                  <label>Nombre del Agente Call</label>
+                  <input type="text" id="f41" placeholder="Nombre del agente" />
+                </div>
+                <div class="campo ancho">
+                  <label>Foto Del Certificado De Defuncion</label>
+                  <input type="file" id="f98" accept="image/*,.pdf" />
+                </div>
+                <div class="campo">
+                  <label>Estado De La Prestacion</label>
+                  <select id="f40">
+                    <option value="">Seleccionar...</option>
+                    <option>En proceso</option><option>Finalizado</option><option>Pendiente</option><option>Cancelado</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Departamento De Muerte</label>
+                  <select id="f88" onchange="filtrarMunicipiosMuerte()">
+                    <option value="">Seleccionar...</option>
+                    <option>Antioquia</option><option>Bogota</option><option>Caldas</option><option>Cauca</option>
+                    <option>Cundinamarca</option><option>Huila</option><option>Meta</option><option>Quindio</option>
+                    <option>Risaralda</option><option>Santander</option><option>Tolima</option><option>Valle Del Cauca</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Ciudad De Muerte</label>
+                  <select id="f89"><option value="">Seleccione departamento primero...</option></select>
+                </div>
+                <div class="campo">
+                  <label>Murio En</label>
+                  <select id="f90">
+                    <option value="">Seleccionar...</option>
+                    <option>Domicilio</option><option>Hospital/Clínica</option><option>Vía Pública</option><option>Otro</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Direccion de Fallecimiento</label>
+                  <input type="text" id="f91" placeholder="Dirección exacta" />
+                </div>
+                <div class="campo">
+                  <label>Fecha Y Hora de Muerte</label>
+                  <input type="datetime-local" id="f92" />
+                </div>
+                <div class="campo">
+                  <label>Lugar De Nacimiento</label>
+                  <select id="f93">
+                    <option value="">Seleccionar...</option>
+                    <option>Armenia</option><option>Bogota, D.c.</option><option>Calarca</option><option>Cali</option>
+                    <option>Ibague</option><option>Manizales</option><option>Medellin</option><option>Pereira</option>
+                    <option>Palmira</option><option>Quimbaya</option><option>Tulua</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <label>Seguridad Social</label>
+                  <select id="f94">
+                    <option value="">Seleccionar...</option>
+                    <option>Contributivo</option><option>Ignorado</option><option>No Tenia</option>
+                    <option>Otro</option><option>Particular</option><option>Pensionado</option>
+                    <option>Sin Informacion</option><option>Subsidiado</option><option>Vinculado</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- BOTONES DE ACCIÓN -->
+            <div class="form-actions">
+              <button class="btn-cancelar" onclick="limpiarForm()">🗑 Limpiar</button>
+              <button class="btn-cancelar" onclick="cambiarTab('lista')">← Volver a Lista</button>
+              <button class="btn-guardar" id="btn-guardar-form" onclick="guardarPrestacion()">💾 Guardar Prestación</button>
+            </div>
+          </div>
+          <!-- FIN FORMULARIO -->
+
+        </div>
+        <!-- FIN TAB NUEVO -->
+
+      </div>
+      <!-- FIN VISTA REGIONAL -->
+
+    </div>
+    <!-- FIN CONTENT -->
   </div>
+  <!-- FIN MAIN LAYOUT -->
 </div>
+<!-- FIN APP -->
 
-</div></div></div>
-
+<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <script>
-/* ===== ESTADO GLOBAL ===== */
-let usuario=null, modoDemo=false, regionalActual=null, prestaciones=[], editandoId=null;
-const SU='https://script.google.com/macros/s/AKfycbzpUuh3cVO3SoiuuqN77wH3blzo9oEcCCBby9Pyqsj6fbb5L5YOEs-rgL_dyJp0mCE/exec';
+/* ================================================================
+   ESTADO GLOBAL
+   ================================================================ */
+let usuario = null;
+let modoDemo = false;
+let regionalActual = null;
+let prestaciones = [];
+let editandoId = null; // null = creando nuevo, string = editando existente
 
-/* ===== MAPEO EXACTO: id formulario → nombre columna en la hoja ===== */
-/* Las 3 columnas de sección (INFORMACIÓN SOLICITUD, DATOS DEL FALLECIDO, DATOS DE COORDINACION)
-   se envían como cadenas vacías, NUNCA con contenido */
-const F2S=[
-  /* --- SECCIÓN: INFORMACIÓN SOLICITUD (columna vacía) --- */
-  {f:'_sec1',c:'INFORMACIÓN SOLICITUD'},
-  {f:'f01',c:'Fecha Y Hora de Reporte'},
-  {f:'f02',c:'N° Prestacion'},
-  {f:'f04',c:'Observaciones'},
-  {f:'f03',c:'Reporte de Servicio Por el Call o Regional'},
-  {f:'f05',c:'Nombre Del Fallecido'},
-  {f:'f06',c:'Apellidos Del Fallecido'},
-  {f:'f07',c:'CC: Del Fallecido'},
-  {f:'f08',c:'Fecha De Expedicion de la CC'},
-  {f:'f09',c:'Fecha de Nacimiento'},
-  {f:'f10',c:'Edad'},
-  {f:'f11',c:'Nº De Contrato'},
-  {f:'f12',c:'Nombre solicitante'},
-  {f:'f13',c:'CC: Del Solicitante'},
-  {f:'f14',c:'Parentesco Con El Fallecido'},
-  {f:'f15',c:'Direccion del Solicitante'},
-  {f:'f16',c:'Nº Telefono Solicitante'},
-  {f:'f17',c:'Fecha Y Hora De Digitacion'},
-  {f:'f18',c:'Regional'},
-  {f:'f19',c:'Departamento De Prestacion'},
-  {f:'f20',c:'Municipio de Prestacion'},
-  {f:'f21',c:'Sede'},
-  {f:'f22',c:'Tipo'},
-  {f:'f23',c:'Categoria'},
-  {f:'f24',c:'Motivo'},
-  {f:'f25',c:'Entidad'},
-  {f:'f26',c:'Asesor Externo'},
-  {f:'f27',c:'Clasificacion'},
-  {f:'f28',c:'Tiene Servicios Adicionales (SI/NO)'},
-  {f:'f29',c:'Cuáles'},
-  {f:'f30',c:'Tiene post finales (SI/NO)'},
-  {f:'f31',c:'Nombre Del Titular'},
-  {f:'f32',c:'CC: Del Titular'},
-  {f:'f33',c:'Direccion Del Titular'},
-  {f:'f34',c:'Nº Telefono TiTular'},
-  {f:'f35',c:'Responsabele a Facturar'},
-  {f:'f36',c:'CC Responsable a Facturar'},
-  {f:'f37',c:'Direccion Responsable a Facturar'},
-  {f:'f38',c:'Nº Telefono Responsable a Facturar'},
-  {f:'f39',c:'Correo Electronico Responsable a Facturar'},
-  /* --- SECCIÓN: DATOS DEL FALLECIDO (columna vacía) --- */
-  {f:'_sec2',c:'DATOS DEL FALLECIDO'},
-  {f:'f42',c:'Lugar De Fallecimiento'},
-  {f:'f43',c:'Tipo de Muerte'},
-  {f:'f44',c:'Posible causa de muerte'},
-  {f:'f45',c:'Certificado De Defuncion'},
-  {f:'f46',c:'Ocupación'},
-  {f:'f47',c:'Pensionado (SI/No)'},
-  {f:'f48',c:'Nom: del Fondo'},
-  {f:'f49',c:'Contextura'},
-  {f:'f50',c:'Estado civil'},
-  {f:'f50b',c:'Nombre cónyuge'},
-  {f:'f52',c:'Nombre Del Padre'},
-  {f:'f53',c:'Nombre De La Madre'},
-  {f:'f54',c:'Hijos'},
-  {f:'f55',c:'Foto Cedula Fallecido'},
-  /* --- SECCIÓN: DATOS DE COORDINACION (columna vacía) --- */
-  {f:'_sec3',c:'DATOS DE COORDINACION'},
-  {f:'f56',c:'Fecha De Recogida'},
-  {f:'f57',c:'Hora Recogida'},
-  {f:'f58',c:'Nombre De Quién Recoge'},
-  {f:'f59',c:'(Recogida) Placa Carroza de Jardines del Renacer'},
-  {f:'f60',c:'Traslado Nacional'},
-  {f:'f61',c:'Preservación Por'},
-  {f:'f62',c:'Nº Ref de Cofre'},
-  {f:'f63',c:'Fecha Inicio de Velación'},
-  {f:'f64',c:'Hora Inicio de Velación'},
-  {f:'f65',c:'Fecha Final de Velación'},
-  {f:'f66',c:'Hora Final de Velación'},
-  {f:'f67',c:'Municipio Velación'},
-  {f:'f68',c:'Lugar de Velación'},
-  {f:'f69',c:'Nombre de Aux Cafeteria'},
-  {f:'f70',c:'Hora Llegada a Sala de la Aux Cafeteria'},
-  {f:'f71',c:'Arreglo Floral'},
-  {f:'f72',c:'Carteles'},
-  {f:'f73',c:'Kit Velación'},
-  {f:'f74',c:'Cinta Fallecido'},
-  {f:'f75',c:'Transporte Para Acompañantes'},
-  {f:'f76',c:'Nombre de Auxiliar o Proveedor que Pone en Velacion'},
-  {f:'f77',c:'(Velación) Placa Carroza De Jardines Del Renacer'},
-  {f:'f78',c:'Fecha Exequias'},
-  {f:'f79',c:'Hora Exequias'},
-  {f:'f80',c:'Lugar Exequias'},
-  {f:'f81',c:'Fecha Destino Final'},
-  {f:'f82',c:'Hora Destino Final'},
-  {f:'f83',c:'Destino Final'},
-  {f:'f84',c:'Cementerio'},
-  {f:'f85',c:'Quien Culmina'},
-  {f:'f86',c:'(Culminación) Placa Carroza De Jardines Del Renacer'},
-  {f:'f87',c:'Coordinador'},
-  {f:'_firma_entrega',c:'Firma: Quien Entrega'},
-  {f:'_firma_recibe',c:'Firma: Quien Recibe'},
-  {f:'f41',c:'Nombre del Agente Call'},
-  {f:'f98',c:'Foto Del Certificado De Defuncion'},
-  {f:'f40',c:'Estado De La Prestacion'},
-  {f:'f88',c:'Departamento De Muerte'},
-  {f:'f89',c:'Ciudad De Muerte'},
-  {f:'f90',c:'Murio En'},
-  {f:'f91',c:'Direccion de Fallecimiento'},
-  {f:'f92',c:'Fecha Y Hora de Muerte'},
-  {f:'f93',c:'Lugar De Nacimiento'},
-  {f:'f94',c:'Seguridad Social'}
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpUuh3cVO3SoiuuqN77wH3blzo9oEcCCBby9Pyqsj6fbb5L5YOEs-rgL_dyJp0mCE/exec';
+
+/* ================================================================
+   MAPEO EXACTO: id del campo en el HTML → nombre de columna en la hoja
+   ================================================================
+   Las 3 columnas de sección se marcan con _sec y SIEMPRE se envían vacías.
+   No se les escribe información jamás.
+   ================================================================ */
+const CAMPO_A_COLUMNA = [
+  /* --- INFORMACIÓN SOLICITUD (columna de sección, vacía) --- */
+  { campo: '_sec1', columna: 'INFORMACIÓN SOLICITUD' },
+  /* --- Campos de solicitud --- */
+  { campo: 'f01', columna: 'Fecha Y Hora de Reporte' },
+  { campo: 'f02', columna: 'N° Prestacion' },
+  { campo: 'f04', columna: 'Observaciones' },
+  { campo: 'f03', columna: 'Reporte de Servicio Por el Call o Regional' },
+  { campo: 'f05', columna: 'Nombre Del Fallecido' },
+  { campo: 'f06', columna: 'Apellidos Del Fallecido' },
+  { campo: 'f07', columna: 'CC: Del Fallecido' },
+  { campo: 'f08', columna: 'Fecha De Expedicion de la CC' },
+  { campo: 'f09', columna: 'Fecha de Nacimiento' },
+  { campo: 'f10', columna: 'Edad' },
+  { campo: 'f11', columna: 'Nº De Contrato' },
+  { campo: 'f12', columna: 'Nombre solicitante' },
+  { campo: 'f13', columna: 'CC: Del Solicitante' },
+  { campo: 'f14', columna: 'Parentesco Con El Fallecido' },
+  { campo: 'f15', columna: 'Direccion del Solicitante' },
+  { campo: 'f16', columna: 'Nº Telefono Solicitante' },
+  { campo: 'f17', columna: 'Fecha Y Hora De Digitacion' },
+  /* --- Configuración del servicio --- */
+  { campo: 'f18', columna: 'Regional' },
+  { campo: 'f19', columna: 'Departamento De Prestacion' },
+  { campo: 'f20', columna: 'Municipio de Prestacion' },
+  { campo: 'f21', columna: 'Sede' },
+  { campo: 'f22', columna: 'Tipo' },
+  { campo: 'f23', columna: 'Categoria' },
+  { campo: 'f24', columna: 'Motivo' },
+  { campo: 'f25', columna: 'Entidad' },
+  { campo: 'f26', columna: 'Asesor Externo' },
+  { campo: 'f27', columna: 'Clasificacion' },
+  { campo: 'f28', columna: 'Tiene Servicios Adicionales (SI/NO)' },
+  { campo: 'f29', columna: 'Cuáles' },
+  { campo: 'f30', columna: 'Tiene post finales (SI/NO)' },
+  { campo: 'f31', columna: 'Nombre Del Titular' },
+  { campo: 'f32', columna: 'CC: Del Titular' },
+  { campo: 'f33', columna: 'Direccion Del Titular' },
+  { campo: 'f34', columna: 'Nº Telefono TiTular' },
+  { campo: 'f35', columna: 'Responsabele a Facturar' },
+  { campo: 'f36', columna: 'CC Responsable a Facturar' },
+  { campo: 'f37', columna: 'Direccion Responsable a Facturar' },
+  { campo: 'f38', columna: 'Nº Telefono Responsable a Facturar' },
+  { campo: 'f39', columna: 'Correo Electronico Responsable a Facturar' },
+  /* --- DATOS DEL FALLECIDO (columna de sección, vacía) --- */
+  { campo: '_sec2', columna: 'DATOS DEL FALLECIDO' },
+  /* --- Campos del fallecido --- */
+  { campo: 'f42', columna: 'Lugar De Fallecimiento' },
+  { campo: 'f43', columna: 'Tipo de Muerte' },
+  { campo: 'f44', columna: 'Posible causa de muerte' },
+  { campo: 'f45', columna: 'Certificado De Defuncion' },
+  { campo: 'f46', columna: 'Ocupación' },
+  { campo: 'f47', columna: 'Pensionado (SI/No)' },
+  { campo: 'f48', columna: 'Nom: del Fondo' },
+  { campo: 'f49', columna: 'Contextura' },
+  { campo: 'f50', columna: 'Estado civil' },
+  { campo: 'f50b', columna: 'Nombre cónyuge' },
+  { campo: 'f52', columna: 'Nombre Del Padre' },
+  { campo: 'f53', columna: 'Nombre De La Madre' },
+  { campo: 'f54', columna: 'Hijos' },
+  { campo: 'f55', columna: 'Foto Cedula Fallecido' },
+  /* --- DATOS DE COORDINACION (columna de sección, vacía) --- */
+  { campo: '_sec3', columna: 'DATOS DE COORDINACION' },
+  /* --- Campos de coordinación --- */
+  { campo: 'f56', columna: 'Fecha De Recogida' },
+  { campo: 'f57', columna: 'Hora Recogida' },
+  { campo: 'f58', columna: 'Nombre De Quién Recoge' },
+  { campo: 'f59', columna: '(Recogida) Placa Carroza de Jardines del Renacer' },
+  { campo: 'f60', columna: 'Traslado Nacional' },
+  { campo: 'f61', columna: 'Preservación Por' },
+  { campo: 'f62', columna: 'Nº Ref de Cofre' },
+  { campo: 'f63', columna: 'Fecha Inicio de Velación' },
+  { campo: 'f64', columna: 'Hora Inicio de Velación' },
+  { campo: 'f65', columna: 'Fecha Final de Velación' },
+  { campo: 'f66', columna: 'Hora Final de Velación' },
+  { campo: 'f67', columna: 'Municipio Velación' },
+  { campo: 'f68', columna: 'Lugar de Velación' },
+  { campo: 'f69', columna: 'Nombre de Aux Cafeteria' },
+  { campo: 'f70', columna: 'Hora Llegada a Sala de la Aux Cafeteria' },
+  { campo: 'f71', columna: 'Arreglo Floral' },
+  { campo: 'f72', columna: 'Carteles' },
+  { campo: 'f73', columna: 'Kit Velación' },
+  { campo: 'f74', columna: 'Cinta Fallecido' },
+  { campo: 'f75', columna: 'Transporte Para Acompañantes' },
+  { campo: 'f76', columna: 'Nombre de Auxiliar o Proveedor que Pone en Velacion' },
+  { campo: 'f77', columna: '(Velación) Placa Carroza De Jardines Del Renacer' },
+  { campo: 'f78', columna: 'Fecha Exequias' },
+  { campo: 'f79', columna: 'Hora Exequias' },
+  { campo: 'f80', columna: 'Lugar Exequias' },
+  { campo: 'f81', columna: 'Fecha Destino Final' },
+  { campo: 'f82', columna: 'Hora Destino Final' },
+  { campo: 'f83', columna: 'Destino Final' },
+  { campo: 'f84', columna: 'Cementerio' },
+  { campo: 'f85', columna: 'Quien Culmina' },
+  { campo: 'f86', columna: '(Culminación) Placa Carroza De Jardines Del Renacer' },
+  { campo: 'f87', columna: 'Coordinador' },
+  { campo: '_firma_entrega', columna: 'Firma: Quien Entrega' },
+  { campo: '_firma_recibe', columna: 'Firma: Quien Recibe' },
+  { campo: 'f41', columna: 'Nombre del Agente Call' },
+  { campo: 'f98', columna: 'Foto Del Certificado De Defuncion' },
+  { campo: 'f40', columna: 'Estado De La Prestacion' },
+  { campo: 'f88', columna: 'Departamento De Muerte' },
+  { campo: 'f89', columna: 'Ciudad De Muerte' },
+  { campo: 'f90', columna: 'Murio En' },
+  { campo: 'f91', columna: 'Direccion de Fallecimiento' },
+  { campo: 'f92', columna: 'Fecha Y Hora de Muerte' },
+  { campo: 'f93', columna: 'Lugar De Nacimiento' },
+  { campo: 'f94', columna: 'Seguridad Social' }
 ];
 
-/* ===== REGIÓN / MUNICIPIOS ===== */
-const REGIONALES=[
-  {id:'RISARALDA',label:'Risaralda',clase:'risaralda',emoji:'🌉'},
-  {id:'ANTIOQUIA',label:'Antioquia',clase:'antioquia',emoji:'🏘️'},
-  {id:'CALDAS',label:'Caldas',clase:'caldas',emoji:'🏔️'},
-  {id:'VALLE CENTRO',label:'Valle Centro',clase:'valle-centro',emoji:'⛪'},
-  {id:'VALLE SUR',label:'Valle Sur',clase:'valle-sur',emoji:'✝️'},
-  {id:'VALLE NORTE',label:'Valle Norte',clase:'valle-norte',emoji:'🏛️'},
-  {id:'VALLE CENTRO-PALMIRA',label:'Valle C. Palmira',clase:'palmira',emoji:'⛩️'},
-  {id:'QUINDIO',label:'Quindío',clase:'quindio',emoji:'🌿'},
-  {id:'CUNDINAMARCA',label:'C/Marca',clase:'cmarca',emoji:'🏙️'},
-  {id:'TOLIMA NORTE',label:'Tolima Norte',clase:'tolima',emoji:'🕍'},
-  {id:'APOYO',label:'Apoyo Exequial',clase:'apoyo',emoji:'🤝'},
-  {id:'ERRORES',label:'Errores Digitación',clase:'errores',emoji:'⚠️'},
-  {id:'COTIZACION',label:'Cotización',clase:'cotizacion',emoji:'💰'}
+/* ================================================================
+   REGIONALES Y MUNICIPIOS
+   ================================================================ */
+const REGIONALES = [
+  { id: 'RISARALDA', label: 'Risaralda', clase: 'risaralda', emoji: '🌉' },
+  { id: 'ANTIOQUIA', label: 'Antioquia', clase: 'antioquia', emoji: '🏘️' },
+  { id: 'CALDAS', label: 'Caldas', clase: 'caldas', emoji: '🏔️' },
+  { id: 'VALLE CENTRO', label: 'Valle Centro', clase: 'valle-centro', emoji: '⛪' },
+  { id: 'VALLE SUR', label: 'Valle Sur', clase: 'valle-sur', emoji: '✝️' },
+  { id: 'VALLE NORTE', label: 'Valle Norte', clase: 'valle-norte', emoji: '🏛️' },
+  { id: 'VALLE CENTRO-PALMIRA', label: 'Valle C. Palmira', clase: 'palmira', emoji: '⛩️' },
+  { id: 'QUINDIO', label: 'Quindío', clase: 'quindio', emoji: '🌿' },
+  { id: 'CUNDINAMARCA', label: 'C/Marca', clase: 'cmarca', emoji: '🏙️' },
+  { id: 'TOLIMA NORTE', label: 'Tolima Norte', clase: 'tolima', emoji: '🕍' },
+  { id: 'APOYO', label: 'Apoyo Exequial', clase: 'apoyo', emoji: '🤝' },
+  { id: 'ERRORES', label: 'Errores Digitación', clase: 'errores', emoji: '⚠️' },
+  { id: 'COTIZACION', label: 'Cotización', clase: 'cotizacion', emoji: '💰' }
 ];
-const MUNI={
-  "Quindio":["Armenia","Buenavista","Calarca","Circasia","Cordoba","Filandia","Genova","La Tebaida","Montenegro","Pijao","Quimbaya","Salento"],
-  "Risaralda":["Pereira","Apia","Balboa","Belen De Umbria","Dosquebradas","Guatica","La Celia","La Virginia","Marsella","Mistrato","Pueblo Rico","Quinchia","Santa Rosa De Cabal","Santuario"],
-  "Caldas":["Manizales","Aguadas","Anserma","Aranzazu","Belalcazar","Chinchina","Filadelfia","La Dorada","La Merced","Manzanares","Marmato","Marquetalia","Neira","Norcasia","Pacora","Palestina","Pensilvania","Riosucio","Risaralda","Salamina","Samana","San Jose","Supia","Victoria","Villamaria","Viterbo"],
-  "Valle Del Cauca":["Cali","Alcala","Andalucia","Ansermanuevo","Argelia","Bolivar","Buenaventura","Guadalajara De Buga","Bugalagrande","Caicedonia","Calima","Candelaria","Cartago","Dagua","El Aguila","El Cairo","El Cerrito","El Dovio","Florida","Ginebra","Guacari","Jamundi","La Cumbre","La Union","La Victoria","Obando","Palmira","Pradera","Restrepo","Riofrio","Roldanillo","San Pedro","Sevilla","Toro","Trujillo","Tulua","Ulloa","Versalles","Vijes","Yotoco","Yumbo","Zarzal"],
-  "Antioquia":["Medellin","Bello","Itagui","Envigado","Sabaneta","La Estrella","Caldas","Copacabana","Girardota","Barbosa","Rionegro","Marinilla","Apartado","Turbo","Caucasia","Montebello"],
-  "Tolima":["Ibague","Alpujarra","Alvarado","Ambalema","Anzoategui","Armero","Ataco","Cajamarca","Chaparral","Coello","Coyaima","Cunday","Dolores","Espinal","Falan","Flandes","Fresno","Guamo","Honda","Icononzo","Lerida","Libano","Mariquita","Melgar","Murillo","Natagaima","Ortega","Palocabildo","Piedras","Planadas","Prado","Purificacion","Rioblanco","Roncesvalles","Rovira","Saldaña","San Antonio","San Luis","Santa Isabel","Suarez","Valle De San Juan","Venadillo","Villahermosa","Villarrica"],
-  "Cundinamarca":["Girardot","Fusagasuga","Facatativa","Zipaquira","Soacha","Chia","Mosquera","Madrid","Funza","Cajica","Tocaima","Anapoima","Cachipay","La Mesa","Guaduas","Honda","Villeta","Ubate","Silvania","Arbelaez","San Bernardo","Venecia","Pasca"],
-  "Bogota":["Bogota, D.c."],
-  "Huila":["Neiva","Garzon","Pitalito","La Plata","Campoalegre","Gigante","Guadalupe","Acevedo","Agrado","Aipe","Algeciras","Altamira","Baraya","Colombia","Elias","Hobo","Iquira","Isnos","La Argentina","Nataga","Oporapa","Paicol","Palermo","Palestina","Pital","Rivera","Saladoblanco","San Agustin","Santa Maria","Suaza","Tarqui","Tesalia","Tello","Teruel","Timana","Villavieja","Yaguara"],
-  "Meta":["Villavicencio","Acacias","Granada","San Martin","Cumaral","El Castillo","Guamal","Puerto Lopez","Puerto Gaitan","Restrepo","San Juan De Arama"],
-  "Cauca":["Popayan","Santander De Quilichao","Puerto Tejada","Miranda","Padilla","Corinto","Caloto","El Tambo","Timbio","Piendamo","Cajibio","Morales","Balboa","Bolivar","Guapi"],
-  "Santander":["Bucaramanga","Floridablanca","Giron","Piedecuesta","Barrancabermeja","San Gil","Lebrija","Rionegro","Socorro","Velez","Sabana De Torres"]
+
+const MUNICIPIOS_POR_DEPARTAMENTO = {
+  "Quindio": ["Armenia","Buenavista","Calarca","Circasia","Cordoba","Filandia","Genova","La Tebaida","Montenegro","Pijao","Quimbaya","Salento"],
+  "Risaralda": ["Pereira","Apia","Balboa","Belen De Umbria","Dosquebradas","Guatica","La Celia","La Virginia","Marsella","Mistrato","Pueblo Rico","Quinchia","Santa Rosa De Cabal","Santuario"],
+  "Caldas": ["Manizales","Aguadas","Anserma","Aranzazu","Belalcazar","Chinchina","Filadelfia","La Dorada","La Merced","Manzanares","Marmato","Marquetalia","Neira","Norcasia","Pacora","Palestina","Pensilvania","Riosucio","Risaralda","Salamina","Samana","San Jose","Supia","Victoria","Villamaria","Viterbo"],
+  "Valle Del Cauca": ["Cali","Alcala","Andalucia","Ansermanuevo","Argelia","Bolivar","Buenaventura","Guadalajara De Buga","Bugalagrande","Caicedonia","Calima","Candelaria","Cartago","Dagua","El Aguila","El Cairo","El Cerrito","El Dovio","Florida","Ginebra","Guacari","Jamundi","La Cumbre","La Union","La Victoria","Obando","Palmira","Pradera","Restrepo","Riofrio","Roldanillo","San Pedro","Sevilla","Toro","Trujillo","Tulua","Ulloa","Versalles","Vijes","Yotoco","Yumbo","Zarzal"],
+  "Antioquia": ["Medellin","Bello","Itagui","Envigado","Sabaneta","La Estrella","Caldas","Copacabana","Girardota","Barbosa","Rionegro","Marinilla","Apartado","Turbo","Caucasia","Montebello"],
+  "Tolima": ["Ibague","Alpujarra","Alvarado","Ambalema","Anzoategui","Armero","Ataco","Cajamarca","Chaparral","Coello","Coyaima","Cunday","Dolores","Espinal","Falan","Flandes","Fresno","Guamo","Honda","Icononzo","Lerida","Libano","Mariquita","Melgar","Murillo","Natagaima","Ortega","Palocabildo","Piedras","Planadas","Prado","Purificacion","Rioblanco","Roncesvalles","Rovira","Saldaña","San Antonio","San Luis","Santa Isabel","Suarez","Valle De San Juan","Venadillo","Villahermosa","Villarrica"],
+  "Cundinamarca": ["Girardot","Fusagasuga","Facatativa","Zipaquira","Soacha","Chia","Mosquera","Madrid","Funza","Cajica","Tocaima","Anapoima","Cachipay","La Mesa","Guaduas","Honda","Villeta","Ubate","Silvania","Arbelaez","San Bernardo","Venecia","Pasca"],
+  "Bogota": ["Bogota, D.c."],
+  "Huila": ["Neiva","Garzon","Pitalito","La Plata","Campoalegre","Gigante","Guadalupe","Acevedo","Agrado","Aipe","Algeciras","Altamira","Baraya","Colombia","Elias","Hobo","Iquira","Isnos","La Argentina","Nataga","Oporapa","Paicol","Palermo","Palestina","Pital","Rivera","Saladoblanco","San Agustin","Santa Maria","Suaza","Tarqui","Tesalia","Tello","Teruel","Timana","Villavieja","Yaguara"],
+  "Meta": ["Villavicencio","Acacias","Granada","San Martin","Cumaral","El Castillo","Guamal","Puerto Lopez","Puerto Gaitan","Restrepo","San Juan De Arama"],
+  "Cauca": ["Popayan","Santander De Quilichao","Puerto Tejada","Miranda","Padilla","Corinto","Caloto","El Tambo","Timbio","Piendamo","Cajibio","Morales","Balboa","Bolivar","Guapi"],
+  "Santander": ["Bucaramanga","Floridablanca","Giron","Piedecuesta","Barrancabermeja","San Gil","Lebrija","Rionegro","Socorro","Velez","Sabana De Torres"]
 };
 
-/* ===== HELPERS ===== */
-const $=id=>document.getElementById(id);
-const gv=id=>{const e=$(id);return e?e.value:''};
+/* ================================================================
+   HELPERS
+   ================================================================ */
+function $(id) { return document.getElementById(id); }
+function gv(id) { var el = $(id); return el ? el.value : ''; }
 
-/* Buscar valor en raw (datos de hoja) por id de formulario */
-function buscarEnRaw(raw,fid){
-  const m=F2S.find(x=>x.f===fid);
-  if(!m||m.f.startsWith('_'))return '';
-  const col=m.c;
-  if(raw[col]!==undefined&&raw[col]!==null&&String(raw[col]).trim()!=='')
+/* Buscar un valor en los datos crudos de la hoja usando el id del campo */
+function buscarEnRaw(raw, campoId) {
+  var mapeo = CAMPO_A_COLUMNA.find(function(m) { return m.campo === campoId; });
+  if (!mapeo || mapeo.campo.startsWith('_')) return '';
+  var col = mapeo.columna;
+  if (raw[col] !== undefined && raw[col] !== null && String(raw[col]).trim() !== '') {
     return String(raw[col]).trim();
+  }
   return '';
 }
 
-/* ===== API ===== */
-async function apiPost(payload){
-  if(modoDemo){console.log('[DEMO] POST:',payload.accion);return{ok:true}}
-  try{
-    await fetch(SU,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(payload)});
-    return{ok:true};
-  }catch(e){console.error('[API] POST error:',e);return{ok:false,error:e.toString()}}
-}
-async function apiGet(payload){
-  if(modoDemo){console.log('[DEMO] GET:',payload.accion);return{ok:true,datos:[]}}
-  try{
-    const p=new URLSearchParams({accion:payload.accion,regional:payload.regional||''});
-    const r=await fetch(SU+'?'+p.toString());
-    const t=await r.text();
-    try{return JSON.parse(t)}catch(e){console.error('[API] No JSON:',t.substring(0,200));return{ok:false,datos:[],error:'No JSON'}}
-  }catch(e){return{ok:false,datos:[],error:e.toString()}}
+/* ================================================================
+   API: COMUNICACIÓN CON GOOGLE APPS SCRIPT
+   ================================================================ */
+
+/* POST (guardar/editar) — usa no-cors, no lee respuesta */
+function apiPost(payload) {
+  if (modoDemo) {
+    console.log('[DEMO] POST payload:', payload.accion);
+    return Promise.resolve({ ok: true });
+  }
+  return fetch(SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(payload)
+  }).then(function() {
+    return { ok: true };
+  }).catch(function(err) {
+    console.error('[API] Error POST:', err);
+    return { ok: false, error: err.toString() };
+  });
 }
 
-/* ===== DEMO / LOGIN ===== */
-let lc=0,lt=null;
-document.addEventListener('DOMContentLoaded',()=>{
-  $('login-logo').addEventListener('click',()=>{lc++;clearTimeout(lt);lt=setTimeout(()=>lc=0,2e3);if(lc>=5){lc=0;entrarDemo()}});
+/* GET (leer datos) — lee la respuesta JSON */
+function apiGet(payload) {
+  if (modoDemo) {
+    console.log('[DEMO] GET payload:', payload.accion);
+    return Promise.resolve({ ok: true, datos: [] });
+  }
+  var params = new URLSearchParams({ accion: payload.accion, regional: payload.regional || '' });
+  return fetch(SCRIPT_URL + '?' + params.toString())
+    .then(function(res) { return res.text(); })
+    .then(function(text) {
+      console.log('[API] Respuesta leer:', text.substring(0, 300));
+      try { return JSON.parse(text); }
+      catch (e) {
+        console.error('[API] No es JSON:', text.substring(0, 200));
+        return { ok: false, datos: [], error: 'No JSON' };
+      }
+    })
+    .catch(function(err) {
+      return { ok: false, datos: [], error: err.toString() };
+    });
+}
+
+/* ================================================================
+   DEMO: 5 clics en el logo
+   ================================================================ */
+var logoClicks = 0;
+var logoTimer = null;
+
+document.addEventListener('DOMContentLoaded', function() {
+  $('login-logo').addEventListener('click', function() {
+    logoClicks++;
+    clearTimeout(logoTimer);
+    logoTimer = setTimeout(function() { logoClicks = 0; }, 2000);
+    if (logoClicks >= 5) {
+      logoClicks = 0;
+      entrarDemo();
+    }
+  });
   setFechaAhora();
-  aplicarReglasCat();
+  aplicarReglasCategoria();
 });
 
-function entrarDemo(){modoDemo=true;console.log('%c🛠️ MODO DEMO','color:#f59e0b;font-size:16px;font-weight:bold');entrar({nombre:'Usuario Demo',regional:'QUINDIO',rol:'admin',usuario:'demo'})}
-
-async function doLogin(){
-  const u=$('iu').value.trim(),p=$('ip').value.trim(),eb=$('leb'),et=$('let'),ed=$('led'),bl=$('bl');
-  eb.style.display='none';$('iu').classList.remove('ie');$('ip').classList.remove('ie');
-  if(!u||!p){et.textContent='⚠️ Campos vacíos';ed.textContent='Ingresa usuario y contraseña.';eb.style.display='block';if(!u)$('iu').classList.add('ie');if(!p)$('ip').classList.add('ie');return}
-  bl.disabled=true;bl.textContent='⏳ Verificando...';
-  try{
-    const r=await fetch(SU+'?'+new URLSearchParams({accion:'login',usuario:u,password:p}));
-    const ct=r.headers.get('content-type')||'',t=await r.text();
-    if(ct.includes('text/html')&&!t.trim().startsWith('{')){et.textContent='❌ Error del servidor';ed.textContent='Apps Script devolvió HTML. Verifica: Ejecutar como: Yo + Acceso: Cualquier persona.\nStatus: '+r.status;eb.style.display='block';ed.style.whiteSpace='pre-wrap';bl.disabled=false;bl.textContent='Entrar →';return}
-    let d;try{d=JSON.parse(t)}catch(e){et.textContent='❌ Respuesta inválida';ed.textContent='Contenido: "'+t.substring(0,200)+'"';eb.style.display='block';ed.style.whiteSpace='pre-wrap';bl.disabled=false;bl.textContent='Entrar →';return}
-    if(d.ok){modoDemo=false;entrar({nombre:d.nombre||d.usuario||u,regional:(d.regional||'QUINDIO').toUpperCase(),rol:d.rol,usuario:d.usuario||u})}
-    else{et.textContent='❌ '+(d.error||'Credenciales incorrectas');ed.textContent='Verifica el usuario "'+u+'" en la hoja.';eb.style.display='block';ed.style.whiteSpace='pre-wrap';$('iu').classList.add('ie');$('ip').classList.add('ie');bl.disabled=false;bl.textContent='Entrar →'}
-  }catch(e){et.textContent='⚠️ Error de conexión';ed.textContent=e.message+'\nUsa "Modo Demo" para probar sin servidor.';eb.style.display='block';ed.style.whiteSpace='pre-wrap';bl.disabled=false;bl.textContent='Entrar →'}
+function entrarDemo() {
+  modoDemo = true;
+  console.log('%c🛠️ MODO DEMO ACTIVADO', 'color:#f59e0b;font-size:16px;font-weight:bold');
+  entrar({ nombre: 'Usuario Demo', regional: 'QUINDIO', rol: 'admin', usuario: 'demo' });
 }
 
-function entrar(data){
-  usuario=data;
-  $('login-screen').style.display='none';$('app').style.display='block';
-  $('rb').textContent=usuario.regional;$('un').textContent=usuario.nombre;
-  $('av').textContent=(usuario.nombre||'A')[0].toUpperCase();
-  $('di').style.display=modoDemo?'inline-block':'none';
-  initFirma('cfe');initFirma('cfr');
-  renderMenu();actualizarStats();mostrarVista('menu');
-  if(modoDemo)mostrarToast('🛠️ Modo Demo — Los datos no se guardan en Sheets','info');
-}
-function cerrarSesion(){usuario=null;modoDemo=false;editandoId=null;$('app').style.display='none';$('login-screen').style.display='flex';$('iu').value='';$('ip').value='';$('leb').style.display='none';$('bl').disabled=false;$('bl').textContent='Entrar →'}
+/* ================================================================
+   LOGIN
+   ================================================================ */
+function doLogin() {
+  var u = $('input-usuario').value.trim();
+  var p = $('input-password').value.trim();
+  var errBox = $('login-error-box');
+  var errTitle = $('error-title');
+  var errDetail = $('error-detail');
+  var btn = $('btn-login');
 
-/* ===== MENÚ ===== */
-function renderMenu(){$('mg').innerHTML=REGIONALES.map(r=>`<div class="mc" onclick="mostrarRegional('${r.id}')"><div class="mc-img ${r.clase}">${r.emoji}${r.id===usuario.regional?'<span class="mrb">MI REGIONAL</span>':''}</div><div class="mc-label">${r.label}<span class="arrow">›</span></div></div>`).join('')}
-function actualizarStats(){const h=new Date().toDateString();$('st-total').textContent=prestaciones.length;$('st-hoy').textContent=prestaciones.filter(p=>{try{return new Date(p.fechaReporte).toDateString()===h}catch(e){return false}}).length;$('st-mi').textContent=prestaciones.filter(p=>p.regional===usuario?.regional).length}
+  /* Limpiar estados previos */
+  errBox.style.display = 'none';
+  $('input-usuario').classList.remove('input-error');
+  $('input-password').classList.remove('input-error');
 
-/* ===== NAVEGACIÓN ===== */
-function mostrarVista(v){$('vista-menu').style.display=v==='menu'?'block':'none';$('vista-regional').style.display=v==='regional'?'block':'none';document.querySelectorAll('.si').forEach(i=>i.classList.remove('active'));if(v==='menu'){$('nav-menu').classList.add('active');cancelarEdicion()}}
+  if (!u || !p) {
+    errTitle.textContent = '⚠️ Campos vacíos';
+    errDetail.textContent = 'Ingresa usuario y contraseña para continuar.';
+    errBox.style.display = 'block';
+    if (!u) $('input-usuario').classList.add('input-error');
+    if (!p) $('input-password').classList.add('input-error');
+    return;
+  }
 
-function mostrarRegional(reg){
-  regionalActual=reg;cancelarEdicion();
-  const r=REGIONALES.find(x=>x.id===reg);
-  $('rt').textContent=r?r.label.toUpperCase():reg;
-  const esMio=reg===usuario?.regional;
-  $('bnt').disabled=!esMio;
-  $('alw').innerHTML=!esMio?'<div class="aviso-lectura">👁️ Estás viendo <strong>'+(r?.label||reg)+'</strong>. Solo lectura — tu regional es <strong>'+usuario.regional+'</strong>.</div>':'';
-  $('ron').style.display=esMio?'none':'flex';
-  $('bgf').disabled=!esMio;$('bgf').style.opacity=esMio?'1':'0.4';
-  $('t-nuevo').style.opacity=esMio?'1':'0.5';
-  if(esMio)$('f18').value=reg;
-  document.querySelectorAll('.si').forEach(i=>i.classList.remove('active'));
-  const n=$('nav-'+reg);if(n)n.classList.add('active');
-  cambiarTab('lista');mostrarVista('regional');cargarPrestaciones(reg);
-}
+  btn.disabled = true;
+  btn.textContent = '⏳ Verificando...';
 
-async function cargarPrestaciones(reg){
-  const tb=$('tb');
-  tb.innerHTML='<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--gris)"><div style="font-size:24px;margin-bottom:8px">⏳</div>Cargando...</td></tr>';
-  const res=await apiGet({accion:'leer',regional:reg});
-  if(res&&res.ok&&Array.isArray(res.datos)){
-    prestaciones=res.datos.map((d,i)=>({id:i.toString(),_raw:d,numPrestacion:buscarEnRaw(d,'f02'),fechaReporte:buscarEnRaw(d,'f01'),regional:buscarEnRaw(d,'f18')||reg,nombreFallecido:buscarEnRaw(d,'f05'),apellidosFallecido:buscarEnRaw(d,'f06'),numContrato:buscarEnRaw(d,'f11'),sede:buscarEnRaw(d,'f21'),estadoPrestacion:buscarEnRaw(d,'f40')||'En proceso'}));
-  }else{prestaciones=[];if(res&&res.error&&!modoDemo)mostrarToast('⚠️ Error: '+res.error.substring(0,80),'error')}
-  actualizarStats();renderTabla();
-}
+  var params = new URLSearchParams({ accion: 'login', usuario: u, password: p });
+  var url = SCRIPT_URL + '?' + params.toString();
 
-/* ===== TABS ===== */
-function cambiarTab(t){if(t==='lista'&&editandoId!==null)cancelarEdicion();$('tc-lista').style.display=t==='lista'?'block':'none';$('tc-nuevo').style.display=t==='nuevo'?'block':'none';$('t-lista').classList.toggle('active',t==='lista');$('t-nuevo').classList.toggle('active',t==='nuevo');if(t==='nuevo'&&editandoId===null){setFechaAhora();$('f17').value=$('f01').value}}
-
-/* ===== TABLA ===== */
-function renderTabla(filtro=''){
-  const datos=prestaciones.filter(p=>{const er=p.regional===regionalActual;const co=!filtro||[p.nombreFallecido,p.apellidosFallecido,p.numContrato,p.numPrestacion,p.sede].some(v=>(v||'').toLowerCase().includes(filtro.toLowerCase()));return er&&co});
-  const tb=$('tb'),esMio=regionalActual===usuario?.regional;
-  if(!datos.length){tb.innerHTML='<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--gris)"><div style="font-size:32px;margin-bottom:8px">📋</div>No hay registros'+(filtro?' con ese filtro':'')+'</td></tr>';return}
-  tb.innerHTML=datos.slice().reverse().map(p=>{
-    const nom=[p.nombreFallecido,p.apellidosFallecido].filter(Boolean).join(' ')||'—';
-    let fec='—';try{fec=p.fechaReporte?new Date(p.fechaReporte).toLocaleString('es-CO',{dateStyle:'short',timeStyle:'short'}):'—'}catch(e){}
-    const est=(p.estadoPrestacion||'En proceso').toLowerCase();
-    const ec=est.includes('finaliz')?'ec-f':est.includes('pendien')?'ec-p':est.includes('cancel')?'ec-c':'ec-a';
-    const btn=esMio?'<button class="btn-ed" onclick="editarPrestacion(\''+p.id+'\')">✏️ Editar</button>':'<button class="btn-vr" onclick="verSoloLectura(\''+p.id+'\')">👁️ Ver</button>';
-    return `<tr><td><code style="font-family:'DM Mono',monospace;font-size:12px">${p.numPrestacion||'—'}</code></td><td><strong>${nom}</strong></td><td style="color:var(--gris);font-size:12.5px">${fec}</td><td>${p.sede||'—'}</td><td><span class="ec ${ec}">${p.estadoPrestacion||'En proceso'}</span></td><td>${btn}</td></tr>`
-  }).join('');
-}
-function filtrarTabla(v){renderTabla(v)}
-
-/* ===== VER SOLO LECTURA (modal) ===== */
-function verSoloLectura(id){
-  const p=prestaciones.find(x=>x.id===id);if(!p)return;
-  const raw=p._raw||{};
-  /* Agrupar por sección */
-  const sec1Cols=F2S.filter(m=>!m.f.startsWith('_')&&m.f!=='_sec1'&&m.f!=='_sec2'&&m.f!=='_sec3'&&F2S.indexOf(m)<F2S.findIndex(x=>x.f==='_sec2'));
-  const sec2Cols=F2S.filter(m=>!m.f.startsWith('_')&&m.f!=='_sec1'&&m.f!=='_sec2'&&m.f!=='_sec3');
-  const idxS2=F2S.findIndex(x=>x.f==='_sec2'),idxS3=F2S.findIndex(x=>x.f==='_sec3');
-  const sec2=sec2Cols.filter(m=>{const i=F2S.indexOf(m);return i>idxS2&&i<idxS3});
-  const sec3=sec2Cols.filter(m=>F2S.indexOf(m)>idxS3);
-
-  function renderCols(cols){return cols.map(m=>{const v=raw[m.c]||'';if(!v)return '';return `<div class="dc"><span class="dl">${m.c}</span><span class="dv">${v}</span></div>`}).join('')}
-
-  let html=`<div class="mst">INFORMACIÓN DE SOLICITUD</div><div class="dg">${renderCols(sec1Cols)}</div>`;
-  html+=`<div class="mst">DATOS DEL FALLECIDO</div><div class="dg">${renderCols(sec2)}</div>`;
-  html+=`<div class="mst">DATOS DE COORDINACION</div><div class="dg">${renderCols(sec3)}</div>`;
-
-  const existing=$('modal-dinamico');if(existing)existing.remove();
-  const modal=document.createElement('div');modal.id='modal-dinamico';modal.className='md';
-  modal.innerHTML=`<div class="mo" onclick="cerrarModal()"></div><div class="mb"><div class="mh"><h3>📋 ${p.nombreFallecido||''} ${p.apellidosFallecido||''} <span style="font-size:13px;font-family:'DM Sans';color:var(--gris);font-weight:400;margin-left:8px">${p.numPrestacion||''}</span></h3><button onclick="cerrarModal()" class="mx">✕</button></div><div class="mbo">${html}</div></div>`;
-  document.body.appendChild(modal);
-  setTimeout(()=>modal.classList.add('show'),10);
-}
-function cerrarModal(){const m=$('modal-dinamico');if(m)m.remove()}
-
-/* ===== EDITAR: Carga TODOS los campos en el formulario ===== */
-function editarPrestacion(id){
-  const p=prestaciones.find(x=>x.id===id);if(!p)return;
-  const raw=p._raw||{};
-  editandoId=id;
-
-  /* Limpiar formulario primero */
-  limpiarFormSilencioso();
-
-  /* Llenar cada campo del formulario con el dato de la hoja */
-  F2S.forEach(m=>{
-    if(m.f.startsWith('_'))return; // saltar columnas de sección y firmas
-    const el=$(m.f);
-    if(!el)return;
-    const val=raw[m.c];
-    if(val===undefined||val===null)return;
-    const s=String(val).trim();
-    if(!s)return;
-    /* Para selects, intentar coincidencia parcial */
-    if(el.tagName==='SELECT'){
-      let encontrado=false;
-      for(const opt of el.options){
-        if(opt.value&&opt.value.toUpperCase()===s.toUpperCase()){el.value=opt.value;encontrado=true;break}
+  fetch(url)
+    .then(function(res) { return res.text(); })
+    .then(function(text) {
+      var contentType = '';
+      /* No podemos leer headers fácilmente, verificamos el contenido */
+      if (text.trim().startsWith('<') && !text.trim().startsWith('{')) {
+        errTitle.textContent = '❌ Error del servidor de Google';
+        errDetail.textContent = 'Apps Script devolvió HTML en vez de JSON.\n\nVerifica:\n• Ejecutar como: Yo\n• Acceso: Cualquier persona\n• URL del script correcta\n\nURL: ' + url;
+        errBox.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Entrar →';
+        return;
       }
-      if(!encontrado){
-        /* Intentar por texto */
-        for(const opt of el.options){
-          if(opt.text&&opt.text.toUpperCase()===s.toUpperCase()){el.value=opt.value;encontrado=true;break}
-        }
+
+      var data;
+      try { data = JSON.parse(text); }
+      catch (e) {
+        errTitle.textContent = '❌ Respuesta inválida';
+        errDetail.textContent = 'Contenido recibido: "' + text.substring(0, 200) + '"';
+        errBox.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Entrar →';
+        return;
       }
-    }else{
-      el.value=s;
-    }
-  });
 
-  /* Disparar cascadas */
-  filtrarMuni();
-  filtrarMuniMuerte();
-  aplicarReglasCat();
-
-  /* UI: mostrar banner de edición */
-  $('aeb').style.display='flex';
-  $('enp').textContent=p.numPrestacion||'(sin N°)';
-  const bgf=$('bgf');
-  bgf.textContent='💾 Actualizar Prestación';
-  bgf.classList.add('actualizar');
-
-  /* Cambiar a tab de formulario */
-  $('tc-lista').style.display='none';
-  $('tc-nuevo').style.display='block';
-  $('t-lista').classList.remove('active');
-  $('t-nuevo').classList.add('active');
-
-  /* Scroll al inicio */
-  $('fp').scrollIntoView({behavior:'smooth',block:'start'});
-  mostrarToast('✏️ Modo edición activado — modifica los campos y guarda','info');
+      if (data.ok) {
+        modoDemo = false;
+        entrar({
+          nombre: data.nombre || data.usuario || u,
+          regional: (data.regional || 'QUINDIO').toUpperCase(),
+          rol: data.rol,
+          usuario: data.usuario || u
+        });
+      } else {
+        errTitle.textContent = '❌ ' + (data.error || 'Credenciales incorrectas');
+        errDetail.textContent = 'Verifica el usuario "' + u + '" en la hoja de usuarios.\nError: ' + (data.error || 'Sin mensaje');
+        errBox.style.display = 'block';
+        $('input-usuario').classList.add('input-error');
+        $('input-password').classList.add('input-error');
+        btn.disabled = false;
+        btn.textContent = 'Entrar →';
+      }
+    })
+    .catch(function(e) {
+      errTitle.textContent = '⚠️ Error de conexión';
+      errDetail.textContent = 'No se pudo conectar con Google Apps Script.\nError: ' + e.message + '\n\nUsa "Modo Demo" para probar sin servidor.';
+      errBox.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Entrar →';
+    });
 }
 
-function cancelarEdicion(){
-  editandoId=null;
-  $('aeb').style.display='none';
-  const bgf=$('bgf');
-  bgf.textContent='💾 Guardar Prestación';
-  bgf.classList.remove('actualizar');
-}
-
-/* ===== CONSTRUIR PAYLOAD (para guardar y editar) ===== */
-function construirPayload(){
-  const payload={};
-  F2S.forEach(m=>{
-    if(m.f==='_sec1'||m.f==='_sec2'||m.f==='_sec3'){
-      /* Columnas de sección: SIEMPRE vacías */
-      payload[m.c]='';
-      return;
-    }
-    if(m.f==='_firma_entrega'){
-      const c=$('cfe');payload[m.c]=c?c.toDataURL('image/png'):'';return;
-    }
-    if(m.f==='_firma_recibe'){
-      const c=$('cfr');payload[m.c]=c?c.toDataURL('image/png'):'';return;
-    }
-    if(m.f==='f55'||m.f==='f98'){
-      /* Archivos: no se envían como texto */
-      payload[m.c]='(archivo adjunto)';return;
-    }
-    const el=$(m.f);
-    payload[m.c]=el?el.value:'';
-  });
-  return payload;
-}
-
-/* ===== GUARDAR ===== */
-function guardarPrestacion(){
-  if(regionalActual!==usuario?.regional){mostrarToast('Sin permiso para guardar en esta regional','error');return}
-  const nom=gv('f05').trim(),fec=gv('f01'),numP=gv('f02').trim();
-  if(!numP){mostrarToast('El N° Prestacion es requerido','error');$('f02').focus();return}
-  if(!nom){mostrarToast('El nombre del fallecido es requerido','error');$('f05').focus();return}
-  if(!fec){mostrarToast('La fecha de reporte es requerida','error');$('f01').focus();return}
-
-  const payload=construirPayload();
-  const bgf=$('bgf');
-  bgf.disabled=true;bgf.textContent='⏳ Guardando...';
-
-  if(editandoId!==null){
-    /* ACTUALIZAR */
-    payload.accion='editar';
-    payload.regional=regionalActual;
-    payload._numPrestacionOriginal=prestaciones.find(x=>x.id===editandoId)?.numPrestacion||numP;
-    payload._filaIndex=editandoId;
-    apiPost(payload).then(res=>{
-      if(modoDemo)mostrarToast('🛠️ [DEMO] Actualización simulada','info');
-      else if(res.ok)mostrarToast('✅ Prestación actualizada en Google Sheets','exito');
-      else mostrarToast('⚠️ Error: '+(res.error||'Desconocido'),'error');
-      cancelarEdicion();limpiarForm();cambiarTab('lista');cargarPrestaciones(regionalActual);
-      bgf.disabled=false;bgf.textContent=editandoId!==null?'💾 Actualizar Prestación':'💾 Guardar Prestación';
-    }).catch(()=>{mostrarToast('⚠️ Error de conexión','error');bgf.disabled=false;bgf.textContent='💾 Actualizar Prestación'});
-  }else{
-    /* NUEVO */
-    payload.accion='guardar';
-    payload.regional=regionalActual;
-    payload.creadoPor=usuario.nombre;
-    apiPost(payload).then(res=>{
-      if(modoDemo)mostrarToast('🛠️ [DEMO] Prestación simulada','info');
-      else if(res.ok)mostrarToast('✅ Prestación guardada en Google Sheets','exito');
-      else mostrarToast('⚠️ Error: '+(res.error||'Desconocido'),'error');
-      limpiarForm();cambiarTab('lista');cargarPrestaciones(regionalActual);
-      bgf.disabled=false;bgf.textContent='💾 Guardar Prestación';
-    }).catch(()=>{mostrarToast('⚠️ Error de conexión','error');bgf.disabled=false;bgf.textContent='💾 Guardar Prestación'});
+/* ================================================================
+   ENTRAR A LA APP
+   ================================================================ */
+function entrar(data) {
+  usuario = data;
+  $('login-screen').style.display = 'none';
+  $('app').style.display = 'block';
+  $('topbar-regional').textContent = usuario.regional;
+  $('topbar-nombre').textContent = usuario.nombre;
+  $('topbar-avatar').textContent = (usuario.nombre || 'A')[0].toUpperCase();
+  $('demo-indicator').style.display = modoDemo ? 'inline-block' : 'none';
+  initFirma('canvas-firma-entrega');
+  initFirma('canvas-firma-recibe');
+  renderMenu();
+  actualizarStats();
+  mostrarVista('menu');
+  if (modoDemo) {
+    mostrarToast('🛠️ Modo Demo activado — Los datos no se guardan en Sheets', 'info');
   }
 }
 
-/* ===== LIMPIAR FORMULARIO ===== */
-function limpiarFormSilencioso(){
-  F2S.forEach(m=>{if(m.f.startsWith('_'))return;const el=$(m.f);if(!el)return;if(el.tagName==='SELECT')el.selectedIndex=0;else el.value=''});
-  limpiarFirma('cfe');limpiarFirma('cfr');
+function cerrarSesion() {
+  usuario = null;
+  modoDemo = false;
+  editandoId = null;
+  $('app').style.display = 'none';
+  $('login-screen').style.display = 'flex';
+  $('input-usuario').value = '';
+  $('input-password').value = '';
+  $('login-error-box').style.display = 'none';
+  $('btn-login').disabled = false;
+  $('btn-login').textContent = 'Entrar →';
 }
-function limpiarForm(){
+
+/* ================================================================
+   MENÚ PRINCIPAL
+   ================================================================ */
+function renderMenu() {
+  var grid = $('menu-grid');
+  grid.innerHTML = REGIONALES.map(function(r) {
+    var esMiRegional = r.id === usuario.regional;
+    return '<div class="menu-card" onclick="mostrarRegional(\'' + r.id + '\')">' +
+      '<div class="menu-card-img ' + r.clase + '">' +
+        r.emoji +
+        (esMiRegional ? '<span class="mi-regional-badge">MI REGIONAL</span>' : '') +
+      '</div>' +
+      '<div class="menu-card-label">' + r.label + '<span class="arrow">›</span></div>' +
+    '</div>';
+  }).join('');
+}
+
+function actualizarStats() {
+  var hoy = new Date().toDateString();
+  $('stat-total').textContent = prestaciones.length;
+  $('stat-hoy').textContent = prestaciones.filter(function(p) {
+    try { return new Date(p.fechaReporte).toDateString() === hoy; } catch(e) { return false; }
+  }).length;
+  $('stat-mi-regional').textContent = prestaciones.filter(function(p) {
+    return p.regional === usuario.regional;
+  }).length;
+}
+
+/* ================================================================
+   NAVEGACIÓN
+   ================================================================ */
+function mostrarVista(vista) {
+  $('vista-menu').style.display = vista === 'menu' ? 'block' : 'none';
+  $('vista-regional').style.display = vista === 'regional' ? 'block' : 'none';
+  /* Desactivar todos los items del sidebar */
+  var items = document.querySelectorAll('.sidebar-item');
+  items.forEach(function(i) { i.classList.remove('active'); });
+  if (vista === 'menu') {
+    $('nav-menu').classList.add('active');
+    cancelarEdicion();
+  }
+}
+
+function mostrarRegional(regional) {
+  regionalActual = regional;
   cancelarEdicion();
-  limpiarFormSilencioso();
-  $('f18').value=regionalActual||'';
+
+  var r = REGIONALES.find(function(x) { return x.id === regional; });
+  $('regional-titulo').textContent = r ? r.label.toUpperCase() : regional;
+
+  var esMiRegional = regional === usuario.regional;
+  $('btn-nuevo-top').disabled = !esMiRegional;
+
+  /* Aviso de solo lectura si no es mi regional */
+  if (!esMiRegional) {
+    $('aviso-lectura-wrap').innerHTML = '<div class="aviso-lectura">👁️ Estás viendo <strong>' + (r ? r.label : regional) + '</strong>. Solo lectura — tu regional es <strong>' + usuario.regional + '</strong>.</div>';
+  } else {
+    $('aviso-lectura-wrap').innerHTML = '';
+  }
+
+  /* Controles de solo lectura */
+  $('readonly-notice').style.display = esMiRegional ? 'none' : 'flex';
+  $('btn-guardar-form').disabled = !esMiRegional;
+  $('btn-guardar-form').style.opacity = esMiRegional ? '1' : '0.4';
+  $('tab-nuevo').style.opacity = esMiRegional ? '1' : '0.5';
+
+  if (esMiRegional) {
+    $('f18').value = regional;
+  }
+
+  /* Activar sidebar */
+  var items = document.querySelectorAll('.sidebar-item');
+  items.forEach(function(i) { i.classList.remove('active'); });
+  var navItem = $('nav-' + regional);
+  if (navItem) navItem.classList.add('active');
+
+  cambiarTab('lista');
+  mostrarVista('regional');
+  cargarPrestaciones(regional);
+}
+
+/* ================================================================
+   CARGAR PRESTACIONES DESDE GOOGLE SHEETS
+   ================================================================ */
+function cargarPrestaciones(regional) {
+  var tbody = $('tabla-body');
+  tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--gris)"><div style="font-size:24px;margin-bottom:8px">⏳</div>Cargando...</td></tr>';
+
+  apiGet({ accion: 'leer', regional: regional }).then(function(res) {
+    if (res && res.ok && Array.isArray(res.datos)) {
+      prestaciones = res.datos.map(function(d, i) {
+        return {
+          id: i.toString(),
+          _raw: d,
+          numPrestacion: buscarEnRaw(d, 'f02'),
+          fechaReporte: buscarEnRaw(d, 'f01'),
+          regional: buscarEnRaw(d, 'f18') || regional,
+          nombreFallecido: buscarEnRaw(d, 'f05'),
+          apellidosFallecido: buscarEnRaw(d, 'f06'),
+          numContrato: buscarEnRaw(d, 'f11'),
+          sede: buscarEnRaw(d, 'f21'),
+          estadoPrestacion: buscarEnRaw(d, 'f40') || 'En proceso'
+        };
+      });
+    } else {
+      prestaciones = [];
+      if (res && res.error && !modoDemo) {
+        mostrarToast('⚠️ Error al leer: ' + res.error.substring(0, 80), 'error');
+      }
+    }
+    actualizarStats();
+    renderTabla();
+  });
+}
+
+/* ================================================================
+   TABS
+   ================================================================ */
+function cambiarTab(tab) {
+  /* Si cambiamos a lista y estábamos editando, cancelar edición */
+  if (tab === 'lista' && editandoId !== null) {
+    cancelarEdicion();
+  }
+
+  $('tc-lista').style.display = tab === 'lista' ? 'block' : 'none';
+  $('tc-nuevo').style.display = tab === 'nuevo' ? 'block' : 'none';
+  $('tab-lista').classList.toggle('active', tab === 'lista');
+  $('tab-nuevo').classList.toggle('active', tab === 'nuevo');
+
+  /* Si es nuevo (no edición), poner fecha actual */
+  if (tab === 'nuevo' && editandoId === null) {
+    setFechaAhora();
+    $('f17').value = $('f01').value;
+  }
+}
+
+/* ================================================================
+   TABLA DE REGISTROS
+   ================================================================ */
+function renderTabla(filtro) {
+  filtro = filtro || '';
+  var esMiRegional = regionalActual === usuario.regional;
+
+  var datos = prestaciones.filter(function(p) {
+    var esRegional = p.regional === regionalActual;
+    var coincide = !filtro ||
+      (p.nombreFallecido || '').toLowerCase().indexOf(filtro.toLowerCase()) !== -1 ||
+      (p.apellidosFallecido || '').toLowerCase().indexOf(filtro.toLowerCase()) !== -1 ||
+      (p.numContrato || '').toLowerCase().indexOf(filtro.toLowerCase()) !== -1 ||
+      (p.numPrestacion || '').toLowerCase().indexOf(filtro.toLowerCase()) !== -1 ||
+      (p.sede || '').toLowerCase().indexOf(filtro.toLowerCase()) !== -1;
+    return esRegional && coincide;
+  });
+
+  var tbody = $('tabla-body');
+
+  if (datos.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--gris)"><div style="font-size:32px;margin-bottom:8px">📋</div>No hay registros' + (filtro ? ' con ese filtro' : '') + '</td></tr>';
+    return;
+  }
+
+  /* Mostrar del más reciente al más antiguo */
+  var invertidos = datos.slice().reverse();
+
+  tbody.innerHTML = invertidos.map(function(p) {
+    var nombre = [p.nombreFallecido, p.apellidosFallecido].filter(Boolean).join(' ') || '—';
+    var fecha = '—';
+    try {
+      if (p.fechaReporte) {
+        fecha = new Date(p.fechaReporte).toLocaleString('es-CO', { dateStyle: 'short', timeStyle: 'short' });
+      }
+    } catch(e) {}
+
+    var est = (p.estadoPrestacion || 'En proceso').toLowerCase();
+    var estadoClase = 'estado-activo';
+    if (est.indexOf('finaliz') !== -1) estadoClase = 'estado-finalizado';
+    else if (est.indexOf('pendien') !== -1) estadoClase = 'estado-pendiente';
+    else if (est.indexOf('cancel') !== -1) estadoClase = 'estado-cancelado';
+
+    var btnAccion;
+    if (esMiRegional) {
+      btnAccion = '<button class="btn-editar" onclick="editarPrestacion(\'' + p.id + '\')">✏️ Editar</button>';
+    } else {
+      btnAccion = '<button class="btn-ver" onclick="verSoloLectura(\'' + p.id + '\')">👁️ Ver</button>';
+    }
+
+    return '<tr>' +
+      '<td><code style="font-family:\'DM Mono\',monospace;font-size:12px">' + (p.numPrestacion || '—') + '</code></td>' +
+      '<td><strong>' + nombre + '</strong></td>' +
+      '<td style="color:var(--gris);font-size:12.5px">' + fecha + '</td>' +
+      '<td>' + (p.sede || '—') + '</td>' +
+      '<td><span class="estado-chip ' + estadoClase + '">' + (p.estadoPrestacion || 'En proceso') + '</span></td>' +
+      '<td>' + btnAccion + '</td>' +
+    '</tr>';
+  }).join('');
+}
+
+function filtrarTabla(valor) {
+  renderTabla(valor);
+}
+
+/* ================================================================
+   VER SOLO LECTURA (MODAL) — Para regionales que no son del usuario
+   ================================================================ */
+function verSoloLectura(id) {
+  var p = prestaciones.find(function(x) { return x.id === id; });
+  if (!p) return;
+
+  var raw = p._raw || {};
+
+  /* Separar campos por sección usando los índices del mapeo */
+  var idxSec1 = 0;
+  var idxSec2 = CAMPO_A_COLUMNA.findIndex(function(m) { return m.campo === '_sec2'; });
+  var idxSec3 = CAMPO_A_COLUMNA.findIndex(function(m) { return m.campo === '_sec3'; });
+
+  function camposDeSeccion(desde, hasta) {
+    return CAMPO_A_COLUMNA.filter(function(m, i) {
+      return !m.campo.startsWith('_') && i > desde && i < hasta;
+    });
+  }
+
+  var sec1 = camposDeSeccion(idxSec1, idxSec2);
+  var sec2 = camposDeSeccion(idxSec2, idxSec3);
+  var sec3 = camposDeSeccion(idxSec3, CAMPO_A_COLUMNA.length);
+
+  function renderCampos(lista) {
+    return lista.map(function(m) {
+      var val = raw[m.columna] || '';
+      if (!val) return '';
+      return '<div class="detalle-campo"><span class="detalle-label">' + m.columna + '</span><span class="detalle-valor">' + val + '</span></div>';
+    }).join('');
+  }
+
+  var html = '<div class="modal-section-title">INFORMACIÓN DE SOLICITUD</div><div class="detalle-grid">' + renderCampos(sec1) + '</div>';
+  html += '<div class="modal-section-title">DATOS DEL FALLECIDO</div><div class="detalle-grid">' + renderCampos(sec2) + '</div>';
+  html += '<div class="modal-section-title">DATOS DE COORDINACION</div><div class="detalle-grid">' + renderCampos(sec3) + '</div>';
+
+  /* Eliminar modal anterior si existe */
+  var existente = $('modal-dinamico');
+  if (existente) existente.remove();
+
+  /* Crear modal */
+  var modal = document.createElement('div');
+  modal.id = 'modal-dinamico';
+  modal.className = 'modal-detalle';
+  modal.innerHTML =
+    '<div class="modal-overlay" onclick="cerrarModal()"></div>' +
+    '<div class="modal-box">' +
+      '<div class="modal-header">' +
+        '<h3>📋 ' + (p.nombreFallecido || '') + ' ' + (p.apellidosFallecido || '') +
+        ' <span style="font-size:13px;font-family:\'DM Sans\';color:var(--gris);font-weight:400;margin-left:8px">' + (p.numPrestacion || '') + '</span></h3>' +
+        '<button onclick="cerrarModal()" class="modal-cerrar">✕</button>' +
+      '</div>' +
+      '<div class="modal-body">' + html + '</div>' +
+    '</div>';
+
+  document.body.appendChild(modal);
+  setTimeout(function() { modal.classList.add('show'); }, 10);
+}
+
+function cerrarModal() {
+  var m = $('modal-dinamico');
+  if (m) m.remove();
+}
+
+/* ================================================================
+   EDITAR PRESTACIÓN — Carga TODOS los campos en el formulario
+   ================================================================ */
+function editarPrestacion(id) {
+  var p = prestaciones.find(function(x) { return x.id === id; });
+  if (!p) return;
+
+  var raw = p._raw || {};
+  editandoId = id;
+
+  /* Limpiar formulario sin disparar cancelarEdicion */
+  limpiarFormularioSilencioso();
+
+  /* Llenar cada campo del formulario con el dato de la hoja */
+  CAMPO_A_COLUMNA.forEach(function(mapeo) {
+    /* Saltar columnas de sección y firmas */
+    if (mapeo.campo.startsWith('_')) return;
+
+    var el = $(mapeo.campo);
+    if (!el) return;
+
+    var val = raw[mapeo.columna];
+    if (val === undefined || val === null) return;
+    var s = String(val).trim();
+    if (!s) return;
+
+    /* Para selects, intentar coincidencia */
+    if (el.tagName === 'SELECT') {
+      var encontrado = false;
+      /* Primero buscar por valor */
+      for (var i = 0; i < el.options.length; i++) {
+        if (el.options[i].value && el.options[i].value.toUpperCase() === s.toUpperCase()) {
+          el.value = el.options[i].value;
+          encontrado = true;
+          break;
+        }
+      }
+      /* Si no, buscar por texto visible */
+      if (!encontrado) {
+        for (var j = 0; j < el.options.length; j++) {
+          if (el.options[j].text && el.options[j].text.toUpperCase() === s.toUpperCase()) {
+            el.value = el.options[j].value;
+            encontrado = true;
+            break;
+          }
+        }
+      }
+    } else {
+      el.value = s;
+    }
+  });
+
+  /* Disparar cascadas para selects dependientes */
+  filtrarMunicipios();
+  filtrarMunicipiosMuerte();
+  aplicarReglasCategoria();
+
+  /* UI: Mostrar banner de edición */
+  $('aviso-edicion-banner').style.display = 'flex';
+  $('edit-num-prestacion').textContent = p.numPrestacion || '(sin N°)';
+
+  var btnGuardar = $('btn-guardar-form');
+  btnGuardar.textContent = '💾 Actualizar Prestación';
+  btnGuardar.classList.add('actualizando');
+
+  /* Cambiar a tab del formulario */
+  $('tc-lista').style.display = 'none';
+  $('tc-nuevo').style.display = 'block';
+  $('tab-lista').classList.remove('active');
+  $('tab-nuevo').classList.add('active');
+
+  /* Scroll al inicio del formulario */
+  $('form-prestacion').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  mostrarToast('✏️ Modo edición — Modifica los campos y guarda', 'info');
+}
+
+function cancelarEdicion() {
+  editandoId = null;
+  $('aviso-edicion-banner').style.display = 'none';
+  var btnGuardar = $('btn-guardar-form');
+  btnGuardar.textContent = '💾 Guardar Prestación';
+  btnGuardar.classList.remove('actualizando');
+}
+
+/* ================================================================
+   CONSTRUIR PAYLOAD — Arma el objeto con TODOS los campos
+   para enviar a Google Sheets (tanto guardar como editar)
+   ================================================================ */
+function construirPayload() {
+  var payload = {};
+
+  CAMPO_A_COLUMNA.forEach(function(mapeo) {
+    /* Columnas de sección: SIEMPRE vacías, nunca con contenido */
+    if (mapeo.campo === '_sec1' || mapeo.campo === '_sec2' || mapeo.campo === '_sec3') {
+      payload[mapeo.columna] = '';
+      return;
+    }
+
+    /* Firmas: canvas como data URL */
+    if (mapeo.campo === '_firma_entrega') {
+      var canvasE = $('canvas-firma-entrega');
+      payload[mapeo.columna] = canvasE ? canvasE.toDataURL('image/png') : '';
+      return;
+    }
+    if (mapeo.campo === '_firma_recibe') {
+      var canvasR = $('canvas-firma-recibe');
+      payload[mapeo.columna] = canvasR ? canvasR.toDataURL('image/png') : '';
+      return;
+    }
+
+    /* Archivos: no se envían como texto */
+    if (mapeo.campo === 'f55' || mapeo.campo === 'f98') {
+      payload[mapeo.columna] = '(archivo adjunto)';
+      return;
+    }
+
+    /* Campos normales: leer valor del input/select/textarea */
+    var el = $(mapeo.campo);
+    payload[mapeo.columna] = el ? el.value : '';
+  });
+
+  return payload;
+}
+
+/* ================================================================
+   GUARDAR PRESTACIÓN (NUEVA o ACTUALIZAR)
+   ================================================================ */
+function guardarPrestacion() {
+  if (regionalActual !== usuario.regional) {
+    mostrarToast('Sin permiso para guardar en esta regional', 'error');
+    return;
+  }
+
+  /* Validaciones */
+  var numP = gv('f02').trim();
+  var nombre = gv('f05').trim();
+  var fecha = gv('f01');
+
+  if (!numP) {
+    mostrarToast('El N° Prestacion es requerido', 'error');
+    $('f02').focus();
+    return;
+  }
+  if (!nombre) {
+    mostrarToast('El nombre del fallecido es requerido', 'error');
+    $('f05').focus();
+    return;
+  }
+  if (!fecha) {
+    mostrarToast('La fecha de reporte es requerida', 'error');
+    $('f01').focus();
+    return;
+  }
+
+  /* Construir payload con TODOS los campos */
+  var payload = construirPayload();
+  var btnGuardar = $('btn-guardar-form');
+
+  btnGuardar.disabled = true;
+  btnGuardar.textContent = '⏳ Guardando...';
+
+  if (editandoId !== null) {
+    /* ===== ACTUALIZAR EXISTENTE ===== */
+    payload.accion = 'editar';
+    payload.regional = regionalActual;
+    payload._numPrestacionOriginal = prestaciones.find(function(x) { return x.id === editandoId; })?.numPrestacion || numP;
+    payload._filaIndex = editandoId;
+
+    apiPost(payload).then(function(res) {
+      if (modoDemo) {
+        mostrarToast('🛠️ [DEMO] Actualización simulada (no guardada en Sheets)', 'info');
+      } else if (res.ok) {
+        mostrarToast('✅ Prestación actualizada en Google Sheets', 'exito');
+      } else {
+        mostrarToast('⚠️ Error al actualizar: ' + (res.error || 'Desconocido'), 'error');
+      }
+      cancelarEdicion();
+      limpiarForm();
+      cambiarTab('lista');
+      cargarPrestaciones(regionalActual);
+      btnGuardar.disabled = false;
+      btnGuardar.textContent = '💾 Guardar Prestación';
+    });
+  } else {
+    /* ===== NUEVO REGISTRO ===== */
+    payload.accion = 'guardar';
+    payload.regional = regionalActual;
+    payload.creadoPor = usuario.nombre;
+
+    apiPost(payload).then(function(res) {
+      if (modoDemo) {
+        mostrarToast('🛠️ [DEMO] Prestación simulada (no guardada en Sheets)', 'info');
+      } else if (res.ok) {
+        mostrarToast('✅ Prestación guardada en Google Sheets', 'exito');
+      } else {
+        mostrarToast('⚠️ Error al guardar: ' + (res.error || 'Desconocido'), 'error');
+      }
+      limpiarForm();
+      cambiarTab('lista');
+      cargarPrestaciones(regionalActual);
+      btnGuardar.disabled = false;
+      btnGuardar.textContent = '💾 Guardar Prestación';
+    });
+  }
+}
+
+/* ================================================================
+   LIMPIAR FORMULARIO
+   ================================================================ */
+function limpiarFormularioSilencioso() {
+  CAMPO_A_COLUMNA.forEach(function(mapeo) {
+    if (mapeo.campo.startsWith('_')) return;
+    var el = $(mapeo.campo);
+    if (!el) return;
+    if (el.tagName === 'SELECT') {
+      el.selectedIndex = 0;
+    } else {
+      el.value = '';
+    }
+  });
+  limpiarFirma('canvas-firma-entrega');
+  limpiarFirma('canvas-firma-recibe');
+}
+
+function limpiarForm() {
+  cancelarEdicion();
+  limpiarFormularioSilencioso();
+  $('f18').value = regionalActual || '';
   setFechaAhora();
-  $('f17').value=$('f01').value;
-  aplicarReglasCat();
+  $('f17').value = $('f01').value;
+  aplicarReglasCategoria();
 }
 
-/* ===== UTILIDADES ===== */
-function setFechaAhora(){const n=new Date(),l=new Date(n.getTime()-n.getTimezoneOffset()*6e4).toISOString().slice(0,16);if(!$('f01').value)$('f01').value=l}
-function calcEdad(){const v=$('f09').value;if(!v)return;const h=new Date(),n=new Date(v);let e=h.getFullYear()-n.getFullYear();const m=h.getMonth()-n.getMonth();if(m<0||(m===0&&h.getDate()<n.getDate()))e--;$('f10').value=e}
-function aplicarReglasCat(){const c=gv('f23');$('wm').style.display=c==='Afiliado Condicional'?'':'none';if(c!=='Afiliado Condicional')$('f24').value='';const me=['Adres','Asesor Jurídico','Asesores Externos'].includes(c);$('we').style.display=me?'':'none';$('wa').style.display=me?'':'none';if(!me){$('f25').value='';$('f26').value=''}}
-function filtrarMuni(){const d=gv('f19'),s=$('f20');s.innerHTML='<option value="">Seleccione depto primero...</option>';if(d&&MUNI[d])MUNI[d].sort().forEach(m=>{const o=document.createElement('option');o.value=m;o.textContent=m;s.appendChild(o)})}
-function filtrarMuniMuerte(){const d=gv('f88'),s=$('f89');s.innerHTML='<option value="">Seleccione depto primero...</option>';if(d&&MUNI[d])MUNI[d].sort().forEach(m=>{const o=document.createElement('option');o.value=m;o.textContent=m;s.appendChild(o)})}
-function toggleSec(h){h.classList.toggle('col');h.nextElementSibling.classList.toggle('oc')}
-
-/* ===== FIRMAS ===== */
-function initFirma(cid){
-  const c=$(cid);if(!c)return;
-  const ctx=c.getContext('2d');let dib=false;
-  const pos=e=>{const r=c.getBoundingClientRect(),s=e.touches?e.touches[0]:e;return{x:(s.clientX-r.left)*(c.width/r.width),y:(s.clientY-r.top)*(c.height/r.height)}};
-  c.addEventListener('mousedown',e=>{dib=true;const p=pos(e);ctx.beginPath();ctx.moveTo(p.x,p.y)});
-  c.addEventListener('mousemove',e=>{if(!dib)return;const p=pos(e);ctx.lineTo(p.x,p.y);ctx.strokeStyle='#1a1a1a';ctx.lineWidth=2;ctx.lineCap='round';ctx.stroke()});
-  c.addEventListener('mouseup',()=>dib=false);c.addEventListener('mouseleave',()=>dib=false);
-  c.addEventListener('touchstart',e=>{e.preventDefault();dib=true;const p=pos(e);ctx.beginPath();ctx.moveTo(p.x,p.y)},{passive:false});
-  c.addEventListener('touchmove',e=>{e.preventDefault();if(!dib)return;const p=pos(e);ctx.lineTo(p.x,p.y);ctx.strokeStyle='#1a1a1a';ctx.lineWidth=2;ctx.lineCap='round';ctx.stroke()},{passive:false});
-  c.addEventListener('touchend',()=>dib=false);
+/* ================================================================
+   UTILIDADES DEL FORMULARIO
+   ================================================================ */
+function setFechaAhora() {
+  var ahora = new Date();
+  var local = new Date(ahora.getTime() - ahora.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+  if (!$('f01').value) $('f01').value = local;
 }
-function limpiarFirma(cid){const c=$(cid);if(c)c.getContext('2d').clearRect(0,0,c.width,c.height)}
 
-/* ===== TOAST ===== */
-function mostrarToast(msg,tipo='exito'){const t=$('toast');t.textContent=msg;t.className='toast '+tipo+' show';clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),3500)}
+function calcEdad() {
+  var val = $('f09').value;
+  if (!val) return;
+  var hoy = new Date();
+  var nac = new Date(val);
+  var edad = hoy.getFullYear() - nac.getFullYear();
+  var m = hoy.getMonth() - nac.getMonth();
+  if (m < 0 || (m === 0 && hoy.getDate() < nac.getDate())) edad--;
+  $('f10').value = edad;
+}
+
+function aplicarReglasCategoria() {
+  var cat = gv('f23');
+  /* Motivo: solo visible si es Afiliado Condicional */
+  $('wrap-motivo').style.display = cat === 'Afiliado Condicional' ? '' : 'none';
+  if (cat !== 'Afiliado Condicional') $('f24').value = '';
+  /* Entidad y Asesor: visibles si es Adres, Asesor Jurídico o Asesores Externos */
+  var mostrarEntAsesor = ['Adres', 'Asesor Jurídico', 'Asesores Externos'].indexOf(cat) !== -1;
+  $('wrap-entidad').style.display = mostrarEntAsesor ? '' : 'none';
+  $('wrap-asesor').style.display = mostrarEntAsesor ? '' : 'none';
+  if (!mostrarEntAsesor) {
+    $('f25').value = '';
+    $('f26').value = '';
+  }
+}
+
+function filtrarMunicipios() {
+  var depto = gv('f19');
+  var sel = $('f20');
+  sel.innerHTML = '<option value="">Seleccione departamento primero...</option>';
+  if (depto && MUNICIPIOS_POR_DEPARTAMENTO[depto]) {
+    MUNICIPIOS_POR_DEPARTAMENTO[depto].sort().forEach(function(m) {
+      var opt = document.createElement('option');
+      opt.value = m;
+      opt.textContent = m;
+      sel.appendChild(opt);
+    });
+  }
+}
+
+function filtrarMunicipiosMuerte() {
+  var depto = gv('f88');
+  var sel = $('f89');
+  sel.innerHTML = '<option value="">Seleccione departamento primero...</option>';
+  if (depto && MUNICIPIOS_POR_DEPARTAMENTO[depto]) {
+    MUNICIPIOS_POR_DEPARTAMENTO[depto].sort().forEach(function(m) {
+      var opt = document.createElement('option');
+      opt.value = m;
+      opt.textContent = m;
+      sel.appendChild(opt);
+    });
+  }
+}
+
+function toggleSection(header) {
+  header.classList.toggle('collapsed');
+  header.nextElementSibling.classList.toggle('oculto');
+}
+
+/* ================================================================
+   FIRMAS (CANVAS)
+   ================================================================ */
+function initFirma(canvasId) {
+  var canvas = $(canvasId);
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var dibujando = false;
+
+  function getPos(e) {
+    var rect = canvas.getBoundingClientRect();
+    var src = e.touches ? e.touches[0] : e;
+    return {
+      x: (src.clientX - rect.left) * (canvas.width / rect.width),
+      y: (src.clientY - rect.top) * (canvas.height / rect.height)
+    };
+  }
+
+  canvas.addEventListener('mousedown', function(e) {
+    dibujando = true;
+    var p = getPos(e);
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
+  });
+  canvas.addEventListener('mousemove', function(e) {
+    if (!dibujando) return;
+    var p = getPos(e);
+    ctx.lineTo(p.x, p.y);
+    ctx.strokeStyle = '#1a1a1a';
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+  });
+  canvas.addEventListener('mouseup', function() { dibujando = false; });
+  canvas.addEventListener('mouseleave', function() { dibujando = false; });
+
+  canvas.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    dibujando = true;
+    var p = getPos(e);
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
+  }, { passive: false });
+  canvas.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+    if (!dibujando) return;
+    var p = getPos(e);
+    ctx.lineTo(p.x, p.y);
+    ctx.strokeStyle = '#1a1a1a';
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+  }, { passive: false });
+  canvas.addEventListener('touchend', function() { dibujando = false; });
+}
+
+function limpiarFirma(canvasId) {
+  var canvas = $(canvasId);
+  if (canvas) canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+}
+
+/* ================================================================
+   TOAST (NOTIFICACIONES)
+   ================================================================ */
+function mostrarToast(msg, tipo) {
+  tipo = tipo || 'exito';
+  var t = $('toast');
+  t.textContent = msg;
+  t.className = 'toast ' + tipo + ' show';
+  clearTimeout(t._timeout);
+  t._timeout = setTimeout(function() { t.classList.remove('show'); }, 3500);
+}
 </script>
 </body>
 </html>
