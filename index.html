@@ -1963,23 +1963,26 @@ function mostrarToast(msg, tipo = 'exito') {
 let todosUsuarios = [];
 
 async function mostrarVista(vista) {
-  document.getElementById('vista-menu').style.display = 'none';
-  document.getElementById('vista-regional').style.display = 'none';
-  document.getElementById('vista-admin').style.display = 'none';
+  const vistas = ['vista-menu','vista-regional','vista-admin'];
+  vistas.forEach(function(id) {
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
 
   if (vista === 'menu') {
-    document.getElementById('vista-menu').style.display = 'block';
-    document.getElementById('nav-menu')?.classList.add('active');
+    const el = document.getElementById('vista-menu');
+    if (el) el.style.display = 'block';
   } else if (vista === 'regional') {
-    document.getElementById('vista-regional').style.display = 'block';
+    const el = document.getElementById('vista-regional');
+    if (el) el.style.display = 'block';
   } else if (vista === 'admin') {
-    document.getElementById('vista-admin').style.display = 'block';
-    cargarUsuarios();
+    const el = document.getElementById('vista-admin');
+    if (el) { el.style.display = 'block'; cargarUsuarios(); }
   }
 
   document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
-  if (vista === 'menu') document.getElementById('nav-menu')?.classList.add('active');
-  if (vista === 'admin') document.getElementById('nav-admin')?.classList.add('active');
+  if (vista === 'menu') { const n = document.getElementById('nav-menu'); if(n) n.classList.add('active'); }
+  if (vista === 'admin') { const n = document.getElementById('nav-admin'); if(n) n.classList.add('active'); }
 }
 
 async function cargarUsuarios() {
