@@ -798,7 +798,7 @@ tr:hover td { background: var(--verde-suave); }
         <div class="dot"></div> Valle Centro Palmira
       </div>
       <div class="sidebar-item" onclick="mostrarRegional('QUINDIO')" id="nav-QUINDIO">
-        <div class="dot"></div> Quindio
+        <div class="dot"></div> Quindío
       </div>
       <div class="sidebar-item" onclick="mostrarRegional('CUNDINAMARCA')" id="nav-CUNDINAMARCA">
         <div class="dot"></div> C/Marca
@@ -1423,7 +1423,7 @@ const REGIONALES = [
   { id: 'VALLE SUR', label: 'Valle Sur', clase: 'valle-sur', emoji: '✝️' },
   { id: 'VALLE NORTE', label: 'Valle Norte', clase: 'valle-norte', emoji: '🏛️' },
   { id: 'VALLE CENTRO-PALMIRA', label: 'Valle Centro Palmira', clase: 'palmira', emoji: '⛩️' },
-  { id: 'QUINDIO', label: 'Quindio', clase: 'quindio', emoji: '🌿' },
+  { id: 'QUINDIO', label: 'Quindío', clase: 'quindio', emoji: '🌿' },
   { id: 'CUNDINAMARCA', label: 'C/Marca', clase: 'cmarca', emoji: '🏙️' },
   { id: 'TOLIMA NORTE', label: 'Tolima Norte', clase: 'tolima', emoji: '🕍' },
   { id: 'APOYO', label: 'Apoyo Exequial', clase: 'apoyo', emoji: '🤝' },
@@ -1629,9 +1629,29 @@ function filtrarTabla(val) {
 function verPrestacion(id) {
   const p = prestaciones.find(x => x.id === id);
   if (!p) return;
+  const esMio = regionalActual === usuario?.regional;
+  const raw = p._raw || {};
 
-  // Construir modal con todos los datos
-  const campos = Object.entries(p._raw || p).map(([k, v]) => {
+  // Campos editables clave
+  const camposEditables = [
+    { key: 'Nombre Fallecido', label: 'Nombre Fallecido', campo: 'nombreFallecido' },
+    { key: 'Apellidos Fallecido', label: 'Apellidos Fallecido', campo: 'apellidosFallecido' },
+    { key: 'CC Fallecido', label: 'CC Fallecido', campo: 'ccFallecido' },
+    { key: 'Edad', label: 'Edad', campo: 'edad' },
+    { key: 'Tipo Muerte', label: 'Tipo Muerte', campo: 'tipoMuerte' },
+    { key: 'N° Contrato', label: 'N° Contrato', campo: 'numContrato' },
+    { key: 'Nombre Solicitante', label: 'Nombre Solicitante', campo: 'nombreSolicitante' },
+    { key: 'Parentesco', label: 'Parentesco', campo: 'parentesco' },
+    { key: 'Sede', label: 'Sede', campo: 'sede' },
+    { key: 'Coordinador', label: 'Coordinador', campo: 'coordinador' },
+    { key: 'Destino Final', label: 'Destino Final', campo: 'destinoFinal' },
+    { key: 'Estado Prestación', label: 'Estado', campo: 'estadoPrestacion' },
+    { key: 'Observaciones', label: 'Observaciones', campo: 'observaciones' },
+    { key: 'Agente Call', label: 'Agente Call', campo: 'agenteCall' },
+  ];
+
+  // Todos los campos en modo lectura
+  const todosLectura = Object.entries(raw).map(([k, v]) => {
     if (!v || k === 'id' || k === '_raw') return '';
     return `<div class="detalle-campo">
       <span class="detalle-label">${k}</span>
@@ -1639,19 +1659,93 @@ function verPrestacion(id) {
     </div>`;
   }).filter(Boolean).join('');
 
+  // Campos editables
+  const camposFormHTML = camposEditables.map(c => {
+    const val = raw[c.key] || p[c.campo] || '';
+    if (esMio) {
+      return `<div class="campo">
+        <label>${c.label}</label>
+        <input type="text" id="edit-${c.campo}" value="${val.toString().replace(/"/g,'&quot;')}" />
+      </div>`;
+    } else {
+      return `<div class="detalle-campo">
+        <span class="detalle-label">${c.label}</span>
+        <span class="detalle-valor">${val || '—'}</span>
+      </div>`;
+    }
+  }).join('');
+
   const modal = document.createElement('div');
   modal.id = 'modal-detalle';
+  modal.setAttribute('data-id', id);
   modal.innerHTML = `
     <div class="modal-overlay" onclick="cerrarModal()"></div>
     <div class="modal-box">
       <div class="modal-header">
-        <h3>📋 ${p.nombreFallecido || ''} ${p.apellidosFallecido || ''}</h3>
+        <h3>📋 ${p.nombreFallecido || ''} ${p.apellidosFallecido || ''} <span style="font-size:14px;font-family:'DM Sans';color:var(--gris);font-weight:400;margin-left:8px;">${p.numPrestacion || ''}</span></h3>
         <button onclick="cerrarModal()" class="modal-cerrar">✕</button>
       </div>
-      <div class="modal-body">${campos}</div>
+      <div class="modal-tabs" style="display:flex;gap:4px;padding:12px 24px;border-bottom:1.5px solid var(--gris-claro);">
+        <div class="tab active" id="mtab-editar" onclick="modalTab('editar')" style="font-size:13px;padding:8px 16px;">✏️ ${esMio ? 'Editar' : 'Detalle'}</div>
+        <div class="tab" id="mtab-todos" onclick="modalTab('todos')" style="font-size:13px;padding:8px 16px;">📄 Todos los campos</div>
+      </div>
+      <div class="modal-body" id="modal-tab-editar">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;padding:20px 24px;">
+          ${camposFormHTML}
+        </div>
+        ${esMio ? `<div style="padding:0 24px 20px;display:flex;gap:10px;justify-content:flex-end;">
+          <button class="btn-cancelar" onclick="cerrarModal()">Cancelar</button>
+          <button class="btn-guardar" onclick="guardarEdicion('${id}')">💾 Guardar Cambios</button>
+        </div>` : ''}
+      </div>
+      <div class="modal-body" id="modal-tab-todos" style="display:none;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;padding:20px 24px;">
+          ${todosLectura}
+        </div>
+      </div>
     </div>`;
   document.body.appendChild(modal);
   setTimeout(() => modal.classList.add('show'), 10);
+}
+
+function modalTab(tab) {
+  document.getElementById('modal-tab-editar').style.display = tab === 'editar' ? 'block' : 'none';
+  document.getElementById('modal-tab-todos').style.display = tab === 'todos' ? 'block' : 'none';
+  document.getElementById('mtab-editar').classList.toggle('active', tab === 'editar');
+  document.getElementById('mtab-todos').classList.toggle('active', tab === 'todos');
+}
+
+async function guardarEdicion(id) {
+  const p = prestaciones.find(x => x.id === id);
+  if (!p) return;
+  const btn = document.querySelector('#modal-detalle .btn-guardar');
+  btn.disabled = true; btn.textContent = '⏳ Guardando...';
+
+  const payload = {
+    accion: 'editar',
+    regional: regionalActual,
+    numPrestacion: p.numPrestacion,
+    filaIndex: p.id,
+    nombreFallecido: document.getElementById('edit-nombreFallecido')?.value || '',
+    apellidosFallecido: document.getElementById('edit-apellidosFallecido')?.value || '',
+    ccFallecido: document.getElementById('edit-ccFallecido')?.value || '',
+    edad: document.getElementById('edit-edad')?.value || '',
+    tipoMuerte: document.getElementById('edit-tipoMuerte')?.value || '',
+    numContrato: document.getElementById('edit-numContrato')?.value || '',
+    nombreSolicitante: document.getElementById('edit-nombreSolicitante')?.value || '',
+    parentesco: document.getElementById('edit-parentesco')?.value || '',
+    sede: document.getElementById('edit-sede')?.value || '',
+    coordinador: document.getElementById('edit-coordinador')?.value || '',
+    destinoFinal: document.getElementById('edit-destinoFinal')?.value || '',
+    estadoPrestacion: document.getElementById('edit-estadoPrestacion')?.value || '',
+    observaciones: document.getElementById('edit-observaciones')?.value || '',
+    agenteCall: document.getElementById('edit-agenteCall')?.value || '',
+  };
+
+  const res = await apiSheets(payload);
+  mostrarToast('✅ Cambios guardados en Google Sheets', 'exito');
+  cerrarModal();
+  cargarPrestaciones(regionalActual);
 }
 
 function cerrarModal() {
