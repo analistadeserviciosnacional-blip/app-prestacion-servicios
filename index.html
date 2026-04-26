@@ -731,22 +731,14 @@ tr:hover td { background: var(--verde-suave); }
       <p>Jardines del Renacer</p>
     </div>
     <div class="login-info">
-      🔐 Acceso restringido. Solo personal autorizado con correo institucional.
+      🔐 Acceso restringido. Solo personal autorizado de Jardines del Renacer.
     </div>
-    <button class="btn-google" onclick="loginGoogle()">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-      </svg>
-      Iniciar sesión con Google
-    </button>
-    <div class="demo-sep"><span>— o acceso demo —</span></div>
     <div class="demo-inputs">
-      <input type="text" id="demo-user" placeholder="Usuario (ej: QUINDIO)" value="QUINDIO" />
-      <input type="password" id="demo-pass" placeholder="Contraseña" value="demo123" />
-      <button class="btn-login" onclick="loginDemo()">Entrar</button>
+      <input type="text" id="demo-user" placeholder="Usuario" autocomplete="username" />
+      <input type="password" id="demo-pass" placeholder="Contraseña" autocomplete="current-password"
+        onkeydown="if(event.key==='Enter') loginDemo()" />
+      <div id="login-error" style="color:var(--rojo);font-size:13px;display:none;text-align:center;"></div>
+      <button class="btn-login" id="btn-login-main" onclick="loginDemo()">Entrar →</button>
     </div>
   </div>
 </div>
@@ -816,6 +808,11 @@ tr:hover td { background: var(--verde-suave); }
       </div>
       <div class="sidebar-item" onclick="mostrarRegional('COTIZACION')">
         <div class="dot"></div> Cotización
+      </div>
+
+      <div class="sidebar-section" style="margin-top:8px;">Administración</div>
+      <div class="sidebar-item" id="nav-admin" style="display:none;" onclick="mostrarVista('admin')">
+        <div class="dot"></div> 👥 Gestión Usuarios
       </div>
     </div>
 
@@ -1439,11 +1436,42 @@ function loginGoogle() {
   }, 1200);
 }
 
-function loginDemo() {
-  const u = document.getElementById('demo-user').value.trim().toUpperCase();
+async function loginDemo() {
+  const u = document.getElementById('demo-user').value.trim();
   const p = document.getElementById('demo-pass').value.trim();
-  if (!u) { mostrarToast('Ingresa tu usuario', 'error'); return; }
-  entrar({ nombre: u, regional: u, email: u.toLowerCase() + '@jardines.com' });
+  const errEl = document.getElementById('login-error');
+  const btn = document.getElementById('btn-login-main');
+  
+  if (!u || !p) { 
+    errEl.textContent = 'Ingresa usuario y contraseña';
+    errEl.style.display = 'block'; return; 
+  }
+  
+  btn.disabled = true; btn.textContent = '⏳ Verificando...';
+  errEl.style.display = 'none';
+  
+  try {
+    const params = new URLSearchParams({ accion: 'login', usuario: u, password: p });
+    const res = await fetch(SCRIPT_URL + '?' + params.toString());
+    const data = await res.json();
+    
+    if (data.ok) {
+      entrar({ 
+        nombre: data.nombre || data.usuario, 
+        regional: data.regional.toUpperCase(), 
+        rol: data.rol,
+        usuario: data.usuario
+      });
+    } else {
+      errEl.textContent = '❌ ' + (data.error || 'Usuario o contraseña incorrectos');
+      errEl.style.display = 'block';
+      btn.disabled = false; btn.textContent = 'Entrar →';
+    }
+  } catch(e) {
+    errEl.textContent = '⚠️ Error de conexión. Intenta de nuevo.';
+    errEl.style.display = 'block';
+    btn.disabled = false; btn.textContent = 'Entrar →';
+  }
 }
 
 function entrar(data) {
@@ -1452,7 +1480,12 @@ function entrar(data) {
   document.getElementById('app').style.display = 'block';
   document.getElementById('regional-badge').textContent = usuario.regional;
   document.getElementById('user-name').textContent = usuario.nombre;
-  document.getElementById('user-avatar').textContent = usuario.nombre[0].toUpperCase();
+  document.getElementById('user-avatar').textContent = (usuario.nombre || 'A')[0].toUpperCase();
+  
+  // Mostrar panel admin si es admin
+  const adminNav = document.getElementById('nav-admin');
+  if (adminNav) adminNav.style.display = usuario.rol === 'admin' ? 'flex' : 'none';
+  
   renderMenu();
   actualizarStats();
   mostrarVista('menu');
@@ -1489,14 +1522,6 @@ function actualizarStats() {
 }
 
 // ===== NAVEGACIÓN =====
-function mostrarVista(vista) {
-  document.getElementById('vista-menu').style.display = vista === 'menu' ? 'block' : 'none';
-  document.getElementById('vista-regional').style.display = vista === 'regional' ? 'block' : 'none';
-
-  // sidebar active
-  document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
-  if (vista === 'menu') document.getElementById('nav-menu')?.classList.add('active');
-}
 
 function mostrarRegional(regional) {
   regionalActual = regional;
@@ -1932,6 +1957,112 @@ function mostrarToast(msg, tipo = 'exito') {
   t.className = 'toast ' + tipo + ' show';
   clearTimeout(t._timeout);
   t._timeout = setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// ===== ADMIN USUARIOS =====
+let todosUsuarios = [];
+
+async function mostrarVista(vista) {
+  document.getElementById('vista-menu').style.display = 'none';
+  document.getElementById('vista-regional').style.display = 'none';
+  document.getElementById('vista-admin').style.display = 'none';
+
+  if (vista === 'menu') {
+    document.getElementById('vista-menu').style.display = 'block';
+    document.getElementById('nav-menu')?.classList.add('active');
+  } else if (vista === 'regional') {
+    document.getElementById('vista-regional').style.display = 'block';
+  } else if (vista === 'admin') {
+    document.getElementById('vista-admin').style.display = 'block';
+    cargarUsuarios();
+  }
+
+  document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+  if (vista === 'menu') document.getElementById('nav-menu')?.classList.add('active');
+  if (vista === 'admin') document.getElementById('nav-admin')?.classList.add('active');
+}
+
+async function cargarUsuarios() {
+  const tbody = document.getElementById('tabla-usuarios-body');
+  tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:24px;color:var(--gris);">⏳ Cargando...</td></tr>';
+  try {
+    const res = await fetch(SCRIPT_URL + '?accion=usuarios');
+    const data = await res.json();
+    todosUsuarios = data.datos || [];
+    renderUsuarios(todosUsuarios);
+  } catch(e) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:24px;color:var(--rojo);">⚠️ Error cargando usuarios</td></tr>';
+  }
+}
+
+function renderUsuarios(lista) {
+  const tbody = document.getElementById('tabla-usuarios-body');
+  if (!lista.length) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--gris);">No hay usuarios registrados</td></tr>';
+    return;
+  }
+  tbody.innerHTML = lista.map(u => `
+    <tr>
+      <td><code style="font-family:'DM Mono',monospace;font-size:12px;">${u.usuario}</code></td>
+      <td><strong>${u.nombre}</strong></td>
+      <td><span class="regional-badge" style="background:var(--verde);">${u.regional}</span></td>
+      <td>${u.rol}</td>
+      <td><span class="estado-chip ${u.activo === 'SI' ? 'estado-activo' : 'estado-pendiente'}">${u.activo === 'SI' ? 'Activo' : 'Inactivo'}</span></td>
+      <td style="display:flex;gap:6px;">
+        <button class="btn-ver" onclick="toggleUsuario('${u.usuario}', '${u.activo}')">
+          ${u.activo === 'SI' ? '🔒 Desactivar' : '✅ Activar'}
+        </button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function filtrarUsuarios(val) {
+  const f = todosUsuarios.filter(u => 
+    u.usuario.toLowerCase().includes(val.toLowerCase()) ||
+    u.nombre.toLowerCase().includes(val.toLowerCase()) ||
+    u.regional.toLowerCase().includes(val.toLowerCase())
+  );
+  renderUsuarios(f);
+}
+
+function mostrarFormUsuario() {
+  document.getElementById('form-usuario-wrap').style.display = 'block';
+  document.getElementById('nu-usuario').focus();
+}
+
+function ocultarFormUsuario() {
+  document.getElementById('form-usuario-wrap').style.display = 'none';
+  ['nu-usuario','nu-password','nu-nombre'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('nu-regional').value = '';
+}
+
+async function crearUsuario() {
+  const u = document.getElementById('nu-usuario').value.trim();
+  const p = document.getElementById('nu-password').value.trim();
+  const n = document.getElementById('nu-nombre').value.trim();
+  const r = document.getElementById('nu-regional').value;
+  const rol = document.getElementById('nu-rol').value;
+  
+  if (!u || !p || !n || !r) { mostrarToast('Completa todos los campos requeridos', 'error'); return; }
+  
+  const res = await apiSheets({ accion: 'crearUsuario', usuario: u, password: p, nombre: n, regional: r, rol });
+  if (res.ok) {
+    mostrarToast('✅ Usuario creado: ' + u, 'exito');
+    ocultarFormUsuario();
+    cargarUsuarios();
+  } else {
+    mostrarToast('❌ ' + (res.error || 'Error al crear usuario'), 'error');
+  }
+}
+
+async function toggleUsuario(usuarioId, estadoActual) {
+  const nuevoEstado = estadoActual === 'SI' ? false : true;
+  const res = await apiSheets({ accion: 'actualizarUsuario', usuario: usuarioId, activo: nuevoEstado });
+  if (res.ok) {
+    mostrarToast(nuevoEstado ? '✅ Usuario activado' : '🔒 Usuario desactivado', 'exito');
+    cargarUsuarios();
+  }
 }
 
 // ===== INIT =====
