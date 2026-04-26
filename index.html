@@ -61,7 +61,6 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fondo); color: var(
 .btn-login:hover { background: var(--verde-claro); transform: translateY(-1px); }
 .btn-login:disabled { background: var(--gris); cursor: not-allowed; transform: none; }
 
-/* Error detallado */
 .login-error-box {
   background: #fef2f2; border: 1.5px solid #fecaca; border-radius: 10px;
   padding: 12px 16px; margin-bottom: 12px; display: none;
@@ -69,7 +68,6 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fondo); color: var(
 .login-error-box .error-title { font-size: 13px; font-weight: 700; color: var(--rojo); margin-bottom: 4px; }
 .login-error-box .error-detail { font-size: 12px; color: #991b1b; font-family: 'DM Mono', monospace; word-break: break-all; line-height: 1.5; }
 
-/* Botón demo */
 .btn-demo {
   width: 100%; background: transparent; color: var(--gris); border: 1.5px dashed var(--gris-claro);
   border-radius: 12px; padding: 12px; font-family: 'DM Sans', sans-serif; font-size: 13px;
@@ -77,7 +75,6 @@ body { font-family: 'DM Sans', sans-serif; background: var(--fondo); color: var(
 }
 .btn-demo:hover { border-color: var(--verde); color: var(--verde); background: var(--verde-suave); }
 
-/* Indicador demo en topbar */
 .demo-indicator {
   background: #f59e0b; color: white; border-radius: 20px; padding: 3px 10px;
   font-size: 10px; font-weight: 700; letter-spacing: 0.5px; animation: pulse-demo 2s infinite;
@@ -154,8 +151,11 @@ tr:hover td { background: var(--verde-suave); }
 .estado-activo { background: #d1fae5; color: #065f46; }
 .estado-pendiente { background: #fef3c7; color: #92400e; }
 .estado-finalizado { background: #e0e7ff; color: #3730a3; }
+.estado-cancelado { background: #fee2e2; color: #991b1b; }
 .btn-ver { background: none; border: 1.5px solid var(--gris-claro); border-radius: 7px; padding: 5px 12px; font-size: 12px; cursor: pointer; transition: var(--transicion); font-family: 'DM Sans', sans-serif; }
 .btn-ver:hover { border-color: var(--verde); color: var(--verde); background: var(--verde-suave); }
+.btn-editar { background: var(--verde); color: white; border: none; border-radius: 7px; padding: 5px 12px; font-size: 12px; cursor: pointer; transition: var(--transicion); font-family: 'DM Sans', sans-serif; font-weight: 600; }
+.btn-editar:hover { background: var(--verde-claro); }
 
 .stats-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
 .stat-card { background: white; border-radius: var(--radio); padding: 20px; box-shadow: var(--sombra); }
@@ -163,6 +163,9 @@ tr:hover td { background: var(--verde-suave); }
 .stat-card .lbl { font-size: 12px; color: var(--gris); margin-top: 4px; font-weight: 500; }
 
 .aviso-lectura { background: #fef3c7; border: 1.5px solid #f59e0b; border-radius: 10px; padding: 12px 18px; font-size: 13px; color: #92400e; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+.aviso-edicion { background: #dbeafe; border: 1.5px solid #3b82f6; border-radius: 10px; padding: 14px 18px; font-size: 14px; color: #1e40af; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; font-weight: 600; }
+.aviso-edicion button { background: #3b82f6; color: white; border: none; border-radius: 6px; padding: 4px 12px; font-size: 12px; cursor: pointer; font-family: 'DM Sans', sans-serif; margin-left: auto; white-space: nowrap; }
+.aviso-edicion button:hover { background: #2563eb; }
 
 .toast { position: fixed; bottom: 28px; right: 28px; background: var(--negro); color: white; padding: 14px 22px; border-radius: 12px; font-size: 14px; font-weight: 500; z-index: 9999; display: flex; align-items: center; gap: 10px; box-shadow: 0 8px 32px rgba(0,0,0,0.25); transform: translateY(80px); opacity: 0; transition: all 0.35s cubic-bezier(.4,0,.2,1); }
 .toast.show { transform: translateY(0); opacity: 1; }
@@ -189,20 +192,25 @@ tr:hover td { background: var(--verde-suave); }
 .btn-guardar { background: var(--verde); color: white; border: none; border-radius: 10px; padding: 12px 28px; font-size: 15px; font-weight: 600; cursor: pointer; transition: var(--transicion); font-family: 'DM Sans', sans-serif; }
 .btn-guardar:hover { background: var(--verde-claro); transform: translateY(-1px); }
 .btn-guardar:disabled { background: var(--gris); cursor: not-allowed; transform: none; }
+.btn-guardar.actualizando { background: #2563eb; }
+.btn-guardar.actualizando:hover { background: #1d4ed8; }
 .btn-cancelar { background: white; color: var(--negro); border: 1.5px solid var(--gris-claro); border-radius: 10px; padding: 12px 24px; font-size: 15px; font-weight: 500; cursor: pointer; transition: var(--transicion); font-family: 'DM Sans', sans-serif; }
 .btn-cancelar:hover { border-color: var(--rojo); color: var(--rojo); }
 .seccion-numero { display: inline-block; background: rgba(255,255,255,0.25); color: white; border-radius: 4px; padding: 1px 6px; font-size: 10px; font-weight: 700; margin-left: 6px; }
 
 .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; }
-.modal-box { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -48%); background: white; border-radius: 16px; width: 90%; max-width: 780px; max-height: 85vh; display: flex; flex-direction: column; z-index: 1001; box-shadow: 0 24px 80px rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.2s, transform 0.2s; }
+.modal-box { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -48%); background: white; border-radius: 16px; width: 90%; max-width: 820px; max-height: 85vh; display: flex; flex-direction: column; z-index: 1001; box-shadow: 0 24px 80px rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.2s, transform 0.2s; }
 .modal-detalle.show .modal-box { opacity: 1; transform: translate(-50%, -50%); }
 .modal-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1.5px solid var(--gris-claro); font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; color: var(--verde); }
 .modal-cerrar { background: var(--gris-claro); border: none; border-radius: 8px; width: 32px; height: 32px; cursor: pointer; font-size: 14px; transition: var(--transicion); }
 .modal-cerrar:hover { background: var(--rojo); color: white; }
 .modal-body { padding: 20px 24px; overflow-y: auto; }
-.detalle-campo { background: var(--fondo); border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; }
+.modal-section-title { font-family: 'Bebas Neue', sans-serif; font-size: 15px; color: var(--verde); letter-spacing: 1px; margin: 16px 0 8px; padding-bottom: 4px; border-bottom: 1px solid var(--verde-suave); }
+.modal-section-title:first-child { margin-top: 0; }
+.detalle-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; }
+.detalle-campo { background: var(--fondo); border-radius: 8px; padding: 10px 14px; }
 .detalle-label { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gris); margin-bottom: 4px; }
-.detalle-valor { font-size: 14px; font-weight: 500; color: var(--negro); word-break: break-word; }
+.detalle-valor { font-size: 13px; font-weight: 500; color: var(--negro); word-break: break-word; }
 
 @media (max-width: 700px) {
   .sidebar { display: none; }
@@ -297,7 +305,7 @@ tr:hover td { background: var(--verde-suave); }
         <div id="tab-content-lista">
           <div class="tabla-wrap">
             <div class="tabla-toolbar">
-              <input class="busqueda" type="text" placeholder="🔍 Buscar por nombre, CC, contrato..." oninput="filtrarTabla(this.value)" />
+              <input class="busqueda" type="text" placeholder="🔍 Buscar por nombre, CC, contrato, N° Prestación..." oninput="filtrarTabla(this.value)" />
               <button class="btn-nuevo" id="btn-nuevo-top" onclick="cambiarTab('nuevo')">➕ Nueva Prestación</button>
             </div>
             <div style="overflow-x:auto;">
@@ -312,12 +320,16 @@ tr:hover td { background: var(--verde-suave); }
         </div>
 
         <div id="tab-content-nuevo" style="display:none;">
+          <div id="aviso-edicion-banner" style="display:none;" class="aviso-edicion">
+            ✏️ Modo Edición — Modificando prestación <strong id="edit-num-prestacion"></strong>
+            <button onclick="cancelarEdicion()">✕ Cancelar edición</button>
+          </div>
           <div id="readonly-notice" style="display:none;" class="aviso-lectura">
             👁️ Solo lectura — Esta regional no es la tuya. Puedes ver los datos pero no guardar.
           </div>
 
           <div class="form-wrap" id="form-prestacion">
-            <!-- SECCIÓN 1 -->
+            <!-- SECCIÓN 1: INFORMACIÓN DE SOLICITUD -->
             <div class="form-section">
               <div class="form-section-header" onclick="toggleSection(this)">
                 <span>📋</span> INFORMACIÓN DE SOLICITUD <span class="seccion-numero">Campos 1–17</span>
@@ -325,7 +337,7 @@ tr:hover td { background: var(--verde-suave); }
               </div>
               <div class="form-section-body">
                 <div class="campo"><label>Fecha y Hora de Reporte <span class="req">*</span></label><input type="datetime-local" id="f01_fechaReporte" /></div>
-                <div class="campo"><label>N° Prestacion</label><input type="text" id="f02_numPrestacion" placeholder="Auto-generado" readonly /></div>
+                <div class="campo"><label>N° Prestación <span class="req">*</span></label><input type="text" id="f02_numPrestacion" placeholder="Ej: PS-000123, 2025-001..." /></div>
                 <div class="campo"><label>Reporte de Servicio Por</label>
                   <select id="f03_reportePor"><option value="">Seleccionar...</option><option>Call</option><option>Regional</option></select></div>
                 <div class="campo ancho"><label>Observaciones</label><textarea id="f04_observaciones" placeholder="Observaciones generales..."></textarea></div>
@@ -355,7 +367,7 @@ tr:hover td { background: var(--verde-suave); }
               </div>
             </div>
 
-            <!-- SECCIÓN 2 -->
+            <!-- SECCIÓN 2: CONFIGURACIÓN DEL SERVICIO -->
             <div class="form-section">
               <div class="form-section-header" onclick="toggleSection(this)">
                 <span>⚙️</span> CONFIGURACIÓN DEL SERVICIO <span class="seccion-numero">Campos 18–41</span>
@@ -463,7 +475,7 @@ tr:hover td { background: var(--verde-suave); }
               </div>
             </div>
 
-            <!-- SECCIÓN 3 -->
+            <!-- SECCIÓN 3: DATOS DEL FALLECIDO -->
             <div class="form-section">
               <div class="form-section-header" onclick="toggleSection(this)">
                 <span>👤</span> DATOS DEL FALLECIDO <span class="seccion-numero">Campos 42–55</span>
@@ -505,7 +517,7 @@ tr:hover td { background: var(--verde-suave); }
               </div>
             </div>
 
-            <!-- SECCIÓN 4 -->
+            <!-- SECCIÓN 4: DATOS DE COORDINACIÓN -->
             <div class="form-section">
               <div class="form-section-header" onclick="toggleSection(this)">
                 <span>🚗</span> DATOS DE COORDINACIÓN <span class="seccion-numero">Campos 56–99</span>
@@ -665,14 +677,14 @@ tr:hover td { background: var(--verde-suave); }
                   <label>Firma: Quien Entrega</label>
                   <div style="background:var(--fondo);border:2px dashed var(--gris-claro);border-radius:8px;padding:16px;">
                     <canvas id="canvas_firma_entrega" width="700" height="120"></canvas>
-                    <div style="display:flex;gap:8px;margin-top:8px;"><button type="button" class="btn-limpiar-firma" onclick="limpiarFirma('canvas_firma_entrega')" style="background:var(--gris-claro);border:none;border-radius:6px;padding:5px 14px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;">🗑 Limpiar</button></div>
+                    <div style="display:flex;gap:8px;margin-top:8px;"><button type="button" onclick="limpiarFirma('canvas_firma_entrega')" style="background:var(--gris-claro);border:none;border-radius:6px;padding:5px 14px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;">🗑 Limpiar</button></div>
                   </div>
                 </div>
                 <div class="campo ancho">
                   <label>Firma: Quien Recibe</label>
                   <div style="background:var(--fondo);border:2px dashed var(--gris-claro);border-radius:8px;padding:16px;">
                     <canvas id="canvas_firma_recibe" width="700" height="120"></canvas>
-                    <div style="display:flex;gap:8px;margin-top:8px;"><button type="button" class="btn-limpiar-firma" onclick="limpiarFirma('canvas_firma_recibe')" style="background:var(--gris-claro);border:none;border-radius:6px;padding:5px 14px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;">🗑 Limpiar</button></div>
+                    <div style="display:flex;gap:8px;margin-top:8px;"><button type="button" onclick="limpiarFirma('canvas_firma_recibe')" style="background:var(--gris-claro);border:none;border-radius:6px;padding:5px 14px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;">🗑 Limpiar</button></div>
                   </div>
                 </div>
                 <div class="campo ancho"><label>Foto del Certificado de Defunción</label><input type="file" id="f98_fotoCertificado" accept="image/*,.pdf" /></div>
@@ -699,6 +711,7 @@ let usuario = null;
 let modoDemo = false;
 let regionalActual = null;
 let prestaciones = [];
+let editandoId = null; // ID del registro que se está editando (null = creando nuevo)
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpUuh3cVO3SoiuuqN77wH3blzo9oEcCCBby9Pyqsj6fbb5L5YOEs-rgL_dyJp0mCE/exec';
 
 const REGIONALES = [
@@ -732,6 +745,117 @@ const MUNICIPIOS_BY_DEPTO = {
   "Santander": ["Bucaramanga","Floridablanca","Giron","Piedecuesta","Barrancabermeja","San Gil","Lebrija","Rionegro","Socorro","Velez","Sabana De Torres"]
 };
 
+// ===== MAPEO DE CAMPOS: columna de Google Sheet → id del campo en el formulario =====
+// Se usa para cargar datos desde la hoja y llenar el formulario al editar
+const CAMPO_MAPEO = [
+  { id: 'f01_fechaReporte', keys: ['Fecha Y Hora de Reporte','Fecha Reporte','fechaReporte'] },
+  { id: 'f02_numPrestacion', keys: ['Nº Prestacion','N° Prestación','Num Prestacion','numPrestacion','N° Prestacion'] },
+  { id: 'f03_reportePor', keys: ['Reporte de Servicio Por','Reporte Por','reportePor'] },
+  { id: 'f04_observaciones', keys: ['Observaciones','observaciones'] },
+  { id: 'f05_nombreFallecido', keys: ['Nombre Del Fallecido','Nombre Fallecido','nombreFallecido'] },
+  { id: 'f06_apellidosFallecido', keys: ['Apellidos Del Fallecido','Apellidos Fallecido','apellidosFallecido'] },
+  { id: 'f07_ccFallecido', keys: ['CC Del Fallecido','CC Fallecido','Cedula Fallecido','ccFallecido'] },
+  { id: 'f08_fechaExpCC', keys: ['Fecha Expedicion CC','Fecha Exp CC','fechaExpCC'] },
+  { id: 'f09_fechaNacimiento', keys: ['Fecha de Nacimiento','Fecha Nacimiento','fechaNacimiento'] },
+  { id: 'f10_edad', keys: ['Edad','edad'] },
+  { id: 'f11_numContrato', keys: ['Nº De Contrato','N° Contrato','Num Contrato','numContrato'] },
+  { id: 'f12_nombreSolicitante', keys: ['Nombre Solicitante','nombreSolicitante'] },
+  { id: 'f13_ccSolicitante', keys: ['CC Del Solicitante','CC Solicitante','ccSolicitante'] },
+  { id: 'f14_parentesco', keys: ['Parentesco','parentesco'] },
+  { id: 'f15_dirSolicitante', keys: ['Dirección Del Solicitante','Direccion Del Solicitante','Dir Solicitante','dirSolicitante'] },
+  { id: 'f16_telSolicitante', keys: ['Teléfono Solicitante','Telefono Solicitante','telSolicitante'] },
+  { id: 'f17_fechaDigitacion', keys: ['Fecha Y Hora de Digitación','Fecha Digitacion','fechaDigitacion'] },
+  { id: 'f18_regional', keys: ['Regional','regional'] },
+  { id: 'f19_dptoPrestacion', keys: ['Departamento de Prestación','Departamento Prestacion','Dpto Prestacion','dptoPrestacion'] },
+  { id: 'f20_municipioPrestacion', keys: ['Municipio de Prestación','Municipio Prestacion','municipioPrestacion'] },
+  { id: 'f21_sede', keys: ['Sede','sede'] },
+  { id: 'f22_tipo', keys: ['Tipo','tipo'] },
+  { id: 'f23_categoria', keys: ['Categoría','Categoria','categoria'] },
+  { id: 'f24_motivo', keys: ['Motivo','motivo'] },
+  { id: 'f25_entidad', keys: ['Entidad','entidad'] },
+  { id: 'f26_asesor', keys: ['Asesor Externo','asesor'] },
+  { id: 'f27_clasificacion', keys: ['Clasificación','Clasificacion','clasificacion'] },
+  { id: 'f28_servAdicionales', keys: ['Tiene Servicios Adicionales','Serv Adicionales','servAdicionales'] },
+  { id: 'f29_cualesAdicionales', keys: ['Cuáles Serv Adicionales','Cuales Adicionales','cualesAdicionales'] },
+  { id: 'f30_postFinales', keys: ['Tiene Post Finales','Post Finales','postFinales'] },
+  { id: 'f31_nombreTitular', keys: ['Nombre Del Titular','Nombre Titular','nombreTitular'] },
+  { id: 'f32_ccTitular', keys: ['CC Del Titular','CC Titular','ccTitular'] },
+  { id: 'f33_dirTitular', keys: ['Dirección Del Titular','Direccion Del Titular','Dir Titular','dirTitular'] },
+  { id: 'f34_telTitular', keys: ['Teléfono Titular','Telefono Titular','telTitular'] },
+  { id: 'f35_respFacturar', keys: ['Responsable de Facturar','Resp Facturar','respFacturar'] },
+  { id: 'f36_ccResp', keys: ['CC Responsable a Facturar','CC Resp','ccResp'] },
+  { id: 'f37_dirResp', keys: ['Dirección Resp a Facturar','Dir Resp','dirResp'] },
+  { id: 'f38_telResp', keys: ['Teléfono Resp a Facturar','Tel Resp','telResp'] },
+  { id: 'f39_emailResp', keys: ['Correo Resp a Facturar','Email Resp','emailResp'] },
+  { id: 'f40_estadoPrestacion', keys: ['Estado Prestación','Estado Prestacion','estadoPrestacion'] },
+  { id: 'f41_agenteCall', keys: ['Nombre del Agente Call','Agente Call','agenteCall'] },
+  { id: 'f42_lugarFallecimiento', keys: ['Lugar de Fallecimiento','Lugar Fallecimiento','lugarFallecimiento'] },
+  { id: 'f43_tipoMuerte', keys: ['Tipo de Muerte','Tipo Muerte','tipoMuerte'] },
+  { id: 'f44_causaMuerte', keys: ['Posible Causa de Muerte','Causa Muerte','causaMuerte'] },
+  { id: 'f45_certDefuncion', keys: ['Certificado de Defunción','Cert Defuncion','certDefuncion'] },
+  { id: 'f46_ocupacion', keys: ['Ocupación','Ocupacion','ocupacion'] },
+  { id: 'f47_pensionado', keys: ['Pensionado','pensionado'] },
+  { id: 'f48_fondo', keys: ['Nombre del Fondo','Fondo','fondo'] },
+  { id: 'f49_contextura', keys: ['Contextura','contextura'] },
+  { id: 'f50_estadoCivil', keys: ['Estado Civil','estadoCivil'] },
+  { id: 'f51_nombreCompleto', keys: ['Nombre Completo Fallecido','Nombre Completo','nombreCompleto'] },
+  { id: 'f52_nombrePadre', keys: ['Nombre del Padre','Nombre Padre','nombrePadre'] },
+  { id: 'f53_nombreMadre', keys: ['Nombre de la Madre','Nombre Madre','nombreMadre'] },
+  { id: 'f54_hijos', keys: ['Hijos','hijos'] },
+  { id: 'f56_fechaRecogida', keys: ['Fecha de Recogida','Fecha Recogida','fechaRecogida'] },
+  { id: 'f57_horaRecogida', keys: ['Hora Recogida','horaRecogida'] },
+  { id: 'f58_quienRecoge', keys: ['Nombre de Quién Recoge','Quien Recoge','quienRecoge'] },
+  { id: 'f59_placaRecogida', keys: ['Placa Carroza Recogida','Placa Recogida','placaRecogida'] },
+  { id: 'f60_traslado', keys: ['Traslado Nacional','Traslado','traslado'] },
+  { id: 'f61_preservacion', keys: ['Preservación Por','Preservacion','preservacion'] },
+  { id: 'f62_refCofre', keys: ['Nº Ref de Cofre','Ref Cofre','refCofre'] },
+  { id: 'f63_fechaInicioVelacion', keys: ['Fecha Inicio de Velación','Fecha Inicio Velacion','fechaInicioVelacion'] },
+  { id: 'f64_horaInicioVelacion', keys: ['Hora Inicio de Velación','Hora Inicio Velacion','horaInicioVelacion'] },
+  { id: 'f65_fechaFinVelacion', keys: ['Fecha Final de Velación','Fecha Fin Velacion','fechaFinVelacion'] },
+  { id: 'f66_horaFinVelacion', keys: ['Hora Final de Velación','Hora Fin Velacion','horaFinVelacion'] },
+  { id: 'f67_municipioVelacion', keys: ['Municipio Velación','Municipio Velacion','municipioVelacion'] },
+  { id: 'f68_lugarVelacion', keys: ['Lugar de Velación','Lugar Velacion','lugarVelacion'] },
+  { id: 'f69_auxCafeteria', keys: ['Nombre Aux Cafetería','Aux Cafeteria','auxCafeteria'] },
+  { id: 'f70_horaAux', keys: ['Hora Llegada Aux Cafetería','Hora Aux','horaAux'] },
+  { id: 'f71_arregloFloral', keys: ['Arreglo Floral','arregloFloral'] },
+  { id: 'f72_carteles', keys: ['Cárteles','Carteles','carteles'] },
+  { id: 'f73_kitVelacion', keys: ['Kit Velación','Kit Velacion','kitVelacion'] },
+  { id: 'f74_cinta', keys: ['Cinta Fallecido','Cinta','cinta'] },
+  { id: 'f75_transporteAcomp', keys: ['Transporte Para Acompañantes','Transporte Acomp','transporteAcomp'] },
+  { id: 'f76_auxVelacion', keys: ['Auxiliar/Proveedor Velación','Aux Velacion','auxVelacion'] },
+  { id: 'f77_placaVelacion', keys: ['Placa Carroza Velación','Placa Velacion','placaVelacion'] },
+  { id: 'f78_fechaExequias', keys: ['Fecha Exequias','fechaExequias'] },
+  { id: 'f79_horaExequias', keys: ['Hora Exequias','horaExequias'] },
+  { id: 'f80_lugarExequias', keys: ['Lugar Exequias','lugarExequias'] },
+  { id: 'f81_fechaDestino', keys: ['Fecha Destino Final','Fecha Destino','fechaDestino'] },
+  { id: 'f82_horaDestino', keys: ['Hora Destino Final','Hora Destino','horaDestino'] },
+  { id: 'f83_destinoFinal', keys: ['Destino Final','destinoFinal'] },
+  { id: 'f84_cementerio', keys: ['Cementerio','cementerio'] },
+  { id: 'f85_quienCulmina', keys: ['Quien Culmina','quienCulmina'] },
+  { id: 'f86_placaCulminacion', keys: ['Placa Carroza Culminación','Placa Culminacion','placaCulminacion'] },
+  { id: 'f87_coordinador', keys: ['Coordinador','coordinador'] },
+  { id: 'f88_dptoMuerte', keys: ['Departamento de Muerte','Dpto Muerte','dptoMuerte'] },
+  { id: 'f89_ciudadMuerte', keys: ['Ciudad de Muerte','Ciudad Muerte','ciudadMuerte'] },
+  { id: 'f90_murioEn', keys: ['Murió En','Murio En','murioEn'] },
+  { id: 'f91_dirFallecimiento', keys: ['Dirección de Fallecimiento','Dir Fallecimiento','dirFallecimiento'] },
+  { id: 'f92_fechaMuerte', keys: ['Fecha Y Hora de Muerte','Fecha Muerte','fechaMuerte'] },
+  { id: 'f93_lugarNacimiento', keys: ['Lugar de Nacimiento','Lugar Nacimiento','lugarNacimiento'] },
+  { id: 'f94_seguridadSocial', keys: ['Seguridad Social','seguridadSocial'] },
+];
+
+// ===== FUNCIONES DE MAPEO =====
+// Busca el valor de un campo en los datos crudos de la hoja
+function buscarEnRaw(raw, campoId) {
+  const m = CAMPO_MAPEO.find(c => c.id === campoId);
+  if (!m) return '';
+  for (const k of m.keys) {
+    if (raw[k] !== undefined && raw[k] !== null && String(raw[k]).trim() !== '') {
+      return String(raw[k]).trim();
+    }
+  }
+  return '';
+}
+
 // ===== API =====
 async function apiSheets(payload) {
   if (modoDemo) {
@@ -758,7 +882,6 @@ async function apiSheetsLeer(payload) {
       return JSON.parse(text);
     } catch (parseErr) {
       console.error('[API] La respuesta no es JSON válido:', parseErr.message);
-      console.error('[API] Texto recibido:', text.substring(0, 500));
       return { ok: false, datos: [], error: 'Respuesta no es JSON: ' + text.substring(0, 100) };
     }
   } catch (err) { console.error('[API] Error GET:', err); return { ok: false, datos: [], error: err.toString() }; }
@@ -778,18 +901,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   // Poner fecha actual
+  setFechaActual();
+  aplicarReglasCategoria();
+});
+
+function setFechaActual() {
   const now = new Date();
   const local = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0,16);
   const el = document.getElementById('f01_fechaReporte');
-  if (el) el.value = local;
-  aplicarReglasCategoria();
-});
+  if (el && !el.value) el.value = local;
+}
 
 // ===== MODO DEMO =====
 function entrarDemo() {
   modoDemo = true;
   console.log('%c🛠️ MODO DEMO ACTIVADO', 'color:#f59e0b;font-size:16px;font-weight:bold;');
-  console.log('%cLos datos NO se guardarán en Google Sheets.', 'color:#f59e0b;font-size:12px;');
   entrar({ nombre: 'Usuario Demo', regional: 'QUINDIO', rol: 'admin', usuario: 'demo' });
 }
 
@@ -804,7 +930,6 @@ async function loginDemo() {
   const userInput = document.getElementById('demo-user');
   const passInput = document.getElementById('demo-pass');
 
-  // Limpiar estados previos
   errBox.style.display = 'none';
   userInput.classList.remove('input-error');
   passInput.classList.remove('input-error');
@@ -823,29 +948,17 @@ async function loginDemo() {
   try {
     const params = new URLSearchParams({ accion: 'login', usuario: u, password: p });
     const url = SCRIPT_URL + '?' + params.toString();
-    console.log('[LOGIN] URL:', url);
-
     const res = await fetch(url);
     const status = res.status;
-    const statusText = res.statusText;
     const contentType = res.headers.get('content-type') || '';
     const text = await res.text();
 
-    console.log('[LOGIN] Status:', status, statusText);
-    console.log('[LOGIN] Content-Type:', contentType);
-    console.log('[LOGIN] Body (primeros 500 chars):', text.substring(0, 500));
-
-    // Verificar si la respuesta es HTML (error de Google: redirect a login, error 401, etc.)
     if (contentType.includes('text/html') && !text.trim().startsWith('{') && !text.trim().startsWith('[')) {
       errTitle.textContent = '❌ Error del servidor de Google';
       errDetail.textContent =
-        'El Apps Script devolvió HTML en vez de JSON. Esto suele pasar cuando:\n' +
-        '• La app NO está configurada como "Ejecutar como: Yo" + "Acceso: Cualquier persona"\n' +
-        '• La URL del script es incorrecta\n' +
-        '• El script tiene errores en doGet()\n\n' +
-        'Status: ' + status + ' ' + statusText + '\n' +
-        'URL: ' + url + '\n\n' +
-        'SOLUCIÓN: Ve a Apps Script → Implementar → Nueva implementación → Tipo: App web → Ejecutar como: Yo → Acceso: Cualquier persona';
+        'El Apps Script devolvió HTML en vez de JSON.\n' +
+        '• Verifica que la app esté configurada como "Ejecutar como: Yo" + "Acceso: Cualquier persona"\n' +
+        'Status: ' + status + '\nURL: ' + url;
       errBox.style.display = 'block';
       errDetail.style.whiteSpace = 'pre-wrap';
       btn.disabled = false; btn.textContent = 'Entrar →';
@@ -853,52 +966,30 @@ async function loginDemo() {
     }
 
     let data;
-    try {
-      data = JSON.parse(text);
-    } catch (parseErr) {
+    try { data = JSON.parse(text); } catch (parseErr) {
       errTitle.textContent = '❌ Respuesta inválida del servidor';
-      errDetail.textContent =
-        'No se pudo interpretar la respuesta como JSON.\n\n' +
-        'Status: ' + status + '\n' +
-        'Contenido recibido: "' + text.substring(0, 200) + '"\n\n' +
-        'Error de parseo: ' + parseErr.message;
+      errDetail.textContent = 'No se pudo interpretar la respuesta como JSON.\nContenido: "' + text.substring(0, 200) + '"';
       errBox.style.display = 'block';
       errDetail.style.whiteSpace = 'pre-wrap';
       btn.disabled = false; btn.textContent = 'Entrar →';
       return;
     }
 
-    console.log('[LOGIN] Datos parseados:', data);
-
     if (data.ok) {
       modoDemo = false;
       entrar({ nombre: data.nombre || data.usuario || u, regional: (data.regional || 'QUINDIO').toUpperCase(), rol: data.rol, usuario: data.usuario || u });
     } else {
       errTitle.textContent = '❌ ' + (data.error || 'Credenciales incorrectas');
-      errDetail.textContent =
-        'El servidor rechazó el inicio de sesión.\n' +
-        'Error devuelto: ' + (data.error || 'Sin mensaje de error') + '\n' +
-        'Respuesta completa: ' + JSON.stringify(data).substring(0, 300) + '\n\n' +
-        'Verifica que el usuario "' + u + '" exista en tu hoja de cálculo de usuarios.';
+      errDetail.textContent = 'Error: ' + (data.error || 'Sin mensaje') + '\nVerifica el usuario "' + u + '" en la hoja de usuarios.';
       errBox.style.display = 'block';
       errDetail.style.whiteSpace = 'pre-wrap';
       userInput.classList.add('input-error');
       passInput.classList.add('input-error');
       btn.disabled = false; btn.textContent = 'Entrar →';
     }
-
   } catch(e) {
-    console.error('[LOGIN] Error de red:', e);
     errTitle.textContent = '⚠️ Error de conexión';
-    errDetail.textContent =
-      'No se pudo conectar con el servidor de Google Apps Script.\n\n' +
-      'Error: ' + e.message + '\n\n' +
-      'Posibles causas:\n' +
-      '• No hay conexión a internet\n' +
-      '• La URL del script es incorrecta\n' +
-      '• El script no está implementado como App Web\n' +
-      '• CORS está bloqueando la petición\n\n' +
-      'Puedes usar el botón "Modo Demo" para probar la app sin servidor.';
+    errDetail.textContent = 'No se pudo conectar con Google Apps Script.\nError: ' + e.message + '\n\nPuedes usar "Modo Demo" para probar sin servidor.';
     errBox.style.display = 'block';
     errDetail.style.whiteSpace = 'pre-wrap';
     btn.disabled = false; btn.textContent = 'Entrar →';
@@ -918,13 +1009,11 @@ function entrar(data) {
   renderMenu();
   actualizarStats();
   mostrarVista('menu');
-  if (modoDemo) {
-    mostrarToast('🛠️ Modo Demo activado — Los datos no se guardan en Sheets', 'info');
-  }
+  if (modoDemo) mostrarToast('🛠️ Modo Demo activado — Los datos no se guardan en Sheets', 'info');
 }
 
 function cerrarSesion() {
-  usuario = null; modoDemo = false;
+  usuario = null; modoDemo = false; editandoId = null;
   document.getElementById('app').style.display = 'none';
   document.getElementById('login-screen').style.display = 'flex';
   document.getElementById('demo-user').value = '';
@@ -962,10 +1051,12 @@ function mostrarVista(vista) {
   document.getElementById('vista-regional').style.display = vista === 'regional' ? 'block' : 'none';
   document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
   if (vista === 'menu') { const n = document.getElementById('nav-menu'); if(n) n.classList.add('active'); }
+  if (vista === 'menu') cancelarEdicion();
 }
 
 function mostrarRegional(regional) {
   regionalActual = regional;
+  cancelarEdicion();
   const r = REGIONALES.find(x => x.id === regional);
   document.getElementById('regional-titulo').textContent = r ? r.label.toUpperCase() : regional;
   const esMiRegional = regional === usuario?.regional;
@@ -983,7 +1074,6 @@ function mostrarRegional(regional) {
     readonlyNotice.style.display = 'none'; btnGuardar.disabled = false; btnGuardar.style.opacity = '1';
     document.getElementById('tab-nuevo').style.opacity = '1';
     document.getElementById('f18_regional').value = regional;
-    generarNumeroPrestacion();
   }
   document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
   const navItem = document.getElementById('nav-' + regional);
@@ -1000,20 +1090,18 @@ async function cargarPrestaciones(regional) {
   if (res && res.ok && Array.isArray(res.datos)) {
     prestaciones = res.datos.map((d, i) => ({
       id: i.toString(), _raw: d,
-      numPrestacion: d['Nº Prestacion'] || d['N° Prestación'] || '',
-      fechaReporte: d['Fecha Y Hora de Reporte'] || d['Fecha Reporte'] || '',
-      regional: d['Regional'] || regional,
-      nombreFallecido: d['Nombre Del Fallecido'] || d['Nombre Fallecido'] || '',
-      apellidosFallecido: d['Apellidos Del Fallecido'] || d['Apellidos Fallecido'] || '',
-      numContrato: d['Nº De Contrato'] || d['N° Contrato'] || '',
-      sede: d['Sede'] || '',
-      estadoPrestacion: d['Estado Prestación'] || 'En proceso',
+      numPrestacion: buscarEnRaw(d, 'f02_numPrestacion'),
+      fechaReporte: buscarEnRaw(d, 'f01_fechaReporte'),
+      regional: buscarEnRaw(d, 'f18_regional') || regional,
+      nombreFallecido: buscarEnRaw(d, 'f05_nombreFallecido'),
+      apellidosFallecido: buscarEnRaw(d, 'f06_apellidosFallecido'),
+      numContrato: buscarEnRaw(d, 'f11_numContrato'),
+      sede: buscarEnRaw(d, 'f21_sede'),
+      estadoPrestacion: buscarEnRaw(d, 'f40_estadoPrestacion') || 'En proceso',
     }));
   } else {
     prestaciones = [];
-    if (res && res.error && !modoDemo) {
-      mostrarToast('⚠️ Error al leer datos: ' + res.error.substring(0, 80), 'error');
-    }
+    if (res && res.error && !modoDemo) mostrarToast('⚠️ Error al leer datos: ' + res.error.substring(0, 80), 'error');
   }
   actualizarStats();
   renderTabla();
@@ -1021,15 +1109,17 @@ async function cargarPrestaciones(regional) {
 
 // ===== TABS =====
 function cambiarTab(tab) {
+  // Si cambiamos a lista y estábamos editando, preguntar
+  if (tab === 'lista' && editandoId !== null) {
+    cancelarEdicion();
+  }
   document.getElementById('tab-content-lista').style.display = tab === 'lista' ? 'block' : 'none';
   document.getElementById('tab-content-nuevo').style.display = tab === 'nuevo' ? 'block' : 'none';
   document.getElementById('tab-lista').classList.toggle('active', tab === 'lista');
   document.getElementById('tab-nuevo').classList.toggle('active', tab === 'nuevo');
-  if (tab === 'nuevo') {
-    const now = new Date();
-    const local = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0,16);
-    document.getElementById('f01_fechaReporte').value = local;
-    document.getElementById('f17_fechaDigitacion').value = local;
+  if (tab === 'nuevo' && editandoId === null) {
+    setFechaActual();
+    document.getElementById('f17_fechaDigitacion').value = document.getElementById('f01_fechaReporte').value;
   }
 }
 
@@ -1041,10 +1131,12 @@ function renderTabla(filtro = '') {
       (p.nombreFallecido||'').toLowerCase().includes(filtro.toLowerCase()) ||
       (p.apellidosFallecido||'').toLowerCase().includes(filtro.toLowerCase()) ||
       (p.numContrato||'').toLowerCase().includes(filtro.toLowerCase()) ||
-      (p.numPrestacion||'').toLowerCase().includes(filtro.toLowerCase());
+      (p.numPrestacion||'').toLowerCase().includes(filtro.toLowerCase()) ||
+      (p.sede||'').toLowerCase().includes(filtro.toLowerCase());
     return esRegional && coincide;
   });
   const tbody = document.getElementById('tabla-body');
+  const esMiRegional = regionalActual === usuario?.regional;
   if (datos.length === 0) {
     tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--gris);"><div style="font-size:32px;margin-bottom:8px;">📋</div>No hay registros' + (filtro ? ' con ese filtro' : '') + '</td></tr>';
     return;
@@ -1053,267 +1145,23 @@ function renderTabla(filtro = '') {
     const nombre = [p.nombreFallecido, p.apellidosFallecido].filter(Boolean).join(' ') || '—';
     let fecha = '—';
     try { fecha = p.fechaReporte ? new Date(p.fechaReporte).toLocaleString('es-CO', {dateStyle:'short', timeStyle:'short'}) : '—'; } catch(e) {}
-    const estadoClase = p.estadoPrestacion === 'Finalizado' ? 'estado-finalizado' : p.estadoPrestacion === 'Pendiente' ? 'estado-pendiente' : 'estado-activo';
+    const est = (p.estadoPrestacion||'En proceso').toLowerCase();
+    const estadoClase = est.includes('finaliz') ? 'estado-finalizado' : est.includes('pendien') ? 'estado-pendiente' : est.includes('cancel') ? 'estado-cancelado' : 'estado-activo';
+    const btnAccion = esMiRegional
+      ? '<button class="btn-editar" onclick="editarPrestacion(\'' + p.id + '\')">✏️ Editar</button>'
+      : '<button class="btn-ver" onclick="verPrestacionSoloLectura(\'' + p.id + '\')">👁️ Ver</button>';
     return '<tr>' +
       '<td><code style="font-family:\'DM Mono\',monospace;font-size:12px;">' + (p.numPrestacion||'—') + '</code></td>' +
       '<td><strong>' + nombre + '</strong></td>' +
       '<td style="color:var(--gris);font-size:13px;">' + fecha + '</td>' +
       '<td>' + (p.sede||'—') + '</td>' +
       '<td><span class="estado-chip ' + estadoClase + '">' + (p.estadoPrestacion||'En proceso') + '</span></td>' +
-      '<td><button class="btn-ver" onclick="verPrestacion(\'' + p.id + '\')">Ver →</button></td>' +
+      '<td>' + btnAccion + '</td>' +
     '</tr>';
   }).join('');
 }
 
 function filtrarTabla(val) { renderTabla(val); }
 
-// ===== VER/EDITAR PRESTACIÓN =====
-function verPrestacion(id) {
-  const p = prestaciones.find(x => x.id === id);
-  if (!p) return;
-  const esMio = regionalActual === usuario?.regional;
-  const raw = p._raw || {};
-  const camposEditables = [
-    { key: 'Nombre Fallecido', label: 'Nombre Fallecido', campo: 'nombreFallecido' },
-    { key: 'Apellidos Fallecido', label: 'Apellidos Fallecido', campo: 'apellidosFallecido' },
-    { key: 'CC Fallecido', label: 'CC Fallecido', campo: 'ccFallecido' },
-    { key: 'Edad', label: 'Edad', campo: 'edad' },
-    { key: 'Tipo Muerte', label: 'Tipo Muerte', campo: 'tipoMuerte' },
-    { key: 'N° Contrato', label: 'N° Contrato', campo: 'numContrato' },
-    { key: 'Nombre Solicitante', label: 'Nombre Solicitante', campo: 'nombreSolicitante' },
-    { key: 'Parentesco', label: 'Parentesco', campo: 'parentesco' },
-    { key: 'Sede', label: 'Sede', campo: 'sede' },
-    { key: 'Coordinador', label: 'Coordinador', campo: 'coordinador' },
-    { key: 'Destino Final', label: 'Destino Final', campo: 'destinoFinal' },
-    { key: 'Estado Prestación', label: 'Estado', campo: 'estadoPrestacion' },
-    { key: 'Observaciones', label: 'Observaciones', campo: 'observaciones' },
-    { key: 'Agente Call', label: 'Agente Call', campo: 'agenteCall' },
-  ];
-  const todosLectura = Object.entries(raw).filter(([k, v]) => v && k !== 'id' && k !== '_raw').map(([k, v]) =>
-    '<div class="detalle-campo"><span class="detalle-label">' + k + '</span><span class="detalle-valor">' + v + '</span></div>'
-  ).join('');
-  const camposFormHTML = camposEditables.map(c => {
-    const val = raw[c.key] || p[c.campo] || '';
-    const safe = String(val).replace(/"/g, '&quot;').replace(/</g, '&lt;');
-    if (esMio) {
-      return '<div class="campo"><label>' + c.label + '</label><input type="text" id="edit-' + c.campo + '" value="' + safe + '" /></div>';
-    } else {
-      return '<div class="detalle-campo"><span class="detalle-label">' + c.label + '</span><span class="detalle-valor">' + (val || '—') + '</span></div>';
-    }
-  }).join('');
-  const existingModal = document.getElementById('modal-detalle-dinamico');
-  if (existingModal) existingModal.remove();
-  const modal = document.createElement('div');
-  modal.id = 'modal-detalle-dinamico';
-  modal.className = 'modal-detalle';
-  modal.setAttribute('data-id', id);
-  modal.innerHTML =
-    '<div class="modal-overlay" onclick="cerrarModal()"></div>' +
-    '<div class="modal-box">' +
-      '<div class="modal-header">' +
-        '<h3>📋 ' + (p.nombreFallecido||'') + ' ' + (p.apellidosFallecido||'') + ' <span style="font-size:14px;font-family:\'DM Sans\';color:var(--gris);font-weight:400;margin-left:8px;">' + (p.numPrestacion||'') + '</span></h3>' +
-        '<button onclick="cerrarModal()" class="modal-cerrar">✕</button>' +
-      '</div>' +
-      '<div class="tabs" style="padding:12px 24px 0;border-bottom:1.5px solid var(--gris-claro);margin:0;width:auto;background:white;border-radius:0;">' +
-        '<div class="tab active" id="mtab-editar" onclick="modalTab(\'editar\')" style="font-size:13px;padding:8px 16px;">✏️ ' + (esMio ? 'Editar' : 'Detalle') + '</div>' +
-        '<div class="tab" id="mtab-todos" onclick="modalTab(\'todos\')" style="font-size:13px;padding:8px 16px;">📄 Todos los campos</div>' +
-      '</div>' +
-      '<div class="modal-body" id="modal-tab-editar"><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;">' + camposFormHTML + '</div>' +
-        (esMio ? '<div style="margin-top:16px;display:flex;gap:10px;justify-content:flex-end;"><button class="btn-cancelar" onclick="cerrarModal()" style="padding:10px 20px;font-size:14px;">Cancelar</button><button class="btn-guardar" onclick="guardarEdicion(\'' + id + '\')" style="padding:10px 24px;font-size:14px;">💾 Guardar Cambios</button></div>' : '') +
-      '</div>' +
-      '<div class="modal-body" id="modal-tab-todos" style="display:none;"><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;">' + todosLectura + '</div></div>' +
-    '</div>';
-  document.body.appendChild(modal);
-  setTimeout(() => modal.classList.add('show'), 10);
-}
-
-function modalTab(tab) {
-  document.getElementById('modal-tab-editar').style.display = tab === 'editar' ? 'block' : 'none';
-  document.getElementById('modal-tab-todos').style.display = tab === 'todos' ? 'block' : 'none';
-  document.getElementById('mtab-editar').classList.toggle('active', tab === 'editar');
-  document.getElementById('mtab-todos').classList.toggle('active', tab === 'todos');
-}
-
-async function guardarEdicion(id) {
-  const p = prestaciones.find(x => x.id === id);
-  if (!p) return;
-  const btn = document.querySelector('#modal-detalle-dinamico .btn-guardar');
-  if (btn) { btn.disabled = true; btn.textContent = '⏳ Guardando...'; }
-  const gv = (campo) => { const el = document.getElementById('edit-' + campo); return el ? el.value : ''; };
-  const payload = {
-    accion: 'editar', regional: regionalActual, numPrestacion: p.numPrestacion, filaIndex: p.id,
-    nombreFallecido: gv('nombreFallecido'), apellidosFallecido: gv('apellidosFallecido'),
-    ccFallecido: gv('ccFallecido'), edad: gv('edad'), tipoMuerte: gv('tipoMuerte'),
-    numContrato: gv('numContrato'), nombreSolicitante: gv('nombreSolicitante'),
-    parentesco: gv('parentesco'), sede: gv('sede'), coordinador: gv('coordinador'),
-    destinoFinal: gv('destinoFinal'), estadoPrestacion: gv('estadoPrestacion'),
-    observaciones: gv('observaciones'), agenteCall: gv('agenteCall'),
-  };
-  const result = await apiSheets(payload);
-  if (modoDemo) {
-    mostrarToast('🛠️ [DEMO] Cambios simulados (no guardados en Sheets)', 'info');
-  } else if (result.ok) {
-    mostrarToast('✅ Cambios guardados en Google Sheets', 'exito');
-  } else {
-    mostrarToast('⚠️ Error al guardar: ' + (result.error || 'Desconocido'), 'error');
-  }
-  cerrarModal();
-  cargarPrestaciones(regionalActual);
-}
-
-function cerrarModal() { const m = document.getElementById('modal-detalle-dinamico'); if (m) m.remove(); }
-
-// ===== FORM =====
-function generarNumeroPrestacion() {
-  document.getElementById('f02_numPrestacion').value = 'PS-' + Date.now().toString().slice(-6);
-}
-function calcEdad() {
-  const fn = document.getElementById('f09_fechaNacimiento').value;
-  if (!fn) return;
-  const hoy = new Date(), nac = new Date(fn);
-  let edad = hoy.getFullYear() - nac.getFullYear();
-  const m = hoy.getMonth() - nac.getMonth();
-  if (m < 0 || (m === 0 && hoy.getDate() < nac.getDate())) edad--;
-  document.getElementById('f10_edad').value = edad;
-}
-function aplicarReglasCategoria() {
-  const cat = document.getElementById('f23_categoria').value;
-  document.getElementById('wrap-motivo').style.display = cat === 'Afiliado Condicional' ? '' : 'none';
-  if (cat !== 'Afiliado Condicional') document.getElementById('f24_motivo').value = '';
-  const mostrarEntidadAsesor = ['Adres','Asesor Jurídico','Asesores Externos'].includes(cat);
-  document.getElementById('wrap-entidad').style.display = mostrarEntidadAsesor ? '' : 'none';
-  document.getElementById('wrap-asesor').style.display = mostrarEntidadAsesor ? '' : 'none';
-  if (!mostrarEntidadAsesor) { document.getElementById('f25_entidad').value = ''; document.getElementById('f26_asesor').value = ''; }
-}
-function filtrarMunicipios() {
-  const depto = document.getElementById('f19_dptoPrestacion').value;
-  const sel = document.getElementById('f20_municipioPrestacion');
-  sel.innerHTML = '<option value="">Seleccionar...</option>';
-  if (depto && MUNICIPIOS_BY_DEPTO[depto]) {
-    MUNICIPIOS_BY_DEPTO[depto].sort().forEach(m => { const o = document.createElement('option'); o.value = m; o.textContent = m; sel.appendChild(o); });
-  }
-}
-function filtrarMunicipiosMuerte() {
-  const depto = document.getElementById('f88_dptoMuerte').value;
-  const sel = document.getElementById('f89_ciudadMuerte');
-  sel.innerHTML = '<option value="">Seleccionar...</option>';
-  if (depto && MUNICIPIOS_BY_DEPTO[depto]) {
-    MUNICIPIOS_BY_DEPTO[depto].sort().forEach(m => { const o = document.createElement('option'); o.value = m; o.textContent = m; sel.appendChild(o); });
-  }
-}
-
-// ===== FIRMAS =====
-function initFirma(canvasId) {
-  const canvas = document.getElementById(canvasId);
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let dibujando = false;
-  const getPos = (e) => {
-    const r = canvas.getBoundingClientRect();
-    const src = e.touches ? e.touches[0] : e;
-    return { x: (src.clientX - r.left) * (canvas.width/r.width), y: (src.clientY - r.top) * (canvas.height/r.height) };
-  };
-  canvas.addEventListener('mousedown', e => { dibujando=true; const p=getPos(e); ctx.beginPath(); ctx.moveTo(p.x,p.y); });
-  canvas.addEventListener('mousemove', e => { if(!dibujando) return; const p=getPos(e); ctx.lineTo(p.x,p.y); ctx.strokeStyle='#1a1a1a'; ctx.lineWidth=2; ctx.lineCap='round'; ctx.stroke(); });
-  canvas.addEventListener('mouseup', () => dibujando=false);
-  canvas.addEventListener('mouseleave', () => dibujando=false);
-  canvas.addEventListener('touchstart', e => { e.preventDefault(); dibujando=true; const p=getPos(e); ctx.beginPath(); ctx.moveTo(p.x,p.y); }, {passive:false});
-  canvas.addEventListener('touchmove', e => { e.preventDefault(); if(!dibujando) return; const p=getPos(e); ctx.lineTo(p.x,p.y); ctx.strokeStyle='#1a1a1a'; ctx.lineWidth=2; ctx.lineCap='round'; ctx.stroke(); }, {passive:false});
-  canvas.addEventListener('touchend', () => dibujando=false);
-}
-function limpiarFirma(canvasId) { const canvas = document.getElementById(canvasId); if (canvas) canvas.getContext('2d').clearRect(0,0,canvas.width,canvas.height); }
-
-// ===== GUARDAR PRESTACIÓN =====
-function guardarPrestacion() {
-  if (regionalActual !== usuario?.regional) { mostrarToast('No tienes permiso para guardar en esta regional', 'error'); return; }
-  const nombreF = document.getElementById('f05_nombreFallecido').value.trim();
-  const fechaR = document.getElementById('f01_fechaReporte').value;
-  if (!nombreF) { mostrarToast('El nombre del fallecido es requerido', 'error'); document.getElementById('f05_nombreFallecido').focus(); return; }
-  if (!fechaR) { mostrarToast('La fecha de reporte es requerida', 'error'); document.getElementById('f01_fechaReporte').focus(); return; }
-  const v = (id) => { const el = document.getElementById(id); return el ? el.value : ''; };
-  const payload = {
-    accion: 'guardar',
-    numPrestacion: v('f02_numPrestacion') || 'PS-' + Date.now().toString().slice(-6),
-    fechaReporte: v('f01_fechaReporte'), reportePor: v('f03_reportePor'), observaciones: v('f04_observaciones'),
-    nombreFallecido: nombreF, apellidosFallecido: v('f06_apellidosFallecido'), ccFallecido: v('f07_ccFallecido'),
-    fechaExpCC: v('f08_fechaExpCC'), fechaNacimiento: v('f09_fechaNacimiento'), edad: v('f10_edad'),
-    numContrato: v('f11_numContrato'), nombreSolicitante: v('f12_nombreSolicitante'), ccSolicitante: v('f13_ccSolicitante'),
-    parentesco: v('f14_parentesco'), dirSolicitante: v('f15_dirSolicitante'), telSolicitante: v('f16_telSolicitante'),
-    fechaDigitacion: v('f17_fechaDigitacion'), regional: v('f18_regional'), dptoPrestacion: v('f19_dptoPrestacion'),
-    municipioPrestacion: v('f20_municipioPrestacion'), sede: v('f21_sede'), tipo: v('f22_tipo'),
-    categoria: v('f23_categoria'), motivo: v('f24_motivo'), entidad: v('f25_entidad'), asesor: v('f26_asesor'),
-    clasificacion: v('f27_clasificacion'), servAdicionales: v('f28_servAdicionales'), cualesAdicionales: v('f29_cualesAdicionales'),
-    postFinales: v('f30_postFinales'), nombreTitular: v('f31_nombreTitular'), ccTitular: v('f32_ccTitular'),
-    dirTitular: v('f33_dirTitular'), telTitular: v('f34_telTitular'), respFacturar: v('f35_respFacturar'),
-    ccResp: v('f36_ccResp'), dirResp: v('f37_dirResp'), telResp: v('f38_telResp'), emailResp: v('f39_emailResp'),
-    estadoPrestacion: v('f40_estadoPrestacion') || 'En proceso', agenteCall: v('f41_agenteCall'),
-    lugarFallecimiento: v('f42_lugarFallecimiento'), tipoMuerte: v('f43_tipoMuerte'), causaMuerte: v('f44_causaMuerte'),
-    certDefuncion: v('f45_certDefuncion'), ocupacion: v('f46_ocupacion'), pensionado: v('f47_pensionado'),
-    fondo: v('f48_fondo'), contextura: v('f49_contextura'), estadoCivil: v('f50_estadoCivil'),
-    nombreCompleto: v('f51_nombreCompleto'), nombrePadre: v('f52_nombrePadre'), nombreMadre: v('f53_nombreMadre'),
-    hijos: v('f54_hijos'), fechaRecogida: v('f56_fechaRecogida'), horaRecogida: v('f57_horaRecogida'),
-    quienRecoge: v('f58_quienRecoge'), placaRecogida: v('f59_placaRecogida'), traslado: v('f60_traslado'),
-    preservacion: v('f61_preservacion'), refCofre: v('f62_refCofre'),
-    fechaInicioVelacion: v('f63_fechaInicioVelacion'), horaInicioVelacion: v('f64_horaInicioVelacion'),
-    fechaFinVelacion: v('f65_fechaFinVelacion'), horaFinVelacion: v('f66_horaFinVelacion'),
-    municipioVelacion: v('f67_municipioVelacion'), lugarVelacion: v('f68_lugarVelacion'),
-    auxCafeteria: v('f69_auxCafeteria'), horaAux: v('f70_horaAux'), arregloFloral: v('f71_arregloFloral'),
-    carteles: v('f72_carteles'), kitVelacion: v('f73_kitVelacion'), cinta: v('f74_cinta'),
-    transporteAcomp: v('f75_transporteAcomp'), auxVelacion: v('f76_auxVelacion'), placaVelacion: v('f77_placaVelacion'),
-    fechaExequias: v('f78_fechaExequias'), horaExequias: v('f79_horaExequias'), lugarExequias: v('f80_lugarExequias'),
-    fechaDestino: v('f81_fechaDestino'), horaDestino: v('f82_horaDestino'), destinoFinal: v('f83_destinoFinal'),
-    cementerio: v('f84_cementerio'), quienCulmina: v('f85_quienCulmina'), placaCulminacion: v('f86_placaCulminacion'),
-    coordinador: v('f87_coordinador'), dptoMuerte: v('f88_dptoMuerte'), ciudadMuerte: v('f89_ciudadMuerte'),
-    murioEn: v('f90_murioEn'), dirFallecimiento: v('f91_dirFallecimiento'), fechaMuerte: v('f92_fechaMuerte'),
-    lugarNacimiento: v('f93_lugarNacimiento'), seguridadSocial: v('f94_seguridadSocial'),
-    firmaEntrega: document.getElementById('canvas_firma_entrega').toDataURL('image/png'),
-    firmaRecibe: document.getElementById('canvas_firma_recibe').toDataURL('image/png'),
-    creadoPor: usuario.nombre,
-  };
-  const btn = document.getElementById('btn-guardar-form');
-  btn.disabled = true; btn.textContent = '⏳ Guardando...';
-  apiSheets(payload).then((result) => {
-    if (modoDemo) {
-      mostrarToast('🛠️ [DEMO] Prestación simulada (no guardada en Sheets)', 'info');
-    } else if (result.ok) {
-      mostrarToast('✅ Prestación guardada en Google Sheets', 'exito');
-    } else {
-      mostrarToast('⚠️ Error al guardar: ' + (result.error || 'Desconocido'), 'error');
-    }
-    limpiarForm();
-    cambiarTab('lista');
-    cargarPrestaciones(regionalActual);
-    btn.disabled = false; btn.textContent = '💾 Guardar Prestación';
-  }).catch(() => {
-    mostrarToast('⚠️ Error de conexión al guardar', 'error');
-    btn.disabled = false; btn.textContent = '💾 Guardar Prestación';
-  });
-}
-
-function limpiarForm() {
-  document.querySelectorAll('#form-prestacion input:not([readonly]), #form-prestacion select, #form-prestacion textarea').forEach(el => el.value = '');
-  limpiarFirma('canvas_firma_entrega');
-  limpiarFirma('canvas_firma_recibe');
-  document.getElementById('f18_regional').value = regionalActual || '';
-  const now = new Date();
-  const local = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0,16);
-  document.getElementById('f01_fechaReporte').value = local;
-  generarNumeroPrestacion();
-  aplicarReglasCategoria();
-}
-
-function toggleSection(header) {
-  const body = header.nextElementSibling;
-  header.classList.toggle('collapsed');
-  body.classList.toggle('oculto');
-}
-
-function mostrarToast(msg, tipo = 'exito') {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.className = 'toast ' + tipo + ' show';
-  clearTimeout(t._timeout);
-  t._timeout = setTimeout(() => t.classList.remove('show'), 3500);
-}
-</script>
-</body>
-</html>
+// ===== VER SOLO LECTURA (para regionales que no son del usuario) =====
+function verPrestacionSoloLectura(id)
