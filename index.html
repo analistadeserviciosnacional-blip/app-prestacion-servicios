@@ -488,12 +488,10 @@ tr:hover td { background: var(--verde-suave); }
       <p>Jardines del Renacer</p>
     </div>
     <div class="login-info">🔐 Acceso restringido. Solo personal autorizado de Jardines del Renacer.</div>
-
     <div class="login-error-box" id="login-error-box">
       <div class="error-title" id="error-title">Error</div>
       <div class="error-detail" id="error-detail"></div>
     </div>
-
     <div class="demo-inputs">
       <input type="text" id="input-usuario" placeholder="Usuario" autocomplete="username" />
       <input type="password" id="input-password" placeholder="Contraseña" autocomplete="current-password" onkeydown="if(event.key==='Enter') doLogin()" />
@@ -507,8 +505,6 @@ tr:hover td { background: var(--verde-suave); }
 <!-- APP PRINCIPAL -->
 <!-- ============================================================ -->
 <div id="app">
-
-  <!-- TOPBAR -->
   <div class="topbar">
     <div class="topbar-logo">
       <span>🌿</span> PRESTACIÓN DE SERVICIOS
@@ -522,14 +518,11 @@ tr:hover td { background: var(--verde-suave); }
     </div>
   </div>
 
-  <!-- LAYOUT: SIDEBAR + CONTENT -->
   <div class="main-layout">
-
     <!-- SIDEBAR -->
     <div class="sidebar">
       <div class="sidebar-section">Principal</div>
       <div class="sidebar-item active" onclick="mostrarVista('menu')" id="nav-menu"><div class="dot"></div> Menú Principal</div>
-
       <div class="sidebar-section" style="margin-top:8px;">Regionales</div>
       <div class="sidebar-item" onclick="mostrarRegional('RISARALDA')" id="nav-RISARALDA"><div class="dot"></div> Risaralda</div>
       <div class="sidebar-item" onclick="mostrarRegional('ANTIOQUIA')" id="nav-ANTIOQUIA"><div class="dot"></div> Antioquia</div>
@@ -541,7 +534,6 @@ tr:hover td { background: var(--verde-suave); }
       <div class="sidebar-item" onclick="mostrarRegional('QUINDIO')" id="nav-QUINDIO"><div class="dot"></div> Quindío</div>
       <div class="sidebar-item" onclick="mostrarRegional('CUNDINAMARCA')" id="nav-CUNDINAMARCA"><div class="dot"></div> C/Marca</div>
       <div class="sidebar-item" onclick="mostrarRegional('TOLIMA NORTE')" id="nav-TOLIMA NORTE"><div class="dot"></div> Tolima Norte</div>
-
       <div class="sidebar-section" style="margin-top:8px;">Módulos</div>
       <div class="sidebar-item" onclick="mostrarRegional('APOYO')"><div class="dot"></div> Apoyo Exequial</div>
       <div class="sidebar-item" onclick="mostrarRegional('ERRORES')"><div class="dot"></div> Errores Digitación</div>
@@ -576,7 +568,7 @@ tr:hover td { background: var(--verde-suave); }
         </div>
 
         <!-- TAB: LISTA -->
-        <div id="tab-content-lista">
+        <div id="tc-lista">
           <div class="tabla-wrap">
             <div class="tabla-toolbar">
               <input class="busqueda" type="text" placeholder="🔍 Buscar por nombre, CC, contrato, N° Prestación, sede..." oninput="filtrarTabla(this.value)" />
@@ -599,15 +591,11 @@ tr:hover td { background: var(--verde-suave); }
         </div>
 
         <!-- TAB: NUEVO / EDITAR -->
-        <div id="tab-content-nuevo" style="display:none;">
-
-          <!-- Banner de edición (se muestra solo al editar) -->
+        <div id="tc-nuevo" style="display:none;">
           <div id="aviso-edicion-banner" style="display:none;" class="aviso-edicion">
             ✏️ Modo Edición — Modificando prestación <strong id="edit-num-prestacion"></strong>
             <button onclick="cancelarEdicion()">✕ Cancelar edición</button>
           </div>
-
-          <!-- Aviso solo lectura -->
           <div id="readonly-notice" style="display:none;" class="aviso-lectura">
             👁️ Solo lectura — Esta regional no es la tuya. Puedes ver los datos pero no guardar.
           </div>
@@ -615,9 +603,7 @@ tr:hover td { background: var(--verde-suave); }
           <!-- FORMULARIO COMPLETO -->
           <div class="form-wrap" id="form-prestacion">
 
-            <!-- ========================================== -->
-            <!-- SECCIÓN 1: INFORMACIÓN DE SOLICITUD        -->
-            <!-- ========================================== -->
+            <!-- SECCIÓN 1: INFORMACIÓN DE SOLICITUD -->
             <div class="form-section">
               <div class="form-section-header" onclick="toggleSection(this)">
                 <span>📋</span> INFORMACIÓN DE SOLICITUD
@@ -630,15 +616,14 @@ tr:hover td { background: var(--verde-suave); }
                   <input type="datetime-local" id="f01" />
                 </div>
                 <div class="campo">
-                  <label>N° Prestacion <span class="req">*</span></label>
+                  <label>N° Prestacion</label>
                   <input type="text" id="f02" placeholder="Ej: PS-000123, 2025-001..." />
                 </div>
                 <div class="campo">
                   <label>Reporte de Servicio Por el Call o Regional</label>
                   <select id="f03">
                     <option value="">Seleccionar...</option>
-                    <option>Call</option>
-                    <option>Regional</option>
+                    <option>Call</option><option>Regional</option>
                   </select>
                 </div>
                 <div class="campo ancho">
@@ -710,9 +695,7 @@ tr:hover td { background: var(--verde-suave); }
               </div>
             </div>
 
-            <!-- ========================================== -->
-            <!-- SECCIÓN 2: CONFIGURACIÓN DEL SERVICIO      -->
-            <!-- ========================================== -->
+            <!-- SECCIÓN 2: CONFIGURACIÓN DEL SERVICIO -->
             <div class="form-section">
               <div class="form-section-header" onclick="toggleSection(this)">
                 <span>⚙️</span> CONFIGURACIÓN DEL SERVICIO
@@ -785,10 +768,7 @@ tr:hover td { background: var(--verde-suave); }
                 </div>
                 <div class="campo" id="wrap-motivo" style="display:none;">
                   <label>Motivo</label>
-                  <select id="f24">
-                    <option value="">Seleccionar...</option>
-                    <option>Carencia</option><option>Mora</option><option>Preexistencias</option>
-                  </select>
+                  <select id="f24"><option value="">Seleccionar...</option><option>Carencia</option><option>Mora</option><option>Preexistencias</option></select>
                 </div>
                 <div class="campo" id="wrap-entidad" style="display:none;">
                   <label>Entidad</label>
@@ -877,9 +857,7 @@ tr:hover td { background: var(--verde-suave); }
               </div>
             </div>
 
-            <!-- ========================================== -->
-            <!-- SECCIÓN 3: DATOS DEL FALLECIDO             -->
-            <!-- ========================================== -->
+            <!-- SECCIÓN 3: DATOS DEL FALLECIDO -->
             <div class="form-section">
               <div class="form-section-header" onclick="toggleSection(this)">
                 <span>👤</span> DATOS DEL FALLECIDO
@@ -963,9 +941,7 @@ tr:hover td { background: var(--verde-suave); }
               </div>
             </div>
 
-            <!-- ========================================== -->
-            <!-- SECCIÓN 4: DATOS DE COORDINACION           -->
-            <!-- ========================================== -->
+            <!-- SECCIÓN 4: DATOS DE COORDINACION -->
             <div class="form-section">
               <div class="form-section-header" onclick="toggleSection(this)">
                 <span>🚗</span> DATOS DE COORDINACION
@@ -973,21 +949,11 @@ tr:hover td { background: var(--verde-suave); }
                 <span class="toggle">▼</span>
               </div>
               <div class="form-section-body">
-                <div class="campo">
-                  <label>Fecha De Recogida</label>
-                  <input type="date" id="f56" />
-                </div>
-                <div class="campo">
-                  <label>Hora Recogida</label>
-                  <input type="time" id="f57" />
-                </div>
+                <div class="campo"><label>Fecha De Recogida</label><input type="date" id="f56" /></div>
+                <div class="campo"><label>Hora Recogida</label><input type="time" id="f57" /></div>
                 <div class="campo">
                   <label>Nombre De Quién Recoge</label>
-                  <select id="f58">
-                    <option value="">Seleccionar...</option>
-                    <option>900340724-7 - Jardines Del Renacer</option>
-                    <option>123456789 - Proveedor Externo</option>
-                  </select>
+                  <select id="f58"><option value="">Seleccionar...</option><option>900340724-7 - Jardines Del Renacer</option><option>123456789 - Proveedor Externo</option></select>
                 </div>
                 <div class="campo">
                   <label>(Recogida) Placa Carroza de Jardines del Renacer</label>
@@ -1002,37 +968,13 @@ tr:hover td { background: var(--verde-suave); }
                     <option>No Aplica</option><option>PROVEEDOR</option>
                   </select>
                 </div>
-                <div class="campo">
-                  <label>Traslado Nacional</label>
-                  <select id="f60"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select>
-                </div>
-                <div class="campo">
-                  <label>Preservación Por</label>
-                  <select id="f61">
-                    <option value="">Seleccionar...</option>
-                    <option>900340724-7-JARDINES DEL RENACER</option>
-                  </select>
-                </div>
-                <div class="campo">
-                  <label>Nº Ref de Cofre</label>
-                  <input type="number" id="f62" placeholder="Referencia cofre" />
-                </div>
-                <div class="campo">
-                  <label>Fecha Inicio de Velación</label>
-                  <input type="date" id="f63" />
-                </div>
-                <div class="campo">
-                  <label>Hora Inicio de Velación</label>
-                  <input type="time" id="f64" />
-                </div>
-                <div class="campo">
-                  <label>Fecha Final de Velación</label>
-                  <input type="date" id="f65" />
-                </div>
-                <div class="campo">
-                  <label>Hora Final de Velación</label>
-                  <input type="time" id="f66" />
-                </div>
+                <div class="campo"><label>Traslado Nacional</label><select id="f60"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
+                <div class="campo"><label>Preservación Por</label><select id="f61"><option value="">Seleccionar...</option><option>900340724-7-JARDINES DEL RENACER</option></select></div>
+                <div class="campo"><label>Nº Ref de Cofre</label><input type="number" id="f62" placeholder="Referencia cofre" /></div>
+                <div class="campo"><label>Fecha Inicio de Velación</label><input type="date" id="f63" /></div>
+                <div class="campo"><label>Hora Inicio de Velación</label><input type="time" id="f64" /></div>
+                <div class="campo"><label>Fecha Final de Velación</label><input type="date" id="f65" /></div>
+                <div class="campo"><label>Hora Final de Velación</label><input type="time" id="f66" /></div>
                 <div class="campo">
                   <label>Municipio Velación</label>
                   <select id="f67">
@@ -1069,54 +1011,22 @@ tr:hover td { background: var(--verde-suave); }
                     <option>Valencia Claudia Patricia</option>
                   </select>
                 </div>
-                <div class="campo">
-                  <label>Hora Llegada a Sala de la Aux Cafeteria</label>
-                  <input type="time" id="f70" />
-                </div>
-                <div class="campo">
-                  <label>Arreglo Floral</label>
-                  <select id="f71"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select>
-                </div>
-                <div class="campo">
-                  <label>Carteles</label>
-                  <select id="f72"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select>
-                </div>
-                <div class="campo">
-                  <label>Kit Velación</label>
-                  <select id="f73"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select>
-                </div>
-                <div class="campo">
-                  <label>Cinta Fallecido</label>
-                  <select id="f74"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select>
-                </div>
-                <div class="campo">
-                  <label>Transporte Para Acompañantes</label>
-                  <select id="f75"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select>
-                </div>
+                <div class="campo"><label>Hora Llegada a Sala de la Aux Cafeteria</label><input type="time" id="f70" /></div>
+                <div class="campo"><label>Arreglo Floral</label><select id="f71"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
+                <div class="campo"><label>Carteles</label><select id="f72"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
+                <div class="campo"><label>Kit Velación</label><select id="f73"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
+                <div class="campo"><label>Cinta Fallecido</label><select id="f74"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
+                <div class="campo"><label>Transporte Para Acompañantes</label><select id="f75"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
                 <div class="campo">
                   <label>Nombre de Auxiliar o Proveedor que Pone en Velacion</label>
-                  <select id="f76">
-                    <option value="">Seleccionar...</option>
-                    <option>900340724-7 - Jardines Del Renacer</option>
-                    <option>123456789 - Proveedor Externo</option>
-                  </select>
+                  <select id="f76"><option value="">Seleccionar...</option><option>900340724-7 - Jardines Del Renacer</option><option>123456789 - Proveedor Externo</option></select>
                 </div>
                 <div class="campo">
                   <label>(Velación) Placa Carroza De Jardines Del Renacer</label>
-                  <select id="f77">
-                    <option value="">Seleccionar...</option>
-                    <option>ARN666</option><option>BRZ208</option><option>CGB340</option><option>GJX497</option>
-                    <option>GJX506</option><option>LXZ504</option><option>LXZ505</option><option>No Aplica</option><option>PROVEEDOR</option>
-                  </select>
+                  <select id="f77"><option value="">Seleccionar...</option><option>ARN666</option><option>BRZ208</option><option>CGB340</option><option>GJX497</option><option>GJX506</option><option>LXZ504</option><option>LXZ505</option><option>No Aplica</option><option>PROVEEDOR</option></select>
                 </div>
-                <div class="campo">
-                  <label>Fecha Exequias</label>
-                  <input type="date" id="f78" />
-                </div>
-                <div class="campo">
-                  <label>Hora Exequias</label>
-                  <input type="time" id="f79" />
-                </div>
+                <div class="campo"><label>Fecha Exequias</label><input type="date" id="f78" /></div>
+                <div class="campo"><label>Hora Exequias</label><input type="time" id="f79" /></div>
                 <div class="campo">
                   <label>Lugar Exequias</label>
                   <select id="f80">
@@ -1128,48 +1038,23 @@ tr:hover td { background: var(--verde-suave); }
                     <option>Parroquia Cristo Sacerdote</option><option>Parroquia Maria Auxiliadora</option>
                   </select>
                 </div>
-                <div class="campo">
-                  <label>Fecha Destino Final</label>
-                  <input type="date" id="f81" />
-                </div>
-                <div class="campo">
-                  <label>Hora Destino Final</label>
-                  <input type="time" id="f82" />
-                </div>
+                <div class="campo"><label>Fecha Destino Final</label><input type="date" id="f81" /></div>
+                <div class="campo"><label>Hora Destino Final</label><input type="time" id="f82" /></div>
                 <div class="campo">
                   <label>Destino Final</label>
-                  <select id="f83">
-                    <option value="">Seleccionar...</option>
-                    <option>Boveda</option><option>Boveda Pp</option><option>Cremacion</option><option>Cremación</option>
-                    <option>Fuera De Ciudad</option><option>Inhumación Bóveda</option><option>Inhumación Lote</option>
-                    <option>Lote Pp</option><option>Lote Temporal</option><option>Mausoleo</option>
-                  </select>
+                  <select id="f83"><option value="">Seleccionar...</option><option>Boveda</option><option>Boveda Pp</option><option>Cremacion</option><option>Cremación</option><option>Fuera De Ciudad</option><option>Inhumación Bóveda</option><option>Inhumación Lote</option><option>Lote Pp</option><option>Lote Temporal</option><option>Mausoleo</option></select>
                 </div>
                 <div class="campo">
                   <label>Cementerio</label>
-                  <select id="f84">
-                    <option value="">Seleccionar...</option>
-                    <option>Cementerio Central</option><option>Cementerio Catolico</option>
-                    <option>Campos De Cristo - Soacha</option><option>Campos De Paz - Los Olivos</option>
-                    <option>Cementerio Civil</option><option>Cementerio Comunitario</option>
-                    <option>Cementerio De Los Olivos</option><option>Campo Santo Jardines De La Aurora</option>
-                  </select>
+                  <select id="f84"><option value="">Seleccionar...</option><option>Cementerio Central</option><option>Cementerio Catolico</option><option>Campos De Cristo - Soacha</option><option>Campos De Paz - Los Olivos</option><option>Cementerio Civil</option><option>Cementerio Comunitario</option><option>Cementerio De Los Olivos</option><option>Campo Santo Jardines De La Aurora</option></select>
                 </div>
                 <div class="campo">
                   <label>Quien Culmina</label>
-                  <select id="f85">
-                    <option value="">Seleccionar...</option>
-                    <option>900340724-7 - Jardines Del Renacer</option>
-                    <option>123456789 - Proveedor Externo</option>
-                  </select>
+                  <select id="f85"><option value="">Seleccionar...</option><option>900340724-7 - Jardines Del Renacer</option><option>123456789 - Proveedor Externo</option></select>
                 </div>
                 <div class="campo">
                   <label>(Culminación) Placa Carroza De Jardines Del Renacer</label>
-                  <select id="f86">
-                    <option value="">Seleccionar...</option>
-                    <option>ARN666</option><option>BRZ208</option><option>CGB340</option><option>GJX497</option>
-                    <option>LXZ504</option><option>No Aplica</option><option>PROVEEDOR</option>
-                  </select>
+                  <select id="f86"><option value="">Seleccionar...</option><option>ARN666</option><option>BRZ208</option><option>CGB340</option><option>GJX497</option><option>LXZ504</option><option>No Aplica</option><option>PROVEEDOR</option></select>
                 </div>
                 <div class="campo">
                   <label>Coordinador</label>
@@ -1189,32 +1074,17 @@ tr:hover td { background: var(--verde-suave); }
                 </div>
                 <div class="campo ancho">
                   <label>Firma: Quien Entrega</label>
-                  <div class="firma-wrap">
-                    <canvas id="canvas-firma-entrega" width="700" height="120"></canvas>
-                    <button type="button" class="btn-limpiar-firma" onclick="limpiarFirma('canvas-firma-entrega')">🗑 Limpiar</button>
-                  </div>
+                  <div class="firma-wrap"><canvas id="canvas-firma-entrega" width="700" height="120"></canvas><button type="button" class="btn-limpiar-firma" onclick="limpiarFirma('canvas-firma-entrega')">🗑 Limpiar</button></div>
                 </div>
                 <div class="campo ancho">
                   <label>Firma: Quien Recibe</label>
-                  <div class="firma-wrap">
-                    <canvas id="canvas-firma-recibe" width="700" height="120"></canvas>
-                    <button type="button" class="btn-limpiar-firma" onclick="limpiarFirma('canvas-firma-recibe')">🗑 Limpiar</button>
-                  </div>
+                  <div class="firma-wrap"><canvas id="canvas-firma-recibe" width="700" height="120"></canvas><button type="button" class="btn-limpiar-firma" onclick="limpiarFirma('canvas-firma-recibe')">🗑 Limpiar</button></div>
                 </div>
-                <div class="campo">
-                  <label>Nombre del Agente Call</label>
-                  <input type="text" id="f41" placeholder="Nombre del agente" />
-                </div>
-                <div class="campo ancho">
-                  <label>Foto Del Certificado De Defuncion</label>
-                  <input type="file" id="f98" accept="image/*,.pdf" />
-                </div>
+                <div class="campo"><label>Nombre del Agente Call</label><input type="text" id="f41" placeholder="Nombre del agente" /></div>
+                <div class="campo ancho"><label>Foto Del Certificado De Defuncion</label><input type="file" id="f98" accept="image/*,.pdf" /></div>
                 <div class="campo">
                   <label>Estado De La Prestacion</label>
-                  <select id="f40">
-                    <option value="">Seleccionar...</option>
-                    <option>En proceso</option><option>Finalizado</option><option>Pendiente</option><option>Cancelado</option>
-                  </select>
+                  <select id="f40"><option value="">Seleccionar...</option><option>En proceso</option><option>Finalizado</option><option>Pendiente</option><option>Cancelado</option></select>
                 </div>
                 <div class="campo">
                   <label>Departamento De Muerte</label>
@@ -1225,93 +1095,54 @@ tr:hover td { background: var(--verde-suave); }
                     <option>Risaralda</option><option>Santander</option><option>Tolima</option><option>Valle Del Cauca</option>
                   </select>
                 </div>
-                <div class="campo">
-                  <label>Ciudad De Muerte</label>
-                  <select id="f89"><option value="">Seleccione departamento primero...</option></select>
-                </div>
-                <div class="campo">
-                  <label>Murio En</label>
-                  <select id="f90">
-                    <option value="">Seleccionar...</option>
-                    <option>Domicilio</option><option>Hospital/Clínica</option><option>Vía Pública</option><option>Otro</option>
-                  </select>
-                </div>
-                <div class="campo">
-                  <label>Direccion de Fallecimiento</label>
-                  <input type="text" id="f91" placeholder="Dirección exacta" />
-                </div>
-                <div class="campo">
-                  <label>Fecha Y Hora de Muerte</label>
-                  <input type="datetime-local" id="f92" />
-                </div>
+                <div class="campo"><label>Ciudad De Muerte</label><select id="f89"><option value="">Seleccione departamento primero...</option></select></div>
+                <div class="campo"><label>Murio En</label><select id="f90"><option value="">Seleccionar...</option><option>Domicilio</option><option>Hospital/Clínica</option><option>Vía Pública</option><option>Otro</option></select></div>
+                <div class="campo"><label>Direccion de Fallecimiento</label><input type="text" id="f91" placeholder="Dirección exacta" /></div>
+                <div class="campo"><label>Fecha Y Hora de Muerte</label><input type="datetime-local" id="f92" /></div>
                 <div class="campo">
                   <label>Lugar De Nacimiento</label>
-                  <select id="f93">
-                    <option value="">Seleccionar...</option>
-                    <option>Armenia</option><option>Bogota, D.c.</option><option>Calarca</option><option>Cali</option>
-                    <option>Ibague</option><option>Manizales</option><option>Medellin</option><option>Pereira</option>
-                    <option>Palmira</option><option>Quimbaya</option><option>Tulua</option>
-                  </select>
+                  <select id="f93"><option value="">Seleccionar...</option><option>Armenia</option><option>Bogota, D.c.</option><option>Calarca</option><option>Cali</option><option>Ibague</option><option>Manizales</option><option>Medellin</option><option>Pereira</option><option>Palmira</option><option>Quimbaya</option><option>Tulua</option></select>
                 </div>
                 <div class="campo">
                   <label>Seguridad Social</label>
-                  <select id="f94">
-                    <option value="">Seleccionar...</option>
-                    <option>Contributivo</option><option>Ignorado</option><option>No Tenia</option>
-                    <option>Otro</option><option>Particular</option><option>Pensionado</option>
-                    <option>Sin Informacion</option><option>Subsidiado</option><option>Vinculado</option>
-                  </select>
+                  <select id="f94"><option value="">Seleccionar...</option><option>Contributivo</option><option>Ignorado</option><option>No Tenia</option><option>Otro</option><option>Particular</option><option>Pensionado</option><option>Sin Informacion</option><option>Subsidiado</option><option>Vinculado</option></select>
                 </div>
               </div>
             </div>
 
-            <!-- BOTONES DE ACCIÓN -->
+            <!-- BOTONES -->
             <div class="form-actions">
               <button class="btn-cancelar" onclick="limpiarForm()">🗑 Limpiar</button>
               <button class="btn-cancelar" onclick="cambiarTab('lista')">← Volver a Lista</button>
               <button class="btn-guardar" id="btn-guardar-form" onclick="guardarPrestacion()">💾 Guardar Prestación</button>
             </div>
           </div>
-          <!-- FIN FORMULARIO -->
-
         </div>
-        <!-- FIN TAB NUEVO -->
-
       </div>
-      <!-- FIN VISTA REGIONAL -->
-
     </div>
-    <!-- FIN CONTENT -->
   </div>
-  <!-- FIN MAIN LAYOUT -->
 </div>
-<!-- FIN APP -->
 
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <script>
 /* ================================================================
    ESTADO GLOBAL
    ================================================================ */
-let usuario = null;
-let modoDemo = false;
-let regionalActual = null;
-let prestaciones = [];
-let editandoId = null; // null = creando nuevo, string = editando existente
+var usuario = null;
+var modoDemo = false;
+var regionalActual = null;
+var prestaciones = [];
+var editandoId = null;
 
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpUuh3cVO3SoiuuqN77wH3blzo9oEcCCBby9Pyqsj6fbb5L5YOEs-rgL_dyJp0mCE/exec';
+var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpUuh3cVO3SoiuuqN77wH3blzo9oEcCCBby9Pyqsj6fbb5L5YOEs-rgL_dyJp0mCE/exec';
 
 /* ================================================================
-   MAPEO EXACTO: id del campo en el HTML → nombre de columna en la hoja
-   ================================================================
-   Las 3 columnas de sección se marcan con _sec y SIEMPRE se envían vacías.
-   No se les escribe información jamás.
+   MAPEO EXACTO: id campo HTML → nombre columna hoja de cálculo
+   Las columnas de sección (_sec) SIEMPRE van vacías
    ================================================================ */
-const CAMPO_A_COLUMNA = [
-  /* --- INFORMACIÓN SOLICITUD (columna de sección, vacía) --- */
+var CAMPO_A_COLUMNA = [
   { campo: '_sec1', columna: 'INFORMACIÓN SOLICITUD' },
-  /* --- Campos de solicitud --- */
   { campo: 'f01', columna: 'Fecha Y Hora de Reporte' },
   { campo: 'f02', columna: 'N° Prestacion' },
   { campo: 'f04', columna: 'Observaciones' },
@@ -1329,7 +1160,6 @@ const CAMPO_A_COLUMNA = [
   { campo: 'f15', columna: 'Direccion del Solicitante' },
   { campo: 'f16', columna: 'Nº Telefono Solicitante' },
   { campo: 'f17', columna: 'Fecha Y Hora De Digitacion' },
-  /* --- Configuración del servicio --- */
   { campo: 'f18', columna: 'Regional' },
   { campo: 'f19', columna: 'Departamento De Prestacion' },
   { campo: 'f20', columna: 'Municipio de Prestacion' },
@@ -1352,9 +1182,7 @@ const CAMPO_A_COLUMNA = [
   { campo: 'f37', columna: 'Direccion Responsable a Facturar' },
   { campo: 'f38', columna: 'Nº Telefono Responsable a Facturar' },
   { campo: 'f39', columna: 'Correo Electronico Responsable a Facturar' },
-  /* --- DATOS DEL FALLECIDO (columna de sección, vacía) --- */
   { campo: '_sec2', columna: 'DATOS DEL FALLECIDO' },
-  /* --- Campos del fallecido --- */
   { campo: 'f42', columna: 'Lugar De Fallecimiento' },
   { campo: 'f43', columna: 'Tipo de Muerte' },
   { campo: 'f44', columna: 'Posible causa de muerte' },
@@ -1369,9 +1197,7 @@ const CAMPO_A_COLUMNA = [
   { campo: 'f53', columna: 'Nombre De La Madre' },
   { campo: 'f54', columna: 'Hijos' },
   { campo: 'f55', columna: 'Foto Cedula Fallecido' },
-  /* --- DATOS DE COORDINACION (columna de sección, vacía) --- */
   { campo: '_sec3', columna: 'DATOS DE COORDINACION' },
-  /* --- Campos de coordinación --- */
   { campo: 'f56', columna: 'Fecha De Recogida' },
   { campo: 'f57', columna: 'Hora Recogida' },
   { campo: 'f58', columna: 'Nombre De Quién Recoge' },
@@ -1421,7 +1247,7 @@ const CAMPO_A_COLUMNA = [
 /* ================================================================
    REGIONALES Y MUNICIPIOS
    ================================================================ */
-const REGIONALES = [
+var REGIONALES = [
   { id: 'RISARALDA', label: 'Risaralda', clase: 'risaralda', emoji: '🌉' },
   { id: 'ANTIOQUIA', label: 'Antioquia', clase: 'antioquia', emoji: '🏘️' },
   { id: 'CALDAS', label: 'Caldas', clase: 'caldas', emoji: '🏔️' },
@@ -1437,7 +1263,7 @@ const REGIONALES = [
   { id: 'COTIZACION', label: 'Cotización', clase: 'cotizacion', emoji: '💰' }
 ];
 
-const MUNICIPIOS_POR_DEPARTAMENTO = {
+var MUNICIPIOS = {
   "Quindio": ["Armenia","Buenavista","Calarca","Circasia","Cordoba","Filandia","Genova","La Tebaida","Montenegro","Pijao","Quimbaya","Salento"],
   "Risaralda": ["Pereira","Apia","Balboa","Belen De Umbria","Dosquebradas","Guatica","La Celia","La Virginia","Marsella","Mistrato","Pueblo Rico","Quinchia","Santa Rosa De Cabal","Santuario"],
   "Caldas": ["Manizales","Aguadas","Anserma","Aranzazu","Belalcazar","Chinchina","Filadelfia","La Dorada","La Merced","Manzanares","Marmato","Marquetalia","Neira","Norcasia","Pacora","Palestina","Pensilvania","Riosucio","Risaralda","Salamina","Samana","San Jose","Supia","Victoria","Villamaria","Viterbo"],
@@ -1455,13 +1281,20 @@ const MUNICIPIOS_POR_DEPARTAMENTO = {
 /* ================================================================
    HELPERS
    ================================================================ */
-function $(id) { return document.getElementById(id); }
-function gv(id) { var el = $(id); return el ? el.value : ''; }
+function el(id) {
+  return document.getElementById(id);
+}
+function gv(id) {
+  var e = el(id);
+  return e ? e.value : '';
+}
 
-/* Buscar un valor en los datos crudos de la hoja usando el id del campo */
 function buscarEnRaw(raw, campoId) {
-  var mapeo = CAMPO_A_COLUMNA.find(function(m) { return m.campo === campoId; });
-  if (!mapeo || mapeo.campo.startsWith('_')) return '';
+  var mapeo = null;
+  for (var i = 0; i < CAMPO_A_COLUMNA.length; i++) {
+    if (CAMPO_A_COLUMNA[i].campo === campoId) { mapeo = CAMPO_A_COLUMNA[i]; break; }
+  }
+  if (!mapeo || mapeo.campo.indexOf('_') === 0) return '';
   var col = mapeo.columna;
   if (raw[col] !== undefined && raw[col] !== null && String(raw[col]).trim() !== '') {
     return String(raw[col]).trim();
@@ -1470,66 +1303,47 @@ function buscarEnRaw(raw, campoId) {
 }
 
 /* ================================================================
-   API: COMUNICACIÓN CON GOOGLE APPS SCRIPT
+   API
    ================================================================ */
-
-/* POST (guardar/editar) — usa no-cors, no lee respuesta */
 function apiPost(payload) {
-  if (modoDemo) {
-    console.log('[DEMO] POST payload:', payload.accion);
-    return Promise.resolve({ ok: true });
-  }
+  if (modoDemo) { console.log('[DEMO] POST:', payload.accion); return Promise.resolve({ ok: true }); }
   return fetch(SCRIPT_URL, {
-    method: 'POST',
-    mode: 'no-cors',
+    method: 'POST', mode: 'no-cors',
     headers: { 'Content-Type': 'text/plain' },
     body: JSON.stringify(payload)
-  }).then(function() {
-    return { ok: true };
-  }).catch(function(err) {
-    console.error('[API] Error POST:', err);
-    return { ok: false, error: err.toString() };
-  });
+  }).then(function() { return { ok: true }; })
+    .catch(function(err) { console.error('[API] POST error:', err); return { ok: false, error: err.toString() }; });
 }
 
-/* GET (leer datos) — lee la respuesta JSON */
 function apiGet(payload) {
-  if (modoDemo) {
-    console.log('[DEMO] GET payload:', payload.accion);
-    return Promise.resolve({ ok: true, datos: [] });
-  }
+  if (modoDemo) { console.log('[DEMO] GET:', payload.accion); return Promise.resolve({ ok: true, datos: [] }); }
   var params = new URLSearchParams({ accion: payload.accion, regional: payload.regional || '' });
   return fetch(SCRIPT_URL + '?' + params.toString())
-    .then(function(res) { return res.text(); })
+    .then(function(r) { return r.text(); })
     .then(function(text) {
-      console.log('[API] Respuesta leer:', text.substring(0, 300));
       try { return JSON.parse(text); }
-      catch (e) {
-        console.error('[API] No es JSON:', text.substring(0, 200));
-        return { ok: false, datos: [], error: 'No JSON' };
-      }
+      catch (e) { console.error('[API] No JSON:', text.substring(0, 200)); return { ok: false, datos: [] }; }
     })
-    .catch(function(err) {
-      return { ok: false, datos: [], error: err.toString() };
-    });
+    .catch(function(err) { return { ok: false, datos: [], error: err.toString() }; });
 }
 
 /* ================================================================
-   DEMO: 5 clics en el logo
+   DEMO: 5 clics en logo
    ================================================================ */
 var logoClicks = 0;
 var logoTimer = null;
 
 document.addEventListener('DOMContentLoaded', function() {
-  $('login-logo').addEventListener('click', function() {
-    logoClicks++;
-    clearTimeout(logoTimer);
-    logoTimer = setTimeout(function() { logoClicks = 0; }, 2000);
-    if (logoClicks >= 5) {
-      logoClicks = 0;
-      entrarDemo();
-    }
-  });
+  var logo = el('login-logo');
+  if (logo) {
+    logo.addEventListener('click', function() {
+      logoClicks++;
+      clearTimeout(logoTimer);
+      logoTimer = setTimeout(function() { logoClicks = 0; }, 2000);
+      if (logoClicks >= 5) { logoClicks = 0; entrarDemo(); }
+    });
+  }
+  /* Solo inicializar fecha si el campo existe (puede no existir si no se copió bien el HTML) */
   setFechaAhora();
   aplicarReglasCategoria();
 });
@@ -1544,83 +1358,71 @@ function entrarDemo() {
    LOGIN
    ================================================================ */
 function doLogin() {
-  var u = $('input-usuario').value.trim();
-  var p = $('input-password').value.trim();
-  var errBox = $('login-error-box');
-  var errTitle = $('error-title');
-  var errDetail = $('error-detail');
-  var btn = $('btn-login');
+  var u = el('input-usuario');
+  var p = el('input-password');
+  if (!u || !p) return;
 
-  /* Limpiar estados previos */
+  var uv = u.value.trim();
+  var pv = p.value.trim();
+  var errBox = el('login-error-box');
+  var errTitle = el('error-title');
+  var errDetail = el('error-detail');
+  var btn = el('btn-login');
+
   errBox.style.display = 'none';
-  $('input-usuario').classList.remove('input-error');
-  $('input-password').classList.remove('input-error');
+  u.classList.remove('input-error');
+  p.classList.remove('input-error');
 
-  if (!u || !p) {
+  if (!uv || !pv) {
     errTitle.textContent = '⚠️ Campos vacíos';
-    errDetail.textContent = 'Ingresa usuario y contraseña para continuar.';
+    errDetail.textContent = 'Ingresa usuario y contraseña.';
     errBox.style.display = 'block';
-    if (!u) $('input-usuario').classList.add('input-error');
-    if (!p) $('input-password').classList.add('input-error');
+    if (!uv) u.classList.add('input-error');
+    if (!pv) p.classList.add('input-error');
     return;
   }
 
   btn.disabled = true;
   btn.textContent = '⏳ Verificando...';
 
-  var params = new URLSearchParams({ accion: 'login', usuario: u, password: p });
+  var params = new URLSearchParams({ accion: 'login', usuario: uv, password: pv });
   var url = SCRIPT_URL + '?' + params.toString();
 
-  fetch(url)
-    .then(function(res) { return res.text(); })
-    .then(function(text) {
-      var contentType = '';
-      /* No podemos leer headers fácilmente, verificamos el contenido */
-      if (text.trim().startsWith('<') && !text.trim().startsWith('{')) {
-        errTitle.textContent = '❌ Error del servidor de Google';
-        errDetail.textContent = 'Apps Script devolvió HTML en vez de JSON.\n\nVerifica:\n• Ejecutar como: Yo\n• Acceso: Cualquier persona\n• URL del script correcta\n\nURL: ' + url;
-        errBox.style.display = 'block';
-        btn.disabled = false;
-        btn.textContent = 'Entrar →';
-        return;
-      }
-
-      var data;
-      try { data = JSON.parse(text); }
-      catch (e) {
-        errTitle.textContent = '❌ Respuesta inválida';
-        errDetail.textContent = 'Contenido recibido: "' + text.substring(0, 200) + '"';
-        errBox.style.display = 'block';
-        btn.disabled = false;
-        btn.textContent = 'Entrar →';
-        return;
-      }
-
-      if (data.ok) {
-        modoDemo = false;
-        entrar({
-          nombre: data.nombre || data.usuario || u,
-          regional: (data.regional || 'QUINDIO').toUpperCase(),
-          rol: data.rol,
-          usuario: data.usuario || u
-        });
-      } else {
-        errTitle.textContent = '❌ ' + (data.error || 'Credenciales incorrectas');
-        errDetail.textContent = 'Verifica el usuario "' + u + '" en la hoja de usuarios.\nError: ' + (data.error || 'Sin mensaje');
-        errBox.style.display = 'block';
-        $('input-usuario').classList.add('input-error');
-        $('input-password').classList.add('input-error');
-        btn.disabled = false;
-        btn.textContent = 'Entrar →';
-      }
-    })
-    .catch(function(e) {
-      errTitle.textContent = '⚠️ Error de conexión';
-      errDetail.textContent = 'No se pudo conectar con Google Apps Script.\nError: ' + e.message + '\n\nUsa "Modo Demo" para probar sin servidor.';
+  fetch(url).then(function(res) { return res.text(); }).then(function(text) {
+    if (text.trim().charAt(0) === '<') {
+      errTitle.textContent = '❌ Error del servidor';
+      errDetail.textContent = 'Apps Script devolvió HTML.\nVerifica: Ejecutar como: Yo + Acceso: Cualquier persona';
       errBox.style.display = 'block';
-      btn.disabled = false;
-      btn.textContent = 'Entrar →';
-    });
+      errDetail.style.whiteSpace = 'pre-wrap';
+      btn.disabled = false; btn.textContent = 'Entrar →';
+      return;
+    }
+    var data;
+    try { data = JSON.parse(text); } catch (e) {
+      errTitle.textContent = '❌ Respuesta inválida';
+      errDetail.textContent = 'Contenido: "' + text.substring(0, 200) + '"';
+      errBox.style.display = 'block';
+      btn.disabled = false; btn.textContent = 'Entrar →';
+      return;
+    }
+    if (data.ok) {
+      modoDemo = false;
+      entrar({ nombre: data.nombre || data.usuario || uv, regional: (data.regional || 'QUINDIO').toUpperCase(), rol: data.rol, usuario: data.usuario || uv });
+    } else {
+      errTitle.textContent = '❌ ' + (data.error || 'Credenciales incorrectas');
+      errDetail.textContent = 'Verifica el usuario "' + uv + '" en la hoja.';
+      errBox.style.display = 'block';
+      u.classList.add('input-error');
+      p.classList.add('input-error');
+      btn.disabled = false; btn.textContent = 'Entrar →';
+    }
+  }).catch(function(e) {
+    errTitle.textContent = '⚠️ Error de conexión';
+    errDetail.textContent = e.message + '\nUsa "Modo Demo" para probar.';
+    errBox.style.display = 'block';
+    errDetail.style.whiteSpace = 'pre-wrap';
+    btn.disabled = false; btn.textContent = 'Entrar →';
+  });
 }
 
 /* ================================================================
@@ -1628,46 +1430,44 @@ function doLogin() {
    ================================================================ */
 function entrar(data) {
   usuario = data;
-  $('login-screen').style.display = 'none';
-  $('app').style.display = 'block';
-  $('topbar-regional').textContent = usuario.regional;
-  $('topbar-nombre').textContent = usuario.nombre;
-  $('topbar-avatar').textContent = (usuario.nombre || 'A')[0].toUpperCase();
-  $('demo-indicator').style.display = modoDemo ? 'inline-block' : 'none';
+  el('login-screen').style.display = 'none';
+  el('app').style.display = 'block';
+  el('topbar-regional').textContent = usuario.regional;
+  el('topbar-nombre').textContent = usuario.nombre;
+  el('topbar-avatar').textContent = (usuario.nombre || 'A')[0].toUpperCase();
+  el('demo-indicator').style.display = modoDemo ? 'inline-block' : 'none';
   initFirma('canvas-firma-entrega');
   initFirma('canvas-firma-recibe');
   renderMenu();
   actualizarStats();
   mostrarVista('menu');
-  if (modoDemo) {
-    mostrarToast('🛠️ Modo Demo activado — Los datos no se guardan en Sheets', 'info');
-  }
+  if (modoDemo) mostrarToast('🛠️ Modo Demo — Los datos no se guardan en Sheets', 'info');
 }
 
 function cerrarSesion() {
   usuario = null;
   modoDemo = false;
   editandoId = null;
-  $('app').style.display = 'none';
-  $('login-screen').style.display = 'flex';
-  $('input-usuario').value = '';
-  $('input-password').value = '';
-  $('login-error-box').style.display = 'none';
-  $('btn-login').disabled = false;
-  $('btn-login').textContent = 'Entrar →';
+  el('app').style.display = 'none';
+  el('login-screen').style.display = 'flex';
+  el('input-usuario').value = '';
+  el('input-password').value = '';
+  el('login-error-box').style.display = 'none';
+  el('btn-login').disabled = false;
+  el('btn-login').textContent = 'Entrar →';
 }
 
 /* ================================================================
-   MENÚ PRINCIPAL
+   MENÚ
    ================================================================ */
 function renderMenu() {
-  var grid = $('menu-grid');
+  var grid = el('menu-grid');
+  if (!grid) return;
   grid.innerHTML = REGIONALES.map(function(r) {
-    var esMiRegional = r.id === usuario.regional;
     return '<div class="menu-card" onclick="mostrarRegional(\'' + r.id + '\')">' +
       '<div class="menu-card-img ' + r.clase + '">' +
         r.emoji +
-        (esMiRegional ? '<span class="mi-regional-badge">MI REGIONAL</span>' : '') +
+        (r.id === usuario.regional ? '<span class="mi-regional-badge">MI REGIONAL</span>' : '') +
       '</div>' +
       '<div class="menu-card-label">' + r.label + '<span class="arrow">›</span></div>' +
     '</div>';
@@ -1676,26 +1476,31 @@ function renderMenu() {
 
 function actualizarStats() {
   var hoy = new Date().toDateString();
-  $('stat-total').textContent = prestaciones.length;
-  $('stat-hoy').textContent = prestaciones.filter(function(p) {
+  var stTotal = el('stat-total');
+  var stHoy = el('stat-hoy');
+  var stMi = el('stat-mi-regional');
+  if (stTotal) stTotal.textContent = prestaciones.length;
+  if (stHoy) stHoy.textContent = prestaciones.filter(function(p) {
     try { return new Date(p.fechaReporte).toDateString() === hoy; } catch(e) { return false; }
   }).length;
-  $('stat-mi-regional').textContent = prestaciones.filter(function(p) {
-    return p.regional === usuario.regional;
-  }).length;
+  if (stMi) stMi.textContent = prestaciones.filter(function(p) { return p.regional === (usuario ? usuario.regional : ''); }).length;
 }
 
 /* ================================================================
-   NAVEGACIÓN
+   NAVEGACIÓN — Todas con protecciones null
    ================================================================ */
 function mostrarVista(vista) {
-  $('vista-menu').style.display = vista === 'menu' ? 'block' : 'none';
-  $('vista-regional').style.display = vista === 'regional' ? 'block' : 'none';
-  /* Desactivar todos los items del sidebar */
+  var vm = el('vista-menu');
+  var vr = el('vista-regional');
+  if (vm) vm.style.display = vista === 'menu' ? 'block' : 'none';
+  if (vr) vr.style.display = vista === 'regional' ? 'block' : 'none';
+
   var items = document.querySelectorAll('.sidebar-item');
-  items.forEach(function(i) { i.classList.remove('active'); });
+  for (var i = 0; i < items.length; i++) items[i].classList.remove('active');
+
   if (vista === 'menu') {
-    $('nav-menu').classList.add('active');
+    var navMenu = el('nav-menu');
+    if (navMenu) navMenu.classList.add('active');
     cancelarEdicion();
   }
 }
@@ -1704,33 +1509,44 @@ function mostrarRegional(regional) {
   regionalActual = regional;
   cancelarEdicion();
 
-  var r = REGIONALES.find(function(x) { return x.id === regional; });
-  $('regional-titulo').textContent = r ? r.label.toUpperCase() : regional;
-
-  var esMiRegional = regional === usuario.regional;
-  $('btn-nuevo-top').disabled = !esMiRegional;
-
-  /* Aviso de solo lectura si no es mi regional */
-  if (!esMiRegional) {
-    $('aviso-lectura-wrap').innerHTML = '<div class="aviso-lectura">👁️ Estás viendo <strong>' + (r ? r.label : regional) + '</strong>. Solo lectura — tu regional es <strong>' + usuario.regional + '</strong>.</div>';
-  } else {
-    $('aviso-lectura-wrap').innerHTML = '';
+  var r = null;
+  for (var i = 0; i < REGIONALES.length; i++) {
+    if (REGIONALES[i].id === regional) { r = REGIONALES[i]; break; }
   }
 
-  /* Controles de solo lectura */
-  $('readonly-notice').style.display = esMiRegional ? 'none' : 'flex';
-  $('btn-guardar-form').disabled = !esMiRegional;
-  $('btn-guardar-form').style.opacity = esMiRegional ? '1' : '0.4';
-  $('tab-nuevo').style.opacity = esMiRegional ? '1' : '0.5';
+  var titulo = el('regional-titulo');
+  if (titulo) titulo.textContent = r ? r.label.toUpperCase() : regional;
 
-  if (esMiRegional) {
-    $('f18').value = regional;
+  var esMiRegional = regional === (usuario ? usuario.regional : '');
+
+  var btnNuevoTop = el('btn-nuevo-top');
+  if (btnNuevoTop) btnNuevoTop.disabled = !esMiRegional;
+
+  /* Aviso de solo lectura */
+  var avisoWrap = el('aviso-lectura-wrap');
+  if (avisoWrap) {
+    if (!esMiRegional) {
+      avisoWrap.innerHTML = '<div class="aviso-lectura">👁️ Estás viendo <strong>' + (r ? r.label : regional) + '</strong>. Solo lectura — tu regional es <strong>' + (usuario ? usuario.regional : '') + '</strong>.</div>';
+    } else {
+      avisoWrap.innerHTML = '';
+    }
   }
 
-  /* Activar sidebar */
+  /* Controles de formulario */
+  var readonlyNotice = el('readonly-notice');
+  var btnGuardar = el('btn-guardar-form');
+  var tabNuevo = el('tab-nuevo');
+  var f18 = el('f18');
+
+  if (readonlyNotice) readonlyNotice.style.display = esMiRegional ? 'none' : 'flex';
+  if (btnGuardar) { btnGuardar.disabled = !esMiRegional; btnGuardar.style.opacity = esMiRegional ? '1' : '0.4'; }
+  if (tabNuevo) tabNuevo.style.opacity = esMiRegional ? '1' : '0.5';
+  if (f18 && esMiRegional) f18.value = regional;
+
+  /* Sidebar activo */
   var items = document.querySelectorAll('.sidebar-item');
-  items.forEach(function(i) { i.classList.remove('active'); });
-  var navItem = $('nav-' + regional);
+  for (var j = 0; j < items.length; j++) items[j].classList.remove('active');
+  var navItem = el('nav-' + regional);
   if (navItem) navItem.classList.add('active');
 
   cambiarTab('lista');
@@ -1739,10 +1555,11 @@ function mostrarRegional(regional) {
 }
 
 /* ================================================================
-   CARGAR PRESTACIONES DESDE GOOGLE SHEETS
+   CARGAR PRESTACIONES
    ================================================================ */
 function cargarPrestaciones(regional) {
-  var tbody = $('tabla-body');
+  var tbody = el('tabla-body');
+  if (!tbody) return;
   tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--gris)"><div style="font-size:24px;margin-bottom:8px">⏳</div>Cargando...</td></tr>';
 
   apiGet({ accion: 'leer', regional: regional }).then(function(res) {
@@ -1763,9 +1580,7 @@ function cargarPrestaciones(regional) {
       });
     } else {
       prestaciones = [];
-      if (res && res.error && !modoDemo) {
-        mostrarToast('⚠️ Error al leer: ' + res.error.substring(0, 80), 'error');
-      }
+      if (res && res.error && !modoDemo) mostrarToast('⚠️ Error al leer: ' + res.error.substring(0, 80), 'error');
     }
     actualizarStats();
     renderTabla();
@@ -1776,355 +1591,278 @@ function cargarPrestaciones(regional) {
    TABS
    ================================================================ */
 function cambiarTab(tab) {
-  /* Si cambiamos a lista y estábamos editando, cancelar edición */
-  if (tab === 'lista' && editandoId !== null) {
-    cancelarEdicion();
-  }
+  if (tab === 'lista' && editandoId !== null) cancelarEdicion();
 
-  $('tc-lista').style.display = tab === 'lista' ? 'block' : 'none';
-  $('tc-nuevo').style.display = tab === 'nuevo' ? 'block' : 'none';
-  $('tab-lista').classList.toggle('active', tab === 'lista');
-  $('tab-nuevo').classList.toggle('active', tab === 'nuevo');
+  var tcLista = el('tc-lista');
+  var tcNuevo = el('tc-nuevo');
+  var tabLista = el('tab-lista');
+  var tabNuevo = el('tab-nuevo');
 
-  /* Si es nuevo (no edición), poner fecha actual */
+  if (tcLista) tcLista.style.display = tab === 'lista' ? 'block' : 'none';
+  if (tcNuevo) tcNuevo.style.display = tab === 'nuevo' ? 'block' : 'none';
+  if (tabLista) { tabLista.classList.toggle('active', tab === 'lista'); }
+  if (tabNuevo) { tabNuevo.classList.toggle('active', tab === 'nuevo'); }
+
   if (tab === 'nuevo' && editandoId === null) {
     setFechaAhora();
-    $('f17').value = $('f01').value;
+    var f17 = el('f17');
+    var f01 = el('f01');
+    if (f17 && f01) f17.value = f01.value;
   }
 }
 
 /* ================================================================
-   TABLA DE REGISTROS
+   TABLA
    ================================================================ */
 function renderTabla(filtro) {
   filtro = filtro || '';
-  var esMiRegional = regionalActual === usuario.regional;
+  var esMiRegional = regionalActual === (usuario ? usuario.regional : '');
+  var tbody = el('tabla-body');
+  if (!tbody) return;
 
   var datos = prestaciones.filter(function(p) {
-    var esRegional = p.regional === regionalActual;
-    var coincide = !filtro ||
+    var esReg = p.regional === regionalActual;
+    var coinc = !filtro ||
       (p.nombreFallecido || '').toLowerCase().indexOf(filtro.toLowerCase()) !== -1 ||
       (p.apellidosFallecido || '').toLowerCase().indexOf(filtro.toLowerCase()) !== -1 ||
       (p.numContrato || '').toLowerCase().indexOf(filtro.toLowerCase()) !== -1 ||
       (p.numPrestacion || '').toLowerCase().indexOf(filtro.toLowerCase()) !== -1 ||
       (p.sede || '').toLowerCase().indexOf(filtro.toLowerCase()) !== -1;
-    return esRegional && coincide;
+    return esReg && coinc;
   });
-
-  var tbody = $('tabla-body');
 
   if (datos.length === 0) {
     tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--gris)"><div style="font-size:32px;margin-bottom:8px">📋</div>No hay registros' + (filtro ? ' con ese filtro' : '') + '</td></tr>';
     return;
   }
 
-  /* Mostrar del más reciente al más antiguo */
   var invertidos = datos.slice().reverse();
-
   tbody.innerHTML = invertidos.map(function(p) {
     var nombre = [p.nombreFallecido, p.apellidosFallecido].filter(Boolean).join(' ') || '—';
     var fecha = '—';
-    try {
-      if (p.fechaReporte) {
-        fecha = new Date(p.fechaReporte).toLocaleString('es-CO', { dateStyle: 'short', timeStyle: 'short' });
-      }
-    } catch(e) {}
-
+    try { if (p.fechaReporte) fecha = new Date(p.fechaReporte).toLocaleString('es-CO', { dateStyle: 'short', timeStyle: 'short' }); } catch(e) {}
     var est = (p.estadoPrestacion || 'En proceso').toLowerCase();
-    var estadoClase = 'estado-activo';
-    if (est.indexOf('finaliz') !== -1) estadoClase = 'estado-finalizado';
-    else if (est.indexOf('pendien') !== -1) estadoClase = 'estado-pendiente';
-    else if (est.indexOf('cancel') !== -1) estadoClase = 'estado-cancelado';
-
-    var btnAccion;
-    if (esMiRegional) {
-      btnAccion = '<button class="btn-editar" onclick="editarPrestacion(\'' + p.id + '\')">✏️ Editar</button>';
-    } else {
-      btnAccion = '<button class="btn-ver" onclick="verSoloLectura(\'' + p.id + '\')">👁️ Ver</button>';
-    }
-
-    return '<tr>' +
-      '<td><code style="font-family:\'DM Mono\',monospace;font-size:12px">' + (p.numPrestacion || '—') + '</code></td>' +
-      '<td><strong>' + nombre + '</strong></td>' +
-      '<td style="color:var(--gris);font-size:12.5px">' + fecha + '</td>' +
-      '<td>' + (p.sede || '—') + '</td>' +
-      '<td><span class="estado-chip ' + estadoClase + '">' + (p.estadoPrestacion || 'En proceso') + '</span></td>' +
-      '<td>' + btnAccion + '</td>' +
-    '</tr>';
+    var ec = 'estado-activo';
+    if (est.indexOf('finaliz') !== -1) ec = 'estado-finalizado';
+    else if (est.indexOf('pendien') !== -1) ec = 'estado-pendiente';
+    else if (est.indexOf('cancel') !== -1) ec = 'estado-cancelado';
+    var btn = esMiRegional
+      ? '<button class="btn-editar" onclick="editarPrestacion(\'' + p.id + '\')">✏️ Editar</button>'
+      : '<button class="btn-ver" onclick="verSoloLectura(\'' + p.id + '\')">👁️ Ver</button>';
+    return '<tr><td><code style="font-family:\'DM Mono\',monospace;font-size:12px">' + (p.numPrestacion || '—') + '</code></td><td><strong>' + nombre + '</strong></td><td style="color:var(--gris);font-size:12.5px">' + fecha + '</td><td>' + (p.sede || '—') + '</td><td><span class="estado-chip ' + ec + '">' + (p.estadoPrestacion || 'En proceso') + '</span></td><td>' + btn + '</td></tr>';
   }).join('');
 }
 
-function filtrarTabla(valor) {
-  renderTabla(valor);
-}
+function filtrarTabla(v) { renderTabla(v); }
 
 /* ================================================================
-   VER SOLO LECTURA (MODAL) — Para regionales que no son del usuario
+   VER SOLO LECTURA (MODAL)
    ================================================================ */
 function verSoloLectura(id) {
-  var p = prestaciones.find(function(x) { return x.id === id; });
+  var p = null;
+  for (var i = 0; i < prestaciones.length; i++) { if (prestaciones[i].id === id) { p = prestaciones[i]; break; } }
   if (!p) return;
-
   var raw = p._raw || {};
 
-  /* Separar campos por sección usando los índices del mapeo */
-  var idxSec1 = 0;
-  var idxSec2 = CAMPO_A_COLUMNA.findIndex(function(m) { return m.campo === '_sec2'; });
-  var idxSec3 = CAMPO_A_COLUMNA.findIndex(function(m) { return m.campo === '_sec3'; });
-
-  function camposDeSeccion(desde, hasta) {
-    return CAMPO_A_COLUMNA.filter(function(m, i) {
-      return !m.campo.startsWith('_') && i > desde && i < hasta;
-    });
+  var idxSec2 = -1, idxSec3 = -1;
+  for (var j = 0; j < CAMPO_A_COLUMNA.length; j++) {
+    if (CAMPO_A_COLUMNA[j].campo === '_sec2') idxSec2 = j;
+    if (CAMPO_A_COLUMNA[j].campo === '_sec3') idxSec3 = j;
   }
 
-  var sec1 = camposDeSeccion(idxSec1, idxSec2);
-  var sec2 = camposDeSeccion(idxSec2, idxSec3);
-  var sec3 = camposDeSeccion(idxSec3, CAMPO_A_COLUMNA.length);
-
-  function renderCampos(lista) {
-    return lista.map(function(m) {
-      var val = raw[m.columna] || '';
-      if (!val) return '';
-      return '<div class="detalle-campo"><span class="detalle-label">' + m.columna + '</span><span class="detalle-valor">' + val + '</span></div>';
+  function camposSeccion(desde, hasta) {
+    var arr = [];
+    for (var k = 0; k < CAMPO_A_COLUMNA.length; k++) {
+      if (k > desde && k < hasta && CAMPO_A_COLUMNA[k].campo.indexOf('_') !== 0) arr.push(CAMPO_A_COLUMNA[k]);
+    }
+    return arr;
+  }
+  function renderC(cols) {
+    return cols.map(function(m) {
+      var v = raw[m.columna] || '';
+      if (!v) return '';
+      return '<div class="detalle-campo"><span class="detalle-label">' + m.columna + '</span><span class="detalle-valor">' + v + '</span></div>';
     }).join('');
   }
 
-  var html = '<div class="modal-section-title">INFORMACIÓN DE SOLICITUD</div><div class="detalle-grid">' + renderCampos(sec1) + '</div>';
-  html += '<div class="modal-section-title">DATOS DEL FALLECIDO</div><div class="detalle-grid">' + renderCampos(sec2) + '</div>';
-  html += '<div class="modal-section-title">DATOS DE COORDINACION</div><div class="detalle-grid">' + renderCampos(sec3) + '</div>';
+  var html = '<div class="modal-section-title">INFORMACIÓN DE SOLICITUD</div><div class="detalle-grid">' + renderC(camposSeccion(0, idxSec2)) + '</div>';
+  html += '<div class="modal-section-title">DATOS DEL FALLECIDO</div><div class="detalle-grid">' + renderC(camposSeccion(idxSec2, idxSec3)) + '</div>';
+  html += '<div class="modal-section-title">DATOS DE COORDINACION</div><div class="detalle-grid">' + renderC(camposSeccion(idxSec3, CAMPO_A_COLUMNA.length)) + '</div>';
 
-  /* Eliminar modal anterior si existe */
-  var existente = $('modal-dinamico');
+  var existente = el('modal-dinamico');
   if (existente) existente.remove();
-
-  /* Crear modal */
   var modal = document.createElement('div');
   modal.id = 'modal-dinamico';
   modal.className = 'modal-detalle';
-  modal.innerHTML =
-    '<div class="modal-overlay" onclick="cerrarModal()"></div>' +
-    '<div class="modal-box">' +
-      '<div class="modal-header">' +
-        '<h3>📋 ' + (p.nombreFallecido || '') + ' ' + (p.apellidosFallecido || '') +
-        ' <span style="font-size:13px;font-family:\'DM Sans\';color:var(--gris);font-weight:400;margin-left:8px">' + (p.numPrestacion || '') + '</span></h3>' +
-        '<button onclick="cerrarModal()" class="modal-cerrar">✕</button>' +
-      '</div>' +
-      '<div class="modal-body">' + html + '</div>' +
-    '</div>';
-
+  modal.innerHTML = '<div class="modal-overlay" onclick="cerrarModal()"></div><div class="modal-box"><div class="modal-header"><h3>📋 ' + (p.nombreFallecido || '') + ' ' + (p.apellidosFallecido || '') + ' <span style="font-size:13px;font-family:\'DM Sans\';color:var(--gris);font-weight:400;margin-left:8px">' + (p.numPrestacion || '') + '</span></h3><button onclick="cerrarModal()" class="modal-cerrar">✕</button></div><div class="modal-body">' + html + '</div></div>';
   document.body.appendChild(modal);
   setTimeout(function() { modal.classList.add('show'); }, 10);
 }
 
-function cerrarModal() {
-  var m = $('modal-dinamico');
-  if (m) m.remove();
-}
+function cerrarModal() { var m = el('modal-dinamico'); if (m) m.remove(); }
 
 /* ================================================================
-   EDITAR PRESTACIÓN — Carga TODOS los campos en el formulario
+   EDITAR — Carga TODOS los campos en el formulario
    ================================================================ */
 function editarPrestacion(id) {
-  var p = prestaciones.find(function(x) { return x.id === id; });
+  var p = null;
+  for (var i = 0; i < prestaciones.length; i++) { if (prestaciones[i].id === id) { p = prestaciones[i]; break; } }
   if (!p) return;
 
   var raw = p._raw || {};
   editandoId = id;
-
-  /* Limpiar formulario sin disparar cancelarEdicion */
   limpiarFormularioSilencioso();
 
-  /* Llenar cada campo del formulario con el dato de la hoja */
+  /* Llenar cada campo */
   CAMPO_A_COLUMNA.forEach(function(mapeo) {
-    /* Saltar columnas de sección y firmas */
-    if (mapeo.campo.startsWith('_')) return;
-
-    var el = $(mapeo.campo);
-    if (!el) return;
-
+    if (mapeo.campo.indexOf('_') === 0) return;
+    var elem = el(mapeo.campo);
+    if (!elem) return;
     var val = raw[mapeo.columna];
     if (val === undefined || val === null) return;
     var s = String(val).trim();
     if (!s) return;
 
-    /* Para selects, intentar coincidencia */
-    if (el.tagName === 'SELECT') {
+    if (elem.tagName === 'SELECT') {
       var encontrado = false;
-      /* Primero buscar por valor */
-      for (var i = 0; i < el.options.length; i++) {
-        if (el.options[i].value && el.options[i].value.toUpperCase() === s.toUpperCase()) {
-          el.value = el.options[i].value;
-          encontrado = true;
-          break;
-        }
+      for (var i = 0; i < elem.options.length; i++) {
+        if (elem.options[i].value && elem.options[i].value.toUpperCase() === s.toUpperCase()) { elem.value = elem.options[i].value; encontrado = true; break; }
       }
-      /* Si no, buscar por texto visible */
       if (!encontrado) {
-        for (var j = 0; j < el.options.length; j++) {
-          if (el.options[j].text && el.options[j].text.toUpperCase() === s.toUpperCase()) {
-            el.value = el.options[j].value;
-            encontrado = true;
-            break;
-          }
+        for (var j = 0; j < elem.options.length; j++) {
+          if (elem.options[j].text && elem.options[j].text.toUpperCase() === s.toUpperCase()) { elem.value = elem.options[j].value; encontrado = true; break; }
         }
       }
     } else {
-      el.value = s;
+      elem.value = s;
     }
   });
 
-  /* Disparar cascadas para selects dependientes */
   filtrarMunicipios();
   filtrarMunicipiosMuerte();
   aplicarReglasCategoria();
 
-  /* UI: Mostrar banner de edición */
-  $('aviso-edicion-banner').style.display = 'flex';
-  $('edit-num-prestacion').textContent = p.numPrestacion || '(sin N°)';
+  var banner = el('aviso-edicion-banner');
+  var editNum = el('edit-num-prestacion');
+  var btnGuardar = el('btn-guardar-form');
 
-  var btnGuardar = $('btn-guardar-form');
-  btnGuardar.textContent = '💾 Actualizar Prestación';
-  btnGuardar.classList.add('actualizando');
+  if (banner) banner.style.display = 'flex';
+  if (editNum) editNum.textContent = p.numPrestacion || '(sin N°)';
+  if (btnGuardar) { btnGuardar.textContent = '💾 Actualizar Prestación'; btnGuardar.classList.add('actualizando'); }
 
-  /* Cambiar a tab del formulario */
-  $('tc-lista').style.display = 'none';
-  $('tc-nuevo').style.display = 'block';
-  $('tab-lista').classList.remove('active');
-  $('tab-nuevo').classList.add('active');
+  var tcLista = el('tc-lista');
+  var tcNuevo = el('tc-nuevo');
+  var tabLista = el('tab-lista');
+  var tabNuevo = el('tab-nuevo');
+  var formPre = el('form-prestacion');
 
-  /* Scroll al inicio del formulario */
-  $('form-prestacion').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (tcLista) tcLista.style.display = 'none';
+  if (tcNuevo) tcNuevo.style.display = 'block';
+  if (tabLista) tabLista.classList.remove('active');
+  if (tabNuevo) tabNuevo.classList.add('active');
+  if (formPre) formPre.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-  mostrarToast('✏️ Modo edición — Modifica los campos y guarda', 'info');
-}
-
-function cancelarEdicion() {
-  editandoId = null;
-  $('aviso-edicion-banner').style.display = 'none';
-  var btnGuardar = $('btn-guardar-form');
-  btnGuardar.textContent = '💾 Guardar Prestación';
-  btnGuardar.classList.remove('actualizando');
+  mostrarToast('✏️ Modo edición — Modifica y guarda', 'info');
 }
 
 /* ================================================================
-   CONSTRUIR PAYLOAD — Arma el objeto con TODOS los campos
-   para enviar a Google Sheets (tanto guardar como editar)
+   CANCELAR EDICIÓN — Con protecciones null (causa del error)
+   ================================================================ */
+function cancelarEdicion() {
+  editandoId = null;
+  var banner = el('aviso-edicion-banner');
+  if (banner) banner.style.display = 'none';
+
+  var btnGuardar = el('btn-guardar-form');
+  if (btnGuardar) {
+    btnGuardar.textContent = '💾 Guardar Prestación';
+    btnGuardar.classList.remove('actualizando');
+  }
+}
+
+/* ================================================================
+   CONSTRUIR PAYLOAD
    ================================================================ */
 function construirPayload() {
   var payload = {};
-
   CAMPO_A_COLUMNA.forEach(function(mapeo) {
-    /* Columnas de sección: SIEMPRE vacías, nunca con contenido */
     if (mapeo.campo === '_sec1' || mapeo.campo === '_sec2' || mapeo.campo === '_sec3') {
       payload[mapeo.columna] = '';
       return;
     }
-
-    /* Firmas: canvas como data URL */
     if (mapeo.campo === '_firma_entrega') {
-      var canvasE = $('canvas-firma-entrega');
-      payload[mapeo.columna] = canvasE ? canvasE.toDataURL('image/png') : '';
+      var cE = el('canvas-firma-entrega');
+      payload[mapeo.columna] = cE ? cE.toDataURL('image/png') : '';
       return;
     }
     if (mapeo.campo === '_firma_recibe') {
-      var canvasR = $('canvas-firma-recibe');
-      payload[mapeo.columna] = canvasR ? canvasR.toDataURL('image/png') : '';
+      var cR = el('canvas-firma-recibe');
+      payload[mapeo.columna] = cR ? cR.toDataURL('image/png') : '';
       return;
     }
-
-    /* Archivos: no se envían como texto */
     if (mapeo.campo === 'f55' || mapeo.campo === 'f98') {
       payload[mapeo.columna] = '(archivo adjunto)';
       return;
     }
-
-    /* Campos normales: leer valor del input/select/textarea */
-    var el = $(mapeo.campo);
-    payload[mapeo.columna] = el ? el.value : '';
+    var elem = el(mapeo.campo);
+    payload[mapeo.columna] = elem ? elem.value : '';
   });
-
   return payload;
 }
 
 /* ================================================================
-   GUARDAR PRESTACIÓN (NUEVA o ACTUALIZAR)
+   GUARDAR PRESTACIÓN
    ================================================================ */
 function guardarPrestacion() {
-  if (regionalActual !== usuario.regional) {
+  if (regionalActual !== (usuario ? usuario.regional : '')) {
     mostrarToast('Sin permiso para guardar en esta regional', 'error');
     return;
   }
 
-  /* Validaciones */
-  var numP = gv('f02').trim();
+  /* N° Prestacion NO es obligatorio — solo validar nombre y fecha */
   var nombre = gv('f05').trim();
   var fecha = gv('f01');
+  var contrato = gv('f11').trim();
 
-  if (!numP) {
-    mostrarToast('El N° Prestacion es requerido', 'error');
-    $('f02').focus();
-    return;
-  }
-  if (!nombre) {
-    mostrarToast('El nombre del fallecido es requerido', 'error');
-    $('f05').focus();
-    return;
-  }
-  if (!fecha) {
-    mostrarToast('La fecha de reporte es requerida', 'error');
-    $('f01').focus();
-    return;
-  }
+  if (!nombre) { mostrarToast('El nombre del fallecido es requerido', 'error'); var e5 = el('f05'); if (e5) e5.focus(); return; }
+  if (!fecha) { mostrarToast('La fecha de reporte es requerida', 'error'); var e1 = el('f01'); if (e1) e1.focus(); return; }
+  if (!contrato) { mostrarToast('El Nº de Contrato es requerido', 'error'); var e11 = el('f11'); if (e11) e11.focus(); return; }
 
-  /* Construir payload con TODOS los campos */
   var payload = construirPayload();
-  var btnGuardar = $('btn-guardar-form');
-
-  btnGuardar.disabled = true;
-  btnGuardar.textContent = '⏳ Guardando...';
+  var btnGuardar = el('btn-guardar-form');
+  if (btnGuardar) { btnGuardar.disabled = true; btnGuardar.textContent = '⏳ Guardando...'; }
 
   if (editandoId !== null) {
-    /* ===== ACTUALIZAR EXISTENTE ===== */
     payload.accion = 'editar';
     payload.regional = regionalActual;
-    payload._numPrestacionOriginal = prestaciones.find(function(x) { return x.id === editandoId; })?.numPrestacion || numP;
+    var pEdit = null;
+    for (var i = 0; i < prestaciones.length; i++) { if (prestaciones[i].id === editandoId) { pEdit = prestaciones[i]; break; } }
+    payload._numPrestacionOriginal = pEdit ? pEdit.numPrestacion : gv('f02');
     payload._filaIndex = editandoId;
 
     apiPost(payload).then(function(res) {
-      if (modoDemo) {
-        mostrarToast('🛠️ [DEMO] Actualización simulada (no guardada en Sheets)', 'info');
-      } else if (res.ok) {
-        mostrarToast('✅ Prestación actualizada en Google Sheets', 'exito');
-      } else {
-        mostrarToast('⚠️ Error al actualizar: ' + (res.error || 'Desconocido'), 'error');
-      }
+      if (modoDemo) mostrarToast('🛠️ [DEMO] Actualización simulada', 'info');
+      else if (res.ok) mostrarToast('✅ Prestación actualizada en Google Sheets', 'exito');
+      else mostrarToast('⚠️ Error: ' + (res.error || 'Desconocido'), 'error');
       cancelarEdicion();
       limpiarForm();
       cambiarTab('lista');
       cargarPrestaciones(regionalActual);
-      btnGuardar.disabled = false;
-      btnGuardar.textContent = '💾 Guardar Prestación';
+      if (btnGuardar) { btnGuardar.disabled = false; btnGuardar.textContent = '💾 Guardar Prestación'; }
     });
   } else {
-    /* ===== NUEVO REGISTRO ===== */
     payload.accion = 'guardar';
     payload.regional = regionalActual;
-    payload.creadoPor = usuario.nombre;
+    payload.creadoPor = usuario ? usuario.nombre : '';
 
     apiPost(payload).then(function(res) {
-      if (modoDemo) {
-        mostrarToast('🛠️ [DEMO] Prestación simulada (no guardada en Sheets)', 'info');
-      } else if (res.ok) {
-        mostrarToast('✅ Prestación guardada en Google Sheets', 'exito');
-      } else {
-        mostrarToast('⚠️ Error al guardar: ' + (res.error || 'Desconocido'), 'error');
-      }
+      if (modoDemo) mostrarToast('🛠️ [DEMO] Prestación simulada', 'info');
+      else if (res.ok) mostrarToast('✅ Prestación guardada en Google Sheets', 'exito');
+      else mostrarToast('⚠️ Error: ' + (res.error || 'Desconocido'), 'error');
       limpiarForm();
       cambiarTab('lista');
       cargarPrestaciones(regionalActual);
-      btnGuardar.disabled = false;
-      btnGuardar.textContent = '💾 Guardar Prestación';
+      if (btnGuardar) { btnGuardar.disabled = false; btnGuardar.textContent = '💾 Guardar Prestación'; }
     });
   }
 }
@@ -2134,14 +1872,11 @@ function guardarPrestacion() {
    ================================================================ */
 function limpiarFormularioSilencioso() {
   CAMPO_A_COLUMNA.forEach(function(mapeo) {
-    if (mapeo.campo.startsWith('_')) return;
-    var el = $(mapeo.campo);
-    if (!el) return;
-    if (el.tagName === 'SELECT') {
-      el.selectedIndex = 0;
-    } else {
-      el.value = '';
-    }
+    if (mapeo.campo.indexOf('_') === 0) return;
+    var elem = el(mapeo.campo);
+    if (!elem) return;
+    if (elem.tagName === 'SELECT') elem.selectedIndex = 0;
+    else elem.value = '';
   });
   limpiarFirma('canvas-firma-entrega');
   limpiarFirma('canvas-firma-recibe');
@@ -2150,72 +1885,68 @@ function limpiarFormularioSilencioso() {
 function limpiarForm() {
   cancelarEdicion();
   limpiarFormularioSilencioso();
-  $('f18').value = regionalActual || '';
+  var f18 = el('f18');
+  if (f18) f18.value = regionalActual || '';
   setFechaAhora();
-  $('f17').value = $('f01').value;
+  var f17 = el('f17');
+  var f01 = el('f01');
+  if (f17 && f01) f17.value = f01.value;
   aplicarReglasCategoria();
 }
 
 /* ================================================================
-   UTILIDADES DEL FORMULARIO
+   UTILIDADES
    ================================================================ */
 function setFechaAhora() {
+  var f01 = el('f01');
+  if (!f01) return;
+  if (f01.value) return;
   var ahora = new Date();
   var local = new Date(ahora.getTime() - ahora.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
-  if (!$('f01').value) $('f01').value = local;
+  f01.value = local;
 }
 
 function calcEdad() {
-  var val = $('f09').value;
-  if (!val) return;
-  var hoy = new Date();
-  var nac = new Date(val);
+  var v = gv('f09');
+  if (!v) return;
+  var hoy = new Date(), nac = new Date(v);
   var edad = hoy.getFullYear() - nac.getFullYear();
   var m = hoy.getMonth() - nac.getMonth();
   if (m < 0 || (m === 0 && hoy.getDate() < nac.getDate())) edad--;
-  $('f10').value = edad;
+  var f10 = el('f10');
+  if (f10) f10.value = edad;
 }
 
 function aplicarReglasCategoria() {
   var cat = gv('f23');
-  /* Motivo: solo visible si es Afiliado Condicional */
-  $('wrap-motivo').style.display = cat === 'Afiliado Condicional' ? '' : 'none';
-  if (cat !== 'Afiliado Condicional') $('f24').value = '';
-  /* Entidad y Asesor: visibles si es Adres, Asesor Jurídico o Asesores Externos */
-  var mostrarEntAsesor = ['Adres', 'Asesor Jurídico', 'Asesores Externos'].indexOf(cat) !== -1;
-  $('wrap-entidad').style.display = mostrarEntAsesor ? '' : 'none';
-  $('wrap-asesor').style.display = mostrarEntAsesor ? '' : 'none';
-  if (!mostrarEntAsesor) {
-    $('f25').value = '';
-    $('f26').value = '';
-  }
+  var wm = el('wrap-motivo');
+  var we = el('wrap-entidad');
+  var wa = el('wrap-asesor');
+  if (wm) wm.style.display = cat === 'Afiliado Condicional' ? '' : 'none';
+  if (cat !== 'Afiliado Condicional') { var f24 = el('f24'); if (f24) f24.value = ''; }
+  var mostrar = ['Adres', 'Asesor Jurídico', 'Asesores Externos'].indexOf(cat) !== -1;
+  if (we) we.style.display = mostrar ? '' : 'none';
+  if (wa) wa.style.display = mostrar ? '' : 'none';
+  if (!mostrar) { var f25 = el('f25'); if (f25) f25.value = ''; var f26 = el('f26'); if (f26) f26.value = ''; }
 }
 
 function filtrarMunicipios() {
   var depto = gv('f19');
-  var sel = $('f20');
+  var sel = el('f20');
+  if (!sel) return;
   sel.innerHTML = '<option value="">Seleccione departamento primero...</option>';
-  if (depto && MUNICIPIOS_POR_DEPARTAMENTO[depto]) {
-    MUNICIPIOS_POR_DEPARTAMENTO[depto].sort().forEach(function(m) {
-      var opt = document.createElement('option');
-      opt.value = m;
-      opt.textContent = m;
-      sel.appendChild(opt);
-    });
+  if (depto && MUNICIPIOS[depto]) {
+    MUNICIPIOS[depto].sort().forEach(function(m) { var o = document.createElement('option'); o.value = m; o.textContent = m; sel.appendChild(o); });
   }
 }
 
 function filtrarMunicipiosMuerte() {
   var depto = gv('f88');
-  var sel = $('f89');
+  var sel = el('f89');
+  if (!sel) return;
   sel.innerHTML = '<option value="">Seleccione departamento primero...</option>';
-  if (depto && MUNICIPIOS_POR_DEPARTAMENTO[depto]) {
-    MUNICIPIOS_POR_DEPARTAMENTO[depto].sort().forEach(function(m) {
-      var opt = document.createElement('option');
-      opt.value = m;
-      opt.textContent = m;
-      sel.appendChild(opt);
-    });
+  if (depto && MUNICIPIOS[depto]) {
+    MUNICIPIOS[depto].sort().forEach(function(m) { var o = document.createElement('option'); o.value = m; o.textContent = m; sel.appendChild(o); });
   }
 }
 
@@ -2225,72 +1956,35 @@ function toggleSection(header) {
 }
 
 /* ================================================================
-   FIRMAS (CANVAS)
+   FIRMAS
    ================================================================ */
 function initFirma(canvasId) {
-  var canvas = $(canvasId);
+  var canvas = el(canvasId);
   if (!canvas) return;
   var ctx = canvas.getContext('2d');
-  var dibujando = false;
-
-  function getPos(e) {
-    var rect = canvas.getBoundingClientRect();
-    var src = e.touches ? e.touches[0] : e;
-    return {
-      x: (src.clientX - rect.left) * (canvas.width / rect.width),
-      y: (src.clientY - rect.top) * (canvas.height / rect.height)
-    };
+  var dib = false;
+  function pos(e) {
+    var r = canvas.getBoundingClientRect(), s = e.touches ? e.touches[0] : e;
+    return { x: (s.clientX - r.left) * (canvas.width / r.width), y: (s.clientY - r.top) * (canvas.height / r.height) };
   }
-
-  canvas.addEventListener('mousedown', function(e) {
-    dibujando = true;
-    var p = getPos(e);
-    ctx.beginPath();
-    ctx.moveTo(p.x, p.y);
-  });
-  canvas.addEventListener('mousemove', function(e) {
-    if (!dibujando) return;
-    var p = getPos(e);
-    ctx.lineTo(p.x, p.y);
-    ctx.strokeStyle = '#1a1a1a';
-    ctx.lineWidth = 2;
-    ctx.lineCap = 'round';
-    ctx.stroke();
-  });
-  canvas.addEventListener('mouseup', function() { dibujando = false; });
-  canvas.addEventListener('mouseleave', function() { dibujando = false; });
-
-  canvas.addEventListener('touchstart', function(e) {
-    e.preventDefault();
-    dibujando = true;
-    var p = getPos(e);
-    ctx.beginPath();
-    ctx.moveTo(p.x, p.y);
-  }, { passive: false });
-  canvas.addEventListener('touchmove', function(e) {
-    e.preventDefault();
-    if (!dibujando) return;
-    var p = getPos(e);
-    ctx.lineTo(p.x, p.y);
-    ctx.strokeStyle = '#1a1a1a';
-    ctx.lineWidth = 2;
-    ctx.lineCap = 'round';
-    ctx.stroke();
-  }, { passive: false });
-  canvas.addEventListener('touchend', function() { dibujando = false; });
+  canvas.addEventListener('mousedown', function(e) { dib = true; var p = pos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); });
+  canvas.addEventListener('mousemove', function(e) { if (!dib) return; var p = pos(e); ctx.lineTo(p.x, p.y); ctx.strokeStyle = '#1a1a1a'; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.stroke(); });
+  canvas.addEventListener('mouseup', function() { dib = false; });
+  canvas.addEventListener('mouseleave', function() { dib = false; });
+  canvas.addEventListener('touchstart', function(e) { e.preventDefault(); dib = true; var p = pos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); }, { passive: false });
+  canvas.addEventListener('touchmove', function(e) { e.preventDefault(); if (!dib) return; var p = pos(e); ctx.lineTo(p.x, p.y); ctx.strokeStyle = '#1a1a1a'; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.stroke(); }, { passive: false });
+  canvas.addEventListener('touchend', function() { dib = false; });
 }
 
-function limpiarFirma(canvasId) {
-  var canvas = $(canvasId);
-  if (canvas) canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-}
+function limpiarFirma(canvasId) { var c = el(canvasId); if (c) c.getContext('2d').clearRect(0, 0, c.width, c.height); }
 
 /* ================================================================
-   TOAST (NOTIFICACIONES)
+   TOAST
    ================================================================ */
 function mostrarToast(msg, tipo) {
   tipo = tipo || 'exito';
-  var t = $('toast');
+  var t = el('toast');
+  if (!t) return;
   t.textContent = msg;
   t.className = 'toast ' + tipo + ' show';
   clearTimeout(t._timeout);
