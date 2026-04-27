@@ -6,24 +6,7 @@
 <title>App Prestación De Servicios - Jardines del Renacer</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --negro: #0c1220;
-  --blanco: #f5f7fa;
-  --azul: #1e3a5f;
-  --azul-medio: #2563eb;
-  --azul-claro: #3b82f6;
-  --azul-suave: #dbeafe;
-  --azul-profundo: #0b1a30;
-  --azul-acento: #60a5fa;
-  --azul-brillante: #93c5fd;
-  --gris: #64748b;
-  --gris-claro: #e2e8f0;
-  --rojo: #dc2626;
-  --fondo: #f0f4f8;
-  --sombra: 0 4px 24px rgba(14,30,54,0.10);
-  --radio: 14px;
-  --transicion: 0.22s cubic-bezier(.4,0,.2,1);
-}
+:root{--negro:#0c1220;--blanco:#f5f7fa;--azul:#1e3a5f;--azul-medio:#2563eb;--azul-claro:#3b82f6;--azul-suave:#dbeafe;--azul-profundo:#0b1a30;--azul-acento:#60a5fa;--azul-brillante:#93c5fd;--gris:#64748b;--gris-claro:#e2e8f0;--rojo:#dc2626;--fondo:#f0f4f8;--sombra:0 4px 24px rgba(14,30,54,0.10);--radio:14px;--transicion:0.22s cubic-bezier(.4,0,.2,1)}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro);min-height:100vh;overflow-x:hidden}
 
@@ -235,118 +218,7 @@ tr:hover td{background:var(--azul-suave)}
 <div class="toast" id="toast"></div>
 
 <script>
-/* ============================================================
-   MAPEO EXACTO DE COLUMNAS DEL GOOGLE SHEET
-   Verificado contra el CSV exportado de la hoja real.
-   ATENCIÓN: Estos nombres deben ser IDÉNTICOS a los encabezados
-   de la primera fila de cada hoja regional en Google Sheets.
-   ============================================================ */
-var COL = {
-  INFO_SOLICITUD:       'INFORMACIÓN SOLICITUD',
-  FECHA_REPORTE:        'Fecha Y Hora de Reporte',
-  NUM_PRESTACION:       'N° Prestacion',
-  OBSERVACIONES:        'Observaciones',
-  REPORTE_POR:          'Reporte de Servicio Por el Call o Regional',
-  NOM_FALLECIDO:        'Nombre Del Fallecido',
-  APE_FALLECIDO:        'Apellidos Del Fallecido',
-  CC_FALLECIDO:         'CC: Del Fallecido',
-  FECHA_EXP_CC:         'Fecha De Expedicion de la CC',
-  FECHA_NAC:            'Fecha de Nacimiento',
-  EDAD:                 'Edad',
-  NUM_CONTRATO:         'Nº De Contrato',
-  NOM_SOLICITANTE:      'Nombre solicitante',
-  CC_SOLICITANTE:       'CC: Del Solicitante',
-  PARENTESCO:           'Parentesco Con El Fallecido',
-  DIR_SOLICITANTE:      'Direccion del Solicitante',
-  TEL_SOLICITANTE:      'Nº Telefono Solicitante',
-  FECHA_DIGITACION:     'Fecha Y Hora De Digitacion',
-  REGIONAL:             'Regional',
-  DEPTO_PRESTACION:     'Departamento De Prestacion',
-  MUNI_PRESTACION:      'Municipio de Prestacion',
-  SEDE:                 'Sede',
-  TIPO:                 'Tipo',
-  CATEGORIA:            'Categoria',
-  MOTIVO:               'Motivo',
-  ENTIDAD:              'Entidad',
-  ASESOR_EXTERNO:       'Asesor Externo',
-  CLASIFICACION:        'Clasificacion',
-  TIENE_ADICIONALES:    'Tiene Servicios Adicionales (SI/NO)',
-  CUALES_ADICIONALES:   'Cuáles',
-  TIENE_POST_FINAL:     'Tiene post finales (SI/NO)',
-  NOM_TITULAR:          'Nombre Del Titular',
-  CC_TITULAR:           'CC: Del Titular',
-  DIR_TITULAR:          'Direccion Del Titular',
-  TEL_TITULAR:          'Nº Telefono TiTular',
-  RESP_FACTURAR:        'Responsabele a Facturar',
-  CC_RESP_FACTURAR:     'CC Responsable a Facturar',
-  DIR_RESP_FACTURAR:    'Direccion Responsable a Facturar',
-  TEL_RESP_FACTURAR:    'Nº Telefono Responsable a Facturar',
-  EMAIL_RESP_FACTURAR:  'Correo Electronico Responsable a Facturar',
-  /* Sección DATOS DEL FALLECIDO */
-  DATOS_FALLECIDO:      'DATOS DEL FALLECIDO',
-  LUGAR_FALL:           'Lugar De Fallecimiento',
-  TIPO_MUERTE:          'Tipo de Muerte',
-  CAUSA_MUERTE:         'Posible causa de muerte',
-  CERTIF_DEFUNCION:     'Certificado De Defuncion',
-  OCUPACION:            'Ocupación',
-  PENSIONADO:           'Pensionado (SI/No)',
-  NOM_FONDO:            'Nom: del Fondo',
-  CONTEXTURA:           'Contextura',
-  ESTADO_CIVIL:         'Estado civil',
-  NOM_CONYUGE:          'Nombre cónyuge',
-  NOM_PADRE:            'Nombre Del Padre',
-  NOM_MADRE:            'Nombre De La Madre',
-  HIJOS:                'Hijos',
-  FOTO_CC_FALL:         'Foto Cedula Fallecido',
-  /* Sección DATOS DE COORDINACION */
-  DATOS_COORD:          'DATOS DE COORDINACION',
-  FECHA_RECOGIDA:       'Fecha De Recogida',
-  HORA_RECOGIDA:        'Hora Recogida',
-  QUIEN_RECOGE:         'Nombre De Quién Recoge',
-  PLACA_RECOGIDA:       '(Recogida) Placa Carroza de Jardines del Renacer',
-  TRASLADO_NAL:         'Traslado Nacional',
-  PRESERVACION_POR:     'Preservación Por',
-  REF_COFRE:            'Nº Ref de Cofre',
-  FECHA_INI_VEL:        'Fecha Inicio de Velación',
-  HORA_INI_VEL:         'Hora Inicio de Velación',
-  FECHA_FIN_VEL:        'Fecha Final de Velación',
-  HORA_FIN_VEL:         'Hora Final de Velación',
-  MUNI_VELACION:        'Municipio Velación',
-  LUGAR_VELACION:       'Lugar de Velación',
-  AUX_CAFETERIA:        'Nombre de Aux Cafeteria',
-  HORA_AUX_CAF:         'Hora Llegada a Sala de la Aux Cafeteria',
-  ARREGLO_FLORAL:       'Arreglo Floral',
-  CARTELES:             'Carteles',
-  KIT_VELACION:         'Kit Velación',
-  CINTA_FALL:           'Cinta Fallecido',
-  TRANSP_ACOMP:         'Transporte Para Acompañantes',
-  AUX_VELACION:         'Nombre de Auxiliar o Proveedor que Pone en Velacion',
-  PLACA_VELACION:       '(Velación) Placa Carroza De Jardines Del Renacer',
-  FECHA_EXEQUIAS:       'Fecha Exequias',
-  HORA_EXEQUIAS:        'Hora Exequias',
-  LUGAR_EXEQUIAS:       'Lugar Exequias',
-  FECHA_DEST_FINAL:     'Fecha Destino Final',
-  HORA_DEST_FINAL:      'Hora Destino Final',
-  DEST_FINAL:           'Destino Final',
-  CEMENTERIO:           'Cementerio',
-  QUIEN_CULMINA:        'Quien Culmina',
-  PLACA_CULMINA:        '(Culminación) Placa Carroza de Jardines Del Renacer',
-  COORDINADOR:          'Coordinador',
-  FIRMA_ENTREGA:        'Firma: Quien Entrega',
-  FIRMA_RECIBE:         'Firma: Quien Recibe',
-  AGENTE_CALL:          'Nombre del Agente Call',
-  FOTO_CERTIF:          'Foto Del Certificado De Defuncion',
-  ESTADO_PREST:         'Estado De La Prestacion',
-  DEPTO_MUERTE:         'Departamento De Muerte',
-  CIUDAD_MUERTE:        'Ciudad De Muerte',
-  MURIO_EN:             'Murio En',
-  DIR_FALL:             'Direccion de  Fallecimiento',
-  FECHA_HORA_MUERTE:    'Fecha Y Hora de Muerte',
-  LUGAR_NAC:            'Lugar De Nacimiento',
-  SEG_SOCIAL:           'Seguridad Social'
-};
-
-var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpUuh3cVO3SoiuuqN77wH3blzo9oEcCCBby9Pyqsj6fbb5L5YOEs-rgL_dyJp0mCE/exec';
+var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyhbCNt4CyEbpC9N83p-tleoxnIsuCNlvzTrDs_HYWiRDnTEiZMY9I77gkSMqvYFXle/exec';
 
 var REGIONALES = [
   {id:'RISARALDA',label:'Risaralda',clase:'risaralda',emoji:'\uD83C\uDF09'},
@@ -364,24 +236,20 @@ var REGIONALES = [
   {id:'COTIZACION',label:'Cotizaci\u00F3n',clase:'cotizacion',emoji:'\uD83D\uDCB0'}
 ];
 
-var usuario = null;
-var modoDemo = false;
-var regionalActual = null;
-var prestaciones = [];
+var usuario=null,modoDemo=false,regionalActual=null,prestaciones=[];
 
-function apiSheetsLeer(payload) {
-  if (modoDemo) return Promise.resolve({ok:true,datos:[]});
-  return fetch(SCRIPT_URL + '?' + new URLSearchParams({accion:payload.accion,regional:payload.regional||''}))
+function apiSheetsLeer(payload){
+  if(modoDemo)return Promise.resolve({ok:true,datos:[]});
+  return fetch(SCRIPT_URL+'?'+new URLSearchParams({accion:payload.accion,regional:payload.regional||''}))
     .then(function(r){return r.text()})
-    .then(function(t){try{return JSON.parse(t)}catch(e){return {ok:false,datos:[]}}})
-    .catch(function(){return {ok:false,datos:[]}});
+    .then(function(t){try{return JSON.parse(t)}catch(e){return{ok:false,datos:[]}}})
+    .catch(function(){return{ok:false,datos:[]}});
 }
-
-function apiSheets(payload) {
-  if (modoDemo) return Promise.resolve({ok:true});
+function apiSheets(payload){
+  if(modoDemo)return Promise.resolve({ok:true});
   return fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(payload)})
-    .then(function(){return {ok:true}})
-    .catch(function(e){return {ok:false,error:e.toString()}});
+    .then(function(){return{ok:true}})
+    .catch(function(e){return{ok:false,error:e.toString()}});
 }
 
 var logoClicks=0,logoTimer=null;
@@ -389,18 +257,13 @@ document.addEventListener('DOMContentLoaded',function(){
   var ud=sessionStorage.getItem('app_usuario');
   if(ud){try{var d=JSON.parse(ud);if(d&&d.nombre&&d.regional){modoDemo=sessionStorage.getItem('app_modoDemo')==='1';entrar(d);return}}catch(e){}sessionStorage.removeItem('app_usuario');sessionStorage.removeItem('app_modoDemo')}
   var logo=document.getElementById('login-logo');
-  if(logo){logo.addEventListener('click',function(){logoClicks++;clearTimeout(logoTimer);logoTimer=setTimeout(function(){logoClicks=0},2000);if(logoClicks>=5){logoClicks=0;entrarDemo()}})}
+  if(logo)logo.addEventListener('click',function(){logoClicks++;clearTimeout(logoTimer);logoTimer=setTimeout(function(){logoClicks=0},2000);if(logoClicks>=5){logoClicks=0;entrarDemo()}});
 });
 
-function entrarDemo(){
-  modoDemo=true;
-  console.log('%c\u{1F6E0}\uFE0F MODO DEMO ACTIVADO','color:#2563eb;font-size:16px;font-weight:bold');
-  entrar({nombre:'Usuario Demo',regional:'QUINDIO',rol:'admin',usuario:'demo'});
-}
+function entrarDemo(){modoDemo=true;console.log('%c\u{1F6E0}\uFE0F MODO DEMO ACTIVADO','color:#2563eb;font-size:16px;font-weight:bold');entrar({nombre:'Usuario Demo',regional:'QUINDIO',rol:'admin',usuario:'demo'})}
 
 function loginDemo(){
-  var uI=document.getElementById('demo-user'),pI=document.getElementById('demo-pass');
-  var u=uI.value.trim(),p=pI.value.trim();
+  var uI=document.getElementById('demo-user'),pI=document.getElementById('demo-pass'),u=uI.value.trim(),p=pI.value.trim();
   var eB=document.getElementById('login-error-box'),eT=document.getElementById('error-title'),eD=document.getElementById('error-detail'),btn=document.getElementById('btn-login-main');
   eB.style.display='none';uI.classList.remove('input-error');pI.classList.remove('input-error');
   if(!u||!p){eT.textContent='\u26A0\uFE0F Campos vac\u00EDos';eD.textContent='Ingresa usuario y contrase\u00F1a para continuar.';eB.style.display='block';if(!u)uI.classList.add('input-error');if(!p)pI.classList.add('input-error');return}
@@ -408,50 +271,35 @@ function loginDemo(){
   fetch(SCRIPT_URL+'?'+new URLSearchParams({accion:'login',usuario:u,password:p}))
     .then(function(r){return r.text()})
     .then(function(t){
-      if(t.trim().charAt(0)!=='{'&&t.trim().charAt(0)!=='['){
-        eT.textContent='\u274C Error del servidor de Google';
-        eD.textContent='El Apps Script devolvi\u00F3 HTML en vez de JSON.\n\nSoluci\u00F3n: Ve a Apps Script > Implementar > Nueva implementaci\u00F3n > Tipo: App web > Ejecutar como: Yo > Acceso: Cualquier persona.\n\nRespuesta: '+t.substring(0,150);
-        eB.style.display='block';eD.style.whiteSpace='pre-wrap';btn.disabled=false;btn.textContent='Entrar \u2192';return;
-      }
-      var data;try{data=JSON.parse(t)}catch(pe){
-        eT.textContent='\u274C Respuesta inv\u00E1lida del servidor';
-        eD.textContent='No se pudo interpretar como JSON.\n\nContenido: "'+t.substring(0,200)+'"';
-        eB.style.display='block';eD.style.whiteSpace='pre-wrap';btn.disabled=false;btn.textContent='Entrar \u2192';return;
-      }
+      if(t.trim().charAt(0)!=='{'&&t.trim().charAt(0)!=='['){eT.textContent='\u274C Error del servidor';eD.textContent='Apps Script devolvi\u00F3 HTML.\n\nVe a Implementar > Nueva implementaci\u00F3n > App web > Ejecutar como: Yo > Acceso: Cualquier persona.\n\nRespuesta: '+t.substring(0,150);eB.style.display='block';eD.style.whiteSpace='pre-wrap';btn.disabled=false;btn.textContent='Entrar \u2192';return}
+      var data;try{data=JSON.parse(t)}catch(pe){eT.textContent='\u274C Respuesta inv\u00E1lida';eD.textContent='Contenido: "'+t.substring(0,200)+'"';eB.style.display='block';eD.style.whiteSpace='pre-wrap';btn.disabled=false;btn.textContent='Entrar \u2192';return}
       if(data.ok){modoDemo=false;entrar({nombre:data.nombre||data.usuario||u,regional:(data.regional||'QUINDIO').toUpperCase(),rol:data.rol,usuario:data.usuario||u})}
-      else{eT.textContent='\u274C '+(data.error||'Credenciales incorrectas');eD.textContent='Error: '+(data.error||'Sin mensaje')+'\n\nVerifica que el usuario "'+u+'" exista en tu hoja de usuarios.';eB.style.display='block';eD.style.whiteSpace='pre-wrap';uI.classList.add('input-error');pI.classList.add('input-error');btn.disabled=false;btn.textContent='Entrar \u2192'}
+      else{eT.textContent='\u274C '+(data.error||'Credenciales incorrectas');eD.textContent='Verifica el usuario "'+u+'" en tu hoja de usuarios.';eB.style.display='block';eD.style.whiteSpace='pre-wrap';uI.classList.add('input-error');pI.classList.add('input-error');btn.disabled=false;btn.textContent='Entrar \u2192'}
     })
-    .catch(function(err){eT.textContent='\u26A0\uFE0F Error de conexi\u00F3n';eD.textContent='No se pudo conectar con el servidor.\n\nError: '+err.message+'\n\nUsa "Modo Demo" para probar sin servidor.';eB.style.display='block';eD.style.whiteSpace='pre-wrap';btn.disabled=false;btn.textContent='Entrar \u2192'});
+    .catch(function(err){eT.textContent='\u26A0\uFE0F Error de conexi\u00F3n';eD.textContent='Error: '+err.message+'\n\nUsa "Modo Demo" para probar sin servidor.';eB.style.display='block';eD.style.whiteSpace='pre-wrap';btn.disabled=false;btn.textContent='Entrar \u2192'});
 }
 
 function entrar(data){
-  usuario=data;
-  sessionStorage.setItem('app_usuario',JSON.stringify(data));
-  sessionStorage.setItem('app_modoDemo',modoDemo?'1':'0');
-  document.getElementById('login-screen').style.display='none';
-  document.getElementById('app').style.display='block';
-  document.getElementById('regional-badge').textContent=usuario.regional;
-  document.getElementById('user-name').textContent=usuario.nombre;
-  document.getElementById('user-avatar').textContent=(usuario.nombre||'A')[0].toUpperCase();
-  document.getElementById('demo-indicator').style.display=modoDemo?'inline-block':'none';
+  usuario=data;sessionStorage.setItem('app_usuario',JSON.stringify(data));sessionStorage.setItem('app_modoDemo',modoDemo?'1':'0');
+  document.getElementById('login-screen').style.display='none';document.getElementById('app').style.display='block';
+  document.getElementById('regional-badge').textContent=usuario.regional;document.getElementById('user-name').textContent=usuario.nombre;
+  document.getElementById('user-avatar').textContent=(usuario.nombre||'A')[0].toUpperCase();document.getElementById('demo-indicator').style.display=modoDemo?'inline-block':'none';
   renderMenu();actualizarStats();mostrarVista('menu');
   if(modoDemo)mostrarToast('\u{1F6E0}\uFE0F Modo Demo activado \u2014 Los datos no se guardan en Sheets','info');
 }
 
 function cerrarSesion(){
   usuario=null;modoDemo=false;regionalActual=null;prestaciones=[];
-  sessionStorage.removeItem('app_usuario');sessionStorage.removeItem('app_modoDemo');
-  sessionStorage.removeItem('app_regionalActual');sessionStorage.removeItem('app_editarDatos');sessionStorage.removeItem('app_editarFilaIndex');
+  sessionStorage.removeItem('app_usuario');sessionStorage.removeItem('app_modoDemo');sessionStorage.removeItem('app_regionalActual');sessionStorage.removeItem('app_editarDatos');sessionStorage.removeItem('app_editarFilaIndex');
   document.getElementById('app').style.display='none';document.getElementById('login-screen').style.display='flex';
-  document.getElementById('demo-user').value='';document.getElementById('demo-pass').value='';
-  document.getElementById('login-error-box').style.display='none';
+  document.getElementById('demo-user').value='';document.getElementById('demo-pass').value='';document.getElementById('login-error-box').style.display='none';
   var btn=document.getElementById('btn-login-main');btn.disabled=false;btn.textContent='Entrar \u2192';
 }
 
 function renderMenu(){
   document.getElementById('menu-grid').innerHTML=REGIONALES.map(function(r){
     var mi=r.id===usuario.regional?'<span class="mi-regional-badge">MI REGIONAL</span>':'';
-    return '<div class="menu-card" onclick="mostrarRegional(\''+r.id+'\')"><div class="menu-card-img '+r.clase+'">'+r.emoji+mi+'</div><div class="menu-card-label">'+r.label+'<span class="arrow">\u203A</span></div></div>';
+    return'<div class="menu-card" onclick="mostrarRegional(\''+r.id+'\')"><div class="menu-card-img '+r.clase+'">'+r.emoji+mi+'</div><div class="menu-card-label">'+r.label+'<span class="arrow">\u203A</span></div></div>';
   }).join('');
 }
 
@@ -470,13 +318,11 @@ function mostrarVista(v){
 }
 
 function mostrarRegional(regional){
-  regionalActual=regional;
-  var r=REGIONALES.find(function(x){return x.id===regional});
+  regionalActual=regional;var r=REGIONALES.find(function(x){return x.id===regional});
   document.getElementById('regional-titulo').textContent=r?r.label.toUpperCase():regional;
-  var esMi=regional===usuario.regional;
-  document.getElementById('btn-nuevo-top').disabled=!esMi;
+  var esMi=regional===usuario.regional;document.getElementById('btn-nuevo-top').disabled=!esMi;
   var aviso=document.getElementById('aviso-lectura-wrap');
-  if(!esMi){aviso.innerHTML='<div class="aviso-lectura">\uD83D\uDC41\uFE0F Est\u00E1s viendo <strong>'+(r?r.label:regional)+'</strong>. Solo lectura \u2014 tu regional es <strong>'+usuario.regional+'</strong>.</div>'}else{aviso.innerHTML=''}
+  if(!esMi)aviso.innerHTML='<div class="aviso-lectura">\uD83D\uDC41\uFE0F Est\u00E1s viendo <strong>'+(r?r.label:regional)+'</strong>. Solo lectura \u2014 tu regional es <strong>'+usuario.regional+'</strong>.</div>';else aviso.innerHTML='';
   document.querySelectorAll('.sidebar-item').forEach(function(i){i.classList.remove('active')});
   var navItem=document.getElementById('nav-'+regional);if(navItem)navItem.classList.add('active');
   mostrarVista('regional');cargarPrestaciones(regional);
@@ -484,19 +330,13 @@ function mostrarRegional(regional){
 
 function irARegistro(){
   if(regionalActual!==usuario.regional){mostrarToast('No tienes permiso para guardar en esta regional','error');return}
-  sessionStorage.setItem('app_regionalActual',regionalActual);
-  sessionStorage.removeItem('app_editarDatos');sessionStorage.removeItem('app_editarFilaIndex');
+  sessionStorage.setItem('app_regionalActual',regionalActual);sessionStorage.removeItem('app_editarDatos');sessionStorage.removeItem('app_editarFilaIndex');
   window.location.href='registro.html';
 }
 
 function editarRegistro(id){
-  var p=prestaciones.find(function(x){return x.id===id});
-  if(!p)return;
-  /* Se guarda el objeto crudo COMPLETO tal como vino de Sheets,
-     usando los nombres de columna exactos como claves */
-  sessionStorage.setItem('app_regionalActual',regionalActual);
-  sessionStorage.setItem('app_editarDatos',JSON.stringify(p._raw));
-  sessionStorage.setItem('app_editarFilaIndex',p.filaIndex);
+  var p=prestaciones.find(function(x){return x.id===id});if(!p)return;
+  sessionStorage.setItem('app_regionalActual',regionalActual);sessionStorage.setItem('app_editarDatos',JSON.stringify(p._raw));sessionStorage.setItem('app_editarFilaIndex',p.filaIndex);
   window.location.href='registro.html';
 }
 
@@ -505,36 +345,12 @@ function cargarPrestaciones(regional){
   tbody.innerHTML='<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--gris)"><div style="font-size:24px;margin-bottom:8px">\u23F3</div> Cargando...</td></tr>';
   apiSheetsLeer({accion:'leer',regional:regional}).then(function(res){
     if(res&&res.ok&&Array.isArray(res.datos)){
-      /* res.datos viene como array de objetos donde las claves son los
-         encabezados EXACTOS de la hoja de Google. También puede venir
-         como array de arrays (líneas sin encabezado). */
       prestaciones=res.datos.map(function(d,i){
         var obj={};
-        /* Si es un array, lo convertimos a objeto usando el mapeo de columnas */
-        if(Array.isArray(d)){
-          var keys=Object.keys(COL);
-          for(var k=0;k<keys.length&&k<d.length;k++){obj[keys[k]]=d[k]||''}
-        }else{
-          obj=d;
-        }
-        return {
-          id: i.toString(),
-          filaIndex: (d._filaIndex !== undefined) ? d._filaIndex : (i+2),
-          _raw: obj,
-          numPrestacion: obj[COL.NUM_PRESTACION]||'',
-          fechaReporte: obj[COL.FECHA_REPORTE]||'',
-          regional: obj[COL.REGIONAL]||regional,
-          nombreFallecido: obj[COL.NOM_FALLECIDO]||'',
-          apellidosFallecido: obj[COL.APE_FALLECIDO]||'',
-          numContrato: obj[COL.NUM_CONTRATO]||'',
-          sede: obj[COL.SEDE]||'',
-          estadoPrestacion: obj[COL.ESTADO_PREST]||'En proceso'
-        };
+        if(Array.isArray(d)){var keys=Object.keys(d);for(var k=0;k<keys.length&&k<d.length;k++)obj[keys[k]]=d[k]||''}else obj=d;
+        return{id:i.toString(),filaIndex:(d._filaIndex!==undefined)?d._filaIndex:(i+2),_raw:obj,numPrestacion:obj['N° Prestacion']||'',fechaReporte:obj['Fecha Y Hora de Reporte']||'',regional:obj['Regional']||regional,nombreFallecido:obj['Nombre Del Fallecido']||'',apellidosFallecido:obj['Apellidos Del Fallecido']||'',numContrato:obj['Nº De Contrato']||'',sede:obj['Sede']||'',estadoPrestacion:obj['Estado De La Prestacion']||'En proceso'};
       });
-    }else{
-      prestaciones=[];
-      if(res&&res.error&&!modoDemo){mostrarToast('\u26A0\uFE0F Error al leer datos: '+res.error.substring(0,80),'error')}
-    }
+    }else{prestaciones=[];if(res&&res.error&&!modoDemo)mostrarToast('\u26A0\uFE0F Error: '+res.error.substring(0,80),'error')}
     actualizarStats();renderTabla();
   });
 }
@@ -543,42 +359,23 @@ function renderTabla(filtro){
   filtro=filtro||'';
   var datos=prestaciones.filter(function(p){
     var esR=p.regional===regionalActual;
-    var ok=!filtro||
-      (p.nombreFallecido||'').toLowerCase().indexOf(filtro.toLowerCase())!==-1||
-      (p.apellidosFallecido||'').toLowerCase().indexOf(filtro.toLowerCase())!==-1||
-      (p.numContrato||'').toLowerCase().indexOf(filtro.toLowerCase())!==-1||
-      (p.numPrestacion||'').toLowerCase().indexOf(filtro.toLowerCase())!==-1;
+    var ok=!filtro||(p.nombreFallecido||'').toLowerCase().indexOf(filtro.toLowerCase())!==-1||(p.apellidosFallecido||'').toLowerCase().indexOf(filtro.toLowerCase())!==-1||(p.numContrato||'').toLowerCase().indexOf(filtro.toLowerCase())!==-1||(p.numPrestacion||'').toLowerCase().indexOf(filtro.toLowerCase())!==-1;
     return esR&&ok;
   });
   var tbody=document.getElementById('tabla-body');
   if(datos.length===0){tbody.innerHTML='<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--gris)"><div style="font-size:32px;margin-bottom:8px">\uD83D\uDCCB</div>No hay registros'+(filtro?' con ese filtro':'')+'</td></tr>';return}
   var h='';
   for(var i=datos.length-1;i>=0;i--){
-    var p=datos[i];
-    var nombre=[p.nombreFallecido,p.apellidosFallecido].filter(Boolean).join(' ')||'\u2014';
-    var fecha='\u2014';
+    var p=datos[i],nombre=[p.nombreFallecido,p.apellidosFallecido].filter(Boolean).join(' ')||'\u2014',fecha='\u2014';
     try{if(p.fechaReporte)fecha=new Date(p.fechaReporte).toLocaleString('es-CO',{dateStyle:'short',timeStyle:'short'})}catch(e){}
-    var ec='estado-activo';
-    if(p.estadoPrestacion==='Finalizada')ec='estado-finalizado';
-    else if(p.estadoPrestacion==='Pendiente')ec='estado-pendiente';
-    h+='<tr>'+
-      '<td><code style="font-family:\'DM Mono\',monospace;font-size:12px">'+(p.numPrestacion||'\u2014')+'</code></td>'+
-      '<td><strong>'+nombre+'</strong></td>'+
-      '<td style="color:var(--gris);font-size:13px">'+fecha+'</td>'+
-      '<td>'+(p.sede||'\u2014')+'</td>'+
-      '<td><span class="estado-chip '+ec+'">'+(p.estadoPrestacion||'En proceso')+'</span></td>'+
-      '<td><button class="btn-editar" onclick="editarRegistro(\''+p.id+'\')">\u270F\uFE0F Editar</button></td>'+
-    '</tr>';
+    var ec='estado-activo';if(p.estadoPrestacion==='Finalizada')ec='estado-finalizado';else if(p.estadoPrestacion==='Pendiente')ec='estado-pendiente';
+    h+='<tr><td><code style="font-family:\'DM Mono\',monospace;font-size:12px">'+(p.numPrestacion||'\u2014')+'</code></td><td><strong>'+nombre+'</strong></td><td style="color:var(--gris);font-size:13px">'+fecha+'</td><td>'+(p.sede||'\u2014')+'</td><td><span class="estado-chip '+ec+'">'+(p.estadoPrestacion||'En proceso')+'</span></td><td><button class="btn-editar" onclick="editarRegistro(\''+p.id+'\')">\u270F\uFE0F Editar</button></td></tr>';
   }
   tbody.innerHTML=h;
 }
 
 function filtrarTabla(val){renderTabla(val)}
-
-function mostrarToast(msg,tipo){
-  tipo=tipo||'exito';var t=document.getElementById('toast');t.textContent=msg;t.className='toast '+tipo+' show';
-  clearTimeout(t._timeout);t._timeout=setTimeout(function(){t.classList.remove('show')},3500);
-}
+function mostrarToast(msg,tipo){tipo=tipo||'exito';var t=document.getElementById('toast');t.textContent=msg;t.className='toast '+tipo+' show';clearTimeout(t._timeout);t._timeout=setTimeout(function(){t.classList.remove('show')},3500)}
 </script>
 </body>
 </html>
