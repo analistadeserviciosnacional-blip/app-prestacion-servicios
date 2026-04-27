@@ -31,6 +31,7 @@ body {
   overflow-x: hidden;
 }
 
+/* ===== PANTALLA LOGIN ===== */
 #login-screen {
   min-height: 100vh;
   display: flex;
@@ -180,6 +181,7 @@ body {
 }
 .btn-demo:hover { border-color: var(--verde); color: var(--verde); background: var(--verde-suave); }
 
+/* ===== INDICADOR DEMO ===== */
 .demo-indicator {
   background: #f59e0b;
   color: white;
@@ -192,6 +194,7 @@ body {
 }
 @keyframes pulse-demo { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
 
+/* ===== APP PRINCIPAL ===== */
 #app { display: none; min-height: 100vh; }
 .topbar {
   background: var(--negro);
@@ -251,6 +254,7 @@ body {
 .btn-cerrar:hover { background: rgba(255,255,255,0.2); }
 .main-layout { display: flex; min-height: calc(100vh - 58px); }
 
+/* ===== SIDEBAR ===== */
 .sidebar {
   width: 220px;
   background: white;
@@ -288,6 +292,7 @@ body {
 .sidebar-item .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gris-claro); flex-shrink: 0; }
 .sidebar-item.active .dot, .sidebar-item:hover .dot { background: var(--verde); }
 
+/* ===== CONTENIDO ===== */
 .content { flex: 1; padding: 28px; overflow-y: auto; }
 .menu-grid {
   display: grid;
@@ -348,6 +353,7 @@ body {
   letter-spacing: 0.5px;
 }
 
+/* ===== PAGE HEADER ===== */
 .page-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
 .page-header h2 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 1px; color: var(--negro); }
 .back-btn {
@@ -366,16 +372,19 @@ body {
 }
 .back-btn:hover { background: var(--verde-suave); border-color: var(--verde); color: var(--verde); }
 
+/* ===== STATS ===== */
 .stats-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
 .stat-card { background: white; border-radius: var(--radio); padding: 20px; box-shadow: var(--sombra); }
 .stat-card .num { font-family: 'Bebas Neue', sans-serif; font-size: 38px; color: var(--verde); line-height: 1; }
 .stat-card .lbl { font-size: 12px; color: var(--gris); margin-top: 4px; font-weight: 500; }
 
+/* ===== TABS ===== */
 .tabs { display: flex; gap: 4px; background: white; border-radius: 12px; padding: 4px; box-shadow: var(--sombra); margin-bottom: 24px; width: fit-content; }
 .tab { padding: 10px 22px; border-radius: 9px; font-size: 14px; font-weight: 500; cursor: pointer; transition: var(--transicion); color: var(--gris); }
 .tab.active { background: var(--verde); color: white; font-weight: 600; }
 .tab:hover:not(.active) { background: var(--verde-suave); color: var(--verde); }
 
+/* ===== TABLA ===== */
 .tabla-wrap { background: white; border-radius: var(--radio); box-shadow: var(--sombra); overflow: hidden; }
 .tabla-toolbar { padding: 16px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 1.5px solid var(--gris-claro); flex-wrap: wrap; }
 .busqueda { flex: 1; min-width: 200px; border: 1.5px solid var(--gris-claro); border-radius: 10px; padding: 9px 14px; font-size: 14px; font-family: 'DM Sans', sans-serif; outline: none; transition: var(--transicion); }
@@ -398,17 +407,20 @@ tr:hover td { background: var(--verde-suave); }
 .btn-ver { background: none; border: 1.5px solid var(--gris-claro); border-radius: 7px; padding: 5px 12px; font-size: 12px; cursor: pointer; transition: var(--transicion); font-family: 'DM Sans', sans-serif; }
 .btn-ver:hover { border-color: var(--verde); color: var(--verde); background: var(--verde-suave); }
 
+/* ===== AVISOS ===== */
 .aviso-lectura { background: #fef3c7; border: 1.5px solid #f59e0b; border-radius: 10px; padding: 12px 18px; font-size: 13px; color: #92400e; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
 .aviso-edicion { background: #dbeafe; border: 1.5px solid #3b82f6; border-radius: 10px; padding: 12px 18px; font-size: 14px; color: #1e40af; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; font-weight: 600; }
 .aviso-edicion button { background: #3b82f6; color: white; border: none; border-radius: 6px; padding: 5px 14px; font-size: 12px; cursor: pointer; font-family: 'DM Sans', sans-serif; margin-left: auto; white-space: nowrap; }
 .aviso-edicion button:hover { background: #2563eb; }
 
+/* ===== TOAST ===== */
 .toast { position: fixed; bottom: 28px; right: 28px; background: var(--negro); color: white; padding: 14px 22px; border-radius: 12px; font-size: 14px; font-weight: 500; z-index: 9999; display: flex; align-items: center; gap: 10px; box-shadow: 0 8px 32px rgba(0,0,0,0.25); transform: translateY(80px); opacity: 0; transition: all 0.35s cubic-bezier(.4,0,.2,1); }
 .toast.show { transform: translateY(0); opacity: 1; }
 .toast.exito { border-left: 4px solid #22c55e; }
 .toast.error { border-left: 4px solid var(--rojo); }
 .toast.info { border-left: 4px solid #3b82f6; }
 
+/* ===== FORMULARIO ===== */
 .form-wrap { background: white; border-radius: var(--radio); box-shadow: var(--sombra); overflow: hidden; }
 .form-section { border-bottom: 1.5px solid var(--gris-claro); }
 .form-section-header { padding: 16px 24px; background: var(--verde); color: white; font-family: 'Bebas Neue', sans-serif; font-size: 17px; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; cursor: pointer; user-select: none; }
@@ -433,6 +445,7 @@ tr:hover td { background: var(--verde-suave); }
 .btn-cancelar { background: white; color: var(--negro); border: 1.5px solid var(--gris-claro); border-radius: 10px; padding: 12px 24px; font-size: 15px; font-weight: 500; cursor: pointer; transition: var(--transicion); font-family: 'DM Sans', sans-serif; }
 .btn-cancelar:hover { border-color: var(--rojo); color: var(--rojo); }
 
+/* ===== MODAL ===== */
 .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; }
 .modal-box { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -48%); background: white; border-radius: 16px; width: 92%; max-width: 840px; max-height: 85vh; display: flex; flex-direction: column; z-index: 1001; box-shadow: 0 24px 80px rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.2s, transform 0.2s; }
 .modal-detalle.show .modal-box { opacity: 1; transform: translate(-50%, -50%); }
@@ -447,11 +460,13 @@ tr:hover td { background: var(--verde-suave); }
 .detalle-label { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gris); margin-bottom: 3px; }
 .detalle-valor { font-size: 13px; font-weight: 500; color: var(--negro); word-break: break-word; }
 
+/* ===== FIRMAS ===== */
 .firma-wrap { background: var(--fondo); border: 2px dashed var(--gris-claro); border-radius: 8px; padding: 14px; }
 .firma-wrap canvas { display: block; width: 100%; height: auto; }
 .btn-limpiar-firma { background: var(--gris-claro); border: none; border-radius: 6px; padding: 5px 14px; font-size: 12px; cursor: pointer; font-family: 'DM Sans', sans-serif; margin-top: 6px; }
 .btn-limpiar-firma:hover { background: var(--gris); }
 
+/* ===== RESPONSIVE ===== */
 @media (max-width: 700px) {
   .sidebar { display: none; }
   .content { padding: 16px; }
@@ -462,6 +477,9 @@ tr:hover td { background: var(--verde-suave); }
 </head>
 <body>
 
+<!-- ============================================================ -->
+<!-- PANTALLA DE LOGIN -->
+<!-- ============================================================ -->
 <div id="login-screen">
   <div class="login-card">
     <div class="login-logo" id="login-logo" title="Haz clic 5 veces para modo demo">
@@ -483,6 +501,9 @@ tr:hover td { background: var(--verde-suave); }
   </div>
 </div>
 
+<!-- ============================================================ -->
+<!-- APP PRINCIPAL -->
+<!-- ============================================================ -->
 <div id="app">
   <div class="topbar">
     <div class="topbar-logo">
@@ -498,6 +519,7 @@ tr:hover td { background: var(--verde-suave); }
   </div>
 
   <div class="main-layout">
+    <!-- SIDEBAR -->
     <div class="sidebar">
       <div class="sidebar-section">Principal</div>
       <div class="sidebar-item active" onclick="mostrarVista('menu')" id="nav-menu"><div class="dot"></div> Menú Principal</div>
@@ -518,7 +540,10 @@ tr:hover td { background: var(--verde-suave); }
       <div class="sidebar-item" onclick="mostrarRegional('COTIZACION')"><div class="dot"></div> Cotización</div>
     </div>
 
+    <!-- CONTENIDO -->
     <div class="content" id="content-area">
+
+      <!-- ========== VISTA: MENÚ PRINCIPAL ========== -->
       <div id="vista-menu">
         <div class="stats-row">
           <div class="stat-card"><div class="num" id="stat-total">0</div><div class="lbl">Total Prestaciones</div></div>
@@ -529,6 +554,7 @@ tr:hover td { background: var(--verde-suave); }
         <div class="menu-grid" id="menu-grid"></div>
       </div>
 
+      <!-- ========== VISTA: REGIONAL ========== -->
       <div id="vista-regional" style="display:none;">
         <div class="page-header">
           <button class="back-btn" onclick="mostrarVista('menu')">← Menú</button>
@@ -541,6 +567,7 @@ tr:hover td { background: var(--verde-suave); }
           <div class="tab" onclick="cambiarTab('nuevo')" id="tab-nuevo">➕ Nueva Prestación</div>
         </div>
 
+        <!-- TAB: LISTA -->
         <div id="tc-lista">
           <div class="tabla-wrap">
             <div class="tabla-toolbar">
@@ -563,6 +590,7 @@ tr:hover td { background: var(--verde-suave); }
           </div>
         </div>
 
+        <!-- TAB: NUEVO / EDITAR -->
         <div id="tc-nuevo" style="display:none;">
           <div id="aviso-edicion-banner" style="display:none;" class="aviso-edicion">
             ✏️ Modo Edición — Modificando prestación <strong id="edit-num-prestacion"></strong>
@@ -572,7 +600,10 @@ tr:hover td { background: var(--verde-suave); }
             👁️ Solo lectura — Esta regional no es la tuya. Puedes ver los datos pero no guardar.
           </div>
 
+          <!-- FORMULARIO COMPLETO -->
           <div class="form-wrap" id="form-prestacion">
+
+            <!-- SECCIÓN 1: INFORMACIÓN DE SOLICITUD -->
             <div class="form-section">
               <div class="form-section-header" onclick="toggleSection(this)">
                 <span>📋</span> INFORMACIÓN DE SOLICITUD
@@ -664,6 +695,7 @@ tr:hover td { background: var(--verde-suave); }
               </div>
             </div>
 
+            <!-- SECCIÓN 2: CONFIGURACIÓN DEL SERVICIO -->
             <div class="form-section">
               <div class="form-section-header" onclick="toggleSection(this)">
                 <span>⚙️</span> CONFIGURACIÓN DEL SERVICIO
@@ -825,6 +857,7 @@ tr:hover td { background: var(--verde-suave); }
               </div>
             </div>
 
+            <!-- SECCIÓN 3: DATOS DEL FALLECIDO -->
             <div class="form-section">
               <div class="form-section-header" onclick="toggleSection(this)">
                 <span>👤</span> DATOS DEL FALLECIDO
@@ -908,6 +941,7 @@ tr:hover td { background: var(--verde-suave); }
               </div>
             </div>
 
+            <!-- SECCIÓN 4: DATOS DE COORDINACION -->
             <div class="form-section">
               <div class="form-section-header" onclick="toggleSection(this)">
                 <span>🚗</span> DATOS DE COORDINACION
@@ -1057,4 +1091,993 @@ tr:hover td { background: var(--verde-suave); }
                   <select id="f88" onchange="filtrarMunicipiosMuerte()">
                     <option value="">Seleccionar...</option>
                     <option>Antioquia</option><option>Bogota</option><option>Caldas</option><option>Cauca</option>
-                    <option>Cundinamarca</option><option>Huila</option><option>Meta</option><option>Quindio</option
+                    <option>Cundinamarca</option><option>Huila</option><option>Meta</option><option>Quindio</option>
+                    <option>Risaralda</option><option>Santander</option><option>Tolima</option><option>Valle Del Cauca</option>
+                  </select>
+                </div>
+                <div class="campo"><label>Ciudad De Muerte</label><select id="f89"><option value="">Seleccione departamento primero...</option></select></div>
+                <div class="campo"><label>Murio En</label><select id="f90"><option value="">Seleccionar...</option><option>Domicilio</option><option>Hospital/Clínica</option><option>Vía Pública</option><option>Otro</option></select></div>
+                <div class="campo"><label>Direccion de Fallecimiento</label><input type="text" id="f91" placeholder="Dirección exacta" /></div>
+                <div class="campo"><label>Fecha Y Hora de Muerte</label><input type="datetime-local" id="f92" /></div>
+                <div class="campo">
+                  <label>Lugar De Nacimiento</label>
+                  <select id="f93"><option value="">Seleccionar...</option><option>Armenia</option><option>Bogota, D.c.</option><option>Calarca</option><option>Cali</option><option>Ibague</option><option>Manizales</option><option>Medellin</option><option>Pereira</option><option>Palmira</option><option>Quimbaya</option><option>Tulua</option></select>
+                </div>
+                <div class="campo">
+                  <label>Seguridad Social</label>
+                  <select id="f94"><option value="">Seleccionar...</option><option>Contributivo</option><option>Ignorado</option><option>No Tenia</option><option>Otro</option><option>Particular</option><option>Pensionado</option><option>Sin Informacion</option><option>Subsidiado</option><option>Vinculado</option></select>
+                </div>
+              </div>
+            </div>
+
+            <!-- BOTONES -->
+            <div class="form-actions">
+              <button class="btn-cancelar" onclick="limpiarForm()">🗑 Limpiar</button>
+              <button class="btn-cancelar" onclick="cambiarTab('lista')">← Volver a Lista</button>
+              <button class="btn-guardar" id="btn-guardar-form" onclick="guardarPrestacion()">💾 Guardar Prestación</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ================================================================
+   ESTADO GLOBAL
+   ================================================================ */
+var usuario = null;
+var modoDemo = false;
+var regionalActual = null;
+var prestaciones = [];
+var editandoId = null;
+
+var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpUuh3cVO3SoiuuqN77wH3blzo9oEcCCBby9Pyqsj6fbb5L5YOEs-rgL_dyJp0mCE/exec';
+
+/* ================================================================
+   MAPEO EXACTO: id campo HTML → nombre columna hoja de cálculo
+   ================================================================ */
+var CAMPO_A_COLUMNA = [
+  { campo: '_sec1', columna: 'INFORMACIÓN SOLICITUD' },
+  { campo: 'f01', columna: 'Fecha Y Hora de Reporte' },
+  { campo: 'f02', columna: 'N° Prestacion' },
+  { campo: 'f04', columna: 'Observaciones' },
+  { campo: 'f03', columna: 'Reporte de Servicio Por el Call o Regional' },
+  { campo: 'f05', columna: 'Nombre Del Fallecido' },
+  { campo: 'f06', columna: 'Apellidos Del Fallecido' },
+  { campo: 'f07', columna: 'CC: Del Fallecido' },
+  { campo: 'f08', columna: 'Fecha De Expedicion de la CC' },
+  { campo: 'f09', columna: 'Fecha de Nacimiento' },
+  { campo: 'f10', columna: 'Edad' },
+  { campo: 'f11', columna: 'Nº De Contrato' },
+  { campo: 'f12', columna: 'Nombre solicitante' },
+  { campo: 'f13', columna: 'CC: Del Solicitante' },
+  { campo: 'f14', columna: 'Parentesco Con El Fallecido' },
+  { campo: 'f15', columna: 'Direccion del Solicitante' },
+  { campo: 'f16', columna: 'Nº Telefono Solicitante' },
+  { campo: 'f17', columna: 'Fecha Y Hora De Digitacion' },
+  { campo: 'f18', columna: 'Regional' },
+  { campo: 'f19', columna: 'Departamento De Prestacion' },
+  { campo: 'f20', columna: 'Municipio de Prestacion' },
+  { campo: 'f21', columna: 'Sede' },
+  { campo: 'f22', columna: 'Tipo' },
+  { campo: 'f23', columna: 'Categoria' },
+  { campo: 'f24', columna: 'Motivo' },
+  { campo: 'f25', columna: 'Entidad' },
+  { campo: 'f26', columna: 'Asesor Externo' },
+  { campo: 'f27', columna: 'Clasificacion' },
+  { campo: 'f28', columna: 'Tiene Servicios Adicionales (SI/NO)' },
+  { campo: 'f29', columna: 'Cuáles' },
+  { campo: 'f30', columna: 'Tiene post finales (SI/NO)' },
+  { campo: 'f31', columna: 'Nombre Del Titular' },
+  { campo: 'f32', columna: 'CC: Del Titular' },
+  { campo: 'f33', columna: 'Direccion Del Titular' },
+  { campo: 'f34', columna: 'Nº Telefono TiTular' },
+  { campo: 'f35', columna: 'Responsabele a Facturar' },
+  { campo: 'f36', columna: 'CC Responsable a Facturar' },
+  { campo: 'f37', columna: 'Direccion Responsable a Facturar' },
+  { campo: 'f38', columna: 'Nº Telefono Responsable a Facturar' },
+  { campo: 'f39', columna: 'Correo Electronico Responsable a Facturar' },
+  { campo: '_sec2', columna: 'DATOS DEL FALLECIDO' },
+  { campo: 'f42', columna: 'Lugar De Fallecimiento' },
+  { campo: 'f43', columna: 'Tipo de Muerte' },
+  { campo: 'f44', columna: 'Posible causa de muerte' },
+  { campo: 'f45', columna: 'Certificado De Defuncion' },
+  { campo: 'f46', columna: 'Ocupación' },
+  { campo: 'f47', columna: 'Pensionado (SI/No)' },
+  { campo: 'f48', columna: 'Nom: del Fondo' },
+  { campo: 'f49', columna: 'Contextura' },
+  { campo: 'f50', columna: 'Estado civil' },
+  { campo: 'f50b', columna: 'Nombre cónyuge' },
+  { campo: 'f52', columna: 'Nombre Del Padre' },
+  { campo: 'f53', columna: 'Nombre De La Madre' },
+  { campo: 'f54', columna: 'Hijos' },
+  { campo: 'f55', columna: 'Foto Cedula Fallecido' },
+  { campo: '_sec3', columna: 'DATOS DE COORDINACION' },
+  { campo: 'f56', columna: 'Fecha De Recogida' },
+  { campo: 'f57', columna: 'Hora Recogida' },
+  { campo: 'f58', columna: 'Nombre De Quién Recoge' },
+  { campo: 'f59', columna: '(Recogida) Placa Carroza de Jardines del Renacer' },
+  { campo: 'f60', columna: 'Traslado Nacional' },
+  { campo: 'f61', columna: 'Preservación Por' },
+  { campo: 'f62', columna: 'Nº Ref de Cofre' },
+  { campo: 'f63', columna: 'Fecha Inicio de Velación' },
+  { campo: 'f64', columna: 'Hora Inicio de Velación' },
+  { campo: 'f65', columna: 'Fecha Final de Velación' },
+  { campo: 'f66', columna: 'Hora Final de Velación' },
+  { campo: 'f67', columna: 'Municipio Velación' },
+  { campo: 'f68', columna: 'Lugar de Velación' },
+  { campo: 'f69', columna: 'Nombre de Aux Cafeteria' },
+  { campo: 'f70', columna: 'Hora Llegada a Sala de la Aux Cafeteria' },
+  { campo: 'f71', columna: 'Arreglo Floral' },
+  { campo: 'f72', columna: 'Carteles' },
+  { campo: 'f73', columna: 'Kit Velación' },
+  { campo: 'f74', columna: 'Cinta Fallecido' },
+  { campo: 'f75', columna: 'Transporte Para Acompañantes' },
+  { campo: 'f76', columna: 'Nombre de Auxiliar o Proveedor que Pone en Velacion' },
+  { campo: 'f77', columna: '(Velación) Placa Carroza De Jardines Del Renacer' },
+  { campo: 'f78', columna: 'Fecha Exequias' },
+  { campo: 'f79', columna: 'Hora Exequias' },
+  { campo: 'f80', columna: 'Lugar Exequias' },
+  { campo: 'f81', columna: 'Fecha Destino Final' },
+  { campo: 'f82', columna: 'Hora Destino Final' },
+  { campo: 'f83', columna: 'Destino Final' },
+  { campo: 'f84', columna: 'Cementerio' },
+  { campo: 'f85', columna: 'Quien Culmina' },
+  { campo: 'f86', columna: '(Culminación) Placa Carroza De Jardines Del Renacer' },
+  { campo: 'f87', columna: 'Coordinador' },
+  { campo: '_firma_entrega', columna: 'Firma: Quien Entrega' },
+  { campo: '_firma_recibe', columna: 'Firma: Quien Recibe' },
+  { campo: 'f41', columna: 'Nombre del Agente Call' },
+  { campo: 'f98', columna: 'Foto Del Certificado De Defuncion' },
+  { campo: 'f40', columna: 'Estado De La Prestacion' },
+  { campo: 'f88', columna: 'Departamento De Muerte' },
+  { campo: 'f89', columna: 'Ciudad De Muerte' },
+  { campo: 'f90', columna: 'Murio En' },
+  { campo: 'f91', columna: 'Direccion de Fallecimiento' },
+  { campo: 'f92', columna: 'Fecha Y Hora de Muerte' },
+  { campo: 'f93', columna: 'Lugar De Nacimiento' },
+  { campo: 'f94', columna: 'Seguridad Social' }
+];
+
+/* ================================================================
+   REGIONALES Y MUNICIPIOS
+   ================================================================ */
+var REGIONALES = [
+  { id: 'RISARALDA', label: 'Risaralda', clase: 'risaralda', emoji: '🌉' },
+  { id: 'ANTIOQUIA', label: 'Antioquia', clase: 'antioquia', emoji: '🏘️' },
+  { id: 'CALDAS', label: 'Caldas', clase: 'caldas', emoji: '🏔️' },
+  { id: 'VALLE CENTRO', label: 'Valle Centro', clase: 'valle-centro', emoji: '⛪' },
+  { id: 'VALLE SUR', label: 'Valle Sur', clase: 'valle-sur', emoji: '✝️' },
+  { id: 'VALLE NORTE', label: 'Valle Norte', clase: 'valle-norte', emoji: '🏛️' },
+  { id: 'VALLE CENTRO-PALMIRA', label: 'Valle C. Palmira', clase: 'palmira', emoji: '⛩️' },
+  { id: 'QUINDIO', label: 'Quindío', clase: 'quindio', emoji: '🌿' },
+  { id: 'CUNDINAMARCA', label: 'C/Marca', clase: 'cmarca', emoji: '🏙️' },
+  { id: 'TOLIMA NORTE', label: 'Tolima Norte', clase: 'tolima', emoji: '🕍' },
+  { id: 'APOYO', label: 'Apoyo Exequial', clase: 'apoyo', emoji: '🤝' },
+  { id: 'ERRORES', label: 'Errores Digitación', clase: 'errores', emoji: '⚠️' },
+  { id: 'COTIZACION', label: 'Cotización', clase: 'cotizacion', emoji: '💰' }
+];
+
+var MUNICIPIOS = {
+  "Quindio": ["Armenia","Buenavista","Calarca","Circasia","Cordoba","Filandia","Genova","La Tebaida","Montenegro","Pijao","Quimbaya","Salento"],
+  "Risaralda": ["Pereira","Apia","Balboa","Belen De Umbria","Dosquebradas","Guatica","La Celia","La Virginia","Marsella","Mistrato","Pueblo Rico","Quinchia","Santa Rosa De Cabal","Santuario"],
+  "Caldas": ["Manizales","Aguadas","Anserma","Aranzazu","Belalcazar","Chinchina","Filadelfia","La Dorada","La Merced","Manzanares","Marmato","Marquetalia","Neira","Norcasia","Pacora","Palestina","Pensilvania","Riosucio","Risaralda","Salamina","Samana","San Jose","Supia","Victoria","Villamaria","Viterbo"],
+  "Valle Del Cauca": ["Cali","Alcala","Andalucia","Ansermanuevo","Argelia","Bolivar","Buenaventura","Guadalajara De Buga","Bugalagrande","Caicedonia","Calima","Candelaria","Cartago","Dagua","El Aguila","El Cairo","El Cerrito","El Dovio","Florida","Ginebra","Guacari","Jamundi","La Cumbre","La Union","La Victoria","Obando","Palmira","Pradera","Restrepo","Riofrio","Roldanillo","San Pedro","Sevilla","Toro","Trujillo","Tulua","Ulloa","Versalles","Vijes","Yotoco","Yumbo","Zarzal"],
+  "Antioquia": ["Medellin","Bello","Itagui","Envigado","Sabaneta","La Estrella","Caldas","Copacabana","Girardota","Barbosa","Rionegro","Marinilla","Apartado","Turbo","Caucasia","Montebello"],
+  "Tolima": ["Ibague","Alpujarra","Alvarado","Ambalema","Anzoategui","Armero","Ataco","Cajamarca","Chaparral","Coello","Coyaima","Cunday","Dolores","Espinal","Falan","Flandes","Fresno","Guamo","Honda","Icononzo","Lerida","Libano","Mariquita","Melgar","Murillo","Natagaima","Ortega","Palocabildo","Piedras","Planadas","Prado","Purificacion","Rioblanco","Roncesvalles","Rovira","Saldaña","San Antonio","San Luis","Santa Isabel","Suarez","Valle De San Juan","Venadillo","Villahermosa","Villarrica"],
+  "Cundinamarca": ["Girardot","Fusagasuga","Facatativa","Zipaquira","Soacha","Chia","Mosquera","Madrid","Funza","Cajica","Tocaima","Anapoima","Cachipay","La Mesa","Guaduas","Honda","Villeta","Ubate","Silvania","Arbelaez","San Bernardo","Venecia","Pasca"],
+  "Bogota": ["Bogota, D.c."],
+  "Huila": ["Neiva","Garzon","Pitalito","La Plata","Campoalegre","Gigante","Guadalupe","Acevedo","Agrado","Aipe","Algeciras","Altamira","Baraya","Colombia","Elias","Hobo","Iquira","Isnos","La Argentina","Nataga","Oporapa","Paicol","Palermo","Palestina","Pital","Rivera","Saladoblanco","San Agustin","Santa Maria","Suaza","Tarqui","Tesalia","Tello","Teruel","Timana","Villavieja","Yaguara"],
+  "Meta": ["Villavicencio","Acacias","Granada","San Martin","Cumaral","El Castillo","Guamal","Puerto Lopez","Puerto Gaitan","Restrepo","San Juan De Arama"],
+  "Cauca": ["Popayan","Santander De Quilichao","Puerto Tejada","Miranda","Padilla","Corinto","Caloto","El Tambo","Timbio","Piendamo","Cajibio","Morales","Balboa","Bolivar","Guapi"],
+  "Santander": ["Bucaramanga","Floridablanca","Giron","Piedecuesta","Barrancabermeja","San Gil","Lebrija","Rionegro","Socorro","Velez","Sabana De Torres"]
+};
+
+/* ================================================================
+   HELPERS
+   ================================================================ */
+function el(id) {
+  return document.getElementById(id);
+}
+function gv(id) {
+  var e = el(id);
+  return e ? e.value : '';
+}
+
+function buscarEnRaw(raw, campoId) {
+  for (var i = 0; i < CAMPO_A_COLUMNA.length; i++) {
+    if (CAMPO_A_COLUMNA[i].campo === campoId) {
+      var col = CAMPO_A_COLUMNA[i].columna;
+      if (col.charAt(0) === '_') return '';
+      var v = raw[col];
+      if (v !== undefined && v !== null && String(v).trim() !== '') {
+        return String(v).trim();
+      }
+      return '';
+    }
+  }
+  return '';
+}
+
+/* ================================================================
+   API
+   ================================================================ */
+function apiPost(payload) {
+  if (modoDemo) {
+    console.log('[DEMO] POST:', payload.accion, payload);
+    return Promise.resolve({ ok: true });
+  }
+  return fetch(SCRIPT_URL, {
+    method: 'POST', mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(payload)
+  }).then(function() { return { ok: true }; })
+    .catch(function(err) { console.error('[API] POST error:', err); return { ok: false, error: err.toString() }; });
+}
+
+function apiGet(payload) {
+  if (modoDemo) {
+    console.log('[DEMO] GET:', payload.accion);
+    return Promise.resolve({ ok: true, datos: [] });
+  }
+  var params = new URLSearchParams({ accion: payload.accion, regional: payload.regional || '' });
+  return fetch(SCRIPT_URL + '?' + params.toString())
+    .then(function(r) { return r.text(); })
+    .then(function(text) {
+      try { return JSON.parse(text); }
+      catch (e) { console.error('[API] No JSON:', text.substring(0, 200)); return { ok: false, datos: [] }; }
+    })
+    .catch(function(err) { return { ok: false, datos: [], error: err.toString() }; });
+}
+
+/* ================================================================
+   DEMO: 5 clics en logo
+   ================================================================ */
+var logoClicks = 0;
+var logoTimer = null;
+
+document.addEventListener('DOMContentLoaded', function() {
+  var logo = el('login-logo');
+  if (logo) {
+    logo.addEventListener('click', function() {
+      logoClicks++;
+      clearTimeout(logoTimer);
+      logoTimer = setTimeout(function() { logoClicks = 0; }, 2000);
+      if (logoClicks >= 5) { logoClicks = 0; entrarDemo(); }
+    });
+  }
+  setFechaAhora();
+});
+
+function entrarDemo() {
+  modoDemo = true;
+  console.log('%c🛠️ MODO DEMO ACTIVADO', 'color:#f59e0b;font-size:16px;font-weight:bold');
+  entrar({ nombre: 'Usuario Demo', regional: 'QUINDIO', rol: 'admin', usuario: 'demo' });
+}
+
+/* ================================================================
+   LOGIN
+   ================================================================ */
+function doLogin() {
+  var u = el('input-usuario');
+  var p = el('input-password');
+  if (!u || !p) return;
+
+  var uv = u.value.trim();
+  var pv = p.value.trim();
+  var errBox = el('login-error-box');
+  var errTitle = el('error-title');
+  var errDetail = el('error-detail');
+  var btn = el('btn-login');
+
+  if (errBox) errBox.style.display = 'none';
+  u.classList.remove('input-error');
+  p.classList.remove('input-error');
+
+  if (!uv || !pv) {
+    if (errTitle) errTitle.textContent = '⚠️ Campos vacíos';
+    if (errDetail) errDetail.textContent = 'Ingresa usuario y contraseña.';
+    if (errBox) errBox.style.display = 'block';
+    if (!uv) u.classList.add('input-error');
+    if (!pv) p.classList.add('input-error');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = '⏳ Verificando...';
+
+  var params = new URLSearchParams({ accion: 'login', usuario: uv, password: pv });
+  var url = SCRIPT_URL + '?' + params.toString();
+
+  fetch(url).then(function(res) { return res.text(); }).then(function(text) {
+    if (text.trim().charAt(0) === '<') {
+      if (errTitle) errTitle.textContent = '❌ Error del servidor';
+      if (errDetail) errDetail.textContent = 'Apps Script devolvió HTML.\nVerifica: Ejecutar como: Yo + Acceso: Cualquier persona';
+      if (errBox) errBox.style.display = 'block';
+      btn.disabled = false; btn.textContent = 'Entrar →';
+      return;
+    }
+    var data;
+    try { data = JSON.parse(text); } catch (e) {
+      if (errTitle) errTitle.textContent = '❌ Respuesta inválida';
+      if (errDetail) errDetail.textContent = 'Contenido: "' + text.substring(0, 200) + '"';
+      if (errBox) errBox.style.display = 'block';
+      btn.disabled = false; btn.textContent = 'Entrar →';
+      return;
+    }
+    if (data.ok) {
+      modoDemo = false;
+      entrar({ nombre: data.nombre || data.usuario || uv, regional: (data.regional || 'QUINDIO').toUpperCase(), rol: data.rol, usuario: data.usuario || uv });
+    } else {
+      if (errTitle) errTitle.textContent = '❌ ' + (data.error || 'Credenciales incorrectas');
+      if (errDetail) errDetail.textContent = 'Verifica el usuario "' + uv + '" en la hoja.';
+      if (errBox) errBox.style.display = 'block';
+      u.classList.add('input-error');
+      p.classList.add('input-error');
+      btn.disabled = false; btn.textContent = 'Entrar →';
+    }
+  }).catch(function(e) {
+    if (errTitle) errTitle.textContent = '⚠️ Error de conexión';
+    if (errDetail) { errDetail.textContent = e.message + '\nUsa "Modo Demo" para probar.'; errDetail.style.whiteSpace = 'pre-wrap'; }
+    if (errBox) errBox.style.display = 'block';
+    btn.disabled = false; btn.textContent = 'Entrar →';
+  });
+}
+
+/* ================================================================
+   ENTRAR A LA APP
+   ================================================================ */
+function entrar(data) {
+  usuario = data;
+  el('login-screen').style.display = 'none';
+  el('app').style.display = 'block';
+  el('topbar-regional').textContent = usuario.regional;
+  el('topbar-nombre').textContent = usuario.nombre;
+  el('topbar-avatar').textContent = (usuario.nombre || 'A')[0].toUpperCase();
+  el('demo-indicator').style.display = modoDemo ? 'inline-block' : 'none';
+  initFirma('canvas-firma-entrega');
+  initFirma('canvas-firma-recibe');
+  renderMenu();
+  actualizarStats();
+  mostrarVista('menu');
+  if (modoDemo) mostrarToast('🛠️ Modo Demo — Los datos no se guardan en Sheets', 'info');
+}
+
+function cerrarSesion() {
+  usuario = null;
+  modoDemo = false;
+  editandoId = null;
+  el('app').style.display = 'none';
+  el('login-screen').style.display = 'flex';
+  var u = el('input-usuario');
+  var p = el('input-password');
+  if (u) u.value = '';
+  if (p) p.value = '';
+  var eb = el('login-error-box');
+  if (eb) eb.style.display = 'none';
+  var bl = el('btn-login');
+  if (bl) { bl.disabled = false; bl.textContent = 'Entrar →'; }
+}
+
+/* ================================================================
+   MENÚ
+   ================================================================ */
+function renderMenu() {
+  var grid = el('menu-grid');
+  if (!grid) return;
+  grid.innerHTML = REGIONALES.map(function(r) {
+    return '<div class="menu-card" onclick="mostrarRegional(\'' + r.id + '\')">' +
+      '<div class="menu-card-img ' + r.clase + '">' +
+        r.emoji +
+        (r.id === usuario.regional ? '<span class="mi-regional-badge">MI REGIONAL</span>' : '') +
+      '</div>' +
+      '<div class="menu-card-label">' + r.label + '<span class="arrow">›</span></div>' +
+    '</div>';
+  }).join('');
+}
+
+function actualizarStats() {
+  var hoy = new Date().toDateString();
+  var stTotal = el('stat-total');
+  var stHoy = el('stat-hoy');
+  var stMi = el('stat-mi-regional');
+  if (stTotal) stTotal.textContent = prestaciones.length;
+  if (stHoy) stHoy.textContent = prestaciones.filter(function(p) {
+    try { return new Date(p.fechaReporte).toDateString() === hoy; } catch(e) { return false; }
+  }).length;
+  if (stMi) stMi.textContent = prestaciones.filter(function(p) { return p.regional === (usuario ? usuario.regional : ''); }).length;
+}
+
+/* ================================================================
+   NAVEGACIÓN — Todas con protecciones null
+   ================================================================ */
+function mostrarVista(vista) {
+  var vm = el('vista-menu');
+  var vr = el('vista-regional');
+  if (vm) vm.style.display = vista === 'menu' ? 'block' : 'none';
+  if (vr) vr.style.display = vista === 'regional' ? 'block' : 'none';
+
+  var items = document.querySelectorAll('.sidebar-item');
+  for (var i = 0; i < items.length; i++) items[i].classList.remove('active');
+
+  if (vista === 'menu') {
+    var navMenu = el('nav-menu');
+    if (navMenu) navMenu.classList.add('active');
+    cancelarEdicion();
+  }
+}
+
+function mostrarRegional(regional) {
+  regionalActual = regional;
+  cancelarEdicion();
+
+  var r = null;
+  for (var i = 0; i < REGIONALES.length; i++) {
+    if (REGIONALES[i].id === regional) { r = REGIONALES[i]; break; }
+  }
+
+  var titulo = el('regional-titulo');
+  if (titulo) titulo.textContent = r ? r.label.toUpperCase() : regional;
+
+  var esMiRegional = regional === (usuario ? usuario.regional : '');
+
+  var btnNuevoTop = el('btn-nuevo-top');
+  if (btnNuevoTop) btnNuevoTop.disabled = !esMiRegional;
+
+  var avisoWrap = el('aviso-lectura-wrap');
+  if (avisoWrap) {
+    if (!esMiRegional) {
+      avisoWrap.innerHTML = '<div class="aviso-lectura">👁️ Estás viendo <strong>' + (r ? r.label : regional) + '</strong>. Solo lectura — tu regional es <strong>' + (usuario ? usuario.regional : '') + '</strong>.</div>';
+    } else {
+      avisoWrap.innerHTML = '';
+    }
+  }
+
+  var readonlyNotice = el('readonly-notice');
+  var btnGuardar = el('btn-guardar-form');
+  var tabNuevo = el('tab-nuevo');
+  var f18 = el('f18');
+
+  if (readonlyNotice) readonlyNotice.style.display = esMiRegional ? 'none' : 'flex';
+  if (btnGuardar) { btnGuardar.disabled = !esMiRegional; btnGuardar.style.opacity = esMiRegional ? '1' : '0.4'; }
+  if (tabNuevo) tabNuevo.style.opacity = esMiRegional ? '1' : '0.5';
+  if (f18 && esMiRegional) f18.value = regional;
+
+  var items = document.querySelectorAll('.sidebar-item');
+  for (var j = 0; j < items.length; j++) items[j].classList.remove('active');
+  var navItem = el('nav-' + regional);
+  if (navItem) navItem.classList.add('active');
+
+  cambiarTab('lista');
+  mostrarVista('regional');
+  cargarPrestaciones(regional);
+}
+
+/* ================================================================
+   CARGAR PRESTACIONES
+   ================================================================ */
+function cargarPrestaciones(regional) {
+  var tbody = el('tabla-body');
+  if (!tbody) return;
+  tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--gris)"><div style="font-size:24px;margin-bottom:8px">⏳</div>Cargando...</td></tr>';
+
+  apiGet({ accion: 'leer', regional: regional }).then(function(res) {
+    if (res && res.ok && Array.isArray(res.datos)) {
+      prestaciones = res.datos.map(function(d, i) {
+        return {
+          id: i.toString(),
+          _raw: d,
+          numPrestacion: buscarEnRaw(d, 'f02'),
+          fechaReporte: buscarEnRaw(d, 'f01'),
+          regional: buscarEnRaw(d, 'f18') || regional,
+          nombreFallecido: buscarEnRaw(d, 'f05'),
+          apellidosFallecido: buscarEnRaw(d, 'f06'),
+          numContrato: buscarEnRaw(d, 'f11'),
+          sede: buscarEnRaw(d, 'f21'),
+          estadoPrestacion: buscarEnRaw(d, 'f40') || 'En proceso'
+        };
+      });
+    } else {
+      prestaciones = [];
+      if (res && res.error && !modoDemo) mostrarToast('⚠️ Error al leer: ' + res.error.substring(0, 80), 'error');
+    }
+    actualizarStats();
+    renderTabla();
+  });
+}
+
+/* ================================================================
+   TABS
+   ================================================================ */
+function cambiarTab(tab) {
+  if (tab === 'lista' && editandoId !== null) cancelarEdicion();
+
+  var tcLista = el('tc-lista');
+  var tcNuevo = el('tc-nuevo');
+  var tabLista = el('tab-lista');
+  var tabNuevo = el('tab-nuevo');
+
+  if (tcLista) tcLista.style.display = tab === 'lista' ? 'block' : 'none';
+  if (tcNuevo) tcNuevo.style.display = tab === 'nuevo' ? 'block' : 'none';
+  if (tabLista) { tabLista.classList.toggle('active', tab === 'lista'); }
+  if (tabNuevo) { tabNuevo.classList.toggle('active', tab === 'nuevo'); }
+
+  if (tab === 'nuevo' && editandoId === null) {
+    setFechaAhora();
+    var f17 = el('f17');
+    var f01 = el('f01');
+    if (f17 && f01) f17.value = f01.value;
+  }
+}
+
+/* ================================================================
+   TABLA
+   ================================================================ */
+function renderTabla(filtro) {
+  filtro = filtro || '';
+  var esMiRegional = regionalActual === (usuario ? usuario.regional : '');
+  var tbody = el('tabla-body');
+  if (!tbody) return;
+
+  var datos = prestaciones.filter(function(p) {
+    var esReg = p.regional === regionalActual;
+    var coinc = !filtro ||
+      (p.nombreFallecido || '').toLowerCase().indexOf(filtro.toLowerCase()) !== -1 ||
+      (p.apellidosFallecido || '').toLowerCase().indexOf(filtro.toLowerCase()) !== -1 ||
+      (p.numContrato || '').toLowerCase().indexOf(filtro.toLowerCase()) !== -1 ||
+      (p.numPrestacion || '').toLowerCase().indexOf(filtro.toLowerCase()) !== -1 ||
+      (p.sede || '').toLowerCase().indexOf(filtro.toLowerCase()) !== -1;
+    return esReg && coinc;
+  });
+
+  if (datos.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--gris)"><div style="font-size:32px;margin-bottom:8px">📋</div>No hay registros' + (filtro ? ' con ese filtro' : '') + '</td></tr>';
+    return;
+  }
+
+  var invertidos = datos.slice().reverse();
+  tbody.innerHTML = invertidos.map(function(p) {
+    var nombre = [p.nombreFallecido, p.apellidosFallecido].filter(Boolean).join(' ') || '—';
+    var fecha = '—';
+    try { if (p.fechaReporte) fecha = new Date(p.fechaReporte).toLocaleString('es-CO', { dateStyle: 'short', timeStyle: 'short' }); } catch(e) {}
+    var est = (p.estadoPrestacion || 'En proceso').toLowerCase();
+    var ec = 'estado-activo';
+    if (est.indexOf('finaliz') !== -1) ec = 'estado-finalizado';
+    else if (est.indexOf('pendien') !== -1) ec = 'estado-pendiente';
+    else if (est.indexOf('cancel') !== -1) ec = 'estado-cancelado';
+    var btn = esMiRegional
+      ? '<button class="btn-editar" onclick="editarPrestacion(\'' + p.id + '\')">✏️ Editar</button>'
+      : '<button class="btn-ver" onclick="verSoloLectura(\'' + p.id + '\')">👁️ Ver</button>';
+    return '<tr><td><code style="font-family:\'DM Mono\',monospace;font-size:12px">' + (p.numPrestacion || '—') + '</code></td><td><strong>' + nombre + '</strong></td><td style="color:var(--gris);font-size:12.5px">' + fecha + '</td><td>' + (p.sede || '—') + '</td><td><span class="estado-chip ' + ec + '">' + (p.estadoPrestacion || 'En proceso') + '</span></td><td>' + btn + '</td></tr>';
+  }).join('');
+}
+
+function filtrarTabla(v) { renderTabla(v); }
+
+/* ================================================================
+   VER SOLO LECTURA (MODAL)
+   ================================================================ */
+function verSoloLectura(id) {
+  var p = null;
+  for (var i = 0; i < prestaciones.length; i++) { if (prestaciones[i].id === id) { p = prestaciones[i]; break; } }
+  if (!p) return;
+  var raw = p._raw || {};
+
+  var idxSec2 = -1, idxSec3 = -1;
+  for (var j = 0; j < CAMPO_A_COLUMNA.length; j++) {
+    if (CAMPO_A_COLUMNA[j].campo === '_sec2') idxSec2 = j;
+    if (CAMPO_A_COLUMNA[j].campo === '_sec3') idxSec3 = j;
+  }
+
+  function camposSeccion(desde, hasta) {
+    var arr = [];
+    for (var k = 0; k < CAMPO_A_COLUMNA.length; k++) {
+      if (k > desde && k < hasta && CAMPO_A_COLUMNA[k].campo.charAt(0) !== '_') arr.push(CAMPO_A_COLUMNA[k]);
+    }
+    return arr;
+  }
+  function renderC(cols) {
+    return cols.map(function(m) {
+      var v = raw[m.columna] || '';
+      if (!v) return '';
+      return '<div class="detalle-campo"><span class="detalle-label">' + m.columna + '</span><span class="detalle-valor">' + v + '</span></div>';
+    }).join('');
+  }
+
+  var html = '<div class="modal-section-title">INFORMACIÓN DE SOLICITUD</div><div class="detalle-grid">' + renderC(camposSeccion(0, idxSec2)) + '</div>';
+  html += '<div class="modal-section-title">DATOS DEL FALLECIDO</div><div class="detalle-grid">' + renderC(camposSeccion(idxSec2, idxSec3)) + '</div>';
+  html += '<div class="modal-section-title">DATOS DE COORDINACION</div><div class="detalle-grid">' + renderC(camposSeccion(idxSec3, CAMPO_A_COLUMNA.length)) + '</div>';
+
+  var existente = el('modal-dinamico');
+  if (existente) existente.remove();
+  var modal = document.createElement('div');
+  modal.id = 'modal-dinamico';
+  modal.className = 'modal-detalle';
+  modal.innerHTML = '<div class="modal-overlay" onclick="cerrarModal()"></div><div class="modal-box"><div class="modal-header"><h3>📋 ' + (p.nombreFallecido || '') + ' ' + (p.apellidosFallecido || '') + ' <span style="font-size:13px;font-family:\'DM Sans\';color:var(--gris);font-weight:400;margin-left:8px">' + (p.numPrestacion || '') + '</span></h3><button onclick="cerrarModal()" class="modal-cerrar">✕</button></div><div class="modal-body">' + html + '</div></div>';
+  document.body.appendChild(modal);
+  setTimeout(function() { modal.classList.add('show'); }, 10);
+}
+
+function cerrarModal() { var m = el('modal-dinamico'); if (m) m.remove(); }
+
+/* ================================================================
+   EDITAR — Carga TODOS los campos en el formulario
+   FIX: Reconstruye selects dependientes PRESERVANDO el valor
+   ================================================================ */
+function editarPrestacion(id) {
+  var p = null;
+  for (var i = 0; i < prestaciones.length; i++) { if (prestaciones[i].id === id) { p = prestaciones[i]; break; } }
+  if (!p) return;
+
+  var raw = p._raw || {};
+  editandoId = id;
+  limpiarFormularioSilencioso();
+
+  /* Paso 1: Llenar todos los campos simples */
+  CAMPO_A_COLUMNA.forEach(function(mapeo) {
+    if (mapeo.campo.charAt(0) === '_') return;
+    var elem = el(mapeo.campo);
+    if (!elem) return;
+    var val = raw[mapeo.columna];
+    if (val === undefined || val === null) return;
+    var s = String(val).trim();
+    if (!s) return;
+
+    if (elem.tagName === 'SELECT') {
+      var encontrado = false;
+      for (var i = 0; i < elem.options.length; i++) {
+        if (elem.options[i].value && elem.options[i].value.toUpperCase() === s.toUpperCase()) { elem.value = elem.options[i].value; encontrado = true; break; }
+      }
+      if (!encontrado) {
+        for (var j = 0; j < elem.options.length; j++) {
+          if (elem.options[j].text && elem.options[j].text.toUpperCase() === s.toUpperCase()) { elem.value = elem.options[j].value; encontrado = true; break; }
+        }
+      }
+    } else {
+      elem.value = s;
+    }
+  });
+
+  /* Paso 2: Reconstruir select de Municipio de Prestación PRESERVANDO valor */
+  var deptoPrest = gv('f19');
+  var munValGuardado = gv('f20');
+  if (deptoPrest && MUNICIPIOS[deptoPrest]) {
+    var sel20 = el('f20');
+    if (sel20) {
+      sel20.innerHTML = '<option value="">Seleccionar...</option>';
+      MUNICIPIOS[deptoPrest].sort().forEach(function(m) {
+        var o = document.createElement('option');
+        o.value = m; o.textContent = m;
+        sel20.appendChild(o);
+      });
+      if (munValGuardado) {
+        for (var k = 0; k < sel20.options.length; k++) {
+          if (sel20.options[k].value.toUpperCase() === munValGuardado.toUpperCase()) {
+            sel20.value = sel20.options[k].value; break;
+          }
+        }
+      }
+    }
+  }
+
+  /* Paso 3: Reconstruir select de Ciudad de Muerte PRESERVANDO valor */
+  var deptoMuerte = gv('f88');
+  var ciuValGuardado = gv('f89');
+  if (deptoMuerte && MUNICIPIOS[deptoMuerte]) {
+    var sel89 = el('f89');
+    if (sel89) {
+      sel89.innerHTML = '<option value="">Seleccionar...</option>';
+      MUNICIPIOS[deptoMuerte].sort().forEach(function(m) {
+        var o = document.createElement('option');
+        o.value = m; o.textContent = m;
+        sel89.appendChild(o);
+      });
+      if (ciuValGuardado) {
+        for (var l = 0; l < sel89.options.length; l++) {
+          if (sel89.options[l].value.toUpperCase() === ciuValGuardado.toUpperCase()) {
+            sel89.value = sel89.options[l].value; break;
+          }
+        }
+      }
+    }
+  }
+
+  /* Paso 4: Aplicar reglas de categoría SIN borrar valores existentes */
+  var cat = gv('f23');
+  var wm = el('wrap-motivo');
+  var we = el('wrap-entidad');
+  var wa = el('wrap-asesor');
+  if (wm) wm.style.display = cat === 'Afiliado Condicional' ? '' : 'none';
+  var mostrarEnt = ['Adres', 'Asesor Jurídico', 'Asesores Externos'].indexOf(cat) !== -1;
+  if (we) we.style.display = mostrarEnt ? '' : 'none';
+  if (wa) wa.style.display = mostrarEnt ? '' : 'none';
+
+  /* Paso 5: Banner de edición */
+  var banner = el('aviso-edicion-banner');
+  var editNum = el('edit-num-prestacion');
+  var btnGuardar = el('btn-guardar-form');
+  if (banner) banner.style.display = 'flex';
+  if (editNum) editNum.textContent = p.numPrestacion || '(sin N°)';
+  if (btnGuardar) { btnGuardar.textContent = '💾 Actualizar Prestación'; btnGuardar.classList.add('actualizando'); }
+
+  /* Paso 6: Cambiar a tab formulario */
+  var tcLista = el('tc-lista');
+  var tcNuevo = el('tc-nuevo');
+  var tabLista = el('tab-lista');
+  var tabNuevo = el('tab-nuevo');
+  var formPre = el('form-prestacion');
+  if (tcLista) tcLista.style.display = 'none';
+  if (tcNuevo) tcNuevo.style.display = 'block';
+  if (tabLista) tabLista.classList.remove('active');
+  if (tabNuevo) tabNuevo.classList.add('active');
+  if (formPre) formPre.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  mostrarToast('✏️ Modo edición — Modifica y guarda', 'info');
+}
+
+/* ================================================================
+   CANCELAR EDICIÓN — Con protecciones null
+   ================================================================ */
+function cancelarEdicion() {
+  editandoId = null;
+  var banner = el('aviso-edicion-banner');
+  if (banner) banner.style.display = 'none';
+
+  var btnGuardar = el('btn-guardar-form');
+  if (btnGuardar) {
+    btnGuardar.textContent = '💾 Guardar Prestación';
+    btnGuardar.classList.remove('actualizando');
+  }
+}
+
+/* ================================================================
+   CONSTRUIR PAYLOAD
+   ================================================================ */
+function construirPayload() {
+  var payload = {};
+  CAMPO_A_COLUMNA.forEach(function(mapeo) {
+    if (mapeo.campo === '_sec1' || mapeo.campo === '_sec2' || mapeo.campo === '_sec3') {
+      payload[mapeo.columna] = '';
+      return;
+    }
+    if (mapeo.campo === '_firma_entrega') {
+      var cE = el('canvas-firma-entrega');
+      payload[mapeo.columna] = cE ? cE.toDataURL('image/png') : '';
+      return;
+    }
+    if (mapeo.campo === '_firma_recibe') {
+      var cR = el('canvas-firma-recibe');
+      payload[mapeo.columna] = cR ? cR.toDataURL('image/png') : '';
+      return;
+    }
+    if (mapeo.campo === 'f55' || mapeo.campo === 'f98') {
+      payload[mapeo.columna] = '(archivo adjunto)';
+      return;
+    }
+    var elem = el(mapeo.campo);
+    payload[mapeo.columna] = elem ? elem.value : '';
+  });
+  return payload;
+}
+
+/* ================================================================
+   GUARDAR PRESTACIÓN
+   FIX: N° Prestacion NO es obligatorio
+   ================================================================ */
+function guardarPrestacion() {
+  if (regionalActual !== (usuario ? usuario.regional : '')) {
+    mostrarToast('Sin permiso para guardar en esta regional', 'error');
+    return;
+  }
+
+  var nombre = gv('f05').trim();
+  var fecha = gv('f01');
+  var contrato = gv('f11').trim();
+
+  if (!nombre) { mostrarToast('El nombre del fallecido es requerido', 'error'); var e5 = el('f05'); if (e5) e5.focus(); return; }
+  if (!fecha) { mostrarToast('La fecha de reporte es requerida', 'error'); var e1 = el('f01'); if (e1) e1.focus(); return; }
+  if (!contrato) { mostrarToast('El Nº de Contrato es requerido', 'error'); var e11 = el('f11'); if (e11) e11.focus(); return; }
+
+  var payload = construirPayload();
+  var btnGuardar = el('btn-guardar-form');
+  if (btnGuardar) { btnGuardar.disabled = true; btnGuardar.textContent = '⏳ Guardando...'; }
+
+  if (editandoId !== null) {
+    payload.accion = 'editar';
+    payload.regional = regionalActual;
+    var pEdit = null;
+    for (var i = 0; i < prestaciones.length; i++) { if (prestaciones[i].id === editandoId) { pEdit = prestaciones[i]; break; } }
+    payload._numPrestacionOriginal = pEdit ? pEdit.numPrestacion : gv('f02');
+    payload._filaIndex = editandoId;
+
+    apiPost(payload).then(function(res) {
+      if (modoDemo) {
+        console.log('[DEMO] Payload editar:', JSON.stringify(payload).substring(0, 500));
+        mostrarToast('🛠️ [DEMO] Actualización simulada', 'info');
+      } else if (res.ok) {
+        mostrarToast('✅ Prestación actualizada en Google Sheets', 'exito');
+      } else {
+        mostrarToast('⚠️ Error: ' + (res.error || 'Desconocido'), 'error');
+      }
+      cancelarEdicion();
+      limpiarForm();
+      cambiarTab('lista');
+      cargarPrestaciones(regionalActual);
+      if (btnGuardar) { btnGuardar.disabled = false; btnGuardar.textContent = '💾 Guardar Prestación'; }
+    });
+  } else {
+    payload.accion = 'guardar';
+    payload.regional = regionalActual;
+    payload.creadoPor = usuario ? usuario.nombre : '';
+
+    apiPost(payload).then(function(res) {
+      if (modoDemo) {
+        console.log('[DEMO] Payload nuevo:', JSON.stringify(payload).substring(0, 500));
+        mostrarToast('🛠️ [DEMO] Prestación simulada', 'info');
+      } else if (res.ok) {
+        mostrarToast('✅ Prestación guardada en Google Sheets', 'exito');
+      } else {
+        mostrarToast('⚠️ Error: ' + (res.error || 'Desconocido'), 'error');
+      }
+      limpiarForm();
+      cambiarTab('lista');
+      cargarPrestaciones(regionalActual);
+      if (btnGuardar) { btnGuardar.disabled = false; btnGuardar.textContent = '💾 Guardar Prestación'; }
+    });
+  }
+}
+
+/* ================================================================
+   LIMPIAR FORMULARIO
+   ================================================================ */
+function limpiarFormularioSilencioso() {
+  CAMPO_A_COLUMNA.forEach(function(mapeo) {
+    if (mapeo.campo.charAt(0) === '_') return;
+    var elem = el(mapeo.campo);
+    if (!elem) return;
+    if (elem.tagName === 'SELECT') elem.selectedIndex = 0;
+    else elem.value = '';
+  });
+  limpiarFirma('canvas-firma-entrega');
+  limpiarFirma('canvas-firma-recibe');
+}
+
+function limpiarForm() {
+  cancelarEdicion();
+  limpiarFormularioSilencioso();
+  var f18 = el('f18');
+  if (f18) f18.value = regionalActual || '';
+  setFechaAhora();
+  var f17 = el('f17');
+  var f01 = el('f01');
+  if (f17 && f01) f17.value = f01.value;
+  aplicarReglasCategoria();
+}
+
+/* ================================================================
+   UTILIDADES
+   ================================================================ */
+function setFechaAhora() {
+  var f01 = el('f01');
+  if (!f01) return;
+  if (f01.value) return;
+  var ahora = new Date();
+  var local = new Date(ahora.getTime() - ahora.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+  f01.value = local;
+}
+
+function calcEdad() {
+  var v = gv('f09');
+  if (!v) return;
+  var hoy = new Date(), nac = new Date(v);
+  var edad = hoy.getFullYear() - nac.getFullYear();
+  var m = hoy.getMonth() - nac.getMonth();
+  if (m < 0 || (m === 0 && hoy.getDate() < nac.getDate())) edad--;
+  var f10 = el('f10');
+  if (f10) f10.value = edad;
+}
+
+/* FIX: Solo mostrar/ocultar. NO borrar valores aquí — eso se hace en limpiarForm */
+function aplicarReglasCategoria() {
+  var cat = gv('f23');
+  var wm = el('wrap-motivo');
+  var we = el('wrap-entidad');
+  var wa = el('wrap-asesor');
+  if (wm) wm.style.display = cat === 'Afiliado Condicional' ? '' : 'none';
+  var mostrar = ['Adres', 'Asesor Jurídico', 'Asesores Externos'].indexOf(cat) !== -1;
+  if (we) we.style.display = mostrar ? '' : 'none';
+  if (wa) wa.style.display = mostrar ? '' : 'none';
+}
+
+/* FIX: Preservar valor del municipio al reconstruir el select */
+function filtrarMunicipios() {
+  var depto = gv('f19');
+  var sel = el('f20');
+  if (!sel) return;
+  var valorAnterior = sel.value;
+  sel.innerHTML = '<option value="">Seleccione departamento primero...</option>';
+  if (depto && MUNICIPIOS[depto]) {
+    MUNICIPIOS[depto].sort().forEach(function(m) {
+      var o = document.createElement('option');
+      o.value = m; o.textContent = m;
+      sel.appendChild(o);
+    });
+  }
+  if (valorAnterior) {
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value === valorAnterior) { sel.value = valorAnterior; break; }
+    }
+  }
+}
+
+/* FIX: Preservar valor de la ciudad al reconstruir el select */
+function filtrarMunicipiosMuerte() {
+  var depto = gv('f88');
+  var sel = el('f89');
+  if (!sel) return;
+  var valorAnterior = sel.value;
+  sel.innerHTML = '<option value="">Seleccione departamento primero...</option>';
+  if (depto && MUNICIPIOS[depto]) {
+    MUNICIPIOS[depto].sort().forEach(function(m) {
+      var o = document.createElement('option');
+      o.value = m; o.textContent = m;
+      sel.appendChild(o);
+    });
+  }
+  if (valorAnterior) {
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value === valorAnterior) { sel.value = valorAnterior; break; }
+    }
+  }
+}
+
+function toggleSection(header) {
+  header.classList.toggle('collapsed');
+  header.nextElementSibling.classList.toggle('oculto');
+}
+
+/* ================================================================
+   FIRMAS
+   ================================================================ */
+function initFirma(canvasId) {
+  var canvas = el(canvasId);
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var dib = false;
+  function pos(e) {
+    var r = canvas.getBoundingClientRect(), s = e.touches ? e.touches[0] : e;
+    return { x: (s.clientX - r.left) * (canvas.width / r.width), y: (s.clientY - r.top) * (canvas.height / r.height) };
+  }
+  canvas.addEventListener('mousedown', function(e) { dib = true; var p = pos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); });
+  canvas.addEventListener('mousemove', function(e) { if (!dib) return; var p = pos(e); ctx.lineTo(p.x, p.y); ctx.strokeStyle = '#1a1a1a'; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.stroke(); });
+  canvas.addEventListener('mouseup', function() { dib = false; });
+  canvas.addEventListener('mouseleave', function() { dib = false; });
+  canvas.addEventListener('touchstart', function(e) { e.preventDefault(); dib = true; var p = pos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); }, { passive: false });
+  canvas.addEventListener('touchmove', function(e) { e.preventDefault(); if (!dib) return; var p = pos(e); ctx.lineTo(p.x, p.y); ctx.strokeStyle = '#1a1a1a'; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.stroke(); }, { passive: false });
+  canvas.addEventListener('touchend', function() { dib = false; });
+}
+
+function limpiarFirma(canvasId) {
+  var c = el(canvasId);
+  if (c) c.getContext('2d').clearRect(0, 0, c.width, c.height);
+}
+
+/* ================================================================
+   TOAST
+   ================================================================ */
+function mostrarToast(msg, tipo) {
+  tipo = tipo || 'exito';
+  var t = el('toast');
+  if (!t) return;
+  t.textContent = msg;
+  t.className = 'toast ' + tipo + ' show';
+  clearTimeout(t._timeout);
+  t._timeout = setTimeout(function() { t.classList.remove('show'); }, 3500);
+}
+</script>
+</body>
+</html>
