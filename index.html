@@ -7,233 +7,129 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --negro: #0c1220;
-  --blanco: #f5f7fa;
-  --azul: #1e3a5f;
-  --azul-medio: #2563eb;
-  --azul-claro: #3b82f6;
-  --azul-suave: #dbeafe;
-  --azul-profundo: #0b1a30;
-  --azul-acento: #60a5fa;
-  --azul-brillante: #93c5fd;
-  --gris: #64748b;
-  --gris-claro: #e2e8f0;
-  --rojo: #dc2626;
-  --fondo: #f0f4f8;
-  --sombra: 0 4px 24px rgba(14,30,54,0.10);
-  --radio: 14px;
-  --transicion: 0.22s cubic-bezier(.4,0,.2,1);
+  --negro:#0c1220;--blanco:#f5f7fa;--azul:#1e3a5f;--azul-medio:#2563eb;--azul-claro:#3b82f6;
+  --azul-suave:#dbeafe;--azul-profundo:#0b1a30;--azul-acento:#60a5fa;--azul-brillante:#93c5fd;
+  --gris:#64748b;--gris-claro:#e2e8f0;--rojo:#dc2626;--fondo:#f0f4f8;
+  --sombra:0 4px 24px rgba(14,30,54,0.10);--radio:14px;--transicion:0.22s cubic-bezier(.4,0,.2,1);
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'DM Sans', sans-serif; background: var(--fondo); color: var(--negro); min-height: 100vh; overflow-x: hidden; }
-
-/* ========== LOGIN ========== */
-#login-screen {
-  min-height: 100vh; display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(160deg, #0b1a30 0%, #132744 35%, #1e3a5f 70%, #2563eb 100%);
-  position: relative; overflow: hidden;
-}
-#login-screen::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 20% 80%, rgba(37,99,235,0.15) 0%, transparent 60%),
-              radial-gradient(ellipse at 80% 20%, rgba(96,165,250,0.1) 0%, transparent 50%);
-}
-#login-screen::after {
-  content: ''; position: absolute; inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-.login-card {
-  background: rgba(255,255,255,0.97); border-radius: 24px; padding: 48px 44px 40px;
-  width: 100%; max-width: 420px; box-shadow: 0 32px 80px rgba(0,0,0,0.45);
-  position: relative; z-index: 1; animation: fadeUp 0.6s ease;
-  border: 1px solid rgba(255,255,255,0.3);
-}
-@keyframes fadeUp { from { opacity:0; transform: translateY(30px); } to { opacity:1; transform: translateY(0); } }
-.login-logo { text-align: center; margin-bottom: 28px; cursor: pointer; user-select: none; }
-.login-logo .icono-wrap {
-  width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 16px; position: relative;
-}
-.login-logo .icono-wrap::before {
-  content: ''; position: absolute; inset: -6px; border-radius: 22px;
-  background: linear-gradient(135deg, var(--azul), var(--azul-medio));
-  opacity: 0.15;
-}
-.login-logo .icono-wrap img {
-  width: 72px; height: 72px; object-fit: contain; position: relative; z-index: 1;
-}
-.login-logo h1 { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 2.5px; color: var(--azul); line-height: 1.1; }
-.login-logo p { font-size: 13px; color: var(--gris); margin-top: 4px; font-weight: 500; letter-spacing: 0.5px; }
-.login-info { background: var(--azul-suave); border-left: 4px solid var(--azul-medio); border-radius: 8px; padding: 14px 16px; margin-bottom: 28px; font-size: 13.5px; color: var(--azul); line-height: 1.5; }
-.demo-inputs { display: flex; flex-direction: column; gap: 10px; }
-.demo-inputs input { border: 1.5px solid var(--gris-claro); border-radius: 10px; padding: 12px 16px; font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; transition: var(--transicion); background: white; }
-.demo-inputs input:focus { border-color: var(--azul-medio); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
-.demo-inputs input.input-error { border-color: var(--rojo); box-shadow: 0 0 0 3px rgba(220,38,38,0.1); }
-.btn-login { width: 100%; background: var(--azul); color: white; border: none; border-radius: 12px; padding: 14px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; transition: var(--transicion); margin-top: 4px; }
-.btn-login:hover { background: var(--azul-medio); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(30,58,95,0.3); }
-.btn-login:disabled { background: var(--gris); cursor: not-allowed; transform: none; box-shadow: none; }
-.login-error-box { background: #fef2f2; border: 1.5px solid #fecaca; border-radius: 10px; padding: 12px 16px; margin-bottom: 12px; display: none; }
-.login-error-box .error-title { font-size: 13px; font-weight: 700; color: var(--rojo); margin-bottom: 4px; }
-.login-error-box .error-detail { font-size: 12px; color: #991b1b; font-family: 'DM Mono', monospace; word-break: break-all; line-height: 1.5; }
-.btn-demo { width: 100%; background: transparent; color: var(--gris); border: 1.5px dashed var(--gris-claro); border-radius: 12px; padding: 12px; font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer; transition: var(--transicion); margin-top: 8px; }
-.btn-demo:hover { border-color: var(--azul-medio); color: var(--azul-medio); background: var(--azul-suave); }
-
-/* ========== TOPBAR ========== */
-.demo-indicator { background: var(--azul-medio); color: white; border-radius: 20px; padding: 3px 10px; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; animation: pulse-demo 2s infinite; }
-@keyframes pulse-demo { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
-#app { display: none; min-height: 100vh; }
-.topbar {
-  background: linear-gradient(90deg, var(--azul-profundo) 0%, var(--azul) 100%);
-  color: white; display: flex; align-items: center; justify-content: space-between;
-  padding: 0 24px; height: 58px; position: sticky; top: 0; z-index: 100;
-  box-shadow: 0 2px 16px rgba(11,26,48,0.3);
-}
-.topbar-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 2px; color: var(--azul-brillante); display: flex; align-items: center; gap: 10px; }
-.topbar-logo img { height: 30px; width: 30px; object-fit: contain; }
-.topbar-user { display: flex; align-items: center; gap: 10px; font-size: 13px; }
-.avatar { width: 34px; height: 34px; background: var(--azul-medio); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: white; }
-.regional-badge { background: var(--azul-acento); color: var(--azul-profundo); border-radius: 20px; padding: 3px 10px; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; }
-.btn-cerrar { background: rgba(255,255,255,0.1); border: none; color: white; border-radius: 8px; padding: 6px 12px; font-size: 12px; cursor: pointer; transition: var(--transicion); font-family: 'DM Sans', sans-serif; }
-.btn-cerrar:hover { background: rgba(255,255,255,0.2); }
-
-/* ========== LAYOUT ========== */
-.main-layout { display: flex; min-height: calc(100vh - 58px); }
-.sidebar { width: 220px; background: white; border-right: 1.5px solid var(--gris-claro); padding: 20px 0; position: sticky; top: 58px; height: calc(100vh - 58px); overflow-y: auto; flex-shrink: 0; }
-.sidebar-section { padding: 8px 16px 4px; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: var(--gris); text-transform: uppercase; }
-.sidebar-item { display: flex; align-items: center; gap: 10px; padding: 10px 20px; font-size: 13.5px; font-weight: 500; color: var(--negro); cursor: pointer; transition: var(--transicion); border-left: 3px solid transparent; user-select: none; }
-.sidebar-item:hover { background: var(--azul-suave); color: var(--azul); border-left-color: var(--azul-medio); }
-.sidebar-item.active { background: var(--azul-suave); color: var(--azul); border-left-color: var(--azul-medio); font-weight: 600; }
-.sidebar-item .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gris-claro); flex-shrink: 0; }
-.sidebar-item.active .dot, .sidebar-item:hover .dot { background: var(--azul-medio); }
-.content { flex: 1; padding: 28px; overflow-y: auto; }
-
-/* ========== MENÚ GRID ========== */
-.menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; margin-top: 8px; }
-.menu-card { background: white; border-radius: var(--radio); overflow: hidden; cursor: pointer; transition: var(--transicion); box-shadow: var(--sombra); position: relative; }
-.menu-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(14,30,54,0.15); }
-.menu-card-img { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 48px; position: relative; }
-.menu-card-img.risaralda { background: linear-gradient(135deg, #1e3a5f, #2563eb); }
-.menu-card-img.antioquia { background: linear-gradient(135deg, #1e3a5f, #1d4ed8); }
-.menu-card-img.caldas { background: linear-gradient(135deg, #0f2440, #1e40af); }
-.menu-card-img.valle-centro { background: linear-gradient(135deg, #132744, #2563eb); }
-.menu-card-img.valle-sur { background: linear-gradient(135deg, #0b1a30, #1e3a5f); }
-.menu-card-img.valle-norte { background: linear-gradient(135deg, #1e3a5f, #3b82f6); }
-.menu-card-img.palmira { background: linear-gradient(135deg, #0f2440, #2563eb); }
-.menu-card-img.quindio { background: linear-gradient(135deg, #132744, #1d4ed8); }
-.menu-card-img.cmarca { background: linear-gradient(135deg, #0b1a30, #1e40af); }
-.menu-card-img.tolima { background: linear-gradient(135deg, #1e3a5f, #3b82f6); }
-.menu-card-img.apoyo { background: linear-gradient(135deg, #0f2440, #2563eb); }
-.menu-card-img.errores { background: linear-gradient(135deg, #1e3a5f, #60a5fa); }
-.menu-card-img.cotizacion { background: linear-gradient(135deg, #132744, #1d4ed8); }
-.menu-card-label { padding: 14px 16px; font-weight: 600; font-size: 14px; display: flex; align-items: center; justify-content: space-between; }
-.menu-card-label .arrow { color: var(--gris); font-size: 18px; }
-.mi-regional-badge { position: absolute; top: 10px; right: 10px; background: var(--azul-acento); color: var(--azul-profundo); font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 20px; letter-spacing: 0.5px; }
-
-/* ========== STATS ========== */
-.stats-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
-.stat-card { background: white; border-radius: var(--radio); padding: 20px; box-shadow: var(--sombra); border-top: 3px solid var(--azul-medio); }
-.stat-card .num { font-family: 'Bebas Neue', sans-serif; font-size: 38px; color: var(--azul); line-height: 1; }
-.stat-card .lbl { font-size: 12px; color: var(--gris); margin-top: 4px; font-weight: 500; }
-
-/* ========== PAGE HEADER ========== */
-.page-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
-.page-header h2 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 1px; color: var(--azul); }
-.back-btn { background: white; border: 1.5px solid var(--gris-claro); border-radius: 10px; padding: 8px 14px; font-size: 13px; cursor: pointer; transition: var(--transicion); display: flex; align-items: center; gap: 6px; font-family: 'DM Sans', sans-serif; font-weight: 500; }
-.back-btn:hover { background: var(--azul-suave); border-color: var(--azul-medio); color: var(--azul); }
-.aviso-lectura { background: #eff6ff; border: 1.5px solid var(--azul-acento); border-radius: 10px; padding: 12px 18px; font-size: 13px; color: var(--azul); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
-
-/* ========== TABLA ========== */
-.tabla-wrap { background: white; border-radius: var(--radio); box-shadow: var(--sombra); overflow: hidden; }
-.tabla-toolbar { padding: 16px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 1.5px solid var(--gris-claro); flex-wrap: wrap; }
-.busqueda { flex: 1; min-width: 200px; border: 1.5px solid var(--gris-claro); border-radius: 10px; padding: 9px 14px; font-size: 14px; font-family: 'DM Sans', sans-serif; outline: none; transition: var(--transicion); }
-.busqueda:focus { border-color: var(--azul-medio); box-shadow: 0 0 0 3px rgba(37,99,235,0.08); }
-.btn-nuevo { background: var(--azul); color: white; border: none; border-radius: 10px; padding: 10px 20px; font-size: 14px; font-weight: 600; cursor: pointer; transition: var(--transicion); font-family: 'DM Sans', sans-serif; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
-.btn-nuevo:hover { background: var(--azul-medio); box-shadow: 0 4px 16px rgba(30,58,95,0.25); }
-.btn-nuevo:disabled { background: var(--gris); cursor: not-allowed; box-shadow: none; }
-table { width: 100%; border-collapse: collapse; }
-th { background: var(--fondo); padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: var(--gris); border-bottom: 1.5px solid var(--gris-claro); }
-td { padding: 13px 16px; font-size: 13.5px; border-bottom: 1px solid var(--gris-claro); vertical-align: middle; }
-tr:last-child td { border-bottom: none; }
-tr:hover td { background: var(--azul-suave); }
-.estado-chip { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11.5px; font-weight: 600; }
-.estado-activo { background: #dbeafe; color: #1e3a5f; }
-.estado-pendiente { background: #fef3c7; color: #92400e; }
-.estado-finalizado { background: #e0e7ff; color: #3730a3; }
-.btn-ver { background: none; border: 1.5px solid var(--gris-claro); border-radius: 7px; padding: 5px 12px; font-size: 12px; cursor: pointer; transition: var(--transicion); font-family: 'DM Sans', sans-serif; }
-.btn-ver:hover { border-color: var(--azul-medio); color: var(--azul-medio); background: var(--azul-suave); }
-
-/* ========== MODAL ========== */
-.modal-overlay { position: fixed; inset: 0; background: rgba(11,26,48,0.5); z-index: 1000; }
-.modal-box { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -48%); background: white; border-radius: 16px; width: 90%; max-width: 780px; max-height: 85vh; display: flex; flex-direction: column; z-index: 1001; box-shadow: 0 24px 80px rgba(11,26,48,0.3); opacity: 0; transition: opacity 0.2s, transform 0.2s; }
-.modal-detalle.show .modal-box { opacity: 1; transform: translate(-50%, -50%); }
-.modal-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1.5px solid var(--gris-claro); font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; color: var(--azul); }
-.modal-cerrar { background: var(--gris-claro); border: none; border-radius: 8px; width: 32px; height: 32px; cursor: pointer; font-size: 14px; transition: var(--transicion); }
-.modal-cerrar:hover { background: var(--rojo); color: white; }
-.modal-body { padding: 20px 24px; overflow-y: auto; }
-.detalle-campo { background: var(--fondo); border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; }
-.detalle-label { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gris); margin-bottom: 4px; }
-.detalle-valor { font-size: 14px; font-weight: 500; color: var(--negro); word-break: break-word; }
-.modal-tabs-row { display: flex; gap: 4px; padding: 12px 24px 0; border-bottom: 1.5px solid var(--gris-claro); background: white; }
-.modal-tab-item { padding: 8px 16px; font-size: 13px; font-weight: 500; cursor: pointer; color: var(--gris); border-bottom: 2px solid transparent; transition: var(--transicion); }
-.modal-tab-item.active { color: var(--azul-medio); border-bottom-color: var(--azul-medio); font-weight: 600; }
-.modal-tab-item:hover:not(.active) { color: var(--azul-claro); }
-
-/* ========== TOAST ========== */
-.toast { position: fixed; bottom: 28px; right: 28px; background: var(--azul-profundo); color: white; padding: 14px 22px; border-radius: 12px; font-size: 14px; font-weight: 500; z-index: 9999; display: flex; align-items: center; gap: 10px; box-shadow: 0 8px 32px rgba(11,26,48,0.3); transform: translateY(80px); opacity: 0; transition: all 0.35s cubic-bezier(.4,0,.2,1); }
-.toast.show { transform: translateY(0); opacity: 1; }
-.toast.exito { border-left: 4px solid #22c55e; }
-.toast.error { border-left: 4px solid var(--rojo); }
-.toast.info { border-left: 4px solid var(--azul-acento); }
-
-@media (max-width: 700px) {
-  .sidebar { display: none; }
-  .content { padding: 16px; }
-  .menu-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro);min-height:100vh;overflow-x:hidden}
+#login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#0b1a30 0%,#132744 35%,#1e3a5f 70%,#2563eb 100%);position:relative;overflow:hidden}
+#login-screen::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 80%,rgba(37,99,235,0.15) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(96,165,250,0.1) 0%,transparent 50%)}
+.login-card{background:rgba(255,255,255,0.97);border-radius:24px;padding:48px 44px 40px;width:100%;max-width:420px;box-shadow:0 32px 80px rgba(0,0,0,0.45);position:relative;z-index:1;animation:fadeUp .6s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.login-logo{text-align:center;margin-bottom:28px;cursor:pointer;user-select:none}
+.login-logo .icono-wrap{width:80px;height:80px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;position:relative}
+.login-logo .icono-wrap::before{content:'';position:absolute;inset:-6px;border-radius:22px;background:linear-gradient(135deg,var(--azul),var(--azul-medio));opacity:0.15}
+.login-logo .icono-wrap img{width:72px;height:72px;object-fit:contain;position:relative;z-index:1}
+.login-logo h1{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2.5px;color:var(--azul);line-height:1.1}
+.login-logo p{font-size:13px;color:var(--gris);margin-top:4px;font-weight:500;letter-spacing:.5px}
+.login-info{background:var(--azul-suave);border-left:4px solid var(--azul-medio);border-radius:8px;padding:14px 16px;margin-bottom:28px;font-size:13.5px;color:var(--azul);line-height:1.5}
+.demo-inputs{display:flex;flex-direction:column;gap:10px}
+.demo-inputs input{border:1.5px solid var(--gris-claro);border-radius:10px;padding:12px 16px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:var(--transicion);background:#fff}
+.demo-inputs input:focus{border-color:var(--azul-medio);box-shadow:0 0 0 3px rgba(37,99,235,0.1)}
+.demo-inputs input.input-error{border-color:var(--rojo);box-shadow:0 0 0 3px rgba(220,38,38,0.1)}
+.btn-login{width:100%;background:var(--azul);color:#fff;border:none;border-radius:12px;padding:14px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:var(--transicion);margin-top:4px}
+.btn-login:hover{background:var(--azul-medio);transform:translateY(-1px);box-shadow:0 6px 20px rgba(30,58,95,0.3)}
+.btn-login:disabled{background:var(--gris);cursor:not-allowed;transform:none;box-shadow:none}
+.login-error-box{background:#fef2f2;border:1.5px solid #fecaca;border-radius:10px;padding:12px 16px;margin-bottom:12px;display:none}
+.login-error-box .error-title{font-size:13px;font-weight:700;color:var(--rojo);margin-bottom:4px}
+.login-error-box .error-detail{font-size:12px;color:#991b1b;font-family:'DM Mono',monospace;word-break:break-all;line-height:1.5}
+.btn-demo{width:100%;background:transparent;color:var(--gris);border:1.5px dashed var(--gris-claro);border-radius:12px;padding:12px;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;transition:var(--transicion);margin-top:8px}
+.btn-demo:hover{border-color:var(--azul-medio);color:var(--azul-medio);background:var(--azul-suave)}
+.demo-indicator{background:var(--azul-medio);color:#fff;border-radius:20px;padding:3px 10px;font-size:10px;font-weight:700;letter-spacing:.5px;animation:pulse-demo 2s infinite}
+@keyframes pulse-demo{0%,100%{opacity:1}50%{opacity:.6}}
+#app{display:none;min-height:100vh}
+.topbar{background:linear-gradient(90deg,var(--azul-profundo) 0%,var(--azul) 100%);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:58px;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(11,26,48,0.3)}
+.topbar-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--azul-brillante);display:flex;align-items:center;gap:10px}
+.topbar-logo img{height:30px;width:30px;object-fit:contain}
+.topbar-user{display:flex;align-items:center;gap:10px;font-size:13px}
+.avatar{width:34px;height:34px;background:var(--azul-medio);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff}
+.regional-badge{background:var(--azul-acento);color:var(--azul-profundo);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:600;letter-spacing:.5px}
+.btn-cerrar{background:rgba(255,255,255,0.1);border:none;color:#fff;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;transition:var(--transicion);font-family:'DM Sans',sans-serif}
+.btn-cerrar:hover{background:rgba(255,255,255,0.2)}
+.main-layout{display:flex;min-height:calc(100vh - 58px)}
+.sidebar{width:220px;background:#fff;border-right:1.5px solid var(--gris-claro);padding:20px 0;position:sticky;top:58px;height:calc(100vh - 58px);overflow-y:auto;flex-shrink:0}
+.sidebar-section{padding:8px 16px 4px;font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--gris);text-transform:uppercase}
+.sidebar-item{display:flex;align-items:center;gap:10px;padding:10px 20px;font-size:13.5px;font-weight:500;color:var(--negro);cursor:pointer;transition:var(--transicion);border-left:3px solid transparent;user-select:none}
+.sidebar-item:hover{background:var(--azul-suave);color:var(--azul);border-left-color:var(--azul-medio)}
+.sidebar-item.active{background:var(--azul-suave);color:var(--azul);border-left-color:var(--azul-medio);font-weight:600}
+.sidebar-item .dot{width:8px;height:8px;border-radius:50%;background:var(--gris-claro);flex-shrink:0}
+.sidebar-item.active .dot,.sidebar-item:hover .dot{background:var(--azul-medio)}
+.content{flex:1;padding:28px;overflow-y:auto}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;margin-top:8px}
+.menu-card{background:#fff;border-radius:var(--radio);overflow:hidden;cursor:pointer;transition:var(--transicion);box-shadow:var(--sombra);position:relative}
+.menu-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(14,30,54,0.15)}
+.menu-card-img{height:140px;display:flex;align-items:center;justify-content:center;font-size:48px;position:relative}
+.menu-card-img.risaralda{background:linear-gradient(135deg,#1e3a5f,#2563eb)}.menu-card-img.antioquia{background:linear-gradient(135deg,#1e3a5f,#1d4ed8)}.menu-card-img.caldas{background:linear-gradient(135deg,#0f2440,#1e40af)}.menu-card-img.valle-centro{background:linear-gradient(135deg,#132744,#2563eb)}.menu-card-img.valle-sur{background:linear-gradient(135deg,#0b1a30,#1e3a5f)}.menu-card-img.valle-norte{background:linear-gradient(135deg,#1e3a5f,#3b82f6)}.menu-card-img.palmira{background:linear-gradient(135deg,#0f2440,#2563eb)}.menu-card-img.quindio{background:linear-gradient(135deg,#132744,#1d4ed8)}.menu-card-img.cmarca{background:linear-gradient(135deg,#0b1a30,#1e40af)}.menu-card-img.tolima{background:linear-gradient(135deg,#1e3a5f,#3b82f6)}.menu-card-img.apoyo{background:linear-gradient(135deg,#0f2440,#2563eb)}.menu-card-img.errores{background:linear-gradient(135deg,#1e3a5f,#60a5fa)}.menu-card-img.cotizacion{background:linear-gradient(135deg,#132744,#1d4ed8)}
+.menu-card-label{padding:14px 16px;font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:space-between}
+.menu-card-label .arrow{color:var(--gris);font-size:18px}
+.mi-regional-badge{position:absolute;top:10px;right:10px;background:var(--azul-acento);color:var(--azul-profundo);font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;letter-spacing:.5px}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-bottom:24px}
+.stat-card{background:#fff;border-radius:var(--radio);padding:20px;box-shadow:var(--sombra);border-top:3px solid var(--azul-medio)}
+.stat-card .num{font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--azul);line-height:1}
+.stat-card .lbl{font-size:12px;color:var(--gris);margin-top:4px;font-weight:500}
+.page-header{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.page-header h2{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;color:var(--azul)}
+.back-btn{background:#fff;border:1.5px solid var(--gris-claro);border-radius:10px;padding:8px 14px;font-size:13px;cursor:pointer;transition:var(--transicion);display:flex;align-items:center;gap:6px;font-family:'DM Sans',sans-serif;font-weight:500}
+.back-btn:hover{background:var(--azul-suave);border-color:var(--azul-medio);color:var(--azul)}
+.aviso-lectura{background:#eff6ff;border:1.5px solid var(--azul-acento);border-radius:10px;padding:12px 18px;font-size:13px;color:var(--azul);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.tabla-wrap{background:#fff;border-radius:var(--radio);box-shadow:var(--sombra);overflow:hidden}
+.tabla-toolbar{padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:1.5px solid var(--gris-claro);flex-wrap:wrap}
+.busqueda{flex:1;min-width:200px;border:1.5px solid var(--gris-claro);border-radius:10px;padding:9px 14px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;transition:var(--transicion)}
+.busqueda:focus{border-color:var(--azul-medio);box-shadow:0 0 0 3px rgba(37,99,235,0.08)}
+.btn-nuevo{background:var(--azul);color:#fff;border:none;border-radius:10px;padding:10px 20px;font-size:14px;font-weight:600;cursor:pointer;transition:var(--transicion);font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.btn-nuevo:hover{background:var(--azul-medio);box-shadow:0 4px 16px rgba(30,58,95,0.25)}
+.btn-nuevo:disabled{background:var(--gris);cursor:not-allowed;box-shadow:none}
+table{width:100%;border-collapse:collapse}
+th{background:var(--fondo);padding:12px 16px;text-align:left;font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--gris);border-bottom:1.5px solid var(--gris-claro)}
+td{padding:13px 16px;font-size:13.5px;border-bottom:1px solid var(--gris-claro);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--azul-suave)}
+.estado-chip{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11.5px;font-weight:600}
+.estado-activo{background:#dbeafe;color:#1e3a5f}.estado-pendiente{background:#fef3c7;color:#92400e}.estado-finalizado{background:#e0e7ff;color:#3730a3}
+.btn-editar{background:none;border:1.5px solid var(--azul-medio);border-radius:7px;padding:5px 12px;font-size:12px;cursor:pointer;transition:var(--transicion);font-family:'DM Sans',sans-serif;color:var(--azul-medio);font-weight:600}
+.btn-editar:hover{background:var(--azul-medio);color:#fff}
+.modal-overlay{position:fixed;inset:0;background:rgba(11,26,48,0.5);z-index:1000}
+.modal-box{position:fixed;top:50%;left:50%;transform:translate(-50%,-48%);background:#fff;border-radius:16px;width:90%;max-width:780px;max-height:85vh;display:flex;flex-direction:column;z-index:1001;box-shadow:0 24px 80px rgba(11,26,48,0.3);opacity:0;transition:opacity .2s,transform .2s}
+.modal-detalle.show .modal-box{opacity:1;transform:translate(-50%,-50%)}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1.5px solid var(--gris-claro);font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:var(--azul)}
+.modal-cerrar{background:var(--gris-claro);border:none;border-radius:8px;width:32px;height:32px;cursor:pointer;font-size:14px;transition:var(--transicion)}
+.modal-cerrar:hover{background:var(--rojo);color:#fff}
+.modal-body{padding:20px 24px;overflow-y:auto}
+.detalle-campo{background:var(--fondo);border-radius:8px;padding:10px 14px;margin-bottom:8px}
+.detalle-label{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--gris);margin-bottom:4px}
+.detalle-valor{font-size:14px;font-weight:500;color:var(--negro);word-break:break-word}
+.toast{position:fixed;bottom:28px;right:28px;background:var(--azul-profundo);color:#fff;padding:14px 22px;border-radius:12px;font-size:14px;font-weight:500;z-index:9999;display:flex;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(11,26,48,0.3);transform:translateY(80px);opacity:0;transition:all .35s cubic-bezier(.4,0,.2,1)}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.exito{border-left:4px solid #22c55e}.toast.error{border-left:4px solid var(--rojo)}.toast.info{border-left:4px solid var(--azul-acento)}
+@media(max-width:700px){.sidebar{display:none}.content{padding:16px}.menu-grid{grid-template-columns:repeat(2,1fr);gap:12px}}
 </style>
 </head>
 <body>
 
-<!-- ==================== LOGIN ==================== -->
 <div id="login-screen">
   <div class="login-card">
-    <div class="login-logo" id="login-logo" title="Haz clic 5 veces para modo demo">
-      <div class="icono-wrap">
-        <img src="https://z-cdn-media.chatglm.cn/files/4dbe8f1d-a648-42aa-a207-9b26711be21a.png?auth_key=1877316932-7ff6adeac08a41ff9fffe3a6b00a781e-0-1c02a443e96d716cba1f3329de5140a2" alt="JR Logo" />
-      </div>
-      <h1>PRESTACIÓN DE SERVICIOS</h1>
-      <p>Jardines del Renacer</p>
+    <div class="login-logo" id="login-logo" title="5 clics = modo demo">
+      <div class="icono-wrap"><img src="https://z-cdn-media.chatglm.cn/files/4dbe8f1d-a648-42aa-a207-9b26711be21a.png?auth_key=1877316932-7ff6adeac08a41ff9fffe3a6b00a781e-0-1c02a443e96d716cba1f3329de5140a2" alt="JR"/></div>
+      <h1>PRESTACIÓN DE SERVICIOS</h1><p>Jardines del Renacer</p>
     </div>
-    <div class="login-info">🔐 Acceso restringido. Solo personal autorizado de Jardines del Renacer.</div>
-    <div class="login-error-box" id="login-error-box">
-      <div class="error-title" id="error-title">Error</div>
-      <div class="error-detail" id="error-detail"></div>
-    </div>
+    <div class="login-info">🔐 Acceso restringido. Solo personal autorizado.</div>
+    <div class="login-error-box" id="login-error-box"><div class="error-title" id="error-title">Error</div><div class="error-detail" id="error-detail"></div></div>
     <div class="demo-inputs">
-      <input type="text" id="demo-user" placeholder="Usuario" autocomplete="username" />
-      <input type="password" id="demo-pass" placeholder="Contraseña" autocomplete="current-password" onkeydown="if(event.key==='Enter') loginDemo()" />
+      <input type="text" id="demo-user" placeholder="Usuario" autocomplete="username"/>
+      <input type="password" id="demo-pass" placeholder="Contraseña" autocomplete="current-password" onkeydown="if(event.key==='Enter')loginDemo()"/>
       <button class="btn-login" id="btn-login-main" onclick="loginDemo()">Entrar →</button>
-      <button class="btn-demo" onclick="entrarDemo()">🛠️ Entrar en Modo Demo (sin servidor)</button>
+      <button class="btn-demo" onclick="entrarDemo()">🛠️ Modo Demo (sin servidor)</button>
     </div>
   </div>
 </div>
 
-<!-- ==================== APP ==================== -->
 <div id="app">
   <div class="topbar">
-    <div class="topbar-logo">
-      <img src="https://z-cdn-media.chatglm.cn/files/4dbe8f1d-a648-42aa-a207-9b26711be21a.png?auth_key=1877316932-7ff6adeac08a41ff9fffe3a6b00a781e-0-1c02a443e96d716cba1f3329de5140a2" alt="JR" />
-      PRESTACIÓN DE SERVICIOS
-      <span class="demo-indicator" id="demo-indicator" style="display:none;">DEMO</span>
-    </div>
-    <div class="topbar-user">
-      <span class="regional-badge" id="regional-badge">QUINDIO</span>
-      <div class="avatar" id="user-avatar">Q</div>
-      <span id="user-name" style="font-size:13px;font-weight:500;">Analista</span>
-      <button class="btn-cerrar" onclick="cerrarSesion()">✕ Salir</button>
-    </div>
+    <div class="topbar-logo"><img src="https://z-cdn-media.chatglm.cn/files/4dbe8f1d-a648-42aa-a207-9b26711be21a.png?auth_key=1877316932-7ff6adeac08a41ff9fffe3a6b00a781e-0-1c02a443e96d716cba1f3329de5140a2" alt="JR"/> PRESTACIÓN DE SERVICIOS <span class="demo-indicator" id="demo-indicator" style="display:none;">DEMO</span></div>
+    <div class="topbar-user"><span class="regional-badge" id="regional-badge">QUINDIO</span><div class="avatar" id="user-avatar">Q</div><span id="user-name" style="font-size:13px;font-weight:500;">Analista</span><button class="btn-cerrar" onclick="cerrarSesion()">✕ Salir</button></div>
   </div>
-
   <div class="main-layout">
     <div class="sidebar">
       <div class="sidebar-section">Principal</div>
@@ -254,7 +150,6 @@ tr:hover td { background: var(--azul-suave); }
       <div class="sidebar-item" onclick="mostrarRegional('ERRORES')"><div class="dot"></div> Errores Digitación</div>
       <div class="sidebar-item" onclick="mostrarRegional('COTIZACION')"><div class="dot"></div> Cotización</div>
     </div>
-
     <div class="content" id="content">
       <div id="vista-menu">
         <div class="stats-row">
@@ -265,288 +160,125 @@ tr:hover td { background: var(--azul-suave); }
         </div>
         <div class="menu-grid" id="menu-grid"></div>
       </div>
-
       <div id="vista-regional" style="display:none;">
-        <div class="page-header">
-          <button class="back-btn" onclick="mostrarVista('menu')">← Menú</button>
-          <h2 id="regional-titulo">REGIONAL</h2>
-        </div>
+        <div class="page-header"><button class="back-btn" onclick="mostrarVista('menu')">← Menú</button><h2 id="regional-titulo">REGIONAL</h2></div>
         <div id="aviso-lectura-wrap"></div>
         <div class="tabla-wrap">
           <div class="tabla-toolbar">
-            <input class="busqueda" type="text" placeholder="🔍 Buscar por nombre, CC, contrato..." oninput="filtrarTabla(this.value)" />
+            <input class="busqueda" type="text" placeholder="🔍 Buscar por nombre, CC, contrato, N° Prestación..." oninput="filtrarTabla(this.value)"/>
             <button class="btn-nuevo" id="btn-nuevo-top" onclick="irARegistro()">➕ Nueva Prestación</button>
           </div>
-          <div style="overflow-x:auto;">
-            <table>
-              <thead><tr>
-                <th>N° Prestación</th><th>Fallecido</th><th>Fecha Reporte</th><th>Sede</th><th>Estado</th><th>Acciones</th>
-              </tr></thead>
-              <tbody id="tabla-body"></tbody>
-            </table>
-          </div>
+          <div style="overflow-x:auto;"><table><thead><tr><th>N° Prestación</th><th>Fallecido</th><th>Fecha Reporte</th><th>Sede</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="tabla-body"></tbody></table></div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <div class="toast" id="toast"></div>
 
 <script>
-const LOGO_URL = 'https://z-cdn-media.chatglm.cn/files/4dbe8f1d-a648-42aa-a207-9b26711be21a.png?auth_key=1877316932-7ff6adeac08a41ff9fffe3a6b00a781e-0-1c02a443e96d716cba1f3329de5140a2';
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpUuh3cVO3SoiuuqN77wH3blzo9oEcCCBby9Pyqsj6fbb5L5YOEs-rgL_dyJp0mCE/exec';
-
-const REGIONALES = [
-  { id: 'RISARALDA', label: 'Risaralda', clase: 'risaralda', emoji: '🌉' },
-  { id: 'ANTIOQUIA', label: 'Antioquia', clase: 'antioquia', emoji: '🏘️' },
-  { id: 'CALDAS', label: 'Caldas', clase: 'caldas', emoji: '🏔️' },
-  { id: 'VALLE CENTRO', label: 'Valle Centro', clase: 'valle-centro', emoji: '⛪' },
-  { id: 'VALLE SUR', label: 'Valle Sur', clase: 'valle-sur', emoji: '✝️' },
-  { id: 'VALLE NORTE', label: 'Valle Norte', clase: 'valle-norte', emoji: '🏛️' },
-  { id: 'VALLE CENTRO-PALMIRA', label: 'Valle Centro Palmira', clase: 'palmira', emoji: '⛩️' },
-  { id: 'QUINDIO', label: 'Quindío', clase: 'quindio', emoji: '🌿' },
-  { id: 'CUNDINAMARCA', label: 'C/Marca', clase: 'cmarca', emoji: '🏙️' },
-  { id: 'TOLIMA NORTE', label: 'Tolima Norte', clase: 'tolima', emoji: '🕍' },
-  { id: 'APOYO', label: 'Apoyo Exequial', clase: 'apoyo', emoji: '🤝' },
-  { id: 'ERRORES', label: 'Errores Digitación', clase: 'errores', emoji: '⚠️' },
-  { id: 'COTIZACION', label: 'Cotización', clase: 'cotizacion', emoji: '💰' },
+const SCRIPT_URL='https://script.google.com/macros/s/AKfycbzpUuh3cVO3SoiuuqN77wH3blzo9oEcCCBby9Pyqsj6fbb5L5YOEs-rgL_dyJp0mCE/exec';
+const REGIONALES=[
+  {id:'RISARALDA',label:'Risaralda',clase:'risaralda',emoji:'🌉'},{id:'ANTIOQUIA',label:'Antioquia',clase:'antioquia',emoji:'🏘️'},
+  {id:'CALDAS',label:'Caldas',clase:'caldas',emoji:'🏔️'},{id:'VALLE CENTRO',label:'Valle Centro',clase:'valle-centro',emoji:'⛪'},
+  {id:'VALLE SUR',label:'Valle Sur',clase:'valle-sur',emoji:'✝️'},{id:'VALLE NORTE',label:'Valle Norte',clase:'valle-norte',emoji:'🏛️'},
+  {id:'VALLE CENTRO-PALMIRA',label:'Valle C. Palmira',clase:'palmira',emoji:'⛩️'},{id:'QUINDIO',label:'Quindío',clase:'quindio',emoji:'🌿'},
+  {id:'CUNDINAMARCA',label:'C/Marca',clase:'cmarca',emoji:'🏙️'},{id:'TOLIMA NORTE',label:'Tolima Norte',clase:'tolima',emoji:'🕍'},
+  {id:'APOYO',label:'Apoyo Exequial',clase:'apoyo',emoji:'🤝'},{id:'ERRORES',label:'Errores Digitación',clase:'errores',emoji:'⚠️'},
+  {id:'COTIZACION',label:'Cotización',clase:'cotizacion',emoji:'💰'}
 ];
+let usuario=null,modoDemo=false,regionalActual=null,prestaciones=[];
 
-let usuario = null, modoDemo = false, regionalActual = null, prestaciones = [];
-
-async function apiSheetsLeer(payload) {
-  if (modoDemo) { console.log('[DEMO] apiSheetsLeer regional:', payload.regional); return { ok: true, datos: [] }; }
-  try {
-    const params = new URLSearchParams({ accion: payload.accion, regional: payload.regional || '' });
-    const res = await fetch(SCRIPT_URL + '?' + params.toString());
-    const text = await res.text();
-    try { return JSON.parse(text); }
-    catch (e) { return { ok: false, datos: [], error: 'No es JSON: ' + text.substring(0, 100) }; }
-  } catch (err) { return { ok: false, datos: [], error: err.toString() }; }
+async function apiSheetsLeer(p){
+  if(modoDemo)return{ok:true,datos:[]};
+  try{const r=await fetch(SCRIPT_URL+'?'+new URLSearchParams({accion:p.accion,regional:p.regional||''}));const t=await r.text();try{return JSON.parse(t)}catch(e){return{ok:false,datos:[]}}}
+  catch(e){return{ok:false,datos:[]}}
+}
+async function apiSheets(p){
+  if(modoDemo)return{ok:true};
+  try{await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(p)});return{ok:true}}
+  catch(e){return{ok:false,error:e.toString()}}
 }
 
-async function apiSheets(payload) {
-  if (modoDemo) { console.log('[DEMO] apiSheets:', payload.accion); return { ok: true }; }
-  try {
-    await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(payload) });
-    return { ok: true };
-  } catch (err) { return { ok: false, error: err.toString() }; }
-}
-
-let logoClicks = 0, logoTimer = null;
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('login-logo').addEventListener('click', () => {
-    logoClicks++; clearTimeout(logoTimer);
-    logoTimer = setTimeout(() => logoClicks = 0, 2000);
-    if (logoClicks >= 5) { logoClicks = 0; entrarDemo(); }
+let logoClicks=0,logoTimer=null;
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('login-logo').addEventListener('click',()=>{
+    logoClicks++;clearTimeout(logoTimer);logoTimer=setTimeout(()=>logoClicks=0,2000);
+    if(logoClicks>=5){logoClicks=0;entrarDemo()}
   });
+  // Si viene de volver del registro, re-entrar sin login
+  const u=sessionStorage.getItem('app_usuario');
+  if(u&&!document.getElementById('login-screen').style.display!=='none'){
+    try{const d=JSON.parse(u);modoDemo=sessionStorage.getItem('app_modoDemo')==='1';usuario=d;
+      sessionStorage.setItem('app_modoDemo',modoDemo?'1':'0');
+      entrar(d);return}catch(e){}
+  }
 });
 
-function entrarDemo() {
-  modoDemo = true;
-  console.log('%c🛠️ MODO DEMO ACTIVADO', 'color:#2563eb;font-size:16px;font-weight:bold;');
-  entrar({ nombre: 'Usuario Demo', regional: 'QUINDIO', rol: 'admin', usuario: 'demo' });
+function entrarDemo(){modoDemo=true;entrar({nombre:'Usuario Demo',regional:'QUINDIO',rol:'admin',usuario:'demo'})}
+
+async function loginDemo(){
+  const u=document.getElementById('demo-user').value.trim(),p=document.getElementById('demo-pass').value.trim();
+  const eb=document.getElementById('login-error-box'),et=document.getElementById('error-title'),ed=document.getElementById('error-detail'),btn=document.getElementById('btn-login-main');
+  eb.style.display='none';document.getElementById('demo-user').classList.remove('input-error');document.getElementById('demo-pass').classList.remove('input-error');
+  if(!u||!p){et.textContent='⚠️ Campos vacíos';ed.textContent='Ingresa usuario y contraseña.';eb.style.display='block';if(!u)document.getElementById('demo-user').classList.add('input-error');if(!p)document.getElementById('demo-pass').classList.add('input-error');return}
+  btn.disabled=true;btn.textContent='⏳ Verificando...';
+  try{
+    const r=await fetch(SCRIPT_URL+'?'+new URLSearchParams({accion:'login',usuario:u,password:p}));const t=await r.text();
+    if(r.headers.get('content-type')||'').includes('text/html')&&!t.trim().startsWith('{')){et.textContent='❌ Error del servidor';ed.textContent='Apps Script devolvió HTML. Verifica la implementación.';eb.style.display='block';ed.style.whiteSpace='pre-wrap';btn.disabled=false;btn.textContent='Entrar →';return}
+    let d;try{d=JSON.parse(t)}catch(pe){et.textContent='❌ Respuesta inválida';ed.textContent='Contenido: "'+t.substring(0,200)+'"';eb.style.display='block';ed.style.whiteSpace='pre-wrap';btn.disabled=false;btn.textContent='Entrar →';return}
+    if(d.ok){modoDemo=false;entrar({nombre:d.nombre||d.usuario||u,regional:(d.regional||'QUINDIO').toUpperCase(),rol:d.rol,usuario:d.usuario||u})}
+    else{et.textContent='❌ '+(d.error||'Credenciales incorrectas');ed.textContent='Error: '+(d.error||'Sin mensaje');eb.style.display='block';ed.style.whiteSpace='pre-wrap';btn.disabled=false;btn.textContent='Entrar →'}
+  }catch(e){et.textContent='⚠️ Error de conexión';ed.textContent=e.message+'\nUsa "Modo Demo" para probar.';eb.style.display='block';ed.style.whiteSpace='pre-wrap';btn.disabled=false;btn.textContent='Entrar →'}
 }
 
-async function loginDemo() {
-  const u = document.getElementById('demo-user').value.trim();
-  const p = document.getElementById('demo-pass').value.trim();
-  const errBox = document.getElementById('login-error-box');
-  const errTitle = document.getElementById('error-title');
-  const errDetail = document.getElementById('error-detail');
-  const btn = document.getElementById('btn-login-main');
-  const userInput = document.getElementById('demo-user');
-  const passInput = document.getElementById('demo-pass');
-  errBox.style.display = 'none'; userInput.classList.remove('input-error'); passInput.classList.remove('input-error');
-  if (!u || !p) {
-    errTitle.textContent = '⚠️ Campos vacíos'; errDetail.textContent = 'Ingresa usuario y contraseña.';
-    errBox.style.display = 'block';
-    if (!u) userInput.classList.add('input-error'); if (!p) passInput.classList.add('input-error');
-    return;
-  }
-  btn.disabled = true; btn.textContent = '⏳ Verificando...';
-  try {
-    const params = new URLSearchParams({ accion: 'login', usuario: u, password: p });
-    const url = SCRIPT_URL + '?' + params.toString();
-    const res = await fetch(url); const text = await res.text();
-    const contentType = res.headers.get('content-type') || '';
-    if (contentType.includes('text/html') && !text.trim().startsWith('{')) {
-      errTitle.textContent = '❌ Error del servidor'; errDetail.textContent = 'Apps Script devolvió HTML. Verifica: Ejecutar como: Yo, Acceso: Cualquier persona.\nStatus: ' + res.status;
-      errBox.style.display = 'block'; errDetail.style.whiteSpace = 'pre-wrap'; btn.disabled = false; btn.textContent = 'Entrar →'; return;
-    }
-    let data; try { data = JSON.parse(text); } catch (pe) {
-      errTitle.textContent = '❌ Respuesta inválida'; errDetail.textContent = 'No es JSON. Contenido: "' + text.substring(0, 200) + '"';
-      errBox.style.display = 'block'; errDetail.style.whiteSpace = 'pre-wrap'; btn.disabled = false; btn.textContent = 'Entrar →'; return;
-    }
-    if (data.ok) { modoDemo = false; entrar({ nombre: data.nombre || data.usuario || u, regional: (data.regional || 'QUINDIO').toUpperCase(), rol: data.rol, usuario: data.usuario || u }); }
-    else { errTitle.textContent = '❌ ' + (data.error || 'Credenciales incorrectas'); errDetail.textContent = 'Error: ' + (data.error || 'Sin mensaje'); errBox.style.display = 'block'; errDetail.style.whiteSpace = 'pre-wrap'; userInput.classList.add('input-error'); passInput.classList.add('input-error'); btn.disabled = false; btn.textContent = 'Entrar →'; }
-  } catch (e) {
-    errTitle.textContent = '⚠️ Error de conexión'; errDetail.textContent = 'Error: ' + e.message + '\nUsa "Modo Demo" para probar sin servidor.';
-    errBox.style.display = 'block'; errDetail.style.whiteSpace = 'pre-wrap'; btn.disabled = false; btn.textContent = 'Entrar →';
-  }
+function entrar(data){
+  usuario=data;sessionStorage.setItem('app_usuario',JSON.stringify(data));sessionStorage.setItem('app_modoDemo',modoDemo?'1':'0');
+  document.getElementById('login-screen').style.display='none';document.getElementById('app').style.display='block';
+  document.getElementById('regional-badge').textContent=usuario.regional;document.getElementById('user-name').textContent=usuario.nombre;
+  document.getElementById('user-avatar').textContent=(usuario.nombre||'A')[0].toUpperCase();
+  document.getElementById('demo-indicator').style.display=modoDemo?'inline-block':'none';
+  renderMenu();actualizarStats();mostrarVista('menu');
+  if(modoDemo)mostrarToast('🛠️ Modo Demo activado','info');
+}
+function cerrarSesion(){usuario=null;modoDemo=false;regionalActual=null;prestaciones=[];sessionStorage.clear();document.getElementById('app').style.display='none';document.getElementById('login-screen').style.display='flex';document.getElementById('demo-user').value='';document.getElementById('demo-pass').value='';document.getElementById('login-error-box').style.display='none';const b=document.getElementById('btn-login-main');b.disabled=false;b.textContent='Entrar →'}
+function renderMenu(){document.getElementById('menu-grid').innerHTML=REGIONALES.map(r=>`<div class="menu-card" onclick="mostrarRegional('${r.id}')"><div class="menu-card-img ${r.clase}">${r.emoji}${r.id===usuario.regional?'<span class="mi-regional-badge">MI REGIONAL</span>':''}</div><div class="menu-card-label">${r.label}<span class="arrow">›</span></div></div>`).join('')}
+function actualizarStats(){const h=new Date().toDateString();document.getElementById('stat-total').textContent=prestaciones.length;document.getElementById('stat-hoy').textContent=prestaciones.filter(p=>{try{return new Date(p.fechaReporte).toDateString()===h}catch(e){return false}}).length;document.getElementById('stat-mi-regional').textContent=prestaciones.filter(p=>p.regional===usuario?.regional).length}
+function mostrarVista(v){document.getElementById('vista-menu').style.display=v==='menu'?'block':'none';document.getElementById('vista-regional').style.display=v==='regional'?'block':'none';document.querySelectorAll('.sidebar-item').forEach(i=>i.classList.remove('active'));if(v==='menu'){const n=document.getElementById('nav-menu');if(n)n.classList.add('active')}}
+function mostrarRegional(reg){regionalActual=reg;const r=REGIONALES.find(x=>x.id===reg);document.getElementById('regional-titulo').textContent=r?r.label.toUpperCase():reg;const es=reg===usuario?.regional;document.getElementById('btn-nuevo-top').disabled=!es;document.getElementById('aviso-lectura-wrap').innerHTML=es?'':'<div class="aviso-lectura">👁️ Viendo <strong>'+(r?.label||reg)+'</strong>. Solo lectura — tu regional es <strong>'+usuario.regional+'</strong>.</div>';document.querySelectorAll('.sidebar-item').forEach(i=>i.classList.remove('active'));const n=document.getElementById('nav-'+reg);if(n)n.classList.add('active');mostrarVista('regional');cargarPrestaciones(reg)}
+
+/* ===== MISMA PESTAÑA ===== */
+function irARegistro(){
+  if(regionalActual!==usuario?.regional){mostrarToast('Sin permiso para guardar en esta regional','error');return}
+  sessionStorage.setItem('app_regionalActual',regionalActual);
+  sessionStorage.removeItem('app_editarDatos');
+  window.location.href='registro.html';
+}
+function editarRegistro(id){
+  const p=prestaciones.find(x=>x.id===id);if(!p)return;
+  sessionStorage.setItem('app_regionalActual',regionalActual);
+  sessionStorage.setItem('app_editarDatos',JSON.stringify(p._raw||{}));
+  sessionStorage.setItem('app_editarFilaIndex',p.id);
+  window.location.href='registro.html';
 }
 
-function entrar(data) {
-  usuario = data;
-  sessionStorage.setItem('app_usuario', JSON.stringify(data));
-  sessionStorage.setItem('app_modoDemo', modoDemo ? '1' : '0');
-  document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('app').style.display = 'block';
-  document.getElementById('regional-badge').textContent = usuario.regional;
-  document.getElementById('user-name').textContent = usuario.nombre;
-  document.getElementById('user-avatar').textContent = (usuario.nombre || 'A')[0].toUpperCase();
-  document.getElementById('demo-indicator').style.display = modoDemo ? 'inline-block' : 'none';
-  renderMenu(); actualizarStats(); mostrarVista('menu');
-  if (modoDemo) mostrarToast('🛠️ Modo Demo activado — Los datos no se guardan en Sheets', 'info');
+async function cargarPrestaciones(reg){
+  const tb=document.getElementById('tabla-body');tb.innerHTML='<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--gris);"><div style="font-size:24px;margin-bottom:8px;">⏳</div>Cargando...</td></tr>';
+  const res=await apiSheetsLeer({accion:'leer',regional:reg});
+  if(res&&res.ok&&Array.isArray(res.datos)){
+    prestaciones=res.datos.map((d,i)=>({id:i.toString(),_raw:d,numPrestacion:d['N° Prestacion']||'',fechaReporte:d['Fecha Y Hora de Reporte']||'',regional:d['Regional']||reg,nombreFallecido:d['Nombre Del Fallecido']||'',apellidosFallecido:d['Apellidos Del Fallecido']||'',numContrato:d['Nº De Contrato']||'',sede:d['Sede']||'',estadoPrestacion:d['Estado De La Prestacion']||'En proceso'}));
+  }else{prestaciones=[];if(res&&res.error&&!modoDemo)mostrarToast('⚠️ Error: '+res.error.substring(0,80),'error')}
+  actualizarStats();renderTabla();
 }
-
-function cerrarSesion() {
-  usuario = null; modoDemo = false; regionalActual = null; prestaciones = [];
-  sessionStorage.removeItem('app_usuario'); sessionStorage.removeItem('app_modoDemo');
-  document.getElementById('app').style.display = 'none'; document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('demo-user').value = ''; document.getElementById('demo-pass').value = '';
-  document.getElementById('login-error-box').style.display = 'none';
-  const btn = document.getElementById('btn-login-main'); btn.disabled = false; btn.textContent = 'Entrar →';
+function renderTabla(filtro=''){
+  const datos=prestaciones.filter(p=>{const er=p.regional===regionalActual;const co=!filtro||(p.nombreFallecido||'').toLowerCase().includes(filtro.toLowerCase())||(p.apellidosFallecido||'').toLowerCase().includes(filtro.toLowerCase())||(p.numContrato||'').toLowerCase().includes(filtro.toLowerCase())||(p.numPrestacion||'').toLowerCase().includes(filtro.toLowerCase());return er&&co});
+  const tb=document.getElementById('tabla-body');
+  if(!datos.length){tb.innerHTML='<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--gris);"><div style="font-size:32px;margin-bottom:8px;">📋</div>No hay registros'+(filtro?' con ese filtro':'')+'</td></tr>';return}
+  tb.innerHTML=datos.slice().reverse().map(p=>{const n=[p.nombreFallecido,p.apellidosFallecido].filter(Boolean).join(' ')||'—';let f='—';try{f=p.fechaReporte?new Date(p.fechaReporte).toLocaleString('es-CO',{dateStyle:'short',timeStyle:'short'}):'—'}catch(e){}const ec=p.estadoPrestacion==='Finalizado'?'estado-finalizado':p.estadoPrestacion==='Pendiente'?'estado-pendiente':'estado-activo';return'<tr><td><code style="font-family:\'DM Mono\',monospace;font-size:12px;">'+(p.numPrestacion||'—')+'</code></td><td><strong>'+n+'</strong></td><td style="color:var(--gris);font-size:13px;">'+f+'</td><td>'+(p.sede||'—')+'</td><td><span class="estado-chip '+ec+'">'+(p.estadoPrestacion||'En proceso')+'</span></td><td><button class="btn-editar" onclick="editarRegistro(\''+p.id+'\')">✏️ Editar</button></td></tr>'}).join('');
 }
-
-function renderMenu() {
-  document.getElementById('menu-grid').innerHTML = REGIONALES.map(r => `
-    <div class="menu-card" onclick="mostrarRegional('${r.id}')">
-      <div class="menu-card-img ${r.clase}">
-        ${r.emoji}
-        ${r.id === usuario.regional ? '<span class="mi-regional-badge">MI REGIONAL</span>' : ''}
-      </div>
-      <div class="menu-card-label">${r.label}<span class="arrow">›</span></div>
-    </div>`).join('');
-}
-
-function actualizarStats() {
-  const hoy = new Date().toDateString();
-  document.getElementById('stat-total').textContent = prestaciones.length;
-  document.getElementById('stat-hoy').textContent = prestaciones.filter(p => { try { return new Date(p.fechaReporte).toDateString() === hoy; } catch(e) { return false; } }).length;
-  document.getElementById('stat-mi-regional').textContent = prestaciones.filter(p => p.regional === usuario?.regional).length;
-}
-
-function mostrarVista(vista) {
-  document.getElementById('vista-menu').style.display = vista === 'menu' ? 'block' : 'none';
-  document.getElementById('vista-regional').style.display = vista === 'regional' ? 'block' : 'none';
-  document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
-  if (vista === 'menu') { const n = document.getElementById('nav-menu'); if(n) n.classList.add('active'); }
-}
-
-function mostrarRegional(regional) {
-  regionalActual = regional;
-  const r = REGIONALES.find(x => x.id === regional);
-  document.getElementById('regional-titulo').textContent = r ? r.label.toUpperCase() : regional;
-  const esMiRegional = regional === usuario?.regional;
-  document.getElementById('btn-nuevo-top').disabled = !esMiRegional;
-  const aviso = document.getElementById('aviso-lectura-wrap');
-  if (!esMiRegional) { aviso.innerHTML = '<div class="aviso-lectura">👁️ Estás viendo <strong>' + (r?.label || regional) + '</strong>. Solo lectura — tu regional es <strong>' + usuario.regional + '</strong>.</div>'; }
-  else { aviso.innerHTML = ''; }
-  document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
-  const navItem = document.getElementById('nav-' + regional); if (navItem) navItem.classList.add('active');
-  mostrarVista('regional'); cargarPrestaciones(regional);
-}
-
-function irARegistro() {
-  if (regionalActual !== usuario?.regional) { mostrarToast('No tienes permiso para guardar en esta regional', 'error'); return; }
-  sessionStorage.setItem('app_regionalActual', regionalActual);
-  window.open('registro.html', '_blank');
-}
-
-async function cargarPrestaciones(regional) {
-  const tbody = document.getElementById('tabla-body');
-  tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--gris);"><div style="font-size:24px;margin-bottom:8px;">⏳</div> Cargando...</td></tr>';
-  const res = await apiSheetsLeer({ accion: 'leer', regional });
-  if (res && res.ok && Array.isArray(res.datos)) {
-    prestaciones = res.datos.map((d, i) => ({
-      id: i.toString(), _raw: d,
-      numPrestacion: d['Nº Prestacion'] || d['N° Prestación'] || '',
-      fechaReporte: d['Fecha Y Hora de Reporte'] || d['Fecha Reporte'] || '',
-      regional: d['Regional'] || regional,
-      nombreFallecido: d['Nombre Del Fallecido'] || d['Nombre Fallecido'] || '',
-      apellidosFallecido: d['Apellidos Del Fallecido'] || d['Apellidos Fallecido'] || '',
-      numContrato: d['Nº De Contrato'] || d['N° Contrato'] || '',
-      sede: d['Sede'] || '', estadoPrestacion: d['Estado Prestación'] || 'En proceso',
-    }));
-  } else { prestaciones = []; if (res && res.error && !modoDemo) mostrarToast('⚠️ Error al leer: ' + res.error.substring(0, 80), 'error'); }
-  actualizarStats(); renderTabla();
-}
-
-function renderTabla(filtro = '') {
-  const datos = prestaciones.filter(p => {
-    const esRegional = p.regional === regionalActual;
-    const coincide = !filtro || (p.nombreFallecido||'').toLowerCase().includes(filtro.toLowerCase()) || (p.apellidosFallecido||'').toLowerCase().includes(filtro.toLowerCase()) || (p.numContrato||'').toLowerCase().includes(filtro.toLowerCase()) || (p.numPrestacion||'').toLowerCase().includes(filtro.toLowerCase());
-    return esRegional && coincide;
-  });
-  const tbody = document.getElementById('tabla-body');
-  if (datos.length === 0) { tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--gris);"><div style="font-size:32px;margin-bottom:8px;">📋</div>No hay registros' + (filtro ? ' con ese filtro' : '') + '</td></tr>'; return; }
-  tbody.innerHTML = datos.slice().reverse().map(p => {
-    const nombre = [p.nombreFallecido, p.apellidosFallecido].filter(Boolean).join(' ') || '—';
-    let fecha = '—'; try { fecha = p.fechaReporte ? new Date(p.fechaReporte).toLocaleString('es-CO', {dateStyle:'short', timeStyle:'short'}) : '—'; } catch(e) {}
-    const estadoClase = p.estadoPrestacion === 'Finalizado' ? 'estado-finalizado' : p.estadoPrestacion === 'Pendiente' ? 'estado-pendiente' : 'estado-activo';
-    return '<tr><td><code style="font-family:\'DM Mono\',monospace;font-size:12px;">' + (p.numPrestacion||'—') + '</code></td><td><strong>' + nombre + '</strong></td><td style="color:var(--gris);font-size:13px;">' + fecha + '</td><td>' + (p.sede||'—') + '</td><td><span class="estado-chip ' + estadoClase + '">' + (p.estadoPrestacion||'En proceso') + '</span></td><td><button class="btn-ver" onclick="verPrestacion(\'' + p.id + '\')">Ver →</button></td></tr>';
-  }).join('');
-}
-function filtrarTabla(val) { renderTabla(val); }
-
-function verPrestacion(id) {
-  const p = prestaciones.find(x => x.id === id); if (!p) return;
-  const esMio = regionalActual === usuario?.regional; const raw = p._raw || {};
-  const camposEditables = [
-    { key: 'Nombre Fallecido', label: 'Nombre Fallecido', campo: 'nombreFallecido' },
-    { key: 'Apellidos Fallecido', label: 'Apellidos Fallecido', campo: 'apellidosFallecido' },
-    { key: 'CC Fallecido', label: 'CC Fallecido', campo: 'ccFallecido' },
-    { key: 'Edad', label: 'Edad', campo: 'edad' },
-    { key: 'Tipo Muerte', label: 'Tipo Muerte', campo: 'tipoMuerte' },
-    { key: 'N° Contrato', label: 'N° Contrato', campo: 'numContrato' },
-    { key: 'Nombre Solicitante', label: 'Nombre Solicitante', campo: 'nombreSolicitante' },
-    { key: 'Parentesco', label: 'Parentesco', campo: 'parentesco' },
-    { key: 'Sede', label: 'Sede', campo: 'sede' },
-    { key: 'Coordinador', label: 'Coordinador', campo: 'coordinador' },
-    { key: 'Destino Final', label: 'Destino Final', campo: 'destinoFinal' },
-    { key: 'Estado Prestación', label: 'Estado', campo: 'estadoPrestacion' },
-    { key: 'Observaciones', label: 'Observaciones', campo: 'observaciones' },
-    { key: 'Agente Call', label: 'Agente Call', campo: 'agenteCall' },
-  ];
-  const todosLectura = Object.entries(raw).filter(([k, v]) => v && k !== 'id' && k !== '_raw').map(([k, v]) => '<div class="detalle-campo"><span class="detalle-label">' + k + '</span><span class="detalle-valor">' + v + '</span></div>').join('');
-  const camposFormHTML = camposEditables.map(c => {
-    const val = raw[c.key] || p[c.campo] || ''; const safe = String(val).replace(/"/g, '&quot;').replace(/</g, '&lt;');
-    if (esMio) return '<div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:11px;font-weight:700;color:var(--gris);text-transform:uppercase;letter-spacing:0.5px;">' + c.label + '</label><input type="text" id="edit-' + c.campo + '" value="' + safe + '" style="border:1.5px solid var(--gris-claro);border-radius:8px;padding:9px 12px;font-size:13.5px;font-family:\'DM Sans\',sans-serif;outline:none;" /></div>';
-    else return '<div class="detalle-campo"><span class="detalle-label">' + c.label + '</span><span class="detalle-valor">' + (val || '—') + '</span></div>';
-  }).join('');
-  const existingModal = document.getElementById('modal-detalle-dinamico'); if (existingModal) existingModal.remove();
-  const modal = document.createElement('div'); modal.id = 'modal-detalle-dinamico'; modal.className = 'modal-detalle'; modal.setAttribute('data-id', id);
-  modal.innerHTML = '<div class="modal-overlay" onclick="cerrarModal()"></div><div class="modal-box"><div class="modal-header"><h3>📋 ' + (p.nombreFallecido||'') + ' ' + (p.apellidosFallecido||'') + ' <span style="font-size:14px;font-family:\'DM Sans\';color:var(--gris);font-weight:400;margin-left:8px;">' + (p.numPrestacion||'') + '</span></h3><button onclick="cerrarModal()" class="modal-cerrar">✕</button></div><div class="modal-tabs-row"><div class="modal-tab-item active" id="mtab-editar" onclick="modalTab(\'editar\')">✏️ ' + (esMio ? 'Editar' : 'Detalle') + '</div><div class="modal-tab-item" id="mtab-todos" onclick="modalTab(\'todos\')">📄 Todos los campos</div></div><div class="modal-body" id="modal-tab-editar"><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;">' + camposFormHTML + '</div>' + (esMio ? '<div style="margin-top:16px;display:flex;gap:10px;justify-content:flex-end;"><button class="btn-cancelar" onclick="cerrarModal()" style="background:white;color:var(--negro);border:1.5px solid var(--gris-claro);border-radius:10px;padding:10px 20px;font-size:14px;cursor:pointer;font-family:\'DM Sans\',sans-serif;">Cancelar</button><button class="btn-guardar" onclick="guardarEdicion(\'' + id + '\')" style="background:var(--azul);color:white;border:none;border-radius:10px;padding:10px 24px;font-size:14px;font-weight:600;cursor:pointer;font-family:\'DM Sans\',sans-serif;">💾 Guardar Cambios</button></div>' : '') + '</div><div class="modal-body" id="modal-tab-todos" style="display:none;"><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;">' + todosLectura + '</div></div></div>';
-  document.body.appendChild(modal); setTimeout(() => modal.classList.add('show'), 10);
-}
-
-function modalTab(tab) {
-  document.getElementById('modal-tab-editar').style.display = tab === 'editar' ? 'block' : 'none';
-  document.getElementById('modal-tab-todos').style.display = tab === 'todos' ? 'block' : 'none';
-  document.getElementById('mtab-editar').classList.toggle('active', tab === 'editar');
-  document.getElementById('mtab-todos').classList.toggle('active', tab === 'todos');
-}
-
-async function guardarEdicion(id) {
-  const p = prestaciones.find(x => x.id === id); if (!p) return;
-  const btn = document.querySelector('#modal-detalle-dinamico .btn-guardar'); if (btn) { btn.disabled = true; btn.textContent = '⏳ Guardando...'; }
-  const gv = (c) => { const el = document.getElementById('edit-' + c); return el ? el.value : ''; };
-  const payload = { accion: 'editar', regional: regionalActual, numPrestacion: p.numPrestacion, filaIndex: p.id, nombreFallecido: gv('nombreFallecido'), apellidosFallecido: gv('apellidosFallecido'), ccFallecido: gv('ccFallecido'), edad: gv('edad'), tipoMuerte: gv('tipoMuerte'), numContrato: gv('numContrato'), nombreSolicitante: gv('nombreSolicitante'), parentesco: gv('parentesco'), sede: gv('sede'), coordinador: gv('coordinador'), destinoFinal: gv('destinoFinal'), estadoPrestacion: gv('estadoPrestacion'), observaciones: gv('observaciones'), agenteCall: gv('agenteCall') };
-  const result = await apiSheets(payload);
-  if (modoDemo) mostrarToast('🛠️ [DEMO] Cambios simulados', 'info');
-  else if (result.ok) mostrarToast('✅ Cambios guardados en Google Sheets', 'exito');
-  else mostrarToast('⚠️ Error: ' + (result.error || 'Desconocido'), 'error');
-  cerrarModal(); cargarPrestaciones(regionalActual);
-}
-
-function cerrarModal() { const m = document.getElementById('modal-detalle-dinamico'); if (m) m.remove(); }
-
-function mostrarToast(msg, tipo = 'exito') {
-  const t = document.getElementById('toast'); t.textContent = msg; t.className = 'toast ' + tipo + ' show';
-  clearTimeout(t._timeout); t._timeout = setTimeout(() => t.classList.remove('show'), 3500);
-}
+function filtrarTabla(v){renderTabla(v)}
+function verPrestacion(id){editarRegistro(id)}
+function mostrarToast(m,t='exito'){const t2=document.getElementById('toast');t2.textContent=m;t2.className='toast '+t+' show';clearTimeout(t2._timeout);t2._timeout=setTimeout(()=>t2.classList.remove('show'),3500)}
 </script>
 </body>
 </html>
