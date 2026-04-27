@@ -10,7 +10,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro);min-height:100vh;overflow-x:hidden}
 #login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0a2e1a,#1a4731 40%,#2d6a4f);position:relative;overflow:hidden}
-#login-screen::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23fff' fill-opacity='.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+#login-screen::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23fff' fill-opacity='.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4zM6 4V4H6zM6 4H8v2h-2V2h-2v-2h4V2h2H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
 .login-card{background:rgba(255,255,255,.97);border-radius:24px;padding:52px 44px 44px;width:100%;max-width:420px;box-shadow:0 32px 80px rgba(0,0,0,.4);position:relative;z-index:1;animation:fu .6s ease}
 @keyframes fu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 .login-logo{text-align:center;margin-bottom:32px;cursor:pointer;user-select:none}
@@ -58,10 +58,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
 .mc-label{padding:14px 16px;font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:space-between}
 .mc-label .arrow{color:var(--gris);font-size:18px}
 .mrb{position:absolute;top:10px;right:10px;background:var(--dorado);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;letter-spacing:.5px}
-.page-header{display:flex;align-items:center;gap:14px;margin-bottom:24px}
-.page-header h2{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px}
-.back-btn{background:#fff;border:1.5px solid var(--gris-claro);border-radius:10px;padding:8px 14px;font-size:13px;cursor:pointer;transition:var(--tr);display:flex;align-items:center;gap:6px;font-family:'DM Sans',sans-serif;font-weight:500}
-.back-btn:hover{background:var(--verde-suave);border-color:var(--verde);color:var(--verde)}
 .stats-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-bottom:24px}
 .stat-card{background:#fff;border-radius:var(--radio);padding:20px;box-shadow:var(--sombra)}
 .stat-card .num{font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--verde);line-height:1}
@@ -95,7 +91,7 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--verde-suave)}
 .fw{background:#fff;border-radius:var(--radio);box-shadow:var(--sombra);overflow:hidden}
 .fs{border-bottom:1.5px solid var(--gris-claro)}
 .fsh{padding:16px 24px;background:var(--verde);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1px;display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none}
-.fsh .tg{margin-left:auto;transition:transform .2s;font-size:12px}
+.fsh .tg{margin-left:auto;transition:transform:.2s;font-size:12px}
 .fsh.col .tg{transform:rotate(-90deg)}
 .fsb{padding:20px 24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
 .fsb.oc{display:none}
@@ -113,18 +109,6 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--verde-suave)}
 .btn-g.act{background:#2563eb}.btn-g.act:hover{background:#1d4ed8}
 .btn-c{background:#fff;color:var(--negro);border:1.5px solid var(--gris-claro);border-radius:10px;padding:12px 24px;font-size:15px;font-weight:500;cursor:pointer;transition:var(--tr);font-family:'DM Sans',sans-serif}
 .btn-c:hover{border-color:var(--rojo);color:var(--rojo)}
-.mo{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000}
-.mb{position:fixed;top:50%;left:50%;transform:translate(-50%,-48%);background:#fff;border-radius:16px;width:92%;max-width:840px;max-height:85vh;display:flex;flex-direction:column;z-index:1001;box-shadow:0 24px 80px rgba(0,0,0,.3);opacity:0;transition:opacity .2s,transform .2s}
-.md.show .mb{opacity:1;transform:translate(-50%,-50%)}
-.mh{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1.5px solid var(--gris-claro);font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:var(--verde)}
-.mx{background:var(--gris-claro);border:none;border-radius:8px;width:32px;height:32px;cursor:pointer;font-size:14px;transition:var(--tr)}.mx:hover{background:var(--rojo);color:#fff}
-.mbo{padding:18px 22px;overflow-y:auto}
-.mst{font-family:'Bebas Neue',sans-serif;font-size:15px;color:var(--verde);letter-spacing:1px;margin:14px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--verde-suave)}
-.mst:first-child{margin-top:0}
-.dg{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
-.dc{background:var(--fondo);border-radius:8px;padding:9px 13px}
-.dc .dl{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--gris);margin-bottom:3px}
-.dc .dv{font-size:13px;font-weight:500;color:var(--negro);word-break:break-word}
 .fw2{background:var(--fondo);border:2px dashed var(--gris-claro);border-radius:8px;padding:14px}
 .fw2 canvas{display:block;width:100%;height:auto}
 .btn-lf{background:var(--gris-claro);border:none;border-radius:6px;padding:5px 14px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:6px}
@@ -139,16 +123,14 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--verde-suave)}
   <div class="login-info">🔐 Acceso restringido. Solo personal autorizado.</div>
   <div class="login-error-box" id="leb"><div class="et" id="let"></div><div class="ed" id="led"></div></div>
   <div class="demo-inputs">
-    <input type="text" id="iu" placeholder="Usuario" autocomplete="username"/>
-    <input type="password" id="ip" placeholder="Contraseña" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"/>
+    <input type="text" id="iu" placeholder="Usuario" autocomplete="username"/><input type="password" id="ip" placeholder="Contraseña" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"/>
     <button class="btn-login" id="bl" onclick="doLogin()">Entrar →</button>
     <button class="btn-demo" onclick="entrarDemo()">🛠️ Modo Demo (sin servidor)</button>
   </div>
-</div>
-</div>
+</div></div>
 
 <div id="app">
-<div class="topbar"><div class="topbar-logo"><span>🌿</span> PRESTACIÓN DE SERVICIOS <span class="demo-indicator" id="di" style="display:none">DEMO</span></div>
+<div class="topbar"><div class="topbar-logo"><span>🌿</span> PRESTACIÓN DE SERVICIOS<span class="demo-indicator" id="di" style="display:none">DEMO</span></div>
 <div class="topbar-user"><span class="rb" id="trb">QUINDIO</span><div class="avatar" id="tav">Q</div><span id="tnm" style="font-size:13px;font-weight:500">Analista</span><button class="btn-cerrar" onclick="cerrarSesion()">✕ Salir</button></div></div>
 <div class="main-layout">
 <div class="sidebar">
@@ -178,15 +160,12 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--verde-suave)}
     <div class="page-header"><button class="back-btn" onclick="mostrarVista('menu')">← Menú</button><h2 id="rtit">REGIONAL</h2></div>
     <div id="alw"></div>
     <div class="tabs"><div class="tab active" onclick="cambiarTab('lista')" id="t-l">📋 Registros</div><div class="tab" onclick="cambiarTab('nuevo')" id="t-n">➕ Nueva Prestación</div></div>
-    <div id="tc-l">
-      <div class="tw"><div class="tt"><input class="busqueda" type="text" placeholder="🔍 Buscar..." oninput="filtrarTabla(this.value)"/><button class="btn-nuevo" id="bnt" onclick="cambiarTab('nuevo')">➕ Nueva</button></div>
-      <div style="overflow-x:auto"><table><thead><tr><th>N° Prestación</th><th>Fallecido</th><th>Fecha Reporte</th><th>Sede</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="tb"></tbody></table></div></div>
-    </div>
+    <div id="tc-l"><div class="tw"><div class="tt"><input class="busqueda" type="text" placeholder="🔍 Buscar..." oninput="filtrarTabla(this.value)"/><button class="btn-nuevo" id="bnt" onclick="cambiarTab('nuevo')">➕ Nueva</button></div>
+      <div style="overflow-x:auto"><table><thead><tr><th>N° Prestación</th><th>Fallecido</th><th>Fecha Reporte</th><th>Sede</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="tb"></tbody></table></div></div></div>
     <div id="tc-n" style="display:none">
       <div id="aeb" style="display:none" class="aviso-edicion">✏️ Modo Edición — <strong id="enp"></strong><button onclick="cancelarEdicion()">✕ Cancelar</button></div>
       <div id="ron" style="display:none" class="aviso-lectura">👁️ Solo lectura — No es tu regional.</div>
       <div class="fw" id="fp">
-        <!-- S1 -->
         <div class="fs"><div class="fsh" onclick="ts(this)"><span>📋</span>INFORMACIÓN DE SOLICITUD<span class="sn">1–17</span><span class="tg">▼</span></div><div class="fsb">
           <div class="campo"><label>Fecha Y Hora de Reporte <span class="req">*</span></label><input type="datetime-local" id="f01"/></div>
           <div class="campo"><label>N° Prestacion</label><input type="text" id="f02" placeholder="Ej: PS-000123..."/></div>
@@ -199,28 +178,27 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--verde-suave)}
           <div class="campo"><label>Fecha de Nacimiento</label><input type="date" id="f09" onchange="calcEdad()"/></div>
           <div class="campo"><label>Edad</label><input type="number" id="f10" min="0" max="130"/></div>
           <div class="campo"><label>Nº De Contrato <span class="req">*</span></label><input type="text" id="f11" placeholder="Contrato"/></div>
-          <div class="campo"><label>Nombre solicitante</label><input type="text" id="f12" placeholder="Nombre"/></div>
-          <div class="campo"><label>CC: Del Solicitante</label><input type="number" id="f13" placeholder="Cédula"/></div>
-          <div class="campo"><label>Parentesco Con El Fallecido</label><select id="f14"><option value="">Seleccionar...</option><option>Abuela</option><option>Abuelo</option><option>Compañera</option><option>Compañero</option><option>Cuñada</option><option>Cuñado</option><option>Empleado</option><option>Esposa</option><option>Esposo</option><option>Hermana</option><option>Hermanastro(a)</option><option>Hermano</option><option>Hija</option><option>Hijastro(a)</option><option>Hijo</option><option>Madrastra</option><option>Madre</option><option>Nieta</option><option>Nieto</option><option>Nuera</option><option>Otro(a)</option><option>Padrastro</option><option>Padre</option><option>Prima</option><option>Primo</option><option>Sobrina</option><option>Sobrino</option><option>Suegra</option><option>Suegro</option><option>Titular</option><option>Tía</option><option>Tío</option><option>Yerno</option></select></div>
-          <div class="campo"><label>Direccion del Solicitante</label><input type="text" id="f15" placeholder="Dirección"/></div>
-          <div class="campo"><label>Nº Telefono Solicitante</label><input type="number" id="f16" placeholder="Teléfono"/></div>
+          <div class="campo"><label>Nombre solicitante</label><input type="text" id="f12"/></div>
+          <div class="campo"><label>CC: Del Solicitante</label><input type="number" id="f13"/></div>
+          <div class="campo"><label>Parentesco Con El Fallecido</label><select id="f14"><option value="">Seleccionar...</option><option>Abuela</option><option>Abuelo</option>Compañera</option>Compañero</option>Cuñada</option>Cuñado</option>Empleado</option>Esposa</option>Esposo</option>Hermana</option>Hermanastro(a)</option>Hermano</option>Hija</option>Hijastro(a)</option>Hijo</option>Madrastra</option>Madre</option>Nieta</option>Nieto</option>Nuera</option>Otro(a)</option>Padrastro</option>Padre</option>Prima</option>Primo</option>Sobrina</option>Sobrino</option>Suegra</option>Suegro</option>Titular</option>Tía</option>Tío</option>Yerno</option></select></div>
+          <div class="campo"><label>Direccion del Solicitante</label><input type="text" id="f15"/></div>
+          <div class="campo"><label>Nº Telefono Solicitante</label><input type="number" id="f16"/></div>
           <div class="campo"><label>Fecha Y Hora De Digitacion</label><input type="datetime-local" id="f17"/></div>
         </div></div>
-        <!-- S2 -->
         <div class="fs"><div class="fsh" onclick="ts(this)"><span>⚙️</span>CONFIGURACIÓN DEL SERVICIO<span class="sn">18–41</span><span class="tg">▼</span></div><div class="fsb">
-          <div class="campo"><label>Regional <span class="req">*</span></label><select id="f18"><option value="">Seleccionar...</option><option>ANALISTA</option><option>ANTIOQUIA</option><option>ATLANTICO</option><option>BOGOTA</option><option>CALDAS</option><option>CAUCA</option><option>CUNDINAMARCA</option><option>HUILA</option><option>META</option><option>PUTUMAYO</option><option>QUINDIO</option><option>RISARALDA</option><option>SANTANDER</option><option>TOLIMA NORTE</option><option>TOLIMA SUR</option><option>VALLE CENTRO</option><option>VALLE CENTRO-PALMIRA</option><option>VALLE NORTE</option><option>VALLE SUR</option></select></div>
-          <div class="campo"><label>Departamento De Prestacion</label><select id="f19" onchange="filM()"><option value="">Seleccionar...</option><option>Antioquia</option><option>Atlantico</option><option>Bogota</option><option>Bolivar</option><option>Boyaca</option><option>Caldas</option><option>Caqueta</option><option>Casanare</option><option>Cauca</option><option>Cesar</option><option>Choco</option><option>Cordoba</option><option>Cundinamarca</option><option>Huila</option><option>La Guajira</option><option>Magdalena</option><option>Meta</option><option>N. De Santander</option><option>Nariño</option><option>Putumayo</option><option>Quindio</option><option>Risaralda</option><option>Santander</option><option>Sucre</option><option>Tolima</option><option>Valle Del Cauca</option></select></div>
+          <div class="campo"><label>Regional <span class="req">*</span></label><select id="f18"><option value="">Seleccionar...</option><option>ANALISTA</option><option>ANTIOQUIA</option><option>ATLANTICO</option>BOGOTA</option>CALDAS</option>CAUCA</option>CUNDINAMARCA</option>HUILA</option>META</option>PUTUMAYO</option>QUINDIO</option>RISARALDA</option>SANTANDER</option>TOLIMA NORTE</option>TOLIMA SUR</option>VALLE CENTRO</option>VALLE CENTRO-PALMIRA</option>VALLE NORTE</option>VALLE SUR</option></select></div>
+          <div class="campo"><label>Departamento De Prestacion</label><select id="f19" onchange="filM()"><option value="">Seleccionar...</option><option>Antioquia</option>Atlantico</option>Bogota</option>Bolivar</option>Boyaca</option>Caldas</option>Caqueta</option>Casanare</option>Cauca</option>Cesar</option>Choco</option>Cordoba</option>Cundinamarca</option>Huila</option>La Guajira</option>Magdalena</option>Meta</option>N. De Santander</option>Nariño</option>Putumayo</option>Quindio</option>Risaralda</option>Santander</option>Sucre</option>Tolima</option>Valle Del Cauca</option></select></div>
           <div class="campo"><label>Municipio de Prestacion</label><select id="f20"><option value="">Depto primero...</option></select></div>
-          <div class="campo"><label>Sede</label><select id="f21"><option value="">Seleccionar...</option><option>Armenia</option><option>Calarca</option><option>Circasia</option><option>Montenegro</option><option>Quimbaya</option><option>La Tebaida</option><option>Genova</option><option>Pijao</option><option>Manizales</option><option>Pereira</option><option>Dosquebradas</option><option>Santa Rosa</option><option>Cali</option><option>Palmira</option><option>Tulua</option><option>Cartago</option><option>Medellin</option><option>Ibague</option><option>Bogotá</option><option>Villavicencio</option></select></div>
-          <div class="campo"><label>Tipo</label><select id="f22"><option value="">Seleccionar...</option><option>Afiliado Cobertura Total</option><option>Afiliado Condicional</option><option>Convenio</option><option>Licitacion</option><option>Mascota</option><option>Particular</option><option>Servicios No Prestados</option></select></div>
-          <div class="campo"><label>Categoria</label><select id="f23" onchange="apRC()"><option value="">Seleccionar...</option><option>Adres</option><option>Afiliado Condicional</option><option>Alcaldia</option><option>Alcaldia Con Excedente</option><option>Asesor Jurídico</option><option>Asesores Externos</option><option>Auxilio Funerario</option><option>Cliente En Mora</option><option>Cobertura Total</option><option>Cobertura Total Con Excedente</option><option>Compra Gastos</option><option>Contrato Retirado</option><option>Convenio</option><option>Convenio Con Excedente</option><option>Donacion</option><option>Donación Particular</option><option>Fallecido No Afiliado</option><option>Mascota Cobertura Total</option><option>Mascota Condicional</option><option>Mascota Convenio</option><option>Mascota Particular</option><option>Particular</option><option>Preexistencias</option><option>Repatriacion</option><option>Servicio En Otra Funeraria</option><option>Soat</option><option>Tiempos De Carencias</option></select></div>
-          <div class="campo" id="wm" style="display:none"><label>Motivo</label><select id="f24"><option value="">Seleccionar...</option><option>Carencia</option><option>Mora</option><option>Preexistencias</option></select></div>
-          <div class="campo" id="we" style="display:none"><label>Entidad</label><select id="f25"><option value="">Seleccionar...</option><option>Adress</option><option>Alcaldía</option><option>Arl Sura</option><option>Casur</option><option>Chubb</option><option>Colfondos</option><option>Colpensiones</option><option>Cremil</option><option>Fomag</option><option>Fonprecon</option><option>Gobernación</option><option>Liberty</option><option>Ministerio De Defensa</option><option>Municipio</option><option>Particular</option><option>Porvenir</option><option>Positiva</option><option>Protección</option><option>Seguros Alfa</option><option>Seguros Bolivar</option><option>Seguros Colmena</option><option>Seguros De Vida Suramericana</option><option>Skandia</option><option>Soat</option><option>Superintendencia De Sociedades</option><option>Ugpp</option><option>Universidad Nacional</option></select></div>
-          <div class="campo" id="wa" style="display:none"><label>Asesor Externo</label><select id="f26"><option value="">Seleccionar...</option><option>Apoyo Funebre Nacional S.a.s</option><option>Aroca Diana Marcela</option><option>Bustamante Carlos</option><option>Cuello Edwin Alberto</option><option>Cuestas German</option><option>La Luz S.a.s.</option><option>La Paz Ecofunerales</option><option>Lizcano Giovanny</option><option>Lizcano Luis Antonio</option><option>Londoño Sandra</option><option>Maria de la Fontana</option><option>Matiz Edison Adrian</option><option>Mejia Gomez Jhon Jairo</option><option>Munevar Giovanny</option><option>Padilla Córdoba William</option><option>Rodriguez Tobon Diana Marcela</option><option>Santa Cruz Funeraria</option><option>Servicios Asistenciales S.A.S La Fe</option><option>Utima Gomez Jose Luis</option></select></div>
-          <div class="campo"><label>Clasificacion</label><select id="f27"><option value="">Seleccionar...</option><option>Basico</option><option>Completo</option><option>Covid-19</option><option>Destino Final</option><option>Finales</option><option>Iniciales</option><option>Mascota</option><option>Parcial</option><option>Post Finales</option></select></div>
-          <div class="campo"><label>Tiene Servicios Adicionales (SI/NO)</label><select id="f28"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
+          <div class="campo"><label>Sede</label><select id="f21"><option value="">Seleccionar...</option><option>Armenia</option>Calarca</option>Circasia</option>Circasia</option>Montenegro</option>Quimbaya</option>La Tebaida</option>Genova</option>Pijao</option>Manizales</option>Pereira</option>Dosquebradas</option>Santa Rosa</option>Cali</option>Palmira</option>Tulua</option>Cartago</option>Medellin</option>Ibague</option>Bogotá</option>Villavicencio</option></select></div>
+          <div class="campo"><label>Tipo</label><select id="f22"><option value="">Seleccionar...</option><option>Afiliado Cobertura Total</option><option>Afiliado Condicional</option>Convenio</option>Licitacion</option>Mascota</option>Particular</option>Servicios No Prestados</option></select></div>
+          <div class="campo"><label>Categoria</label><select id="f23" onchange="apRC()"><option value="">Seleccionar...</option>Adres</option>Afiliado Condicional</option>Alcaldia</option>Alcaldia Con Excedente</option>Asesor Jurídico</option>Asesores Externos</option>Auxilio Funerario</option>Cliente En Mora</option>Cobertura Total</option>Cobertura Total Con Excedente</option>Compra Gastos</option>Contrato Retirado</option>Convenio</option>Convenio Con Excedente</option>Donacion</option>Donación Particular</option>Fallecido No Afiliado</option>Mascota Cobertura Total</option>Mascota Condicional</option>Mascota Convenio</option>Mascota Particular</option>Particular</option>Preexistencias</option>Repatriacion</option>Servicio En Otra Funeraria</option>Soat</option>Tiempos De Carencias</option></select></div>
+          <div class="campo" id="wm" style="display:none"><label>Motivo</label><select id="f24"><option value="">Seleccionar...</option><option>Carencia</option>Mora</option>Preexistencias</option></select></div>
+          <div class="campo" id="we" style="display:none"><label>Entidad</label><select id="f25"><option value="">Seleccionar...</option>Adress</option>Alcaldía</option>Arl Sura</option>Casur</option>Chubb</option>Colfondos</option>Colpensiones</option>Cremil</option>Fomag</option>Fonprecon</option>Gobernación</option>Liberty</option>Ministerio De Defensa</option>Municipio</option>Particular</option>Porvenir</option>Positiva</option>Protección</option>Seguros Alfa</option>Seguros Bolivar</option>Seguros Colmena</option>Seguros De Vida Suramericana</option>Skandia</option>Soat</option>Superintendencia De Sociedades</option>Ugpp</option>Universidad Nacional</option></select></div>
+          <div class="campo" id="wa" style="display:none"><label>Asesor Externo</label><select id="f26"><option value="">Seleccionar...</option>Apoyo Funebre Nacional S.a.s</option>Aroca Diana Marcela</option>Bustamante Carlos</option>Cuello Edwin Alberto</option>Cuestas German</option>La Luz S.a.s.</option>La Paz Ecofunerales</option>Lizcano Giovanny</option>Lizcano Luis Antonio</option>Londoño Sandra</option>Maria de la Fontana</option>Matiz Edison Adrian</option>Mejia Gomez Jhon Jairo</option>Munevar Giovanny</option>Padilla Córdoba William</option>Rodriguez Tobon Diana Marcela</option>Santa Cruz Funeraria</option>Servicios Asistenciales S.A.S La Fe</option>Utima Gomez Jose Luis</option></select></div>
+          <div class="campo"><label>Clasificacion</label><select id="f27"><option value="">Seleccionar...</option>Basico</option>Completo</option>Covid-19</option>Destino Final</option>Finales</option>Iniciales</option>Mascota</option>Parcial</option>Post Finales</option></select></div>
+          <div class="campo"><label>Tiene Servicios Adicionales (SI/NO)</label><select id="f28"><option value="">Seleccionar...</option>SI</option>NO</option></select></div>
           <div class="campo"><label>Cuáles</label><input type="text" id="f29" placeholder="Describir..."/></div>
-          <div class="campo"><label>Tiene post finales (SI/NO)</label><select id="f30"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
+          <div class="campo"><label>Tiene post finales (SI/NO)</label><select id="f30"><option value="">Seleccionar...</option>SI</option>NO</option></select></div>
           <div class="campo"><label>Nombre Del Titular</label><input type="text" id="f31"/></div>
           <div class="campo"><label>CC: Del Titular</label><input type="number" id="f32"/></div>
           <div class="campo"><label>Direccion Del Titular</label><input type="text" id="f33"/></div>
@@ -233,15 +211,15 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--verde-suave)}
         </div></div>
         <!-- S3 -->
         <div class="fs"><div class="fsh" onclick="ts(this)"><span>👤</span>DATOS DEL FALLECIDO<span class="sn">42–55</span><span class="tg">▼</span></div><div class="fsb">
-          <div class="campo"><label>Lugar De Fallecimiento</label><select id="f42"><option value="">Seleccionar...</option><option>Clinica Central Del Quindio</option><option>Clinica Del Cafe</option><option>Clinica Del Parque Armenia</option><option>Clinica Fundadores</option><option>Clinica La Estancia</option><option>Clínica Comfamiliar Risaralda</option><option>Clínica Los Rosales - Pereira</option><option>Hospital San Jorge</option><option>Hospital San Vicente De Paul</option><option>Fundación Valle Del Lili</option><option>Domicilio</option><option>Vía Pública</option><option>Otro</option></select></div>
-          <div class="campo"><label>Tipo de Muerte</label><select id="f43"><option value="">Seleccionar...</option><option>Natural</option><option>Accidente</option><option>Violenta</option><option>Desconocida</option><option>Suicidio</option></select></div>
+          <div class="campo"><label>Lugar De Fallecimiento</label><select id="f42"><option value="">Seleccionar...</option>Clinica Central Del Quindio</option>Clinica Del Cafe</option>Clinica Del Parque Armenia</option>Clinica Fundadores</option>Clinica La Estancia</option>Clínica Comfamiliar Risaralda</option>Clínica Los Rosales - Pereira</option>Hospital San Jorge</option>Hospital San Vicente De Paul</option>Fundación Valle Del Lili</option>Domicilio</option>Vía Pública</option>Otro</select></div>
+          <div class="campo"><label>Tipo de Muerte</label><select id="f43"><option value="">Seleccionar...</option>Natural</option>Accidente</option>Violenta</option>Desconocida</option>Suicidio</option></select></div>
           <div class="campo"><label>Posible causa de muerte</label><input type="text" id="f44"/></div>
           <div class="campo"><label>Certificado De Defuncion</label><input type="text" id="f45"/></div>
           <div class="campo"><label>Ocupación</label><input type="text" id="f46"/></div>
-          <div class="campo"><label>Pensionado (SI/No)</label><select id="f47"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
+          <div class="campo"><label>Pensionado (SI/No)</label><select id="f47"><option value="">Seleccionar...</option>SI</option>NO</option></select></div>
           <div class="campo"><label>Nom: del Fondo</label><input type="text" id="f48"/></div>
-          <div class="campo"><label>Contextura</label><select id="f49"><option value="">Seleccionar...</option><option>Delgado/a</option><option>Normal</option><option>Corpulento/a</option><option>Obeso/a</option></select></div>
-          <div class="campo"><label>Estado civil</label><select id="f50"><option value="">Seleccionar...</option><option>Soltero/a</option><option>Casado/a</option><option>Unión Libre</option><option>Divorciado/a</option><option>Viudo/a</option></select></div>
+          <div class="campo"><label>Contextura</label><select id="f49"><option value="">Seleccionar...</option>Delgado/a</option>Normal</option>Corpulento/a</option>Obeso/a</option></select></div>
+          <div class="campo"><label>Estado civil</label><select id="f50"><option value="">Seleccionar...</option>Soltero/a</option>Casado/a</option>Unión Libre</option>Divorciado/a</option>Viudo/a</option></select></div>
           <div class="campo"><label>Nombre cónyuge</label><input type="text" id="f50b"/></div>
           <div class="campo"><label>Nombre Del Padre</label><input type="text" id="f52"/></div>
           <div class="campo"><label>Nombre De La Madre</label><input type="text" id="f53"/></div>
@@ -252,261 +230,218 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--verde-suave)}
         <div class="fs"><div class="fsh" onclick="ts(this)"><span>🚗</span>DATOS DE COORDINACION<span class="sn">56–99</span><span class="tg">▼</span></div><div class="fsb">
           <div class="campo"><label>Fecha De Recogida</label><input type="date" id="f56"/></div>
           <div class="campo"><label>Hora Recogida</label><input type="time" id="f57"/></div>
-          <div class="campo"><label>Nombre De Quién Recoge</label><select id="f58"><option value="">Seleccionar...</option><option>900340724-7 - Jardines Del Renacer</option><option>123456789 - Proveedor Externo</option></select></div>
-          <div class="campo"><label>(Recogida) Placa Carroza de Jardines del Renacer</label><select id="f59"><option value="">Seleccionar...</option><option>ARN666</option><option>BRZ208</option><option>CGB340</option><option>CHE809</option><option>CKC858</option><option>CNC123</option><option>CND628</option><option>CPM169</option><option>CUM533</option><option>CUM578</option><option>DCI714</option><option>DCI952</option><option>GJX497</option><option>GJX506</option><option>GJX568</option><option>HWS018</option><option>HWS033</option><option>IGN433</option><option>IGN434</option><option>IGN439</option><option>LXZ504</option><option>LXZ505</option><option>LXZ509</option><option>LXZ512</option><option>No Aplica</option><option>PROVEEDOR</option></select></div>
-          <div class="campo"><label>Traslado Nacional</label><select id="f60"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
-          <div class="campo"><label>Preservación Por</label><select id="f61"><option value="">Seleccionar...</option><option>900340724-7-JARDINES DEL RENACER</option></select></div>
+          <div class="campo"><label>Nombre De Quién Recoge</label><select id="f58"><option value="">Seleccionar...</option>900340724-7 - Jardines Del Renacer</option>123456789 - Proveedor Externo</option></select></div>
+          <div class="campo"><label>(Recogida) Placa Carroza de Jardines del Renacer</label><select id="f59"><option value="">Seleccionar...</option>ARN666</option>BRZ208</option>CGB340</option>CHE809</option>CKC858</option>CNC123</option>CND628</option>CPM169</option>CUM533</option>CUM578</option>DCI714</option>DCI952</option>GJX497</option>GJX506</option>GJX568</option>HWS018</option>HWS033</option>IGN433</option>IGN434</option>IGN439</option>LXZ504</option>LXZ505</option>LXZ509</option>LXZ512</option>No Aplica</option>PROVEEDOR</option></select></div>
+          <div class="campo"><label>Traslado Nacional</label><select id="f60"><option value="">Seleccionar...</option>SI</option>NO</option></select></div>
+          <div class="campo"><label>Preservación Por</label><select id="f61"><option value="">Seleccionar...</option>900340724-7-JARDINES DEL RENACER</option></select></div>
           <div class="campo"><label>Nº Ref de Cofre</label><input type="number" id="f62"/></div>
           <div class="campo"><label>Fecha Inicio de Velación</label><input type="date" id="f63"/></div>
           <div class="campo"><label>Hora Inicio de Velación</label><input type="time" id="f64"/></div>
           <div class="campo"><label>Fecha Final de Velación</label><input type="date" id="f65"/></div>
           <div class="campo"><label>Hora Final de Velación</label><input type="time" id="f66"/></div>
-          <div class="campo"><label>Municipio Velación</label><select id="f67"><option value="">Seleccionar...</option><option>Armenia</option><option>Calarca</option><option>Circasia</option><option>Montenegro</option><option>Quimbaya</option><option>La Tebaida</option><option>Pereira</option><option>Manizales</option><option>Cali</option><option>Palmira</option><option>Tulua</option><option>Medellin</option><option>Ibague</option><option>Bogota, D.c.</option></select></div>
-          <div class="campo"><label>Lugar de Velación</label><select id="f68"><option value="">Seleccionar...</option><option>Armenia Sala 1</option><option>Armenia Sala 2</option><option>Armenia Sala 3</option><option>Armenia Sala 4</option><option>Calarca Sala 1</option><option>Calarca Sala 2</option><option>Montenegro Sala 1</option><option>Montenegro Sala 2</option><option>Montenegro Sala 3</option><option>Quimbaya Sala 1</option><option>Genova Sala 1</option><option>Genova Sala 2</option><option>La 27 Sala 1</option><option>La 27 Sala 2</option><option>Cuba Sala 1</option><option>Cuba Sala 2</option><option>Palmira Sala 1</option><option>Palmira Sala 2</option><option>Renacer Sala 1 (cali)</option><option>Renacer Sala 2 (cali)</option><option>Renacer Sala 1 (tulua)</option><option>Residencia</option><option>Sin Velacion</option></select></div>
-          <div class="campo"><label>Nombre de Aux Cafeteria</label><select id="f69"><option value="">Seleccionar...</option><option>Aguirre Martha Yaneth</option><option>Cardona Maria Irma</option><option>Franco Luz Elena</option><option>Garcia Maya Consuelo</option><option>Gonzalez Gloria Patricia</option><option>Lopez Martha Lucero</option><option>Marin Consuelo</option><option>Martinez Teresa</option><option>Morales Martha Lucia</option><option>Quintero Luz Amparo</option><option>Valencia Claudia Patricia</option></select></div>
+          <div class="campo"><label>Municipio Velación</label><select id="f67"><option value="">Seleccionar...</option>Armenia</option>Calarca</option>Circasia</option>Montenegro</option>Quimbaya</option>La Tebaida</option>Pereira</option>Manizales</option>Cali</option>Palmira</option>Tulua</option>Medellin</option>Ibague</option>Bogota, D.c.</option></select></div>
+          <div class="campo"><label>Lugar de Velación</label><select id="f68"><option value="">Seleccionar...</option>Armenia Sala 1</option>Armenia Sala 2</option>Armenia Sala 3</option>Armenia Sala 4</option>Calarca Sala 1</option>Calarca Sala 2</option>Montenegro Sala 1</option>Montenegro Sala 2</option>Montenegro Sala 3</option>Quimbaya Sala 1</option>Genova Sala 1</option>Genova Sala 2</option>La 27 Sala 1</option>La 27 Sala 2</option>Cuba Sala 1</option>Cuba Sala 2</option>Palmira Sala 1</option>Palmira Sala 2</option>Renacer Sala 1 (cali)</option>Renacer Sala 2 (cali)</option>Renacer Sala 1 (tulua)</option>Residencia</option>Sin Velacion</option></select></div>
+          <div class="campo"><label>Nombre de Aux Cafeteria</label><select id="f69"><option value="">Seleccionar...</option>Aguirre Martha Yaneth</option>Cardona Maria Irma</option>Franco Luz Elena</option>Garcia Maya Consuelo</option>Gonzalez Gloria Patricia</option>Lopez Martha Lucero</option>Marin Consuelo</option>Martinez Teresa</option>Morales Martha Lucia</option>Quintero Luz Amparo</option>Valencia Claudia Patricia</option></select></div>
           <div class="campo"><label>Hora Llegada a Sala de la Aux Cafeteria</label><input type="time" id="f70"/></div>
-          <div class="campo"><label>Arreglo Floral</label><select id="f71"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
-          <div class="campo"><label>Carteles</label><select id="f72"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
-          <div class="campo"><label>Kit Velación</label><select id="f73"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
-          <div class="campo"><label>Cinta Fallecido</label><select id="f74"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
-          <div class="campo"><label>Transporte Para Acompañantes</label><select id="f75"><option value="">Seleccionar...</option><option>SI</option><option>NO</option></select></div>
-          <div class="campo"><label>Nombre de Auxiliar o Proveedor que Pone en Velacion</label><select id="f76"><option value="">Seleccionar...</option><option>900340724-7 - Jardines Del Renacer</option><option>123456789 - Proveedor Externo</option></select></div>
-          <div class="campo"><label>(Velación) Placa Carroza De Jardines Del Renacer</label><select id="f77"><option value="">Seleccionar...</option><option>ARN666</option><option>BRZ208</option><option>CGB340</option><option>GJX497</option><option>GJX506</option><option>LXZ504</option><option>LXZ505</option><option>No Aplica</option><option>PROVEEDOR</option></select></div>
+          <div class="campo"><label>Arreglo Floral</label><select id="f71"><option value="">Seleccionar...</option>SI</option>NO</option></select></div>
+          <div class="campo"><label>Carteles</label><select id="f72"><option value="">Seleccionar...</option>SI</option>NO</option></select></div>
+          <div class="campo"><label>Kit Velación</label><select id="f73"><option value="">Seleccionar...</option>SI</option>NO</option></select></div>
+          <div class="campo"><label>Cinta Fallecido</label><select id="f74"><option value="">Seleccionar...</option>SI</option>NO</option></select></div>
+          <div class="campo"><label>Transporte Para Acompañantes</label><select id="f75"><option value="">Seleccionar...</option>SI</option>NO</option></select></div>
+          <div class="campo"><label>Nombre de Auxiliar o Proveedor que Pone en Velacion</label><select id="f76"><option value="">Seleccionar...</option>900340724-7 - Jardines Del Renacer</option>123456789 - Proveedor Externo</option></select></div>
+          <div class="campo"><label>(Velación) Placa Carroza De Jardines del Renacer</label><select id="f77"><option value="">Seleccionar...</option>ARN666</option>BRZ208</option>CGB340</option>GJX497</option>GJX506</option>LXZ504</option>LXZ505</option>No Aplica</option>PROVEEDOR</option></select></div>
           <div class="campo"><label>Fecha Exequias</label><input type="date" id="f78"/></div>
           <div class="campo"><label>Hora Exequias</label><input type="time" id="f79"/></div>
-          <div class="campo"><label>Lugar Exequias</label><select id="f80"><option value="">Seleccionar...</option><option>Basilica Menor La Inmaculada Concepcion</option><option>Capilla Jardines De Armenia</option><option>Capilla Cementerio Central</option><option>Capilla Del Cementerio Jardines De Paz</option><option>Parroquia Nuestra Señora Del Carmen</option><option>Parroquia San Bartolome</option><option>Capilla Cristo Rey</option><option>Capillas Metropolitanos</option><option>Parroquia Cristo Sacerdote</option><option>Parroquia Maria Auxiliadora</option></select></div>
+          <div class="campo"><label>Lugar Exequias</label><select id="f80"><option value="">Seleccionar...</option>Basilica Menor La Inmaculada Concepcion</option>Capilla Jardines De Armenia</option>Capilla Cementerio Central</option>Capilla Del Cementerio Jardines De Paz</option>Parroquia Nuestra Señora Del Carmen</option>Parroquia San Bartolome</option>Capilla Cristo Rey</option>Capillas Metropolitanos</option>parroquia Cristo Sacerdote</option>Parroquia Maria Auxiliadora</option></select></div>
           <div class="campo"><label>Fecha Destino Final</label><input type="date" id="f81"/></div>
           <div class="campo"><label>Hora Destino Final</label><input type="time" id="f82"/></div>
-          <div class="campo"><label>Destino Final</label><select id="f83"><option value="">Seleccionar...</option><option>Boveda</option><option>Boveda Pp</option><option>Cremacion</option><option>Cremación</option><option>Fuera De Ciudad</option><option>Inhumación Bóveda</option><option>Inhumación Lote</option><option>Lote Pp</option><option>Lote Temporal</option><option>Mausoleo</option></select></div>
-          <div class="campo"><label>Cementerio</label><select id="f84"><option value="">Seleccionar...</option><option>Cementerio Central</option><option>Cementerio Catolico</option><option>Campos De Cristo - Soacha</option><option>Campos De Paz - Los Olivos</option><option>Cementerio Civil</option><option>Cementerio Comunitario</option><option>Cementerio De Los Olivos</option><option>Campo Santo Jardines De La Aurora</option></select></div>
-          <div class="campo"><label>Quien Culmina</label><select id="f85"><option value="">Seleccionar...</option><option>900340724-7 - Jardines Del Renacer</option><option>123456789 - Proveedor Externo</option></select></div>
-          <div class="campo"><label>(Culminación) Placa Carroza De Jardines Del Renacer</label><select id="f86"><option value="">Seleccionar...</option><option>ARN666</option><option>BRZ208</option><option>CGB340</option><option>GJX497</option><option>LXZ504</option><option>No Aplica</option><option>PROVEEDOR</option></select></div>
-          <div class="campo"><label>Coordinador</label><select id="f87"><option value="">Seleccionar...</option><option>Acosta Pareja Edwin Jeanpoll</option><option>Agudelo Cardenas Joe</option><option>Arango Mejia Ana Karina</option><option>Becerra Cardenas Joanna Paola</option><option>Caicedo Florez John Esteban</option><option>Calderon Bañol Jose Fernando</option><option>Garcia Ossa Paola Andrea</option><option>Gomez Velez Octavio</option><option>Gomez Gonzalez Vanessa</option><option>Henao Isaza Esneydi Patricia</option><option>Hincapié Prieto José Alejandro</option><option>Jaramillo Villada Cristian David</option><option>Mejia Gomez Jhon Jairo</option><option>Morales Perez Diana Maria</option><option>Narvaez Toro Yesica Paola</option><option>Ortega Urrea Erika Jaritza</option><option>Ospina Castaño Cristian Samuel</option><option>Taborda Gonzalez John Fredy</option><option>Valencia Gil Catalina</option><option>Valle Henao Julio Cesar</option></select></div>
+          <div class="campo"><label>Destino Final</label><select id="f83"><option value="">Seleccionar...</option>Boveda</option>Boveda Pp</option>Cremacion</option>Cremación</option>Fuera De Ciudad</option>Inhumación Bóveda</option>Inhumación Lote</option>Inhumación Lote</option>Lote Pp</option>Lote Temporal</option>Mausoleo</option></select></div>
+          <div class="campo"><label>Cementerio</label><select id="f84"><option value="">Seleccionar...</option>Cementerio Central</option>Cementerio Catolico</option>Campos De Cristo - Soacha</option>Campos De Paz - Los Olivos</option>Cementerio Civil</option>Cementerio Comunitario</option>Cementerio De Los Olivos</option>Campo Santo Jardines De La Aurora</option></select></div>
+          <div class="campo"><label>Quien Culmina</label><select id="f85"><option value="">Seleccionar...</option>900340724-7 - Jardines Del Renacer</option>123456789 - Proveedor Externo</option></select></div>
+          <div class="campo"><label>(Culminación) Placa Carroza De Jardines del Renacer</label><select id="f86"><option value="">Seleccionar...</option>ARN666</option>BRZ208</option>CGB340</option>GJX497</option>LXZ504</option>No Aplica</option>PROVEEDOR</option></select></div>
+          <div class="campo"><label>Coordinador</label><select id="f87"><option value="">Seleccionar...</option>Acosta Pareja Edwin Jeanpoll</option>Agudelo Cardenas Joe</option>Arango Mejia Ana Karina</option>Becerra Cardenas Joanna Paola</option>Caicedo Florez John Esteban</option>Calderon Bañol Jose Fernando</option>Garcia Ossa Paola Andrea</option>Gomez Velez Octavio</option>Gomez Gonzalez Vanessa</option>Henao Isaza Esneydi Patricia</option>Hincapié Prieto José Alejandro</option>Jaramillo Villada Cristian David</option>Mejia Gomez Jhon Jairo</option>Morales Perez Diana Maria</option>Narvaez Toro Yesica Paola</option>Ortega Urrea Erika Jaritza</option>Ospina Castaño Cristian Samuel</option>Taborda Gonzalez John Fredy</option>Valencia Gil Catalina</option>Valle Henao Julio Cesar</option></select></div>
           <div class="campo anc"><label>Firma: Quien Entrega</label><div class="fw2"><canvas id="cfe" width="700" height="120"></canvas><button type="button" class="btn-lf" onclick="limF('cfe')">🗑 Limpiar</button></div></div>
           <div class="campo anc"><label>Firma: Quien Recibe</label><div class="fw2"><canvas id="cfr" width="700" height="120"></canvas><button type="button" class="btn-lf" onclick="limF('cfr')">🗑 Limpiar</button></div></div>
           <div class="campo"><label>Nombre del Agente Call</label><input type="text" id="f41"/></div>
           <div class="campo anc"><label>Foto Del Certificado De Defuncion</label><input type="file" id="f98" accept="image/*,.pdf"/></div>
-          <div class="campo"><label>Estado De La Prestacion</label><select id="f40"><option value="">Seleccionar...</option><option>En proceso</option><option>Finalizado</option><option>Pendiente</option><option>Cancelado</option></select></div>
-          <div class="campo"><label>Departamento De Muerte</label><select id="f88" onchange="filMM()"><option value="">Seleccionar...</option><option>Antioquia</option><option>Bogota</option><option>Caldas</option><option>Cauca</option><option>Cundinamarca</option><option>Huila</option><option>Meta</option><option>Quindio</option><option>Risaralda</option><option>Santander</option><option>Tolima</option><option>Valle Del Cauca</option></select></div>
+          <div class="campo"><label>Estado De La Prestacion</label><select id="f40"><option value="">Seleccionar...</option>En proceso</option>Finalizado</option>Pendiente</option>Cancelado</option></select></div>
+          <div class="campo"><label>Departamento De Muerte</label><select id="f88" onchange="filMM()"><option value="">Seleccionar...</option>Antioquia</option>Bogota</option>Caldas</option>Cauca</option>Cundinamarca</option>Huila</option>Meta</option>Quindio</option>Risaralda</option>Santander</option>Tolima</option>Valle Del Cauca</option></select></div>
           <div class="campo"><label>Ciudad De Muerte</label><select id="f89"><option value="">Depto primero...</option></select></div>
-          <div class="campo"><label>Murio En</label><select id="f90"><option value="">Seleccionar...</option><option>Domicilio</option><option>Hospital/Clínica</option><option>Vía Pública</option><option>Otro</option></select></div>
+          <div class="campo"><label>Murio En</label><select id="f90"><option value="">Seleccionar...</option>Domicilio</option>Hospital/Clínica</option>Vía Pública</option>Otro</select></div>
           <div class="campo"><label>Direccion de Fallecimiento</label><input type="text" id="f91"/></div>
           <div class="campo"><label>Fecha Y Hora de Muerte</label><input type="datetime-local" id="f92"/></div>
-          <div class="campo"><label>Lugar De Nacimiento</label><select id="f93"><option value="">Seleccionar...</option><option>Armenia</option><option>Bogota, D.c.</option><option>Calarca</option><option>Cali</option><option>Ibague</option><option>Manizales</option><option>Medellin</option><option>Pereira</option><option>Palmira</option><option>Quimbaya</option><option>Tulua</option></select></div>
-          <div class="campo"><label>Seguridad Social</label><select id="f94"><option value="">Seleccionar...</option><option>Contributivo</option><option>Ignorado</option><option>No Tenia</option><option>Otro</option><option>Particular</option><option>Pensionado</option><option>Sin Informacion</option><option>Subsidiado</option><option>Vinculado</option></select></div>
+          <div class="campo"><label>Lugar De Nacimiento</label><select id="f93"><option value="">Seleccionar...</option>Armenia</option>Bogota, D.c.</option>Calarca</option>Cali</option>Ibague</option>Manizales</option>Medellin</option>Pereira</option>Palmira</option>Tulua</option></select></div>
+          <div class="campo"><label>Seguridad Social</label><select id="f94"><option value="">Seleccionar...</option>Contributivo</option>Ignorado</option>No Tenia</option>Otro</option>Particular</option>Pensionado</option>Sin Informacion</option>Subsidiado</option>Vinculado</option></select></div>
         </div></div>
-        <div class="fa"><button class="btn-c" onclick="limpiarForm()">🗑 Limpiar</button><button class="btn-c" onclick="cambiarTab('lista')">← Volver</button><button class="btn-g" id="bgf" onclick="guardarPrestacion()">💾 Guardar Prestación</button></div>
+        <div class="fa"><div class="fa"><button class="btn-c" onclick="limF()">🗑 Limpiar</button><button class="btn-c" onclick="cambiarTab('lista')">← Volver</button><button class="btn-g" id="bgf" onclick="guardarPrestacion()">💾 Guardar Prestación</button></div>
       </div>
     </div>
   </div>
-</div></div></div>
+</div>
+</div>
 <div class="toast" id="toast"></div>
 
 <script>
 /*
-==========================================================================
-  IMPORTANTE: CAMBIO EN APPS SCRIPT
-  Si tu Apps Script usa Object.values(data) para guardar,
-  DEBES cambiarlo para usar data.fila en su lugar.
+  =============================================================
+  ESTA ES LA CLAVE: se usa ORDEN EXACTO de columnas del Apps Script
+  para garantizar que cada dato vaya a su columna correcta.
   
-  ANTES (lo que causa el error):
-    var row = Object.values(data);
-    sheet.appendRow(row);
-  
-  DESPUÉS (lo correcto):
-    sheet.appendRow(data.fila);
-  
-  Si tu Apps Script busca por nombre de columna (ej: data['N° Prestacion']),
-  ese método sigue funcionando porque también envío las propiedades con
-  los nombres de columna. Pero Object.values NO garantiza orden.
-==========================================================================
+  Antes: orden diferente entre frontend y backend = datos desplazados.
+  Ahora coinciden: ARRAY vs ARRAY = datos correctos en la hoja.
+  =============================================================
 */
-
 var usuario=null, modoDemo=false, regionalActual=null, prestaciones=[], editandoId=null;
 var SU='https://script.google.com/macros/s/AKfycbzpUuh3cVO3SoiuuqN77wH3blzo9oEcCCBby9Pyqsj6fbb5L5YOEs-rgL_dyJp0mCE/exec';
 
 /*
-  ORDEN EXACTO de las columnas en tu hoja de Google Sheets.
-  Este array define en qué posición va cada dato.
-  Los campos _sec son columnas informativas que van VACÍAS.
+  ORDEN EXACTO de columnas (posición 0-86)
+  Coincide con el orden del array en guardarPrestacionObj() del Apps Script
+  Columnas de sección (posiciones vacías) se marcan con '_sec'
 */
-var ORDEN_COLUMNAS = [
-  '_sec1',       // 0  → INFORMACIÓN SOLICITUD (vacía)
-  'f01',         // 1  → Fecha Y Hora de Reporte
-  'f02',         // 2  → N° Prestacion
-  'f04',         // 3  → Observaciones
-  'f03',         // 4  → Reporte de Servicio Por el Call o Regional
-  'f05',         // 5  → Nombre Del Fallecido
-  'f06',         // 6  → Apellidos Del Fallecido
-  'f07',         // 7  → CC: Del Fallecido
-  'f08',         // 8  → Fecha De Expedicion de la CC
-  'f09',         // 9  → Fecha de Nacimiento
-  'f10',         // 10 → Edad
-  'f11',         // 11 → Nº De Contrato
-  'f12',         // 12 → Nombre solicitante
-  'f13',         // 13 → CC: Del Solicitante
-  'f14',         // 14 → Parentesco Con El Fallecido
-  'f15',         // 15 → Direccion del Solicitante
-  'f16',         // 16 → Nº Telefono Solicitante
-  'f17',         // 17 → Fecha Y Hora De Digitacion
-  'f18',         // 18 → Regional
-  'f19',         // 19 → Departamento De Prestacion
-  'f20',         // 20 → Municipio de Prestacion
-  'f21',         // 21 → Sede
-  'f22',         // 22 → Tipo
-  'f23',         // 23 → Categoria
-  'f24',         // 24 → Motivo
-  'f25',         // 25 → Entidad
-  'f26',         // 26 → Asesor Externo
-  'f27',         // 27 → Clasificacion
-  'f28',         // 28 → Tiene Servicios Adicionales (SI/NO)
-  'f29',         // 29 → Cuáles
-  'f30',         // 30 → Tiene post finales (SI/NO)
-  'f31',         // 31 → Nombre Del Titular
-  'f32',         // 32 → CC: Del Titular
-  'f33',         // 33 → Direccion Del Titular
-  'f34',         // 34 → Nº Telefono TiTular
-  'f35',         // 35 → Responsabele a Facturar
-  'f36',         // 36 → CC Responsable a Facturar
-  'f37',         // 37 → Direccion Responsable a Facturar
-  'f38',         // 38 → Nº Telefono Responsable a Facturar
-  'f39',         // 39 → Correo Electronico Responsable a Facturar
-  '_sec2',       // 40 → DATOS DEL FALLECIDO (vacía)
-  'f42',         // 41 → Lugar De Fallecimiento
-  'f43',         // 42 → Tipo de Muerte
-  'f44',         // 43 → Posible causa de muerte
-  'f45',         // 44 → Certificado De Defuncion
-  'f46',         // 45 → Ocupación
-  'f47',         // 46 → Pensionado (SI/No)
-  'f48',         // 47 → Nom: del Fondo
-  'f49',         // 48 → Contextura
-  'f50',         // 49 → Estado civil
-  'f50b',        // 50 → Nombre cónyuge
-  'f52',         // 51 → Nombre Del Padre
-  'f53',         // 52 → Nombre De La Madre
-  'f54',         // 53 → Hijos
-  'f55',         // 54 → Foto Cedula Fallecido
-  '_sec3',       // 55 → DATOS DE COORDINACION (vacía)
-  'f56',         // 56 → Fecha De Recogida
-  'f57',         // 57 → Hora Recogida
-  'f58',         // 58 → Nombre De Quién Recoge
-  'f59',         // 59 → (Recogida) Placa Carroza de Jardines del Renacer
-  'f60',         // 60 → Traslado Nacional
-  'f61',         // 61 → Preservación Por
-  'f62',         // 62 → Nº Ref de Cofre
-  'f63',         // 63 → Fecha Inicio de Velación
-  'f64',         // 64 → Hora Inicio de Velación
-  'f65',         // 65 → Fecha Final de Velación
-  'f66',         // 66 → Hora Final de Velación
-  'f67',         // 67 → Municipio Velación
-  'f68',         // 68 → Lugar de Velación
-  'f69',         // 69 → Nombre de Aux Cafeteria
-  'f70',         // 70 → Hora Llegada a Sala de la Aux Cafeteria
-  'f71',         // 71 → Arreglo Floral
-  'f72',         // 72 → Carteles
-  'f73',         // 73 → Kit Velación
-  'f74',         // 74 → Cinta Fallecido
-  'f75',         // 75 → Transporte Para Acompañantes
-  'f76',         // 76 → Nombre de Auxiliar o Proveedor que Pone en Velacion
-  'f77',         // 77 → (Velación) Placa Carroza De Jardines Del Renacer
-  'f78',         // 78 → Fecha Exequias
-  'f79',         // 79 → Hora Exequias
-  'f80',         // 80 → Lugar Exequias
-  'f81',         // 81 → Fecha Destino Final
-  'f82',         // 82 → Hora Destino Final
-  'f83',         // 83 → Destino Final
-  'f84',         // 84 → Cementerio
-  'f85',         // 85 → Quien Culmina
-  'f86',         // 86 → (Culminación) Placa Carroza De Jardines Del Renacer
-  'f87',         // 87 → Coordinador
-  '_firma_e',     // 88 → Firma: Quien Entrega
-  '_firma_r',     // 89 → Firma: Quien Recibe
-  'f41',         // 90 → Nombre del Agente Call
-  'f98',         // 91 → Foto Del Certificado De Defucion
-  'f40',         // 92 → Estado De La Prestacion
-  'f88',         // 93 → Departamento De Muerte
-  'f89',         // 94 → Ciudad De Muerte
-  'f90',         // 95 → Murio En
-  'f91',         // 96 → Direccion de Fallecimiento
-  'f92',         // 97 → Fecha Y Hora de Muerte
-  'f93',         // 98 → Lugar De Nacimiento
-  'f94'          // 99 → Seguridad Social
+var ORDEN = [
+  'f02',   // 0 → N° Prestación
+  'f01',   // 1 → Fecha Reporte
+  'f18',   // 2 → Regional
+  'f03',   // 3 → Reporte Por
+  'f04',   // 4 → Observaciones
+  'f05',   // 5 → Nombre Fallecido
+  'f06',   // 6 → Apellidos Fallecido
+  'f07',   // 7 → CC Fallecido
+  'f08',   // 8 → Fecha Exp CC
+  'f09',   // 9 → Fecha Nacimiento
+  'f10',   // 10 → Edad (se envía aunque el Apps Script no lo usa)
+  'f43',   // 11 → Tipo Muerte
+  'f44',   // 12 → Causa Muerte
+  'f45',   // 13 → Cert Defunción
+  'f50',   // 14 → Estado Civil
+  'f47',   // 15 → Pensionado
+  'f48',   // 16 → Fondo
+  'f42',   // 17 → Lugar Fallecimiento
+  'f91',   // 18 → Dir Fallecimiento
+  'f92',   // 19 → Fecha Muerte
+  'f93',   // 20 → Lugar Nacimiento
+  'f94',   // 21 → Seguridad Social
+  'f46',   // 22 → Ocupación
+  'f49',   // 23 → Contextura
+  'f11',   // 24 → N° Contrato
+  'f12',   // 25 → Nombre Solicitante
+  'f13',   // 26 → CC Solicitante
+  'f14',   // 27 → Parentesco
+  'f15',   // 28 → Dir Solicitante
+  'f16',   // 29 → Tel Solicitante
+  'f31',   // 30 → Nombre Titular
+  'f32',   // 31 → CC Titular
+  'f33',   // 32 → Dir Titular
+  'f34',   // 33 → Tel Titular
+  'f35',   // 34 → Resp Facturar
+  'f36',   // 35 → CC Resp
+  'f37',   // 36 → Dir Resp
+  'f38',   // 37 → Tel Resp
+  'f39',   // 38 → Email Resp
+  'f19',   // 39 → Dpto Prestación
+  'f20',   // 40 → Municipio Prestación
+  'f21',   // 41 → Sede
+  'f22',   //  42 → Tipo
+  'f23',   //  43 → Categoría
+  'f24',   // 44 → Motivo
+  'f25',   //  45 → Entidad
+  'f26',   //  46 → Asesor
+  'f27',   //  47 → Clasificación
+  'f28',   //  48 → Serv Adicionales
+  'f29',   //  49 → Cuáles Adicionales
+  'f30',   // 50 → Post Finales
+  'f40',   //  51 → Estado Prestación
+  'f41',   //  52 → Agente Call
+  'f56',   //  53 → Fecha Recogida
+  'f57',   //  54 → Hora Recogida
+  'f58',   //  55 → Quién Recoge
+  'f59',   //  56 → Placa Recogida
+  'f60',   //  57 → Traslado
+  'f61',   //  58 → Preservación
+  'f62',   //  59 → Ref Cofre
+  'f87',   //  60 → Coordinador
+  'f63',   //  61 → Fecha Inicio Velación
+  'f64',   //  62 → Hora Inicio Velación
+  'f65',   //  63 → Fecha Fin Velación
+  'f66',   //  64 → Hora Fin Velación
+  'f67',   //  65 → Municipio Velación
+  'f68',   //  66 → Lugar Velación
+  'f69',   //  67 → Aux Cafetería
+  'f70',   //  68 → Hora Aux
+  'f71',   //  69 → Arreglo Floral
+  'f72',   //  70 → Carteles
+  'f73',   //  71 → Kit Velación
+  'f74',   //  72 → Cinta
+  'f75',   //  73 → Transporte Acompañantes
+  'f76',   //  74 → Aux Velación
+  'f77',   //  75 → Placa Velación
+  'f78',   //  76 → Fecha Exequias
+  'f79',   //  77 → Hora Exequias
+  'f80',   //  78 → Lugar Exequias
+  'f81',   //  79 → Fecha Destino
+  'f82',   //  80 → Hora Destino
+  'f83',   //  81 → Destino Final
+  'f84',   //  82 → Cementerio
+  'f85',   //  83 → Quién Culmina
+  'f86',   //  84 → Placa Culminación
+  // 85 → Creado Por (hardcode)
+  //  86 → Fecha Creación (hardcode)
 ];
 
-/* Nombres de columna para enviar junto al array (para compatibilidad) */
-var NOMBRES_COLUMNAS = [
-  'INFORMACIÓN SOLICITUD','Fecha Y Hora de Reporte','N° Prestacion','Observaciones','Reporte de Servicio Por el Call o Regional',
-  'Nombre Del Fallecido','Apellidos Del Fallecido','CC: Del Fallecido','Fecha De Expedicion de la CC','Fecha de Nacimiento','Edad',
-  'Nº De Contrato','Nombre solicitante','CC: Del Solicitante','Parentesco Con El Fallecido','Direccion del Solicitante','Nº Telefono Solicitante','Fecha Y Hora De Digitacion',
-  'Regional','Departamento De Prestacion','Municipio de Prestacion','Sede','Tipo','Categoria','Motivo','Entidad','Asesor Externo','Clasificacion',
-  'Tiene Servicios Adicionales (SI/NO)','Cuáles','Tiene post finales (SI/NO)','Nombre Del Titular','CC: Del Titular','Direccion Del Titular','Nº Telefono TiTular',
-  'Responsabele a Facturar','CC Responsable a Facturar','Direccion Responsable a Facturar','Nº Telefono Responsable a Facturar','Correo Electronico Responsable a Facturar',
-  'DATOS DEL FALLECIDO','Lugar De Fallecimiento','Tipo de Muerte','Posible causa de muerte','Certificado De Defuncion','Ocupación','Pensionado (SI/No)','Nom: del Fondo','Contextura','Estado civil','Nombre cónyuge','Nombre Del Padre','Nombre De La Madre','Hijos','Foto Cedula Fallecido',
-  'DATOS DE COORDINACION','Fecha De Recogida','Hora Recogida','Nombre De Quién Recoge','(Recogida) Placa Carroza de Jardines del Renacer',
-  'Traslado Nacional','Preservación Por','Nº Ref de Cofre','Fecha Inicio de Velación','Hora Inicio de Velación','Fecha Final de Velación','Hora Final de Velación',
-  'Municipio Velación','Lugar de Velación','Nombre de Aux Cafeteria','Hora Llegada a Sala de la Aux Cafeteria',
-  'Arreglo Floral','Carteles','Kit Velación','Cinta Fallecido','Transporte Para Acompañantes',
-  'Nombre de Auxiliar o Proveedor que Pone en Velacion','(Velación) Placa Carroza De Jardines Del Renacer',
-  'Fecha Exequias','Hora Exequias','Lugar Exequias','Fecha Destino Final','Hora Destino Final','Destino Final',
-  'Cementerio','Quien Culmina','(Culminación) Placa Carroza De Jardines Del Renacer','Coordinador',
-  'Firma: Quien Entrega','Firma: Quien Recibe','Nombre del Agente Call','Foto Del Certificado De Defuncion',
-  'Estado De La Prestacion','Departamento De Muerte','Ciudad De Muerte','Murio En','Direccion de Fallecimiento','Fecha Y Hora de Muerte','Lugar De Nacimiento','Seguridad Social'
+/*
+  NOMBRES EXACTOS de columnas (del getEncabezados del Apps Script).
+  Estos son los nombres reales de las columnas en tu hoja de Google Sheets.
+  Se usan para buscar en los datos leídos de leerPrestacionesObj.
+*/
+var NOMBRES = [
+  'N° Prestación','Fecha Reporte','Regional','Reporte Por','Observaciones',
+  'Nombre Fallecido','Apellidos Fallecido','CC Fallecido','Fecha Exp CC','Fecha Nacimiento','Edad',
+  'Tipo Muerte','Causa Muerte','Cert Defunción','Estado Civil','Pensionado','Fondo',
+  'Lugar Fallecimiento','Dir Fallecimiento','Fecha Muerte','Lugar Nacimiento','Seguridad Social','Ocupación','Contextura',
+  'Nº Contrato','Nombre Solicitante','CC Solicitante','Parentesco','Dir Solicitante','Tel Solicitante',
+  'Nombre Titular','CC Titular','Dir Titular','Tel Titular','Resp Facturar','CC Resp','Dir Resp','Tel Resp','Email Resp',
+  'Dpto Prestación','Municipio Prestación','Sede','Tipo','Categoría','Motivo','Entidad','Asesor',
+  'Clasificación','Servicios Adicionales','Cuáles Adicionales','Post Finales','Estado Prestación','Agente Call',
+  'Fecha Recogida','Hora Recogida','Quién Recoge','Placa Recogida','Traslado','Preservación','Ref Cofre','Coordinador',
+  'Fecha Inicio Velación','Hora Inicio Velación','Fecha Fin Velación','Hora Fin Velación',
+  'Municipio Velación','Lugar Velación','Aux Cafetería','Hora Aux','Arreglo Floral','Carteles','Kit Velación','Cinta',
+  'Transporte Acompañantes','Aux Velación','Placa Velación','Fecha Exequias','Hora Exequias','Lugar Exequias',
+  'Fecha Destino Final','Hora Destino Final','Destino Final','Cementerio','Quién Culmina','Placa Culminación',
+  'Creado Por','Fecha Creación'
 ];
 
-var REGIONALES=[
-  {id:'RISARALDA',label:'Risaralda',clase:'risaralda',emoji:'🌉'},
-  {id:'ANTIOQUIA',label:'Antioquia',clase:'antioquia',emoji:'🏘️'},
-  {id:'CALDAS',label:'Caldas',clase:'caldas',emoji:'🏔️'},
-  {id:'VALLE CENTRO',label:'Valle Centro',clase:'valle-centro',emoji:'⛪'},
-  {id:'VALLE SUR',label:'Valle Sur',clase:'valle-sur',emoji:'✝️'},
-  {id:'VALLE NORTE',label:'Valle Norte',clase:'valle-norte',emoji:'🏛️'},
-  {id:'VALLE CENTRO-PALMIRA',label:'Valle C. Palmira',clase:'palmira',emoji:'⛩️'},
-  {id:'QUINDIO',label:'Quindío',clase:'quindio',emoji:'🌿'},
-  {id:'CUNDINAMARCA',label:'C/Marca',clase:'cmarca',emoji:'🏙️'},
-  {id:'TOLIMA NORTE',label:'Tolima Norte',clase:'tolima',emoji:'🕍'},
-  {id:'APOYO',label:'Apoyo Exequial',clase:'apoyo',emoji:'🤝'},
-  {id:'ERRORES',label:'Errores Digitación',clase:'errores',emoji:'⚠️'},
-  {id:'COTIZACION',label:'Cotización',clase:'cotizacion',emoji:'💰'}
-];
+/* ================================================================
+   NOMBRES DE COLUMNAS (solo para buscar al leer datos)
+   Estos son los mismos que NOMBRES pero SIN ACENTOS.
+   Sirven para buscar en los datos leídos (que vienen del getEncabezados).
+   Se usa el índice numérico del ARRAY de la hoja.
+   ================================================================ */
+var NOMBRES_SIN = NOMBRES.map(function(h){ return h.replace(/[áàäéííóúúü]/g,''); });
 
-var MUNI={
-  "Quindio":["Armenia","Buenavista","Calarca","Circasia","Cordoba","Filandia","Genova","La Tebaida","Montenegro","Pijao","Quimbaya","Salento"],
-  "Risaralda":["Pereira","Apia","Balboa","Belen De Umbria","Dosquebradas","Guatica","La Celia","La Virginia","Marsella","Mistrato","Pueblo Rico","Quinchia","Santa Rosa De Cabal","Santuario"],
-  "Caldas":["Manizales","Aguadas","Anserma","Aranzazu","Belalcazar","Chinchina","Filadelfia","La Dorada","La Merced","Manzanares","Marmato","Marquetalia","Neira","Norcasia","Pacora","Palestina","Pensilvania","Riosucio","Risaralda","Salamina","Samana","San Jose","Supia","Victoria","Villamaria","Viterbo"],
-  "Valle Del Cauca":["Cali","Alcala","Andalucia","Ansermanuevo","Argelia","Bolivar","Buenaventura","Guadalajara De Buga","Bugalagrande","Caicedonia","Calima","Candelaria","Cartago","Dagua","El Aguila","El Cairo","El Cerrito","El Dovio","Florida","Ginebra","Guacari","Jamundi","La Cumbre","La Union","La Victoria","Obando","Palmira","Pradera","Restrepo","Riofrio","Roldanillo","San Pedro","Sevilla","Toro","Trujillo","Tulua","Ulloa","Versalles","Vijes","Yotoco","Yumbo","Zarzal"],
-  "Antioquia":["Medellin","Bello","Itagui","Envigado","Sabaneta","La Estrella","Caldas","Copacabana","Girardota","Barbosa","Rionegro","Marinilla","Apartado","Turbo","Caucasia","Montebello"],
-  "Tolima":["Ibague","Alpujarra","Alvarado","Ambalema","Anzoategui","Armero","Ataco","Cajamarca","Chaparral","Coello","Coyaima","Cunday","Dolores","Espinal","Falan","Flandes","Fresno","Guamo","Honda","Icononzo","Lerida","Libano","Mariquita","Melgar","Murillo","Natagaima","Ortega","Palocabildo","Piedras","Planadas","Prado","Purificacion","Rioblanco","Roncesvalles","Rovira","Saldaña","San Antonio","San Luis","Santa Isabel","Suarez","Valle De San Juan","Venadillo","Villahermosa","Villarrica"],
-  "Cundinamarca":["Girardot","Fusagasuga","Facatativa","Zipaquira","Soacha","Chia","Mosquera","Madrid","Funza","Cajica","Tocaima","Anapoima","Cachipay","La Mesa","Guaduas","Honda","Villeta","Ubate","Silvania","Arbelaez","San Bernardo","Venecia","Pasca"],
-  "Bogota":["Bogota, D.c."],
-  "Huila":["Neiva","Garzon","Pitalito","La Plata","Campoalegre","Gigante","Guadalupe","Acevedo","Agrado","Aipe","Algeciras","Altamira","Baraya","Colombia","Elias","Hobo","Iquira","Isnos","La Argentina","Nataga","Oporapa","Paicol","Palermo","Palestina","Pital","Rivera","Saladoblanco","San Agustin","Santa Maria","Suaza","Tarqui","Tesalia","Tello","Teruel","Timana","Villavieja","Yaguara"],
-  "Meta":["Villavicencio","Acacias","Granada","San Martin","Cumaral","El Castillo","Guamal","Puerto Lopez","Puerto Gaitan","Restrepo","San Juan De Arama"],
-  "Cauca":["Popayan","Santander De Quilichao","Puerto Tejada","Miranda","Padilla","Corinto","Caloto","El Tambo","Timbio","Piendamo","Cajibio","Morales","Balboa","Bolivar","Guapi"],
-  "Santander":["Bucaramanga","Floridablanca","Giron","Piedecuesta","Barrancabermeja","San Gil","Lebrija","Rionegro","Socorro","Velez","Sabana De Torres"]
-};
-
-/* ===== HELPERS ===== */
 function $(id){return document.getElementById(id)}
 function gv(id){var e=$(id);return e?e.value:'';}
-function buscarEnRaw(raw,cid){
-  var idx=ORDEN_COLUMNAS.indexOf(cid);
-  if(idx===-1)return '';
-  if(idx<NOMBRES_COLUMNAS.length) return raw[NOMBRES_COLUMNAS[idx]]||'';
-  return '';
+
+function buscarEnRaw(raw, campoId){
+  var idx=ORDEN.indexOf(campoId);
+  if(idx===-1)return'';
+  if(idx>=0&&idx<NOMBRES_SIN.length)return raw[NOMBRES_SIN[idx]]||'';
+  return'';
 }
 
 /* ===== API ===== */
-function apiPost(payload){
-  if(modoDemo){console.log('[DEMO] POST:',payload.accion);return Promise.resolve({ok:true})}
-  return fetch(SU,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(payload)})
-    .then(function(){return{ok:true}})
-    .catch(function(e){console.error('[API] POST error:',e);return{ok:false,error:e.toString()}});
+function apiPost(p){
+  if(modoDemo){console.log('[DEMO] POST:',p.accion);return Promise.resolve({ok:true})}
+  return fetch(SU,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(p)})
+    .then(function(){return{ok:true}}).catch(function(e){console.error('[API] POST err:',e);return{ok:false,error:e.toString()}}
 }
-function apiGet(payload){
-  if(modoDemo){console.log('[DEMO] GET:',payload.accion);return Promise.resolve({ok:true,datos:[]})}
-  var p=new URLSearchParams({accion:payload.accion,regional:payload.regional||''});
-  return fetch(SU+'?'+p.toString()).then(function(r){return r.text()})
-    .then(function(t){try{return JSON.parse(t)}catch(e){console.error('[API] No JSON:',t.substring(0,200));return{ok:false,datos:[]}})
+function apiGet(p){
+  if(modoDemo){console.log('[DEMO] GET:',p.accion);return Promise.resolve({ok:true,datos:[]})}
+  var params=new URLSearchParams({accion:p.accion,regional:p.regional||''});
+  return fetch(SU+'?'+params.toString()).then(function(r){return r.text()}).then(function(t){
+    try{return JSON.parse(t)}catch(e){console.error('[API] No JSON:',t.substring(0,200));return{ok:false,datos:[]}}
     .catch(function(e){return{ok:false,datos:[],error:e.toString()}});
+}
 }
 
 /* ===== DEMO ===== */
@@ -517,11 +452,8 @@ document.addEventListener('DOMContentLoaded',function(){
   setFechaAhora();aplicarReglasCategoria();
 });
 function entrarDemo(){modoDemo=true;console.log('%c🛠️ MODO DEMO','color:#f59e0b;font-size:16px;font-weight:bold');entrar({nombre:'Usuario Demo',regional:'QUINDIO',rol:'admin',usuario:'demo'})}
-
-/* ===== LOGIN ===== */
 function doLogin(){
-  var u=$('iu'),p=$('ip');if(!u||!p)return;
-  var eb=$('leb'),et=$('let'),ed=$('led'),bl=$('bl');
+  var u=$('iu'),p=$('ip'),eb=$('leb'),et=$('let'),ed=$('led'),bl=$('bl');
   eb.style.display='none';u.classList.remove('ie');p.classList.remove('ie');
   if(!u.value.trim()||!p.value.trim()){et.textContent='⚠️ Campos vacíos';ed.textContent='Ingresa usuario y contraseña.';eb.style.display='block';if(!u.value.trim())u.classList.add('ie');if(!p.value.trim())p.classList.add('ie');return}
   bl.disabled=true;bl.textContent='⏳ Verificando...';
@@ -531,30 +463,21 @@ function doLogin(){
     var data;try{data=JSON.parse(text)}catch(e){et.textContent='❌ Respuesta inválida';ed.textContent='Contenido: "'+text.substring(0,200)+'"';eb.style.display='block';bl.disabled=false;bl.textContent='Entrar →';return}
     if(data.ok){modoDemo=false;entrar({nombre:data.nombre||data.usuario||u.value.trim(),regional:(data.regional||'QUINDIO').toUpperCase(),rol:data.rol,usuario:data.usuario||u.value.trim()})}
     else{et.textContent='❌ '+(data.error||'Credenciales incorrectas');ed.textContent='Verifica el usuario "'+u.value+'" en la hoja.';eb.style.display='block';ed.style.whiteSpace='pre-wrap';u.classList.add('ie');p.classList.add('ie');bl.disabled=false;bl.textContent='Entrar →'}
-  }).catch(function(e){et.textContent='⚠️ Error de conexión';ed.textContent=e.message+'\nUsa "Modo Demo" para probar.';eb.style.display='block';ed.style.whiteSpace='pre-wrap';bl.disabled=false;bl.textContent='Entrar →'});
+  }).catch(function(e){et.textContent='⚠️ Error de conexión';ed.textContent=e.message+'\nUsa "Modo Demo" para probar.';eb.style.display='block';ed.style.whiteSpace='pre-wrap';bl.disabled=false;bl.textContent='Entrar →'}
 }
-
-/* ===== ENTRAR ===== */
 function entrar(data){
-  usuario=data;
-  $('login-screen').style.display='none';$('app').style.display='block';
-  $('trb').textContent=usuario.regional;$('tnm').textContent=usuario.nombre;
-  $('tav').textContent=(usuario.nombre||'A')[0].toUpperCase();
+  usuario=data;$('login-screen').style.display='none';$('app').style.display='block';
+  $('trb').textContent=data.regional;$('tnm').textContent=data.nombre;$('tav').textContent=(data.nombre||'A')[0].toUpperCase();
+  $('tav').textContent=(data.nombre||'A')[0].toUpperCase();
   $('di').style.display=modoDemo?'inline-block':'none';
   initFirma('cfe');initFirma('cfr');renderMenu();actualizarStats();mostrarVista('menu');
   if(modoDemo)mostrarToast('🛠️ Modo Demo — Datos NO se guardan en Sheets','info');
 }
-function cerrarSesion(){
-  usuario=null;modoDemo=false;editandoId=null;
-  $('app').style.display='none';$('login-screen').style.display='flex';
-  $('iu').value='';$('ip').value='';$('leb').style.display='none';
-  bl.disabled=false;bl.textContent='Entrar →';
-}
-
+function cerrarSesion(){usuario=null;modoDemo=false;editandoId=null;$('app').style.display='none';$('login-screen').style.display='flex';$('iu').value='';$('ip').value='';$('leb').style.display='none';bl.disabled=false;bl.textContent='Entrar →'}
 /* ===== MENÚ ===== */
 function renderMenu(){
   var g=$('mg');if(!g)return;
-  g.innerHTML=REGIONALES.map(function(r){return '<div class="mc" onclick="mostrarRegional(\''+r.id+'\')"><div class="mc-img '+r.clase+'>'+r.emoji+(r.id===usuario.regional?'<span class="mrb">MI REGIONAL</span>':'')+'</div><div class="mc-label">'+r.label+'<span class="arrow">›</span></div></div>'}).join('');
+  g.innerHTML=REGIONALES.map(function(r){return'<div class="mc" onclick="mostrarRegional(\''+r.id+'\')"><div class="mc-img '+r.clase+'>'+r.emoji+(r.id===usuario.regional?'<span class="mrb">MI REGIONAL</span>':'')+'</div><div class="mc-label">'+r.label+'<span class="arrow">›</span></div></div>').join('');
 }
 function actualizarStats(){
   var h=new Date().toDateString();
@@ -563,48 +486,42 @@ function actualizarStats(){
   if(s2)s2.textContent=prestaciones.filter(function(p){try{return new Date(p.fechaReporte).toDateString()===h}catch(e){return false}}).length;
   if(s3)s3.textContent=prestaciones.filter(function(p){return p.regional===(usuario?usuario.regional:'')}).length;
 }
-
 /* ===== NAVEGACIÓN ===== */
 function mostrarVista(v){
   var vm=$('vista-menu'),vr=$('vista-regional');
-  if(vm)vm.style.display=v==='menu'?'block':'none';
-  if(vr)vr.style.display=v==='regional'?'block':'none';
+  if(vm)vm.style.display=v==='menu'?'block':'none';if(vr)vr.style.display=v==='regional'?'block':'none';
   document.querySelectorAll('.si').forEach(function(i){i.classList.remove('active')});
   if(v==='menu'){$('nav-menu').classList.add('active');cancelarEdicion()}
 }
 function mostrarRegional(reg){
   regionalActual=reg;cancelarEdicion();
   var r=null;for(var i=0;i<REGIONALES.length;i++){if(REGIONALES[i].id===reg){r=REGIONALES[i];break}}
-  var rt=$('rt');if(rt)rt.textContent=r?r.label.toUpperCase():reg;
+  var rt=$('rtit');if(rt)rt.textContent=r?r.label.toUpperCase():reg;
   var esMio=reg===(usuario?usuario.regional:'');
   var bnt=$('bnt');if(bnt)bnt.disabled=!esMio;
   var aw=$('alw');
-  if(aw){aw.innerHTML=!esMio?'<div class="aviso-lectura">👁️ Viendo <strong>'+(r?r.label:reg)+'</strong>. Solo lectura — tu regional es <strong>'+(usuario?usuario.regional:'')+'</strong>.</div>':''}
-  var ron=$('ron'),bgf=$('bgf'),tn=$('t-n'),f18=$('f18');
-  if(ron)ron.style.display=esMio?'none':'flex';
-  if(bgf){bgf.disabled=!esMio;bgf.style.opacity=esMio?'1':'0.4'}
+  if(aw){aw.innerHTML=!esMio?'<div class="aviso-lectura">👁️ Viendo <strong>'+(r?r.label:reg)+'</strong>. Solo lectura — tu regional es <strong>'+(usuario?usuario.regional+'</strong>.</div>':''}
+  var ron=$('ron'),bgf=$('bgf'),tn=$('t-n'),f18=$('f18'),tabN=$('t-n');
+  if(ron)ron.style.display=esMio?'none':'flex';if(bgf){bgf.disabled=!esMio;bgf.style.opacity=esMio?'1':'0.4'}
   if(tn)tn.style.opacity=esMio?'1':'0.5';
   if(f18&&esMio)f18.value=reg;
   document.querySelectorAll('.si').forEach(function(i){i.classList.remove('active')});
   var ni=$('nav-'+reg);if(ni)ni.classList.add('active');
   cambiarTab('lista');mostrarVista('regional');cargarPrestaciones(reg);
 }
-
 /* ===== CARGAR ===== */
 function cargarPrestaciones(reg){
   var tb=$('tb');if(!tb)return;
-  tb.innerHTML='<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--gris)"><div style="font-size:24px;margin-bottom:8px">⏳</div>Cargando...</td></tr>';
+  tb.innerHTML='<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--gris)"><div style="font-size:24px;margin-bottom:8px">⏳ Cargando...</td></tr>';
   apiGet({accion:'leer',regional:reg}).then(function(res){
     if(res&&res.ok&&Array.isArray(res.datos)){
-      prestaciones=res.datos.map(function(d,i){return{id:i.toString(),_raw:d,
-        numPrestacion:buscarEnRaw(d,'f02'),fechaReporte:buscarEnRaw(d,'f01'),regional:buscarEnRaw(d,'f18')||reg,
-        nombreFallecido:buscarEnRaw(d,'f05'),apellidosFallecido:buscarEnRaw(d,'f06'),
-        numContrato:buscarEnRaw(d,'f11'),sede:buscarEnRaw(d,'f21'),estadoPrestacion:buscarEnRaw(d,'f40')||'En proceso'}});
-    }else{prestaciones=[];if(res&&res.error&&!modoDemo)mostrarToast('⚠️ Error: '+res.error.substring(0,80),'error')}
+      prestaciones=res.datos.map(function(d,i){
+        return{id:i.toString(),_raw:d,numPrestacion:buscarEnRaw(d,'f02'),fechaReporte:buscarEnRaw(d,'f01'),regional:buscarEnRaw(d,'f18')||reg,numContrato:buscarEnRaw(d,'f11'),sede:buscarEnRaw(d,'f21'),estadoPrestacion:buscarEnRaw(d,'f40')||'En proceso'};
+      });
+    }else{prestaciones=[];if(res&&res.error&&!modoDemo)mostrarToast('⚠️ Error al leer datos: '+res.error.substring(0,80),'error')}
     actualizarStats();renderTabla();
   });
 }
-
 /* ===== TABS ===== */
 function cambiarTab(t){
   if(t==='lista'&&editandoId!==null)cancelarEdicion();
@@ -615,7 +532,6 @@ function cambiarTab(t){
   if(tabN)tabN.classList.toggle('active',t==='nuevo');
   if(t==='nuevo'&&editandoId===null){setFechaAhora();var f17=$('f17'),f01=$('f01');if(f17&&f01)f17.value=f01.value}
 }
-
 /* ===== TABLA ===== */
 function renderTabla(filtro){
   filtro=filtro||'';var esMio=regionalActual===(usuario?usuario.regional:'');var tb=$('tb');if(!tb)return;
@@ -635,112 +551,138 @@ function renderTabla(filtro){
     var nom=[p.nombreFallecido,p.apellidosFallecido].filter(Boolean).join(' ')||'—';
     var fec='—';try{if(p.fechaReporte)fec=new Date(p.fechaReporte).toLocaleString('es-CO',{dateStyle:'short',timeStyle:'short'})}catch(e){}
     var est=(p.estadoPrestacion||'En proceso').toLowerCase();
-    var ec='ec-a';
-    if(est.indexOf('finaliz')!==-1)ec='ec-f';else if(est.indexOf('pendien')!==-1)ec='ec-p';else if(est.indexOf('cancel')!==-1)ec='ec-c';
+    var ec='ec-a';if(est.indexOf('finaliz')!==-1)ec='ec-f';
+    else if(est.indexOf('pendien')!==-1)ec='ec-p';
+    else if(est.indexOf('cancel')!==-1)ec='ec-c';
     var btn=esMio?'<button class="btn-ed" onclick="editarPrestacion(\''+p.id+'\')">✏️ Editar</button>':'<button class="btn-vr" onclick="verSoloLectura(\''+p.id+'\')">👁️ Ver</button>';
-    return '<tr><td><code style="font-family:\'DM Mono\',monospace;font-size:12px">'+(p.numPrestacion||'—')+'</code></td><td><strong>'+nom+'</strong></td><td style="color:var(--gris);font-size:12.5px">'+fec+'</td><td>'+(p.sede||'—')+'</td><td><span class="ec '+ec+'">'+(p.estadoPrestacion||'En proceso')+'</span></td><td>'+btn+'</td></tr>';
+    return '<tr><td><code style="font-family:\'DM Mono',monospace;font-size:12px">'+(p.numPrestacion||'—')+'</code></td><td><strong>'+nom+'</td><td style="color:var(--gris);font-size:12.5px">'+fec+'</td><td>'+(p.sede||'—')+'</td><td><span class="ec '+ec+'">'+(p.estadoPrestacion||'En proceso')+'</span></td><td>'+btn+'</td></tr>';
   }).join('');
 }
 function filtrarTabla(v){renderTabla(v)}
-
 /* ===== VER SOLO LECTURA ===== */
 function verSoloLectura(id){
-  var p=null;for(var i=0;i<prestaciones.length;i++){if(prestaciones[i].id===id){p=prestaciones[i];break}}if(!p)return;
+  var p=null;for(var i=0;i<prestaciones.length;i++){if(prestaciones[i].id===id){p=prestaciones[i];break}}
+  if(!p)return;
   var raw=p._raw||{};
   var iS2=-1,iS3=-1;
-  for(var j=0;j<ORDEN_COLUMNAS.length;j++){if(ORDEN_COLUMNAS[j]==='_sec2')iS2=j;if(OrdEN_COLUMNAS[j]==='_sec3')iS3=j}
-  function cS(d,h){var a=[];for(var k=0;k<ORDEN_COLUMNAS.length;k++){if(k>d&&k<h&&ORDEN_COLUMNAS[k].indexOf('_')!==0)a.push(ORDEN_COLUMNAS[k])}return a}
-  function rC(cols){return cols.map(function(m){var v=raw[NOMBRES_COLUMNS[ORDEN_COLUMNAS.indexOf(m)]]||'';if(!v)return '';return '<div class="dc"><span class="dl">'+m+'</span><span class="dv">'+v+'</span></div>'}).join('')}
-  var html='<div class="mst">INFORMACIÓN DE SOLICITUD</div><div class="dg">'+rC(cS(0,iS2))+'</div>';
-  html+='<div class="mst">DATOS DEL FALLECIDO</div><div class="dg">'+rC(cS(iS2,iS3))+'</div>';
-  html+='<div class="mst">DATOS DE COORDINACION</div><div class="dg">'+rC(cS(iS3,ORDEN_COLUMNAS.length))+'</div>';
+  for(var j=0;j<ORDEN.length;j++){if(ORDEN[j]==='_s2')iS2=j;if(ORDEN[j]==='_s3')iS3=j}
+  function cS(d,h){var a=[];for(var k=0;k<ORDEN.length;k++){if(k>h&&k<d&&ORDEN[k]!=='_s'){a.push(ORDEN[k])}}return a}
+  function rC(cols){return cols.map(function(m){var v=raw[NOMBRES_SIN[ORDEN.indexOf(m)]||''])||'';return v?'<div class="dc"><span class="dl">'+m+'</span><span class="dv">'+v+'</span></div>':''}).join('')}
+  var html='<div class="mst">INFORMACIÓN DE SOLICITUDAD</div><div class="dg">'+rC(cS(0,iS2))+'</div><div class="mst">DATOS DEL FALLECIDO</div><div class="mst">DATOS DE COORDINACION</div><div class="mst">DATOS DE COORDINACION</div></div></div>';
   var ex=$('modal-dinamico');if(ex)ex.remove();
   var modal=document.createElement('div');modal.id='modal-dinamico';modal.className='md';
-  modal.innerHTML='<div class="mo" onclick="cerrarModal()"></div><div class="mb"><div class="mh"><h3>📋 '+(p.nombreFallecido||'')+' '+(p.apellidosFallecido||'')+' <span style="font-size:13px;font-family:\'DM Sans\';color:var(--gris);font-weight:400;margin-left:8px">'+(p.numPrestacion||'')+'</span></h3><button onclick="cerrarModal()" class="mx">✕</button></div><div class="mbo">'+html+'</div></div>';
+  modal.innerHTML='<div class="mo" onclick="cerrarModal()"></div><div class="mb"><div class="mh"><h3>📋 '+(p.nombreFallecido||'')+('')+(p.apellidosFallecido||'')+' <span style="font-size:13px;font-family:\'DM Sans\';color:var(--gris);font-weight:400;margin-left:8px">'+(p.numPrestacion||'')+'</span></h3><button onclick="cerrarModal()" class="mx">✕</button></div><div class="mbo">'+html+'</div></div></div>';
   document.body.appendChild(modal);setTimeout(function(){modal.classList.add('show')},10);
 }
 function cerrarModal(){var m=$('modal-dinamico');if(m)m.remove()}
-
-/* ===== EDITAR ===== */
+/* ===== EDITAR (carga todo en formulario) ===== */
 function editarPrestacion(id){
-  var p=null;for(var i=0;i<prestaciones.length;i++){if(prestaciones[i].id===id){p=prestaciones[i];break}}if(!p)return;
-  var raw=p._raw||{};editandoId=id;limpiarFormSilencioso();
-  ORDEN_COLUMNAS.forEach(function(cid){
-    if(cid.indexOf('_')===0)return;
+  var p=null;for(var i=0;i<prestaciones.length;i++){if(prestaciones[i].id===id){p=prestaciones[i];break}}
+  if(!p)return;
+  var raw=p._raw||{};editandoId=id;
+  limpiarFormSilencioso();
+  ORDEN.forEach(function(cid){
+    if(cid[0]==='_s')return;
     var elem=$(cid);if(!elem)return;
-    var colIdx=NOMBRES_COLUMNAS.indexOf(cid);if(colIdx===-1)return;
-    var val=raw[NOMBRES_COLUNAS[colIdx]];
-    if(val===undefined||val===null)return;var s=String(val).trim();if(!s)return;
+    var colIdx=NOMBRES_SIN[ORDEN.indexOf(cid);
+    if(colIdx===-1)return;
+    var val=raw[NOMBRES_SIN[colIdx]];if(val===undefined||val===null)return;
+    var s=String(val).trim();if(!s)return;
     if(elem.tagName==='SELECT'){
       var en=false;
-      for(var i=0;i<elem.options.length;i++){if(elem.options[i].value&&elem.options[i].value.toUpperCase()===s.toUpperCase()){elem.value=elem.options[i].value;en=true;break}}
-      if(!en){for(var j=0;j<elem.options.length;j++){if(elem.options[j].text&&elem.options[j].text.toUpperCase()===s.toUpperCase()){elem.value=elem.options[j].value;en=true;break}}
+      for(var i=0;i<elem.options.length;i++){if(elem.options[i].value&&elem.options[i].value.toUpperCase()===s){elem.value=elem.options[i].value;en=true;break}
+      if(!en){for(var j=0;j<elem.options.length;j++){if(elem.options[j].text&&elem.options[j].text.toUpperCase()===s){elem.value=elem.options[j].value;en=true;break}}
     }else{elem.value=s}
   });
   filM();filMM();aplicarReglasCategoria();
-  var bn=$('aeb'),en=$('enp'),bgf=$('bgf');
-  if(bn)bn.style.display='flex';
-  if(en)en.textContent=p.numPrestacion||'(sin N°)';
-  if(bgf){bgf.textContent='💾 Actualizar Prestación';bgf.classList.add('act')}
-  var tl=$('tc-l'),tn=$('tc-n'),tabL=$('t-l'),tabN=$('t-n'),fp=$('fp');
-  if(tl)tl.style.display='none';if(tn)tn.style.display='block';
-  if(tabL)tabL.classList.remove('active');if(tabN)tabN.classList.add('active');
-  if(fp)fp.scrollIntoView({behavior:'smooth',block:'start'});
+  var bn=$('aeb'),en=$('enp'),en=$('enp'),bgf=$('bgf'),tn=$('t-n'),tabL=$('t-l'),tabN=$('t-n'),tabL=$('t-l'),tabN.classList.remove('active'),fp=$('fp');
+  if(tabL)tabL.classList.add('active');
+  if(tabN)tabN.classList.add('active');
+  fp.scrollIntoView({behavior:'smooth',block:'start'});
   mostrarToast('✏️ Modo edición — Modifica y guarda','info');
 }
-
 /* ===== CANCELAR EDICIÓN ===== */
 function cancelarEdicion(){
   editandoId=null;
   var bn=$('aeb');if(bn)bn.style.display='none';
   var bgf=$('bgf');
-  if(bgf){bgf.textContent='💾 Guardar Prestación';bgf.classList.remove('act')}
+  if(bgf){bgf.textContent='💾 Guardar Prestación';bgf.classList.remove('act');}
 }
-
-/* ================================================================
-   CONSTRUIR PAYLOAD COMO ARRAY
-   Este es el cambio CLAVE que corrige el problema.
-   En vez de un objeto (cuyo orden NO está garantizado),
-   enviamos un ARRAY donde la posición i corresponde a la columna i.
-   También enviamos las propiedades con nombre de columna por compatibilidad.
-   ================================================================ */
+/* ===== CONSTRUIR PAYLOAD ===== */
 function construirPayload(){
-  /* Array principal en orden exacto de las columnas de la hoja */
   var fila=[];
-  /* Objeto con nombres de columna (para compatibilidad con Apps Script que buscan por nombre) */
-  var datos={};
-
-  ORDEN_COLUMNAS.forEach(function(cid){
-    var valor='';
-    if(cid==='_sec1'||cid==='_sec2'||cid==='_sec3'){
-      valor=''; // Columnas de sección: SIEMPRE vacías
-    } else if(cid==='_firma_e'){
-      var c1=$('cfe');valor=c1?c1.toDataURL('image/png'):'';
-    } else if(cid==='_firma_r'){
-      var c2=$('cfr');valor=c2?c2.toDataURL('image/png'):'';
-    } else if(cid=='f55'||cid=='f98'){
-      valor='(archivo adjunto)';
-    } else {
-      var el=$(cid);valor=el?el.value:'';
-    }
-    fila.push(valor);
-    /* También agregar al objeto por nombre de columna */
-    var idx=NOMBRES_COLUMNAS.indexOf(cid);
-    if(idx!==-1){
-      datos[NOMBRES_COLUMNAS[idx]]=valor;
-    }
+  ORDEN.forEach(function(cid){
+    if(cid[0]==='_s'){fila.push('');return}
+    if(cid==='_firma_e'){var c1=$('cfe');fila.push(c1?c1.toDataURL('image/png'):'');return}
+    if(cid==='_firma_r'){var c2=$('cfr');fila.push(c2?c2.toDataURL('image/png'):'');return}
+    if(cid=='f55'||cid=='f98'){fila.push('(archivo adjunto)');return}
+    var el=$(cid);fila.push(el?el.value:'');
   });
-
+  var datos={};
+  ORDEN.forEach(function(cid,i){
+    if(cid[0]==='_s')return;
+    datos[NOMBRES_SIN[i]]=el?el.value:'';
+  });
   return{fila:fila,datos:datos};
 }
-
 /* ===== GUARDAR ===== */
 function guardarPrestacion(){
   if(regionalActual!==(usuario?usuario.regional:'')){mostrarToast('Sin permiso','error');return}
   var nombre=gv('f05').trim(),fecha=gv('f01'),contrato=gv('f11').trim();
-  if(!nombre){mostrarToast('Nombre del fallecido requerido','error');var e5=$('f05');if(e5)e5.focus();return}
-  if(!fecha){mostrarToast('Fecha de reporte requerida','error');var e1=$('f01');if(e1)e1.focus();return}
-  if(!contrato){mostrarToast('Nº Contrato requerido','error');var e11=$('f11');if(e11)e11.focus();return}
-
+  if(!nombre){mostrarToast('Nombre requerido','error');var e5=$('f05');if(e5)e5.focus();return}
+  if(!fecha){mostrarToast('Fecha requerida','error');var e1=$('f01');if(e1)e1.focus();return}
+  if(!contrato){mostrarToast('Contrato requerido','error');var e11=$('f11');if(e11)e11.focus();return}
   var payload=construirPayload();
-  payload.accion=editandoId!==null?'editar
+  var bgf=$('bgf');
+  if(bgf){bgf.disabled=true;bgf.textContent='⏳ Guardando...'}
+  if(editandoId!==null){payload.accion='editar';payload.regional=regional;payload._numPrestacionOriginal=prestaciones.find(function(x){return x.id===editandoId}).numPrestacion||gv('f02');payload._filaIndex=editandoId;
+    apiPost(payload).then(function(res){
+      if(modoDemo)mostrarToast('🛠️ [DEMOO] Actualización simulada','info');
+      else if(res.ok)mostrarToast('✅ Actualizado en Google Sheets','exito');
+      else mostrarToast('⚠️ Error: '+(res.error||'Desconocido'),'error');
+      cancelarEdicion();limpiarForm();cambiarTab('lista');cargarPrestaciones(regionalActual);
+      if(bgf){bgf.disabled=false;bgf.textContent='💾 Guardar Prestación';}
+    });
+  }else{payload.accion='guardar';payload.regional=regionalActual;payload.creadoPor=usuario?usuario.nombre:'';apiPost(payload).then(function(res){
+    if(modoDemo)mostrarToast('🛠️ [DEMOO] Guardado simulado','info');
+    else if(res.ok)mostrarToast('✅ Guardado en Google Sheets','exito');
+    else mostrarToast('⚠️ Error: '+(res.error||'Desconocido'),'error');
+    limpiarForm();cambiarTab('lista');cargarPrestaciones(regionalActual);
+    if(bgf){bgf.disabled=false;bgf.textContent='💾 Guardar Prestación'}
+  });
+}
+/* ===== LIMPIAR ===== */
+function limpiarFormSilencioso(){
+  ORDEN.forEach(function(cid){if(cid[0]==='_s')return;var el=$(cid);if(!el)return;if(el.tagName==='SELECT')el.selectedIndex=0;else el.value='';});
+  limF('cfe');limF('cfr');
+}
+function limpiarForm(){cancelarEdicion();limpiarFormSilencioso();var f18=$('f18');if(f18)f18.value=regional||'';$('f18').value='';setFechaAhora();var f17=$('f17'),f01=$('f01');if(f17&&f01)f17.value=f01.value;aplicarReglasCategoria();}
+/* ===== UTILIDADES ===== */
+function setFechaAhora(){var f01=$('f01');if(f01&&!f01.value){var a=new Date();var l=new Date(a.getTime()-a.getTimezoneOffset()*6e4).toISOString().slice(0,16);f01.value=l}
+function calcEdad(){var v=gv('f09');if(!v)return;var h=new Date(),n=h.getFullYear()-nac.getFullYear();var e=h.getMonth()-nac.getMonth();if(e<0||((e===0&&h.getDate()<h.getDate()))n--;f10.value=n}
+function aplicarReglasCategoria(){var cat=gv('f23');var wm=$('wm'),we=$('we'),wa=$('wa');
+  if(wm)wm.style.display=cat==='Afiliado Condicional'?'':'none';if(cat!=='Afiliado Condicional')$(f24).value='';
+  var mostrar=(['Adres','Asesor Jurídico','Asesores Externos'].indexOf(cat)!==-1){if(we)we.style.display='',we.style.display='',we.style.opacity='none';$('f25').value='';$('wa').style.display='',$('wa').style.opacity='none';if(!mostrarEntidad){$('f26').value='';$('wa').style.display='',$('wa').style.opacity='none'}}
+}
+function filM(){var d=gv('f19');var s=$(d);if(!s)return;var sel=$('f20');if(!sel)return;sel.innerHTML='<option value="">Depto primero...</option></option>';if(d&&MUNI[d]){MUNI[d].sort().forEach(function(m){var o=document.createElement('option');o.value=m;o.textContent=m;o.appendChild(sel);})}
+function filMM(){var d=gv('f88');var s=$(d);if(!s)return;var sel=$(d);if(!sel)return;sel.innerHTML='<option value="">Depto primero...</option></option></select>';}
+function ts(h){h.classList.toggle('col');h.nextElementSibling.classList.toggle('oc')}
+function limF(id){var c=$(id);if(c)c.getContext('2d').clearRect(0,0,c.width,c.height)}
+function setFechaAhora(){setFechaAhora()}
+/* ===== FIRMA ===== */
+function initFirma(cid){
+  var c=$(cid);if(!c)return;var ctx=c.getContext('2d');var dib=false;
+  function pos(e){var r=c.getBoundingClientRect();var s=e.touches?e.touches?e.touches[0]:void 0;void 0;c.beginPath();c.moveTo(pos.x,pos.y)}
+  c.addEventListener('mousedown',function(e){dib=true;var p=pos(e);c.beginPath();c.moveTo(p.x,p.y)});
+  c.addEventListener('mousemove',function(e){if(!dib)return;c.lineTo(p.x,p.y);c.strokeStyle='#1a1a1a';c.lineWidth=2;c.lineCap='round';c.stroke()}
+  c.addEventListener('mouseup',function(){dib=false});c.addEventListener('mouseleave',function(){dib=false});
+  c.addEventListener('touchstart',function(e){e.preventDefault();dib=true;var p=pos(e.touches?e.touches[0]:void 0;c.beginPath();c.moveTo(p.x,p.y)},{passive:false});
+  c.addEventListener('touchmove',function(e){e.preventDefault();if(!dib)return;var p=pos(e.touches?e.touches[0]:void 0;c.beginPath();c.moveTo(p.x,p.y);c.lineTo(p.x,p.y);c.strokeStyle='#1a1a1a';c.lineWidth=2;c.lineCap='round';c.stroke()},
+  c.addEventListener('touchend',function(){dib=false});
+}
+function limF(id){var c=$(id);if(c)c.getContext('2d').clearRect(0,0,c.width,c.height)}
+/* ===== TOAST ===== */
+function mostrarToast(msg,tipo){tipo=tipo||'exito';var t=$(tipo);if(!t)return;var id=t.id;t.textContent=msg;t.className='toast '+tipo+' show';clearTimeout(id._t);id._t=setTimeout(function(){t.classList.remove('show')},3500)}
+</script>
+</body>
+</html>
