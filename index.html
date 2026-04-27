@@ -164,7 +164,6 @@ tr:hover td { background: var(--azul-suave); }
 </head>
 <body>
 
-<!-- ==================== LOGIN ==================== -->
 <div id="login-screen">
   <div class="login-card">
     <div class="login-logo" id="login-logo" title="Haz clic 5 veces para modo demo">
@@ -188,7 +187,6 @@ tr:hover td { background: var(--azul-suave); }
   </div>
 </div>
 
-<!-- ==================== APP ==================== -->
 <div id="app">
   <div class="topbar">
     <div class="topbar-logo">
@@ -226,7 +224,6 @@ tr:hover td { background: var(--azul-suave); }
     </div>
 
     <div class="content" id="content">
-      <!-- ===== VISTA MENÚ ===== -->
       <div id="vista-menu">
         <div class="stats-row">
           <div class="stat-card"><div class="num" id="stat-total">0</div><div class="lbl">Total Prestaciones</div></div>
@@ -237,7 +234,6 @@ tr:hover td { background: var(--azul-suave); }
         <div class="menu-grid" id="menu-grid"></div>
       </div>
 
-      <!-- ===== VISTA REGIONAL ===== -->
       <div id="vista-regional" style="display:none;">
         <div class="page-header">
           <button class="back-btn" onclick="mostrarVista('menu')">← Menú</button>
@@ -263,14 +259,9 @@ tr:hover td { background: var(--azul-suave); }
   </div>
 </div>
 
-<!-- Toast -->
 <div class="toast" id="toast"></div>
 
 <script>
-/* ===================================================================
-   INDEX.HTML — Lógica completa (login, menú, lista, editar)
-   =================================================================== */
-
 var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpUuh3cVO3SoiuuqN77wH3blzo9oEcCCBby9Pyqsj6fbb5L5YOEs-rgL_dyJp0mCE/exec';
 
 var REGIONALES = [
@@ -294,7 +285,6 @@ var modoDemo = false;
 var regionalActual = null;
 var prestaciones = [];
 
-/* ===== API ===== */
 function apiSheetsLeer(payload) {
   if (modoDemo) { return Promise.resolve({ ok: true, datos: [] }); }
   return fetch(SCRIPT_URL + '?' + new URLSearchParams({ accion: payload.accion, regional: payload.regional || '' }))
@@ -316,11 +306,24 @@ function apiSheets(payload) {
     .catch(function(err) { return { ok: false, error: err.toString() }; });
 }
 
-/* ===== SECRETO DEMO: 5 clics en logo ===== */
 var logoClicks = 0;
 var logoTimer = null;
 
 document.addEventListener('DOMContentLoaded', function() {
+  var userData = sessionStorage.getItem('app_usuario');
+  if (userData) {
+    try {
+      var data = JSON.parse(userData);
+      if (data && data.nombre && data.regional) {
+        modoDemo = sessionStorage.getItem('app_modoDemo') === '1';
+        entrar(data);
+        return;
+      }
+    } catch (e) {}
+    sessionStorage.removeItem('app_usuario');
+    sessionStorage.removeItem('app_modoDemo');
+  }
+
   var logo = document.getElementById('login-logo');
   if (logo) {
     logo.addEventListener('click', function() {
@@ -335,14 +338,12 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-/* ===== MODO DEMO ===== */
 function entrarDemo() {
   modoDemo = true;
   console.log('%c🛠️ MODO DEMO ACTIVADO', 'color:#2563eb;font-size:16px;font-weight:bold;');
   entrar({ nombre: 'Usuario Demo', regional: 'QUINDIO', rol: 'admin', usuario: 'demo' });
 }
 
-/* ===== LOGIN ===== */
 function loginDemo() {
   var userInput = document.getElementById('demo-user');
   var passInput = document.getElementById('demo-pass');
@@ -353,7 +354,6 @@ function loginDemo() {
   var errDetail = document.getElementById('error-detail');
   var btn = document.getElementById('btn-login-main');
 
-  /* Limpiar estados previos */
   errBox.style.display = 'none';
   userInput.classList.remove('input-error');
   passInput.classList.remove('input-error');
@@ -376,11 +376,9 @@ function loginDemo() {
   fetch(url)
     .then(function(res) { return res.text(); })
     .then(function(text) {
-      var contentType = '';
-      /* Verificar si la respuesta es HTML (error de Google) */
       if (text.trim().charAt(0) !== '{' && text.trim().charAt(0) !== '[') {
         errTitle.textContent = '❌ Error del servidor de Google';
-        errDetail.textContent = 'El Apps Script devolvió HTML en vez de JSON.\n\nSolución: Ve a Apps Script → Implementar → Nueva implementación → Tipo: App web → Ejecutar como: Yo → Acceso: Cualquier persona.\n\nStatus: ' + text.substring(0, 150);
+        errDetail.textContent = 'El Apps Script devolvió HTML en vez de JSON.\n\nSolución: Ve a Apps Script > Implementar > Nueva implementación > Tipo: App web > Ejecutar como: Yo > Acceso: Cualquier persona.\n\nRespuesta: ' + text.substring(0, 150);
         errBox.style.display = 'block';
         errDetail.style.whiteSpace = 'pre-wrap';
         btn.disabled = false;
@@ -389,11 +387,10 @@ function loginDemo() {
       }
 
       var data;
-      try {
-        data = JSON.parse(text);
-      } catch (parseErr) {
+      try { data = JSON.parse(text); }
+      catch (parseErr) {
         errTitle.textContent = '❌ Respuesta inválida del servidor';
-        errDetail.textContent = 'No se pudo interpretar como JSON.\n\nContenido recibido: "' + text.substring(0, 200) + '"';
+        errDetail.textContent = 'No se pudo interpretar como JSON.\n\nContenido: "' + text.substring(0, 200) + '"';
         errBox.style.display = 'block';
         errDetail.style.whiteSpace = 'pre-wrap';
         btn.disabled = false;
@@ -411,7 +408,7 @@ function loginDemo() {
         });
       } else {
         errTitle.textContent = '❌ ' + (data.error || 'Credenciales incorrectas');
-        errDetail.textContent = 'El servidor rechazó el inicio de sesión.\nError: ' + (data.error || 'Sin mensaje de error') + '\n\nVerifica que el usuario "' + u + '" exista en tu hoja de usuarios.';
+        errDetail.textContent = 'Error: ' + (data.error || 'Sin mensaje') + '\n\nVerifica que el usuario "' + u + '" exista en tu hoja de usuarios.';
         errBox.style.display = 'block';
         errDetail.style.whiteSpace = 'pre-wrap';
         userInput.classList.add('input-error');
@@ -422,7 +419,7 @@ function loginDemo() {
     })
     .catch(function(err) {
       errTitle.textContent = '⚠️ Error de conexión';
-      errDetail.textContent = 'No se pudo conectar con el servidor.\n\nError: ' + err.message + '\n\nPosibles causas:\n• No hay conexión a internet\n• La URL del script es incorrecta\n• El script no está implementado como App Web\n\nPuedes usar el botón "Modo Demo" para probar la app sin servidor.';
+      errDetail.textContent = 'No se pudo conectar con el servidor.\n\nError: ' + err.message + '\n\nUsa "Modo Demo" para probar sin servidor.';
       errBox.style.display = 'block';
       errDetail.style.whiteSpace = 'pre-wrap';
       btn.disabled = false;
@@ -430,11 +427,8 @@ function loginDemo() {
     });
 }
 
-/* ===== ENTRAR AL APP ===== */
 function entrar(data) {
   usuario = data;
-
-  /* Guardar en sessionStorage para registro.html */
   sessionStorage.setItem('app_usuario', JSON.stringify(data));
   sessionStorage.setItem('app_modoDemo', modoDemo ? '1' : '0');
 
@@ -454,14 +448,11 @@ function entrar(data) {
   }
 }
 
-/* ===== CERRAR SESIÓN ===== */
 function cerrarSesion() {
   usuario = null;
   modoDemo = false;
   regionalActual = null;
   prestaciones = [];
-
-  /* Limpiar sessionStorage */
   sessionStorage.removeItem('app_usuario');
   sessionStorage.removeItem('app_modoDemo');
   sessionStorage.removeItem('app_regionalActual');
@@ -478,7 +469,6 @@ function cerrarSesion() {
   btn.textContent = 'Entrar →';
 }
 
-/* ===== MENÚ ===== */
 function renderMenu() {
   document.getElementById('menu-grid').innerHTML = REGIONALES.map(function(r) {
     var miRegional = r.id === usuario.regional ? '<span class="mi-regional-badge">MI REGIONAL</span>' : '';
@@ -499,7 +489,6 @@ function actualizarStats() {
   }).length;
 }
 
-/* ===== NAVEGACIÓN ===== */
 function mostrarVista(vista) {
   document.getElementById('vista-menu').style.display = vista === 'menu' ? 'block' : 'none';
   document.getElementById('vista-regional').style.display = vista === 'regional' ? 'block' : 'none';
@@ -532,7 +521,6 @@ function mostrarRegional(regional) {
   cargarPrestaciones(regional);
 }
 
-/* ===== IR A REGISTRO (misma pestaña) ===== */
 function irARegistro() {
   if (regionalActual !== usuario.regional) {
     mostrarToast('No tienes permiso para guardar en esta regional', 'error');
@@ -544,7 +532,6 @@ function irARegistro() {
   window.location.href = 'registro.html';
 }
 
-/* ===== EDITAR REGISTRO (misma pestaña) ===== */
 function editarRegistro(id) {
   var p = prestaciones.find(function(x) { return x.id === id; });
   if (!p) return;
@@ -554,7 +541,6 @@ function editarRegistro(id) {
   window.location.href = 'registro.html';
 }
 
-/* ===== CARGAR PRESTACIONES ===== */
 function cargarPrestaciones(regional) {
   var tbody = document.getElementById('tabla-body');
   tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--gris);"><div style="font-size:24px;margin-bottom:8px;">⏳</div> Cargando...</td></tr>';
@@ -586,7 +572,6 @@ function cargarPrestaciones(regional) {
   });
 }
 
-/* ===== TABLA ===== */
 function renderTabla(filtro) {
   filtro = filtro || '';
   var datos = prestaciones.filter(function(p) {
@@ -611,37 +596,27 @@ function renderTabla(filtro) {
     var nombre = [p.nombreFallecido, p.apellidosFallecido].filter(Boolean).join(' ') || '—';
     var fecha = '—';
     try {
-      if (p.fechaReporte) {
-        fecha = new Date(p.fechaReporte).toLocaleString('es-CO', { dateStyle: 'short', timeStyle: 'short' });
-      }
-    } catch (e) { /* mantener '—' */ }
+      if (p.fechaReporte) fecha = new Date(p.fechaReporte).toLocaleString('es-CO', { dateStyle: 'short', timeStyle: 'short' });
+    } catch (e) {}
 
     var estadoClase = 'estado-activo';
     if (p.estadoPrestacion === 'Finalizado') estadoClase = 'estado-finalizado';
     else if (p.estadoPrestacion === 'Pendiente') estadoClase = 'estado-pendiente';
 
-    var estadoTexto = p.estadoPrestacion || 'En proceso';
-    var numP = p.numPrestacion || '—';
-    var sede = p.sede || '—';
-    var pId = p.id;
-
     html += '<tr>' +
-      '<td><code style="font-family:\'DM Mono\',monospace;font-size:12px;">' + numP + '</code></td>' +
+      '<td><code style="font-family:\'DM Mono\',monospace;font-size:12px;">' + (p.numPrestacion || '—') + '</code></td>' +
       '<td><strong>' + nombre + '</strong></td>' +
       '<td style="color:var(--gris);font-size:13px;">' + fecha + '</td>' +
-      '<td>' + sede + '</td>' +
-      '<td><span class="estado-chip ' + estadoClase + '">' + estadoTexto + '</span></td>' +
-      '<td><button class="btn-editar" onclick="editarRegistro(\'' + pId + '\')">✏️ Editar</button></td>' +
+      '<td>' + (p.sede || '—') + '</td>' +
+      '<td><span class="estado-chip ' + estadoClase + '">' + (p.estadoPrestacion || 'En proceso') + '</span></td>' +
+      '<td><button class="btn-editar" onclick="editarRegistro(\'' + p.id + '\')">✏️ Editar</button></td>' +
     '</tr>';
   }
   tbody.innerHTML = html;
 }
 
-function filtrarTabla(val) {
-  renderTabla(val);
-}
+function filtrarTabla(val) { renderTabla(val); }
 
-/* ===== TOAST ===== */
 function mostrarToast(msg, tipo) {
   tipo = tipo || 'exito';
   var t = document.getElementById('toast');
