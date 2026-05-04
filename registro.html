@@ -16,8 +16,6 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro);min-height:100vh}
-
-/* TOPBAR */
 .topbar{background:linear-gradient(90deg,var(--azul-profundo),var(--azul));color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(11,26,48,0.3)}
 .topbar-left{display:flex;align-items:center;gap:12px}
 .topbar-left img{height:28px;width:28px;object-fit:contain}
@@ -25,11 +23,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
 .topbar-regional{background:var(--azul-acento);color:var(--azul-profundo);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700}
 .btn-back{background:rgba(255,255,255,0.1);border:none;color:#fff;border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;transition:var(--transicion);font-family:'DM Sans',sans-serif;font-weight:500}
 .btn-back:hover{background:rgba(255,255,255,0.2)}
-
-/* CONTAINER */
 .container{max-width:980px;margin:0 auto;padding:24px 20px 80px}
-
-/* SECTIONS */
 .seccion{background:#fff;border-radius:var(--radio);box-shadow:var(--sombra);margin-bottom:20px;overflow:hidden}
 .seccion-header{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;cursor:pointer;user-select:none;transition:var(--transicion);border-bottom:1.5px solid var(--gris-claro)}
 .seccion-header:hover{background:var(--azul-suave)}
@@ -38,52 +32,25 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
 .seccion-header.open .chevron{transform:rotate(180deg)}
 .seccion-body{padding:0 24px;max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s ease}
 .seccion-body.open{max-height:6000px;padding:20px 24px 24px}
-
-/* GRID */
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .grid-full{grid-column:1/-1}
 .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
-
-/* FIELD */
 .field{display:flex;flex-direction:column;gap:4px}
 .field label{font-size:11px;font-weight:700;color:var(--gris);letter-spacing:0.5px;text-transform:uppercase}
-.field input,.field select,.field textarea{
-  border:1.5px solid var(--gris-claro);border-radius:10px;padding:10px 14px;
-  font-family:'DM Sans',sans-serif;font-size:14px;outline:none;
-  transition:var(--transicion);background:#fff;resize:vertical;width:100%
-}
-.field input:focus,.field select:focus,.field textarea:focus{
-  border-color:var(--azul-medio);box-shadow:0 0 0 3px rgba(37,99,235,0.08)
-}
+.field input,.field select,.field textarea{border:1.5px solid var(--gris-claro);border-radius:10px;padding:10px 14px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:var(--transicion);background:#fff;resize:vertical;width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--azul-medio);box-shadow:0 0 0 3px rgba(37,99,235,0.08)}
 .field textarea{min-height:70px}
 .field .nota{font-size:10.5px;color:var(--azul-acento);font-style:italic}
 .field input[readonly]{background:#f8fafc;font-weight:600;color:var(--azul)}
-
-/* CONDITIONAL FIELD */
 .campo-condicional{display:none}
 .campo-condicional.visible{display:flex}
-
-/* SEARCHABLE SELECT WRAPPER */
 .select-wrapper{position:relative}
-.select-search{
-  border:1.5px solid var(--gris-claro);border-radius:10px 10px 0 0;
-  padding:8px 14px;font-family:'DM Sans',sans-serif;font-size:13px;
-  outline:none;width:100%;display:none;border-bottom:1px solid var(--azul-suave);
-  background:#f8fafc
-}
+.select-search{border:1.5px solid var(--gris-claro);border-radius:10px 10px 0 0;padding:8px 14px;font-family:'DM Sans',sans-serif;font-size:13px;outline:none;width:100%;display:none;border-bottom:1px solid var(--azul-suave);background:#f8fafc}
 .select-search.visible{display:block}
 .select-wrapper select{border-radius:0 0 10px 10px}
 .select-wrapper select.with-search{border-top:none}
-
-/* SUBTITULO */
 .subtitulo{margin:20px 0 8px;font-size:12px;font-weight:700;color:var(--azul);text-transform:uppercase;letter-spacing:1.5px;padding-bottom:6px;border-bottom:2px solid var(--azul-suave)}
-
-/* ALERT BADGE */
 .edit-badge{background:#fef3c7;color:#92400e;border:1.5px solid #fde68a;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:8px}
-.condicional-badge{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:8px;padding:6px 12px;font-size:11px;font-weight:600;margin-bottom:8px;display:none}
-.condicional-badge.visible{display:flex;align-items:center;gap:6px}
-
-/* ACTIONS */
 .acciones-bar{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap;position:sticky;bottom:20px;z-index:50}
 .acciones-inner{background:#fff;border-radius:14px;padding:14px 20px;box-shadow:0 8px 32px rgba(14,30,54,0.18);display:flex;gap:12px;flex-wrap:wrap;border:1.5px solid var(--gris-claro)}
 .btn-guardar{background:var(--verde);color:#fff;border:none;border-radius:12px;padding:14px 32px;font-size:15px;font-weight:700;cursor:pointer;transition:var(--transicion);font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:8px}
@@ -91,28 +58,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
 .btn-guardar:disabled{background:var(--gris);cursor:not-allowed;transform:none;box-shadow:none}
 .btn-cancelar{background:#fff;color:var(--negro);border:1.5px solid var(--gris-claro);border-radius:12px;padding:14px 24px;font-size:14px;font-weight:600;cursor:pointer;transition:var(--transicion);font-family:'DM Sans',sans-serif}
 .btn-cancelar:hover{background:#fef2f2;border-color:var(--rojo);color:var(--rojo)}
-
-/* TOAST */
 .toast{position:fixed;bottom:28px;right:28px;background:var(--azul-profundo);color:#fff;padding:14px 22px;border-radius:12px;font-size:14px;font-weight:500;z-index:9999;display:flex;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(11,26,48,0.3);transform:translateY(80px);opacity:0;transition:all 0.35s cubic-bezier(.4,0,.2,1)}
 .toast.show{transform:translateY(0);opacity:1}
 .toast.exito{border-left:4px solid #22c55e}
 .toast.error{border-left:4px solid var(--rojo)}
 .toast.info{border-left:4px solid var(--azul-acento)}
-
-/* REQUIRED INDICATOR */
 .req{color:var(--rojo);margin-left:2px}
-
-/* FIELD GROUP TITLE */
 .field-group{grid-column:1/-1;font-size:11px;font-weight:700;color:var(--azul-medio);text-transform:uppercase;letter-spacing:1px;padding:4px 0;margin-top:4px;border-top:1px dashed var(--gris-claro)}
-
-@media(max-width:700px){
-  .grid,.grid-3{grid-template-columns:1fr}
-  .grid-full{grid-column:1}
-  .container{padding:12px 10px 60px}
-  .topbar{padding:0 12px}
-}
-
-/* FILE UPLOAD WIDGET */
 .upload-widget{display:flex;flex-direction:column;gap:6px}
 .upload-zona{border:2px dashed var(--gris-claro);border-radius:10px;padding:16px 12px;text-align:center;cursor:pointer;transition:var(--transicion);background:#fafbfc;position:relative}
 .upload-zona:hover,.upload-zona.drag{border-color:var(--azul-medio);background:var(--azul-suave)}
@@ -132,6 +84,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
 .upload-progreso-bar{height:100%;background:var(--azul-medio);width:0%;transition:width 0.3s ease}
 .upload-error{font-size:11px;color:var(--rojo);display:none}
 .upload-error.visible{display:block}
+@media(max-width:700px){.grid,.grid-3{grid-template-columns:1fr}.grid-full{grid-column:1}.container{padding:12px 10px 60px}.topbar{padding:0 12px}}
 </style>
 </head>
 <body>
@@ -148,9 +101,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
 <div class="container">
   <div class="edit-badge" id="edit-badge" style="display:none">✏️ Modo edición — Se actualizará la fila existente</div>
 
-  <!-- =============================================
-       SECCIÓN 1: INFORMACIÓN DE LA SOLICITUD
-       ============================================= -->
+  <!-- SECCIÓN 1: INFORMACIÓN DE LA SOLICITUD -->
   <div class="seccion">
     <div class="seccion-header open" onclick="toggleSeccion(this)">
       <h3>📋 INFORMACIÓN DE LA SOLICITUD</h3>
@@ -187,13 +138,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
           <input type="datetime-local" data-col="Fecha Y Hora De Digitacion" />
         </div>
 
-        <!-- REGIONAL (readonly) -->
         <div class="field">
           <label>Regional</label>
           <input data-col="Regional" id="campo-regional" readonly />
         </div>
 
-        <!-- SEDE: filtrada por regional desde CSV -->
+        <!-- SEDE: lista real con ID -->
         <div class="field">
           <label>Sede<span class="req">*</span></label>
           <div class="select-wrapper">
@@ -240,7 +190,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
           </div>
         </div>
 
-        <!-- TIPO: desde CSV Datos_Contratos_2 -->
         <div class="field">
           <label>Tipo<span class="req">*</span></label>
           <select data-col="Tipo" id="sel-tipo" onchange="onTipoChange()">
@@ -255,7 +204,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
           </select>
         </div>
 
-        <!-- CATEGORÍA: filtrada por Tipo -->
         <div class="field">
           <label>Categoría</label>
           <select data-col="Categoria" id="sel-categoria" onchange="onCategoriaChange()">
@@ -263,7 +211,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
           </select>
         </div>
 
-        <!-- MOTIVO condicional: Afiliado Condicional -->
         <div class="field campo-condicional" id="campo-motivo">
           <label>Motivo de Condicional</label>
           <select data-col="Motivo">
@@ -276,7 +223,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
           </select>
         </div>
 
-        <!-- ENTIDAD: condicional por tipo/categoría -->
         <div class="field campo-condicional" id="campo-entidad">
           <label>Entidad</label>
           <div class="select-wrapper">
@@ -308,7 +254,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
           </div>
         </div>
 
-        <!-- ASESOR EXTERNO: condicional -->
         <div class="field campo-condicional" id="campo-asesor">
           <label>Asesor Externo</label>
           <div class="select-wrapper">
@@ -319,7 +264,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
           </div>
         </div>
 
-        <!-- CLASIFICACIÓN -->
         <div class="field">
           <label>Clasificación</label>
           <select data-col="Clasificacion">
@@ -365,9 +309,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
     </div>
   </div>
 
-  <!-- =============================================
-       SECCIÓN 2: DATOS DEL FALLECIDO
-       ============================================= -->
+  <!-- SECCIÓN 2: DATOS DEL FALLECIDO -->
   <div class="seccion">
     <div class="seccion-header open" onclick="toggleSeccion(this)">
       <h3>🕊️ DATOS DEL FALLECIDO</h3>
@@ -416,7 +358,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
           <input data-col="Certificado De Defuncion" placeholder="Número" />
         </div>
 
-        <!-- TIPO DE MUERTE -->
         <div class="field">
           <label>Tipo de Muerte</label>
           <select data-col="Tipo de Muerte">
@@ -427,7 +368,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
           </select>
         </div>
 
-        <!-- POSIBLE CAUSA DE MUERTE -->
         <div class="field">
           <label>Posible Causa de Muerte</label>
           <div class="select-wrapper">
@@ -458,7 +398,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
           </div>
         </div>
 
-        <!-- LUGAR DE FALLECIMIENTO -->
         <div class="field">
           <label>Lugar de Fallecimiento</label>
           <select data-col="Lugar De Fallecimiento" onchange="onLugarFallecimientoChange()">
@@ -469,9 +408,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
           </select>
         </div>
 
-        <!-- MURIO EN: solo visible si es Hospital/Clinica -->
         <div class="field campo-condicional" id="campo-murio-en">
-          <label>Murio En (clínica u hospital específico)</label>
+          <label>Murió En (clínica u hospital específico)</label>
           <div class="select-wrapper">
             <input type="text" class="select-search" id="search-murio-en" placeholder="Buscar clínica u hospital..." oninput="filtrarSelect('sel-murio-en','search-murio-en')" />
             <select data-col="Murio En" id="sel-murio-en">
@@ -536,7 +474,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
           </div>
         </div>
 
-        <!-- OCUPACIÓN -->
         <div class="field">
           <label>Ocupación</label>
           <div class="select-wrapper">
@@ -562,7 +499,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
           </div>
         </div>
 
-        <!-- PENSIONADO -->
         <div class="field">
           <label>Pensionado</label>
           <select data-col="Pensionado (SI/No)" onchange="toggleVisible(this,'campo-fondo','SI')">
@@ -584,7 +520,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
           </select>
         </div>
 
-        <!-- SEGURIDAD SOCIAL -->
         <div class="field">
           <label>Seguridad Social (EPS)</label>
           <div class="select-wrapper">
@@ -611,7 +546,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
           </div>
         </div>
 
-        <!-- CONTEXTURA -->
         <div class="field">
           <label>Contextura</label>
           <select data-col="Contextura">
@@ -624,7 +558,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
           </select>
         </div>
 
-        <!-- ESTADO CIVIL -->
         <div class="field">
           <label>Estado Civil</label>
           <select data-col="Estado civil" onchange="onEstadoCivilChange()">
@@ -678,7 +611,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
             </div>
             <div class="upload-error" id="err-cedula"></div>
           </div>
-          <!-- campo oculto que guarda la URL para enviar a Sheets -->
           <input type="hidden" data-col="Foto Cedula Fallecido" id="hidden-cedula" />
         </div>
 
@@ -702,7 +634,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
             </div>
             <div class="upload-error" id="err-cert"></div>
           </div>
-          <!-- campo oculto que guarda la URL para enviar a Sheets -->
           <input type="hidden" data-col="Foto Del Certificado De Defuncion" id="hidden-cert" />
         </div>
 
@@ -710,9 +641,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
     </div>
   </div>
 
-  <!-- =============================================
-       SECCIÓN 3: DATOS DEL SOLICITANTE
-       ============================================= -->
+  <!-- SECCIÓN 3: DATOS DEL SOLICITANTE -->
   <div class="seccion">
     <div class="seccion-header" onclick="toggleSeccion(this)">
       <h3>👤 DATOS DEL SOLICITANTE</h3>
@@ -720,18 +649,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
     </div>
     <div class="seccion-body">
       <div class="grid">
-
         <div class="field">
           <label>Nombre del Solicitante</label>
           <input data-col="Nombre solicitante" placeholder="Nombre completo" />
         </div>
-
         <div class="field">
           <label>CC del Solicitante</label>
           <input data-col="CC: Del Solicitante" placeholder="Número de cédula" />
         </div>
-
-        <!-- PARENTESCO -->
         <div class="field">
           <label>Parentesco con el Fallecido</label>
           <select data-col="Parentesco Con El Fallecido">
@@ -774,24 +699,19 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
             </optgroup>
           </select>
         </div>
-
         <div class="field">
           <label>Dirección del Solicitante</label>
           <input data-col="Direccion del Solicitante" placeholder="Dirección completa" />
         </div>
-
         <div class="field">
           <label>N° Teléfono Solicitante</label>
           <input data-col="Nº Telefono Solicitante" placeholder="Teléfono o celular" type="tel" />
         </div>
-
       </div>
     </div>
   </div>
 
-  <!-- =============================================
-       SECCIÓN 4: DATOS DEL TITULAR
-       ============================================= -->
+  <!-- SECCIÓN 4: DATOS DEL TITULAR -->
   <div class="seccion">
     <div class="seccion-header" onclick="toggleSeccion(this)">
       <h3>📄 DATOS DEL TITULAR DEL CONTRATO</h3>
@@ -799,34 +719,27 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
     </div>
     <div class="seccion-body">
       <div class="grid">
-
         <div class="field">
           <label>Nombre del Titular</label>
           <input data-col="Nombre Del Titular" placeholder="Nombre completo" />
         </div>
-
         <div class="field">
           <label>CC del Titular</label>
           <input data-col="CC: Del Titular" placeholder="Número de cédula" />
         </div>
-
         <div class="field">
           <label>Dirección del Titular</label>
           <input data-col="Direccion Del Titular" placeholder="Dirección completa" />
         </div>
-
         <div class="field">
           <label>N° Teléfono Titular</label>
           <input data-col="Nº Telefono TiTular" placeholder="Teléfono o celular" type="tel" />
         </div>
-
       </div>
     </div>
   </div>
 
-  <!-- =============================================
-       SECCIÓN 5: FACTURACIÓN
-       ============================================= -->
+  <!-- SECCIÓN 5: FACTURACIÓN -->
   <div class="seccion">
     <div class="seccion-header" onclick="toggleSeccion(this)">
       <h3>💰 DATOS DE FACTURACIÓN</h3>
@@ -834,39 +747,31 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
     </div>
     <div class="seccion-body">
       <div class="grid">
-
         <div class="field">
           <label>Responsable a Facturar</label>
           <input data-col="Responsabele a Facturar" placeholder="Nombre o entidad" />
         </div>
-
         <div class="field">
           <label>CC / NIT Responsable</label>
           <input data-col="CC Responsable a Facturar" placeholder="CC o NIT" />
         </div>
-
         <div class="field">
           <label>Dirección Responsable Facturar</label>
           <input data-col="Direccion Responsable a Facturar" placeholder="Dirección" />
         </div>
-
         <div class="field">
           <label>N° Teléfono Responsable</label>
           <input data-col="Nº Telefono Responsable a Facturar" placeholder="Teléfono" type="tel" />
         </div>
-
         <div class="field grid-full">
           <label>Correo Electrónico Responsable</label>
           <input type="email" data-col="Correo Electronico Responsable a Facturar" placeholder="correo@ejemplo.com" />
         </div>
-
       </div>
     </div>
   </div>
 
-  <!-- =============================================
-       SECCIÓN 6: COORDINACIÓN
-       ============================================= -->
+  <!-- SECCIÓN 6: COORDINACIÓN -->
   <div class="seccion">
     <div class="seccion-header" onclick="toggleSeccion(this)">
       <h3>🚐 DATOS DE COORDINACIÓN</h3>
@@ -876,17 +781,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
 
       <div class="subtitulo">📦 Recogida</div>
       <div class="grid">
-
         <div class="field">
           <label>Fecha de Recogida</label>
           <input type="date" data-col="Fecha De Recogida" />
         </div>
-
         <div class="field">
           <label>Hora de Recogida</label>
           <input type="time" data-col="Hora Recogida" />
         </div>
-
         <div class="field">
           <label>Quien Recoge</label>
           <div class="select-wrapper">
@@ -896,7 +798,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
             </select>
           </div>
         </div>
-
         <div class="field">
           <label>Placa Carroza (Recogida)</label>
           <div class="select-wrapper">
@@ -906,7 +807,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
             </select>
           </div>
         </div>
-
         <div class="field">
           <label>Traslado Nacional</label>
           <select data-col="Traslado Nacional">
@@ -914,12 +814,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
             <option value="SI">SI</option>
           </select>
         </div>
-
         <div class="field">
           <label>N° Ref. de Cofre</label>
           <input data-col="Nº Ref de Cofre" placeholder="Ej: C-1024" />
         </div>
-
         <div class="field">
           <label>Preservación Por (Tanatologo)</label>
           <div class="select-wrapper">
@@ -929,46 +827,43 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
             </select>
           </div>
         </div>
-
       </div>
 
       <div class="subtitulo">🕯️ Velación</div>
       <div class="grid">
-
         <div class="field">
           <label>Fecha Inicio Velación</label>
           <input type="date" data-col="Fecha Inicio de Velación" />
         </div>
-
         <div class="field">
           <label>Hora Inicio Velación</label>
           <input type="time" data-col="Hora Inicio de Velación" />
         </div>
-
         <div class="field">
           <label>Fecha Final Velación</label>
           <input type="date" data-col="Fecha Final de Velación" />
         </div>
-
         <div class="field">
           <label>Hora Final Velación</label>
           <input type="time" data-col="Hora Final de Velación" />
         </div>
 
+        <!-- MUNICIPIO VELACIÓN: al cambiar filtra Lugar de Velación -->
         <div class="field">
           <label>Municipio Velación</label>
           <div class="select-wrapper">
             <input type="text" class="select-search" id="search-mun-vel" placeholder="Buscar municipio..." oninput="filtrarSelect('sel-mun-vel','search-mun-vel')" />
-            <select data-col="Municipio Velación" id="sel-mun-vel">
+            <select data-col="Municipio Velación" id="sel-mun-vel" onchange="onMunicipioVelacionChange()">
               <option value="">Seleccionar municipio...</option>
             </select>
           </div>
         </div>
 
+        <!-- LUGAR DE VELACIÓN: filtrado por municipio, formato ID-Sala -->
         <div class="field">
           <label>Lugar de Velación (Sede/Sala)</label>
           <div class="select-wrapper">
-            <input type="text" class="select-search" id="search-lugar-vel" placeholder="Buscar sede o sala..." oninput="filtrarSelect('sel-lugar-vel','search-lugar-vel')" />
+            <input type="text" class="select-search" id="search-lugar-vel" placeholder="Buscar sala..." oninput="filtrarSelect('sel-lugar-vel','search-lugar-vel')" />
             <select data-col="Lugar de Velación" id="sel-lugar-vel">
               <option value="">Seleccionar lugar...</option>
             </select>
@@ -1011,63 +906,38 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
         </div>
 
         <div class="field-group">Servicios incluidos en velación</div>
-
         <div class="field">
           <label>Arreglo Floral</label>
-          <select data-col="Arreglo Floral">
-            <option value="NO">NO</option>
-            <option value="SI">SI</option>
-          </select>
+          <select data-col="Arreglo Floral"><option value="NO">NO</option><option value="SI">SI</option></select>
         </div>
-
         <div class="field">
           <label>Carteles</label>
-          <select data-col="Carteles">
-            <option value="NO">NO</option>
-            <option value="SI">SI</option>
-          </select>
+          <select data-col="Carteles"><option value="NO">NO</option><option value="SI">SI</option></select>
         </div>
-
         <div class="field">
           <label>Kit Velación</label>
-          <select data-col="Kit Velación">
-            <option value="NO">NO</option>
-            <option value="SI">SI</option>
-          </select>
+          <select data-col="Kit Velación"><option value="NO">NO</option><option value="SI">SI</option></select>
         </div>
-
         <div class="field">
           <label>Cinta Fallecido</label>
-          <select data-col="Cinta Fallecido">
-            <option value="NO">NO</option>
-            <option value="SI">SI</option>
-          </select>
+          <select data-col="Cinta Fallecido"><option value="NO">NO</option><option value="SI">SI</option></select>
         </div>
-
         <div class="field">
           <label>Transporte para Acompañantes</label>
-          <select data-col="Transporte Para Acompañantes">
-            <option value="NO">NO</option>
-            <option value="SI">SI</option>
-            <option value="N/A">N/A</option>
-          </select>
+          <select data-col="Transporte Para Acompañantes"><option value="NO">NO</option><option value="SI">SI</option><option value="N/A">N/A</option></select>
         </div>
-
       </div>
 
       <div class="subtitulo">⛪ Exequias y Destino Final</div>
       <div class="grid">
-
         <div class="field">
           <label>Fecha Exequias</label>
           <input type="date" data-col="Fecha Exequias" />
         </div>
-
         <div class="field">
           <label>Hora Exequias</label>
           <input type="time" data-col="Hora Exequias" />
         </div>
-
         <div class="field">
           <label>Lugar Exequias (Iglesia / Capilla)</label>
           <div class="select-wrapper">
@@ -1090,18 +960,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
             </select>
           </div>
         </div>
-
         <div class="field">
           <label>Fecha Destino Final</label>
           <input type="date" data-col="Fecha Destino Final" />
         </div>
-
         <div class="field">
           <label>Hora Destino Final</label>
           <input type="time" data-col="Hora Destino Final" />
         </div>
-
-        <!-- DESTINO FINAL -->
         <div class="field">
           <label>Destino Final</label>
           <select data-col="Destino Final" id="sel-destino" onchange="onDestinoChange()">
@@ -1114,8 +980,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
             <option value="Sin Ceremonia Religiosa">Sin Ceremonia Religiosa</option>
           </select>
         </div>
-
-        <!-- CEMENTERIO: condicional cuando no es cremación -->
         <div class="field campo-condicional" id="campo-cementerio">
           <label>Cementerio</label>
           <div class="select-wrapper">
@@ -1133,7 +997,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
             </select>
           </div>
         </div>
-
         <div class="field">
           <label>Quien Culmina el Servicio</label>
           <div class="select-wrapper">
@@ -1143,7 +1006,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
             </select>
           </div>
         </div>
-
         <div class="field">
           <label>Placa Carroza (Culminación)</label>
           <div class="select-wrapper">
@@ -1153,7 +1015,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
             </select>
           </div>
         </div>
-
         <div class="field">
           <label>Coordinador</label>
           <div class="select-wrapper">
@@ -1163,39 +1024,31 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
             </select>
           </div>
         </div>
-
         <div class="field">
           <label>Nombre Agente Call Center</label>
           <input data-col="Nombre del Agente Call" placeholder="Nombre del agente" />
         </div>
-
         <div class="field">
           <label>Firma: Quien Entrega</label>
           <input data-col="Firma: Quien Entrega" placeholder="URL imagen firma" />
         </div>
-
         <div class="field">
           <label>Firma: Quien Recibe</label>
           <input data-col="Firma: Quien Recibe" placeholder="URL imagen firma" />
         </div>
-
       </div>
     </div>
   </div>
 
-  <!-- BOTONES FIJOS -->
   <div class="acciones-bar">
     <div class="acciones-inner">
-      <button class="btn-guardar" id="btn-guardar" onclick="guardarPrestacion()">
-        ✓ Guardar Prestación
-      </button>
+      <button class="btn-guardar" id="btn-guardar" onclick="guardarPrestacion()">✓ Guardar Prestación</button>
       <button class="btn-cancelar" onclick="volver()">Cancelar</button>
     </div>
   </div>
+</div>
 
-</div><!-- /container -->
-
-<!-- MODAL: Selección de Regional -->
+<!-- MODAL REGIONAL -->
 <div id="modal-regional" style="display:none;position:fixed;inset:0;background:rgba(11,26,48,0.7);z-index:9999;align-items:center;justify-content:center">
   <div style="background:#fff;border-radius:18px;padding:32px 28px;width:360px;max-width:95vw;box-shadow:0 16px 48px rgba(11,26,48,0.3)">
     <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:#1e3a5f;margin-bottom:6px">JARDINES DEL RENACER</div>
@@ -1218,21 +1071,340 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
         <option value="Arauca">Arauca</option>
         <option value="Otra">Otra</option>
       </select>
-      <button onclick="confirmarRegional()" style="background:#2563eb;color:#fff;border:none;border-radius:10px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:6px">
-        Continuar →
-      </button>
+      <button onclick="confirmarRegional()" style="background:#2563eb;color:#fff;border:none;border-radius:10px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:6px">Continuar →</button>
     </div>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
-
 <script>
 // ============================================================
-// DATOS ESTÁTICOS REALES EXTRAÍDOS DE LOS CSV
+// SEDES REALES (ID - Nombre)
 // ============================================================
+var SEDES_DATA = [
+  {id:2,   nombre:'Marsella'},
+  {id:3,   nombre:'Belen'},
+  {id:4,   nombre:'Cartago'},
+  {id:5,   nombre:'Alcala'},
+  {id:6,   nombre:'Anserma'},
+  {id:7,   nombre:'Armenia'},
+  {id:8,   nombre:'Quimbaya'},
+  {id:9,   nombre:'Santa Rosa'},
+  {id:10,  nombre:'Chinchina'},
+  {id:11,  nombre:'Medellin'},
+  {id:12,  nombre:'Zarzal'},
+  {id:13,  nombre:'Cali'},
+  {id:14,  nombre:'Girardot'},
+  {id:15,  nombre:'Melgar'},
+  {id:16,  nombre:'Icononzo'},
+  {id:17,  nombre:'Anapoima'},
+  {id:18,  nombre:'Villarica'},
+  {id:19,  nombre:'Tocaima'},
+  {id:20,  nombre:'Espinal'},
+  {id:21,  nombre:'Riofrio'},
+  {id:22,  nombre:'Trujillo'},
+  {id:23,  nombre:'Tulua'},
+  {id:24,  nombre:'Bugalagrande'},
+  {id:25,  nombre:'Pradera'},
+  {id:26,  nombre:'Florida'},
+  {id:27,  nombre:'Yumbo'},
+  {id:28,  nombre:'Barranquilla'},
+  {id:29,  nombre:'Aranzazu'},
+  {id:30,  nombre:'Arauca'},
+  {id:31,  nombre:'Belalcazar'},
+  {id:32,  nombre:'Caramanta'},
+  {id:33,  nombre:'Guatica'},
+  {id:34,  nombre:'La Pintada'},
+  {id:35,  nombre:'Manizales'},
+  {id:36,  nombre:'Marmato'},
+  {id:37,  nombre:'Mistrato'},
+  {id:38,  nombre:'Neira'},
+  {id:39,  nombre:'Pacora'},
+  {id:40,  nombre:'Palestina'},
+  {id:41,  nombre:'Quinchia'},
+  {id:43,  nombre:'Riosucio'},
+  {id:44,  nombre:'Risaralda'},
+  {id:45,  nombre:'Salamina'},
+  {id:46,  nombre:'San Lorenzo'},
+  {id:47,  nombre:'Santa Barbara'},
+  {id:48,  nombre:'Supia'},
+  {id:49,  nombre:'Tamesis'},
+  {id:50,  nombre:'Valparaiso'},
+  {id:51,  nombre:'Viterbo'},
+  {id:52,  nombre:'Bogotá'},
+  {id:53,  nombre:'Cachipay'},
+  {id:54,  nombre:'Facatativa'},
+  {id:55,  nombre:'Fusagasuga'},
+  {id:56,  nombre:'Barcelona'},
+  {id:57,  nombre:'Caicedonia'},
+  {id:58,  nombre:'Calarca'},
+  {id:59,  nombre:'Circasia'},
+  {id:60,  nombre:'Cordoba'},
+  {id:61,  nombre:'Genova'},
+  {id:62,  nombre:'Pijao'},
+  {id:63,  nombre:'Sevilla'},
+  {id:64,  nombre:'Tebaida'},
+  {id:65,  nombre:'Ulloa'},
+  {id:66,  nombre:'Apia'},
+  {id:67,  nombre:'Dosquebradas'},
+  {id:68,  nombre:'La Virginia'},
+  {id:71,  nombre:'Pueblo Rico'},
+  {id:73,  nombre:'Santuario'},
+  {id:77,  nombre:'Ibague'},
+  {id:81,  nombre:'Villa Rica'},
+  {id:86,  nombre:'Argelia'},
+  {id:87,  nombre:'Anserma Nuevo'},
+  {id:88,  nombre:'Bolivar'},
+  {id:90,  nombre:'El Aguila'},
+  {id:91,  nombre:'El Dovio'},
+  {id:92,  nombre:'La Victoria'},
+  {id:93,  nombre:'La Unión'},
+  {id:94,  nombre:'Obando'},
+  {id:95,  nombre:'Roldanillo'},
+  {id:96,  nombre:'San Jose Del Palmar'},
+  {id:97,  nombre:'Toro'},
+  {id:98,  nombre:'Versalles'},
+  {id:102, nombre:'Palmira'},
+  {id:104, nombre:'Santander De Quilichao'},
+  {id:106, nombre:'Guacari'},
+  {id:107, nombre:'Yotoco'},
+  {id:108, nombre:'Neiva'},
+  {id:109, nombre:'Lerida'},
+  {id:110, nombre:'Armero Guayabal'},
+  {id:111, nombre:'Libano'},
+  {id:112, nombre:'Fresno'},
+  {id:113, nombre:'Villa Hermosa'},
+  {id:114, nombre:'Anzoategui'},
+  {id:115, nombre:'Venadillo'},
+  {id:116, nombre:'Santa Isabel'},
+  {id:117, nombre:'Padua'},
+  {id:118, nombre:'La Dorara'},
+  {id:119, nombre:'Puerto Boyacá'},
+  {id:120, nombre:'Aipe'},
+  {id:121, nombre:'Restrepo'},
+  {id:122, nombre:'Perla Del Sur'},
+  {id:123, nombre:'La 30'},
+  {id:124, nombre:'Andalucia'},
+  {id:125, nombre:'Garzón'},
+  {id:126, nombre:'Ser (punto De Pago)'},
+  {id:127, nombre:'Santa Marta'},
+  {id:128, nombre:'Pitalito'},
+  {id:129, nombre:'La Plata'},
+  {id:130, nombre:'Popayan'},
+  {id:131, nombre:'San Gil'},
+  {id:132, nombre:'Mariquita'},
+  {id:133, nombre:'Montenegro'},
+  {id:134, nombre:'Rovira'},
+  {id:135, nombre:'Mocoa'},
+  {id:136, nombre:'La 27'},
+  {id:137, nombre:'Cuba'},
+  {id:138, nombre:'Honda'},
+  {id:139, nombre:'Itagui'},
+  {id:140, nombre:'Acacias'},
+  {id:141, nombre:'Villavicencio'},
+  {id:142, nombre:'Meta'},
+  {id:143, nombre:'Bucaramanga'}
+];
 
+// ============================================================
+// SALAS POR MUNICIPIO (del CSV IDSALA)
+// Key = municipio normalizado en minúsculas, value = [{id, sala}]
+// ============================================================
+var SALAS_RAW = [
+  {id:16,   sala:'Alcalá Sala 1',              mun:'Alcala'},
+  {id:403,  sala:'Alcalá Sala 2',              mun:'Alcala'},
+  {id:34,   sala:'Anapoima Sala 1',            mun:'Anapoima'},
+  {id:423,  sala:'Andalucia Sala 1',           mun:'Andalucia'},
+  {id:424,  sala:'Andalucia Sala 2',           mun:'Andalucia'},
+  {id:92,   sala:'Anserma Sala 1',             mun:'Anserma'},
+  {id:379,  sala:'Anserma Sala 2',             mun:'Anserma'},
+  {id:380,  sala:'Anserma Sala 3',             mun:'Anserma'},
+  {id:105,  sala:'Ansermanuevo Sala 1',        mun:'Anserma Nuevo'},
+  {id:397,  sala:'Ansermanuevo Sala 2',        mun:'Anserma Nuevo'},
+  {id:431,  sala:'Anzoátegui Sala 1',          mun:'Anzoategui'},
+  {id:21,   sala:'Apia Sala 1',                mun:'Apia'},
+  {id:364,  sala:'Apia Sala 2',                mun:'Apia'},
+  {id:97,   sala:'Aranzazu',                   mun:'Aranzazu'},
+  {id:90,   sala:'Arauca Sala 1',              mun:'Arauca'},
+  {id:377,  sala:'Arauca Sala 2',              mun:'Arauca'},
+  {id:100,  sala:'Argelia Sala 1',             mun:'Argelia'},
+  {id:2,    sala:'Armenia Sala 1',             mun:'Armenia'},
+  {id:1,    sala:'Armenia Sala 2',             mun:'Armenia'},
+  {id:5,    sala:'Armenia Sala 3',             mun:'Armenia'},
+  {id:6,    sala:'Armenia Sala 4',             mun:'Armenia'},
+  {id:235,  sala:'Armero',                     mun:'Armero Guayabal'},
+  {id:444,  sala:'Armero Guayabal Sala 1',     mun:'Armero Guayabal'},
+  {id:445,  sala:'Armero Guayabal Sala 2',     mun:'Armero Guayabal'},
+  {id:360,  sala:'Av 30 De Agosto Sala 1',     mun:'Dosquebradas'},
+  {id:359,  sala:'Av 30 De Agosto Sala 2',     mun:'Dosquebradas'},
+  {id:8,    sala:'Barcelona Sala 1',           mun:'Barcelona'},
+  {id:367,  sala:'Barcelona Sala 2',           mun:'Barcelona'},
+  {id:88,   sala:'Belalcazar Sala 1',          mun:'Belalcazar'},
+  {id:69,   sala:'Belén Sala 1',               mun:'Belen'},
+  {id:371,  sala:'Belén Sala 2',               mun:'Belen'},
+  {id:372,  sala:'Belén Sala 3',               mun:'Belen'},
+  {id:419,  sala:'Bolivar Sala 1',             mun:'Bolivar'},
+  {id:421,  sala:'Bolivar Sala 2',             mun:'Bolivar'},
+  {id:422,  sala:'Bugalagrandre Sala 1',       mun:'Bugalagrande'},
+  {id:81,   sala:'Cachipay',                   mun:'Cachipay'},
+  {id:15,   sala:'Caicedonia Sala 1',          mun:'Caicedonia'},
+  {id:415,  sala:'Caicedonia Sala 2',          mun:'Caicedonia'},
+  {id:7,    sala:'Calarca Sala 1',             mun:'Calarca'},
+  {id:370,  sala:'Calarca Sala 2',             mun:'Calarca'},
+  {id:404,  sala:'Cali Sala 1',               mun:'Cali'},
+  {id:405,  sala:'Cali Sala 2',               mun:'Cali'},
+  {id:406,  sala:'Cali Sala 3',               mun:'Cali'},
+  {id:345,  sala:'Cali Sala Vip',             mun:'Cali'},
+  {id:352,  sala:'Renacer Cali Sala Vip',     mun:'Cali'},
+  {id:74,   sala:'Caramanta Sala 1',           mun:'Caramanta'},
+  {id:86,   sala:'Cartago Sala 1',             mun:'Cartago'},
+  {id:391,  sala:'Cartago Sala 2',             mun:'Cartago'},
+  {id:392,  sala:'Cartago Sala 3',             mun:'Cartago'},
+  {id:344,  sala:'Cartago Sala Vip',           mun:'Cartago'},
+  {id:71,   sala:'Chinchiná Sala 1',           mun:'Chinchina'},
+  {id:83,   sala:'Circasia Sala 1',            mun:'Circasia'},
+  {id:11,   sala:'Cordoba Sala 1',             mun:'Cordoba'},
+  {id:357,  sala:'Cuba Sala 1',                mun:'Cuba'},
+  {id:358,  sala:'Cuba Sala 2',                mun:'Cuba'},
+  {id:103,  sala:'El Aguila Sala 1',           mun:'El Aguila'},
+  {id:109,  sala:'El Dovio Sala 1',            mun:'El Dovio'},
+  {id:401,  sala:'El Dovio Sala 2',            mun:'El Dovio'},
+  {id:36,   sala:'El Espinal Sala 1',          mun:'Espinal'},
+  {id:79,   sala:'Facatativa',                 mun:'Facatativa'},
+  {id:410,  sala:'Florida Sala 1',             mun:'Florida'},
+  {id:447,  sala:'Renacer Sala Florida',       mun:'Florida'},
+  {id:438,  sala:'Fresno Sala 1',              mun:'Fresno'},
+  {id:440,  sala:'Fresno Sala 2',              mun:'Fresno'},
+  {id:80,   sala:'Fusagasuga Sala 1',          mun:'Fusagasuga'},
+  {id:390,  sala:'Fusagasuga Sala 2',          mun:'Fusagasuga'},
+  {id:12,   sala:'Genova Sala 1',              mun:'Genova'},
+  {id:369,  sala:'Genova Sala 2',              mun:'Genova'},
+  {id:30,   sala:'Girardot Sala 1',            mun:'Girardot'},
+  {id:386,  sala:'Girardot Sala 2',            mun:'Girardot'},
+  {id:117,  sala:'Guacari',                    mun:'Guacari'},
+  {id:425,  sala:'Guacarí Sala 1',             mun:'Guacari'},
+  {id:426,  sala:'Guacarí Sala 2',             mun:'Guacari'},
+  {id:73,   sala:'Guática Sala 1',             mun:'Guatica'},
+  {id:374,  sala:'Guática Sala 2',             mun:'Guatica'},
+  {id:443,  sala:'Honda Sala 1',               mun:'Honda'},
+  {id:82,   sala:'Ibague',                     mun:'Ibague'},
+  {id:430,  sala:'Ibagué Sala 1',              mun:'Ibague'},
+  {id:432,  sala:'Ibagué Sala 2',              mun:'Ibague'},
+  {id:307,  sala:'Jardines Del Renacer Ibague', mun:'Ibague'},
+  {id:32,   sala:'Icononzo Sala 1',            mun:'Icononzo'},
+  {id:13,   sala:'La Tebaida Sala 1',          mun:'Tebaida'},
+  {id:368,  sala:'La Tebaida Sala 2',          mun:'Tebaida'},
+  {id:104,  sala:'La Unión Sala 1',            mun:'La Unión'},
+  {id:396,  sala:'La Unión Sala 2',            mun:'La Unión'},
+  {id:23,   sala:'La Virginia',                mun:'La Virginia'},
+  {id:365,  sala:'La Virginia Sala 1',         mun:'La Virginia'},
+  {id:366,  sala:'La Virginia Sala 2',         mun:'La Virginia'},
+  {id:197,  sala:'Lerida',                     mun:'Lerida'},
+  {id:435,  sala:'Lerida Sala 1',              mun:'Lerida'},
+  {id:437,  sala:'Lerida Sala 2',              mun:'Lerida'},
+  {id:433,  sala:'Líbano Sala 1',              mun:'Libano'},
+  {id:434,  sala:'Líbano Sala 2',              mun:'Libano'},
+  {id:98,   sala:'Manizales',                  mun:'Manizales'},
+  {id:441,  sala:'Mariquita Sala 1',           mun:'Mariquita'},
+  {id:102,  sala:'Marmato Sala 1',             mun:'Marmato'},
+  {id:151,  sala:'Marmato Sala 2',             mun:'Marmato'},
+  {id:24,   sala:'Marsella Sala 1',            mun:'Marsella'},
+  {id:363,  sala:'Marsella Sala 2',            mun:'Marsella'},
+  {id:31,   sala:'Melgar Sala 1',              mun:'Melgar'},
+  {id:389,  sala:'Melgar Sala 2',              mun:'Melgar'},
+  {id:72,   sala:'Mistrato Sala 1',            mun:'Mistrato'},
+  {id:349,  sala:'Montenegro Sala 1',          mun:'Montenegro'},
+  {id:350,  sala:'Montenegro Sala 2',          mun:'Montenegro'},
+  {id:351,  sala:'Montenegro Sala 3',          mun:'Montenegro'},
+  {id:94,   sala:'Neira Sala 1',               mun:'Neira'},
+  {id:382,  sala:'Neira Sala 2',               mun:'Neira'},
+  {id:107,  sala:'Obando Sala 1',              mun:'Obando'},
+  {id:399,  sala:'Obando Sala 2',              mun:'Obando'},
+  {id:111,  sala:'Pacora Sala 1',              mun:'Pacora'},
+  {id:96,   sala:'Palestina Sala 1',           mun:'Palestina'},
+  {id:112,  sala:'Palmira Sala 1',             mun:'Palmira'},
+  {id:407,  sala:'Palmira Sala 2',             mun:'Palmira'},
+  {id:408,  sala:'Palmira Sala Vip',           mun:'Palmira'},
+  {id:409,  sala:'Pradera Sala 1',             mun:'Pradera'},
+  {id:20,   sala:'Pueblo Rico',                mun:'Pueblo Rico'},
+  {id:9,    sala:'Quimbaya Sala 1',            mun:'Quimbaya'},
+  {id:70,   sala:'Quinchía Sala 1',            mun:'Quinchia'},
+  {id:373,  sala:'Quinchía Sala 2',            mun:'Quinchia'},
+  {id:114,  sala:'Bolivar',                    mun:'Bolivar'},
+  {id:428,  sala:'Riofrío Sala 1',             mun:'Riofrio'},
+  {id:93,   sala:'Riosucio Sala 1',            mun:'Riosucio'},
+  {id:381,  sala:'Riosucio Sala 2',            mun:'Riosucio'},
+  {id:89,   sala:'Risaralda Sala 1',           mun:'Risaralda'},
+  {id:375,  sala:'Risaralda Sala 2',           mun:'Risaralda'},
+  {id:376,  sala:'Risaralda Sala 3',           mun:'Risaralda'},
+  {id:113,  sala:'Roldanillo Sala 1',          mun:'Roldanillo'},
+  {id:402,  sala:'Roldanillo Sala 2',          mun:'Roldanillo'},
+  {id:442,  sala:'Rovira Sala 1',              mun:'Rovira'},
+  {id:99,   sala:'Salamina Sala 1',            mun:'Salamina'},
+  {id:384,  sala:'Salamina Sala 2',            mun:'Salamina'},
+  {id:95,   sala:'San Lorenzo Sala 1',         mun:'San Lorenzo'},
+  {id:77,   sala:'Santa Barbara',              mun:'Santa Barbara'},
+  {id:436,  sala:'Santa Isabel Sala 1',        mun:'Santa Isabel'},
+  {id:25,   sala:'Santa Rosa Sala 1',          mun:'Santa Rosa'},
+  {id:22,   sala:'Santuario Sala 1',           mun:'Santuario'},
+  {id:14,   sala:'Sevilla',                    mun:'Sevilla'},
+  {id:418,  sala:'Sevilla Sala 1',             mun:'Sevilla'},
+  {id:420,  sala:'Sevilla Sala 2',             mun:'Sevilla'},
+  {id:101,  sala:'Supía Sala 1',               mun:'Supia'},
+  {id:385,  sala:'Supía Sala 2',               mun:'Supia'},
+  {id:76,   sala:'Tamesis',                    mun:'Tamesis'},
+  {id:35,   sala:'Tocaima Sala 1',             mun:'Tocaima'},
+  {id:388,  sala:'Tocaima Sala 2',             mun:'Tocaima'},
+  {id:108,  sala:'Toro Sala 1',                mun:'Toro'},
+  {id:400,  sala:'Toro Sala 2',                mun:'Toro'},
+  {id:427,  sala:'Trujillo Sala 1',            mun:'Trujillo'},
+  {id:416,  sala:'Tuluá Sala 1',              mun:'Tulua'},
+  {id:417,  sala:'Tuluá Sala 2',              mun:'Tulua'},
+  {id:39,   sala:'Renacer Sala 1 (Tulua)',     mun:'Tulua'},
+  {id:40,   sala:'Renacer Sala 2 (Tulua)',     mun:'Tulua'},
+  {id:85,   sala:'Ulloa Sala 1',               mun:'Ulloa'},
+  {id:75,   sala:'Valparaiso Sala 1',          mun:'Valparaiso'},
+  {id:429,  sala:'Venadillo Sala 1',           mun:'Venadillo'},
+  {id:84,   sala:'Versalles Sala 1',           mun:'Versalles'},
+  {id:439,  sala:'Villa Hermosa Sala 1',       mun:'Villa Hermosa'},
+  {id:33,   sala:'Villarica Sala 1',           mun:'Villarica'},
+  {id:91,   sala:'Viterbo Sala 1',             mun:'Viterbo'},
+  {id:378,  sala:'Viterbo Sala 2',             mun:'Viterbo'},
+  {id:411,  sala:'Yumbo Sala 1',              mun:'Yumbo'},
+  {id:412,  sala:'Yumbo Sala 2',              mun:'Yumbo'},
+  {id:451,  sala:'Renacer Sala Yumbo',        mun:'Yumbo'},
+  {id:393,  sala:'Zarsal Sala 2',              mun:'Zarzal'},
+  {id:394,  sala:'Zarsal Sala 3',              mun:'Zarzal'},
+  {id:395,  sala:'Zarsal Sala Vip',            mun:'Zarzal'},
+  {id:87,   sala:'Zarzal Sala 1',              mun:'Zarzal'},
+  {id:291,  sala:'Jardines Del Renacer Sede Padua', mun:'Padua'},
+  {id:414,  sala:'Residencia',                 mun:''},
+  {id:249,  sala:'Sin Velacion',               mun:''},
+  {id:121,  sala:'N/a',                        mun:''}
+];
+
+// Construir map municipio → salas
+var SALAS_POR_MUN = {};
+SALAS_RAW.forEach(function(s) {
+  var k = s.mun.toLowerCase().trim();
+  if (!SALAS_POR_MUN[k]) SALAS_POR_MUN[k] = [];
+  SALAS_POR_MUN[k].push(s);
+});
+
+// Extraer municipios únicos con salas (para el select de municipio velación)
+var MUNICIPIOS_VELACION = [];
+var _munSet = {};
+SALAS_RAW.forEach(function(s) {
+  if (!s.mun) return;
+  var k = s.mun.toLowerCase().trim();
+  if (!_munSet[k]) { _munSet[k] = true; MUNICIPIOS_VELACION.push(s.mun); }
+});
+MUNICIPIOS_VELACION.sort();
+
+// ============================================================
+// CATEGORÍAS POR TIPO
+// ============================================================
 var CATEGORIAS_POR_TIPO = {
   'Afiliado Cobertura Total': ['Cobertura Total','Cobertura Total Con Excedente','Compra Gastos'],
   'Afiliado Condicional':    ['Condicional','Cobertura Total Con Excedente'],
@@ -1242,28 +1414,6 @@ var CATEGORIAS_POR_TIPO = {
   'Mascota':                 ['Mascota','Mascota Cobertura Total','Mascota Condicional','Mascota Particular'],
   'Servicios No Prestados':  ['Servicios No Prestados','Parcial','8: Parcial']
 };
-
-var SEDES = [
-  'Acacias','Alcala','Anapoima','Andalucia','Anserma','Anserma Nuevo','Anzoategui',
-  'Apia','Arauca','Aranzazu','Argelia','Armenia','Armero Guayabal','Aipe',
-  'Barcelona','Belalcazar','Belen','Bogotá','Bolivar','Bucaramanga','Bugalagrande',
-  'Cachipay','Caicedonia','Calarca','Cali','Caramanta','Cartago','Chinchina',
-  'Circasia','Cordoba','Cuba','El Aguila','El Dovio','Espinal','Facatativa',
-  'Florida','Fresno','Fusagasuga','Garzón','Genova','Girardot','Guacari',
-  'Guatica','Honda','Ibague','Icononzo','Itagui','La 27','La 30','La Dorara',
-  'La Pintada','La Plata','La Unión','La Victoria','La Virginia','Lerida',
-  'Libano','Manizales','Mariquita','Marmato','Marsella','Medellin','Melgar',
-  'Meta','Mistrato','Mocoa','Montenegro','Neira','Neiva','Obando','Pacora',
-  'Padua','Palestina','Palmira','Perla Del Sur','Pijao','Pitalito','Popayan',
-  'Pradera','Pueblo Rico','Puerto Boyacá','Quinchia','Quimbaya','Restrepo',
-  'Risaralda','Riosucio','Riofrio','Roldanillo','Rovira','Salamina',
-  'San Gil','San Jose Del Palmar','San Lorenzo','Santa Barbara','Santa Isabel',
-  'Santa Marta','Santa Rosa','Santander De Quilichao','Santuario','Ser (punto De Pago)',
-  'Sevilla','Supia','Tamesis','Tebaida','Tocaima','Toro','Trujillo','Tulua',
-  'Ulloa','Valparaiso','Venadillo','Versalles','Villa Hermosa','Villa Rica',
-  'Villarica','Villavicencio','Viterbo','Yotoco','Yumbo','Zarzal',
-  'Barranquilla','Caramanta','Guatica'
-];
 
 var CIUDADES_COLOMBIA = [
   'Pereira','Dosquebradas','La Virginia','Santa Rosa de Cabal','Marsella',
@@ -1291,30 +1441,18 @@ var filaEditar = null;
 document.addEventListener('DOMContentLoaded', function() {
   modoDemo = sessionStorage.getItem('app_modoDemo') === '1';
   regionalActual = sessionStorage.getItem('app_regionalActual') || null;
-
   try {
     var userData = sessionStorage.getItem('app_usuario');
-    if (userData) {
-      var u = JSON.parse(userData);
-      if (u && u.regional) regionalActual = regionalActual || u.regional;
-    }
+    if (userData) { var u = JSON.parse(userData); if (u && u.regional) regionalActual = regionalActual || u.regional; }
   } catch(e) {}
-
-  if (!regionalActual) {
-    mostrarSelectorRegional();
-    return;
-  }
-
+  if (!regionalActual) { mostrarSelectorRegional(); return; }
   iniciarFormulario();
 });
 
-function mostrarSelectorRegional() {
-  document.getElementById('modal-regional').style.display = 'flex';
-}
+function mostrarSelectorRegional() { document.getElementById('modal-regional').style.display = 'flex'; }
 
 function confirmarRegional() {
-  var sel = document.getElementById('modal-sel-regional');
-  var val = sel.value;
+  var val = document.getElementById('modal-sel-regional').value;
   if (!val) { mostrarToast('Selecciona una regional para continuar', 'error'); return; }
   regionalActual = val;
   sessionStorage.setItem('app_regionalActual', val);
@@ -1324,7 +1462,6 @@ function confirmarRegional() {
 
 function iniciarFormulario() {
   document.getElementById('topbar-regional').textContent = regionalActual;
-
   var campoRegional = document.querySelector('[data-col="Regional"]');
   if (campoRegional) campoRegional.value = regionalActual;
 
@@ -1335,6 +1472,7 @@ function iniciarFormulario() {
   if (campoRep && !campoRep.value) campoRep.value = formatDTL(ahora);
 
   poblarSedes();
+  poblarMunicipiosVelacion();
   poblarCiudades();
   poblarPersonal();
   activarBusquedasGrandes();
@@ -1344,8 +1482,7 @@ function iniciarFormulario() {
   if (editDatos) {
     try {
       var datos = JSON.parse(editDatos);
-      editando = true;
-      filaEditar = editFila;
+      editando = true; filaEditar = editFila;
       document.getElementById('edit-badge').style.display = 'flex';
       document.getElementById('topbar-title').textContent = 'EDITAR PRESTACIÓN';
       llenarFormulario(datos);
@@ -1357,518 +1494,81 @@ function iniciarFormulario() {
 // POBLAR SELECTS
 // ============================================================
 function poblarSedes() {
-  var sel    = document.getElementById('sel-sede');
-  var selVel = document.getElementById('sel-lugar-vel');
-  SEDES.forEach(function(s) {
-    if (sel)    sel.add(new Option(s, s));
-    if (selVel) selVel.add(new Option(s, s));
+  var sel = document.getElementById('sel-sede');
+  if (!sel) return;
+  SEDES_DATA.forEach(function(s) {
+    var label = s.id + '-' + s.nombre;
+    sel.add(new Option(label, label));
   });
 }
 
+function poblarMunicipiosVelacion() {
+  var sel = document.getElementById('sel-mun-vel');
+  if (!sel) return;
+  MUNICIPIOS_VELACION.forEach(function(m) { sel.add(new Option(m, m)); });
+}
+
 function poblarCiudades() {
-  ['sel-mun','sel-ciudad-muerte','sel-lugar-nac','sel-mun-vel'].forEach(function(id) {
+  ['sel-mun','sel-ciudad-muerte','sel-lugar-nac'].forEach(function(id) {
     var sel = document.getElementById(id);
     if (!sel) return;
     CIUDADES_COLOMBIA.forEach(function(c) { sel.add(new Option(c, c)); });
   });
 }
 
-// ── DATOS REALES EXTRAÍDOS DE LAS IMÁGENES ──────────────────
-var COORDINADORES = [
-  "1079033385-Acosta Pareja Edwin Jeanpoll",
-  "9994955-Agudelo Cardenas Joe",
-  "1007478218-Arango Mejia Ana Karina",
-  "1113304982-Arango Usma Isabel Cristina",
-  "1010683-Arboleda Alzate Ginna Paola",
-  "1114211160-Ayala Sánchez Mayerline",
-  "31435403-Becerra Cardenas Joanna Paola",
-  "9868781-Bermudez Quiceno Edwar Andres",
-  "1094939736-Buitrago Ardila Zaider Jose",
-  "1094953942-Caicedo Florez John Esteban",
-  "4513836-Calderon Bañol Jose Fernando",
-  "1144193605-Candil Castillo Melissa",
-  "1088260934-Cano Bustamante Vanessa",
-  "1234190505-Cardona Maria Camila",
-  "13852714-Carrascal Lopez Darwin Fernando",
-  "1105683078-Castañeda Sierra Jose Luis",
-  "1013638765-Castaño Ospina Hernan Dario",
-  "1112230258-Castro Bolivar Haiver Stiven",
-  "1088038412-Cifuentes Castaño Laura",
-  "1001016610-Colorado Morales Sofia",
-  "1059876324-Colorado Sanchez Lorena",
-  "1192899698-Cordoba Ulabarri Giselle Camila",
-  "1003357864-De Hoyos Muñoz Ana Maria",
-  "1005974816-Diaz Lopez Valentina",
-  "1070599429-Dimas Barco Diego Fernando",
-  "1112785582-Galeano Cardona Natalia",
-  "8331028-Garcia Ossa Paola Andrea",
-  "1087992208-García Alzate Yeidy Paola",
-  "6499114-Gomez Correa Giovanny Antonio",
-  "1088003650-Gomez Gonzalez Vanessa",
-  "1088250651-Gomez Velez Octavio",
-  "1005866240-Gonzalez López Chelubay",
-  "1143979425-Grijalba Restrepo Laura",
-  "1107071677-Guzman Del Campo Victor Eduardo",
-  "1112626234-Gómez González Yanily Fernanda",
-  "89004486-Gómez Gónzalez Manuela",
-  "1143843812-Henao Isaza Esneydi Patricia",
-  "1054916261-Hernandez Perez Aron Antonio",
-  "9725359-Hicapie Prieto Cesar Augusto",
-  "9725358-Hincapié Prieto José Alejandro",
-  "1088283219-Isaza Pineda Rigoberto",
-  "1054923951-Jaramillo Morales Yenifer Tatiana",
-  "1144151052-Jaramillo Rebolledo Jonathan",
-  "1126906727-Jaramillo Villada Cristian David",
-  "1006318032-Jurado Gomez Sebastian",
-  "9726222-Marin Bonilla Jhon Alexander",
-  "1069925795-Martinez Torres Angela Daniela",
-  "1088353397-Marín Restrepo Christian David",
-  "1017256046-Mateo Posada Castañeda",
-  "1073707594-Medina López Emerson Dayan",
-  "18612291-Mejia Gomez Jhon Jairo",
-  "1014221485-Mejia Leon Jonathan Mauricio",
-  "1112779829-Mendoza Fabian Steban",
-  "24396615-Morales Perez Diana Maria",
-  "1088309971-Moreno Gomez Jose Nicolas",
-  "1143857184-Narvaez Toro Yesica Paola",
-  "80358200-Niño Rincon Fredy Alexander",
-  "1070615588-Orjuela Calderon Andrea Katerina",
-  "1108388396-Ortega Urrea Erika Jaritza",
-  "1110546943-Ortega Urrea Jhonathan Farley",
-  "1070585299-Ortiz Lombo Adriana Rocio",
-  "1094948905-Ospina Castaño Cristian Samuel",
-  "93384216-Otavo Ortiz Oscar Julian",
-  "1097408388-Pachon Aguirre Sara",
-  "1110531669-Pamo Cultivar Xiomara Katherine",
-  "1659866-Parra Arce Alexander",
-  "1127624747-Perez Medina Yuskary Camila",
-  "1070616581-Pulido Carranza Angie Paola",
-  "9994597-Ramírez Palacio Jhon Fredy",
-  "88265963-Rangel Alarcon Wilson Hernan",
-  "1088335454-Restrepo Franco Sebastian",
-  "94288979-Rey Bonilla Andres Eduardo",
-  "1088025212-Rios Martinez Natalia Andrea",
-  "1151952203-Rojas Carvajal Estefania",
-  "24398747-Roman Montoya Nini Yohana",
-  "1026594795-Romero Aranzales Paula Daniela",
-  "34066460-Rozo Zapata Viviana Andrea",
-  "1110450380-Ruiz Navarrete Miguel Oswaldo",
-  "1088348929-Saldarriaga Gómez Manuela",
-  "79435429-Salinas Lopez Jesus Antonio",
-  "1039700767-Sierra Herrera Jerson Jhoany",
-  "42164134-Soto Gañan Madelen",
-  "9732654-Taborda Gonzalez John Fredy",
-  "1002595249-Tangarife López Marlon Esneyder",
-  "1054921930-Tapasco Leon Norma Cristina",
-  "11221186-Useche Perez Oscar Antonio",
-  "1006165896-Valencia Gil Catalina",
-  "88031028-Valencia Gomez Maria Alejandra",
-  "1088020337-Valle Henao Julio Cesar",
-  "1007258621-Vargas Angie",
-  "9695072-Vargas Montoya Adolfo Leon",
-  "1087486405-Velez Martinez Juan Jose",
-  "94407447-Velez Restrepo Juan Carlos",
-  "1094964579-Villa Velasquez Johan Camilo",
-  "1070602268-Villalba Cortes Jose Anibal",
-  "1113636578-Villano Valencia Carlos Eduardo",
-  "1088253779-Yepez Martinez Esmeralda",
-  "1004686501-Zamora Gonzalez Maria Camila",
-  "1121148295-Zapata Restrepo Andres David",
-  "1113637327-Zuñiga Molina Jorge Alberto"
-];
+// Salas de velación filtradas por municipio
+function onMunicipioVelacionChange() {
+  var mun = document.getElementById('sel-mun-vel').value;
+  var selLugar = document.getElementById('sel-lugar-vel');
+  var searchLugar = document.getElementById('search-lugar-vel');
 
-var TANATALOGOS = [
-  "14701771-Adrian Fernando Manzano Escobar",
-  "9992942-Albeiro Tabares Velez",
-  "80730276-Carlos Eduardo Uribe Rojas",
-  "1088342611-Daniel Felipe Molina Barrero",
-  "1114089882-Daniel Fernando Castaño",
-  "1012430513-Dayana Aguilar Fernandez",
-  "75038593-Dairo De Jesus Aricapa Saldarriaga",
-  "16776308-Edgar Augusto Rodriguez Zamora",
-  "98392867-Edisson German Rodriguez Benavides",
-  "1059598272-Elsy Mayibi Zambrano Fernandez",
-  "96193358-Elver Antonio Espinosa Correa",
-  "1114091387-Esteban Hernando Orozco Ocampo",
-  "94229299-Fabio Enrique Garcia",
-  "1054925813-Francisco Javier Velez",
-  "16717258-Geofrey Miranda Fuentes",
-  "900340724-Jardines Del Renacer",
-  "1054921884-Jeferson Jamid Giraldo Duque",
-  "11224604-Jeyrin Beltran Laguna",
-  "94493447-Jhon Jairo Penagos Pechene",
-  "1127533639-Joan Paul Stiven Correa Ariza",
-  "1033770254-Johan Arley Correa Rivera",
-  "1112628245-Jonatan Fernando Jaramillo Montoya",
-  "9772513-Jorge Erney Cartagena Varon",
-  "94281304-Jose Duberney Morales Osorio",
-  "93377237-Jose Ignacio Muñoz Artega",
-  "93438408-Jose Omar Florez Beltran",
-  "94364743-Juan Jose Maya Ortiz",
-  "93297344-Julian Garcia Loaiza",
-  "94368204-Luis Alfonso Molina Duque",
-  "16219018-Luis Alfonso Ortega",
-  "93298596-Luis Fernando Bermudez Moyano",
-  "1007577299-Maicol Steven Suares Hernandez",
-  "1116274746-Manuel Alejandro Duque",
-  "25057087-Martha Cecilia Vélez",
-  "9866623-Miguel Angel Betancur Ibarra",
-  "1116248207-Miguel Angel Molina Duque",
-  "1054926207-Muñoz Jaramillo Braian Arled",
-  "1114400784-Orlando Restrepo Patiño",
-  "1054918752-Oscar Mauricio Ocampo Londoño",
-  "79510141-Pablo Emilio Franco Urrego",
-  "18402296-Ramiro Andres Bravo Agudelo",
-  "82394930-Samuel Elias Ruiz Orjuela",
-  "10499503-Silvio Alonso Ascue Conda",
-  "1088346147-Stefany Muñoz Gomez"
-];
+  // Limpiar
+  selLugar.innerHTML = '<option value="">Seleccionar lugar...</option>';
+  if (searchLugar) searchLugar.value = '';
 
-var AUXILIARES = [
-  "1079033385-Acosta Pareja Edwin Jeanpoll",
-  "9994955-Agudelo Cardenas Joe",
-  "1007478218-Arango Mejia Ana Karina",
-  "1113304982-Arango Usma Isabel Cristina",
-  "1010683-Arboleda Alzate Ginna Paola",
-  "1114211160-Ayala Sánchez Mayerline",
-  "31435403-Becerra Cardenas Joanna Paola",
-  "9868781-Bermudez Quiceno Edwar Andres",
-  "1094939736-Buitrago Ardila Zaider Jose",
-  "1094953942-Caicedo Florez John Esteban",
-  "4513836-Calderon Bañol Jose Fernando",
-  "1144193605-Candil Castillo Melissa",
-  "1088260934-Cano Bustamante Vanessa",
-  "1234190505-Cardona Maria Camila",
-  "13852714-Carrascal Lopez Darwin Fernando",
-  "1105683078-Castañeda Sierra Jose Luis",
-  "1013638765-Castaño Ospina Hernan Dario",
-  "1112230258-Castro Bolivar Haiver Stiven",
-  "1088038412-Cifuentes Castaño Laura",
-  "1001016610-Colorado Morales Sofia",
-  "1059876324-Colorado Sanchez Lorena",
-  "1192899698-Cordoba Ulabarri Giselle Camila",
-  "75038593-Dairo De Jesus Aricapa Saldarriaga",
-  "1012430513-Dayana Aguilar Fernandez",
-  "1003357864-De Hoyos Muñoz Ana Maria",
-  "1005974816-Diaz Lopez Valentina",
-  "1070599429-Dimas Barco Diego Fernando",
-  "16776308-Edgar Augusto Rodriguez Zamora",
-  "1059598272-Elsy Mayibi Zambrano Fernandez",
-  "96193358-Elver Antonio Espinosa Correa",
-  "1114091387-Esteban Hernando Orozco Ocampo",
-  "94229299-Fabio Enrique Garcia",
-  "1054925813-Francisco Javier Velez",
-  "1112785582-Galeano Cardona Natalia",
-  "8331028-Garcia Ossa Paola Andrea",
-  "1087992208-García Alzate Yeidy Paola",
-  "16717258-Geofrey Miranda Fuentes",
-  "6499114-Gomez Correa Giovanny Antonio",
-  "1088003650-Gomez Gonzalez Vanessa",
-  "1088250651-Gomez Velez Octavio",
-  "1005866240-Gonzalez López Chelubay",
-  "1143979425-Grijalba Restrepo Laura",
-  "1107071677-Guzman Del Campo Victor Eduardo",
-  "1112626234-Gómez González Yanily Fernanda",
-  "89004486-Gómez Gónzalez Manuela",
-  "1143843812-Henao Isaza Esneydi Patricia",
-  "1054916261-Hernandez Perez Aron Antonio",
-  "9725359-Hicapie Prieto Cesar Augusto",
-  "9725358-Hincapié Prieto José Alejandro",
-  "1088283219-Isaza Pineda Rigoberto",
-  "1054921884-Jeferson Jamid Giraldo Duque",
-  "11224604-Jeyrin Beltran Laguna",
-  "1127533639-Joan Paul Stiven Correa Ariza",
-  "1033770254-Johan Arley Correa Rivera",
-  "1112628245-Jonatan Fernando Jaramillo Montoya",
-  "9772513-Jorge Erney Cartagena Varon",
-  "94281304-Jose Duberney Morales Osorio",
-  "93438408-Jose Omar Florez Beltran",
-  "94364743-Juan Jose Maya Ortiz",
-  "93297344-Julian Garcia Loaiza",
-  "1054923951-Jaramillo Morales Yenifer Tatiana",
-  "1144151052-Jaramillo Rebolledo Jonathan",
-  "1126906727-Jaramillo Villada Cristian David",
-  "1006318032-Jurado Gomez Sebastian",
-  "94368204-Luis Alfonso Molina Duque",
-  "16219018-Luis Alfonso Ortega",
-  "93298596-Luis Fernando Bermudez Moyano",
-  "1007577299-Maicol Steven Suares Hernandez",
-  "1116274746-Manuel Alejandro Duque",
-  "9726222-Marin Bonilla Jhon Alexander",
-  "1069925795-Martinez Torres Angela Daniela",
-  "1088353397-Marín Restrepo Christian David",
-  "1017256046-Mateo Posada Castañeda",
-  "1073707594-Medina López Emerson Dayan",
-  "18612291-Mejia Gomez Jhon Jairo",
-  "1014221485-Mejia Leon Jonathan Mauricio",
-  "1112779829-Mendoza Fabian Steban",
-  "25057087-Martha Cecilia Vélez",
-  "9866623-Miguel Angel Betancur Ibarra",
-  "1116248207-Miguel Angel Molina Duque",
-  "24396615-Morales Perez Diana Maria",
-  "1088309971-Moreno Gomez Jose Nicolas",
-  "1054926207-Muñoz Jaramillo Braian Arled",
-  "1143857184-Narvaez Toro Yesica Paola",
-  "80358200-Niño Rincon Fredy Alexander",
-  "1070615588-Orjuela Calderon Andrea Katerina",
-  "1114400784-Orlando Restrepo Patiño",
-  "1054918752-Oscar Mauricio Ocampo Londoño",
-  "1108388396-Ortega Urrea Erika Jaritza",
-  "1110546943-Ortega Urrea Jhonathan Farley",
-  "1070585299-Ortiz Lombo Adriana Rocio",
-  "93384216-Otavo Ortiz Oscar Julian",
-  "79510141-Pablo Emilio Franco Urrego",
-  "1097408388-Pachon Aguirre Sara",
-  "1110531669-Pamo Cultivar Xiomara Katherine",
-  "1659866-Parra Arce Alexander",
-  "1127624747-Perez Medina Yuskary Camila",
-  "1070616581-Pulido Carranza Angie Paola",
-  "9994597-Ramírez Palacio Jhon Fredy",
-  "18402296-Ramiro Andres Bravo Agudelo",
-  "88265963-Rangel Alarcon Wilson Hernan",
-  "1088335454-Restrepo Franco Sebastian",
-  "94288979-Rey Bonilla Andres Eduardo",
-  "1088025212-Rios Martinez Natalia Andrea",
-  "1151952203-Rojas Carvajal Estefania",
-  "24398747-Roman Montoya Nini Yohana",
-  "1026594795-Romero Aranzales Paula Daniela",
-  "34066460-Rozo Zapata Viviana Andrea",
-  "1088348929-Saldarriaga Gómez Manuela",
-  "79435429-Salinas Lopez Jesus Antonio",
-  "82394930-Samuel Elias Ruiz Orjuela",
-  "1039700767-Sierra Herrera Jerson Jhoany",
-  "10499503-Silvio Alonso Ascue Conda",
-  "42164134-Soto Gañan Madelen",
-  "1088346147-Stefany Muñoz Gomez",
-  "9732654-Taborda Gonzalez John Fredy",
-  "9992942-Albeiro Tabares Velez",
-  "1002595249-Tangarife López Marlon Esneyder",
-  "1054921930-Tapasco Leon Norma Cristina",
-  "1088020337-Valle Henao Julio Cesar",
-  "88031028-Valencia Gomez Maria Alejandra",
-  "1006165896-Valencia Gil Catalina",
-  "1007258621-Vargas Angie",
-  "9695072-Vargas Montoya Adolfo Leon",
-  "1087486405-Velez Martinez Juan Jose",
-  "94407447-Velez Restrepo Juan Carlos",
-  "1094964579-Villa Velasquez Johan Camilo",
-  "1070602268-Villalba Cortes Jose Anibal",
-  "1113636578-Villano Valencia Carlos Eduardo",
-  "1088253779-Yepez Martinez Esmeralda",
-  "1004686501-Zamora Gonzalez Maria Camila",
-  "1121148295-Zapata Restrepo Andres David",
-  "1113637327-Zuñiga Molina Jorge Alberto"
-];
+  // Siempre agregar opciones genéricas
+  selLugar.add(new Option('414-Residencia', '414-Residencia'));
+  selLugar.add(new Option('249-Sin Velacion', '249-Sin Velacion'));
+  selLugar.add(new Option('121-N/a', '121-N/a'));
 
-var PLACAS = [
-  "ARN666","BRZ208","CGB340","CHE809","CKC858","CNC123","CND628","CPM169",
-  "CUM533","CUM578","CUM597","CUM648","CUP029","CUP823","CUQ362","DBS719",
-  "DCI714","DCI952","DLV362","DQX 439","DQZ909","DRK288","DRK359","DXP499",
-  "EDY428","EWU278","EWV278","FQK728","GJX-586","GJX497","GJX506","GJX568",
-  "GXN300","GXQ387","HDR782","HKV153","HKZ144","HMF130","HWS018","HWS033",
-  "HWS829","HWT515","HYL381","ICQ333","IGN433","IGN434","IGN439","IGN448",
-  "IGX568","IPW298","IZY911","JRT411","JRT415","JRT429","KCU023","KCU124",
-  "LXZ504","LXZ505","LXZ509","LXZ512","LXZ514","MFX612","MRZ 349","MUU679",
-  "MUX134","MUZ439","MUZ447","NKP061","PEP343","PFN450","PFO147","PFT173",
-  "RDM","RDM978","RGA304","RGA539","RGA817","URQ419","WLK155",
-  "No Aplica","PROVEEDOR"
-];
+  if (!mun) return;
 
-// Auxiliares de cafetería — lista real
-var AUXILIARES_CAFE = [
-  "Loaiza Quintero Andrea Estefanía","Garcia Castro Laura Fernanda","Patiño Quintero Diana Carolina",
-  "Valencia Santacruz Carolay","Ospina Tamayo Carolina","Mejia Rodriguez Maria Fernanda",
-  "Devia Sepulveda Alix Viviana","Jurado Montoya Natalia","Ortiz Ospina Angy Mayerli",
-  "Calero Vasquez Nicol","Franco Castaño Karen Tatiana","Perez Hernandez Diana Patricia",
-  "Bermudez Trujillo Abril Tatiana","Gonzalez Naileth Dominga","Granada Leidy",
-  "Hernandez Perez Aron Antonio","Cardona Quinter Viviana Andrea","Garces Grisales Erika Julieth",
-  "Quiros Roman Mildrey Johana","Morales Marina Teresa","Bolivar Morales Francy Estella",
-  "Suarez Villada Yessica","Grajales Grajales Sthefania","Sanchez Bedoya Jessica Andrea",
-  "Osorio Henao Tania","Henao Piedrahita Luisa Fernanda","Rivera Ramirez Maria Angelica",
-  "Rivera Olaya Maria Isabel","Aragon Alejandra","Solis Yeimy",
-  "Moreno Perdomo Gina Milena","Ortiz Ramirez Leidy","Franco Rodas Viviana Andrea",
-  "Correa Bedoya Yersy Paola","Gonzalez Velasquez Vanessa","Hincapie Valencia Luz Nelly",
-  "Mejia Serna Maria Alejandra","Garcia Martinez Yorleny Andrea","Fernandez Corre Luisa Fernanda",
-  "Rodriguez B Angie Lorena","Calvo Garcia Monica","Ceballos Ortiz Aida Luz",
-  "Hernandez Xiomara","Villegas Angie Tatiana","Sanchez Anabeiba",
-  "Alfonso Viviana Marcela","Garcia Cardona Paola","Morales Viviana Andrea",
-  "Arrubla Torres Ana Maria","Martinez Rincon Monica Viviana","Serna Jessica Alejandra",
-  "Lozano Rodriguez Nora Sofia","Narvaez Rojas Evelitssi","Ramirez Kelly",
-  "Toro Ospina Diana Yaneth","Arismendi Ocampo Luz Elena","Morales Martha Lucia",
-  "Restrepo Castiblanco Santiago","Guerra Maria Nancy","Alarcon Zamora Jessica Dania",
-  "Martinez Lopez Daniel Indira","Cartagena Murillo Leidy","Valencia Claudia Patricia",
-  "Varon Monica","Viera Angie Dahiana","Salazar Franco Andrea",
-  "Brito Arias Katherin","Perez Medina Yuskary Camila","Triana Lamis Virginia Esther",
-  "Sierra Restrepo Mayra Alejandra","Castro Manrique Rumyni Alexandra","Perez Bonilla Heidy Vanessa",
-  "Sepulveda Hoyos Angie Nathali","Camacho Karol Lizeth","Cordoba Ulabarri Giselle Camila",
-  "Blandon Gonzalez Gina Marcela","Zapata Restrepo Gustavo Alberto","Lopez Oyola Yeimi",
-  "Riaño Mary Alejandra","Venezuela Rios Milena","Rojas Peña Miryam",
-  "Cardona Acevedo Dabeiba","Hoyos Gladys Stella","Ossa Maria Nancy",
-  "Rendon Maria Olinde","Valencia Diana Patricia","Ladino Orozco Maria Eugenia",
-  "Caro Trejos Maryury","Roman Villegas Gloria Stella","Agudelo Cuellar Diana Patricia",
-  "Garcia Maya Consuelo","Martinez Ladino Maria Eugenia","Marin Gallego Luz Enith",
-  "Martinez Martinez Teresa","Rivera Gloria Ines","Cantor Luz Helena",
-  "Del Pilar Bedoya Adriana","Gutiérrez Carmen Omaira","Gutiérrez Mejia María Luz Mery",
-  "Quintero Luz Amparo","Marin Vallejo Luz Cielo","Maya Muñoz Gloria Ines",
-  "Quijano Yence","Castaño Pinzon Luz Amparo","Ortiz Maria De Las Mercedes",
-  "Fernandez Noelva","Montoya Barreto Brenda Fabiola","Morales Claudia Patricia",
-  "Soto Jaramillo Maria Rosalba","Garcia Martinez Magnolia","Ortiz Carmona Adriana Maria",
-  "Florez Henao Adiela","Ocampo Castaño Magdalena","Loaiza Vasquez Gloria Ines",
-  "Arroyave Lopez Deisy Viviana","Tobon De Muñoz Maria Esneda","De Blandon Elvira Miranda",
-  "Grisales Villa Jazmin","Diaz Garcia Lucero","Gomez Garcia Flor Marina",
-  "Villa Londoño Maria Elizabeth","Piedrahita Henao Claudia Lucero","Franco Ramirez Ubelny",
-  "Rincon Morales Claudia Patricia","Hernandez Claudia Yolanda","Ladino Trejos Consuelo De Jesus",
-  "Holguin Francy Elena","Velez Martha Cecilia","Quintana Osorio Maria Virgelina",
-  "Gaviria Castañeda Gloria Ines","Quintero Bertha Nidia","Ramirez Marin Maria De Los Angeles",
-  "Perez Lopez Luz Elena","Pareja Vanegas Diana Isabel","Blandon Maria Nohemi",
-  "Muñoz Garcia Maria Sirleny","Castro Amaya Gloria Amparo","Zuleta Agudelo Luz Adiela",
-  "Gallego Acevedo Claudia Milena","Restrepo Gloria Milena","Henao Sanchez Maria Elizabeth",
-  "Castro Amaya Maria Carmelina","Pastrana Paut Nuris Del Carmen","Perez Hernandez Claritza",
-  "Ramos Mendez Blanca Hildaly","Castro Osorio Nidia","Gaviria Bedoya Adelaida",
-  "Pescador Morales Rosalba","Gomez Suldery","Gomez Parra Suldery",
-  "Ramirez Luz Adriana","Rodas Molina Maria Norma Lucia","Mesa Beatriz Elena",
-  "Montoya Rosa Mria","Riveros Yamilena","Santacruz Tello Victoria",
-  "Izao Ramirez Blanca Melcis","Valencia Correa Martha Lucia","Lopez Zapata Marcela",
-  "Herrera Garcia Maria Fabiola","Sanchez Claudia Milena","Valdez Maria Aleida",
-  "Zapata Maria Yolanda","Ospina Montaño Maria Amparo","Pulgarin Lopez Gloria Amparo",
-  "Velez Palacio Fanny","Lopez Montoya Alba Lucia","Osorio Nidia",
-  "Montoya Murillo Luz Helena","Betancur Maria Isabel","Valencia Suarez Claudia Isabel",
-  "Lopez Parra Yuly Milena","Londoño Arias Clara Eugenia","Carmona Alzate Maria Ines",
-  "Bueno Bueno Maria Lilia","Restrepo Alarcon Angela Patricia","Pescador Bueno Oliviana",
-  "Henao Luz Mery","Sandoval Elizabeth","Vargas Arango Magnolia",
-  "Orozco Ramirez Martha Isabel","Castaño Maria Del Carmen","Cortés Maria Esther",
-  "Lopera Maya Gloria Patricia","Parra Adriana Milena","Montes Martha Lucia",
-  "Ospina Castaño Luz Marina","Lopez Jaramillo Luz Estella","Franco Luz Elena",
-  "Cordoba Hernandez Yovana","Pinilla Gallego Cenaida","Abril Ibarra Aura Rosa",
-  "Botero Rosa Maria","Carvajal Ramirez Nohora Elena","Bedoya Marin Edilma",
-  "Dodino Liceth Yohana","Bernal Luz Nibia","Gutierrez Ladino Marisol",
-  "Valencia Bedoya Paula Andrea","Corrales Rendon Luisa Yohana","Londoño Manco Luz Mery",
-  "Rozo Zapata Viviana Andrea","Perez Vitalina","Otalora Obando Yeimmy Paola",
-  "Trujillo Yuli Lorena","Montero Cruz Hermelinda","Gutierrez Robayo Luz Stella",
-  "Garcia Niny Yohana","Ramirez Fernandez Maria Isabel","Ramirez Betancourt Ligia",
-  "Buitrago Gomez Eli Joana","Diaz Dubis Maris","Valencia Marin Diana Maria",
-  "Cardona Maria Irma","Diaz Camacho Betty","Guarnizo Jimenez Rosy Giovana",
-  "Diaz Angel Luz Mery","Macias Olga Yamile","Jurado Lopez Nancy Cecilia",
-  "Lopez Martha Lucero","Valencia Arias Luz Mabelly","Aguirre Martha Yaneth",
-  "Cardona Blanca Dulbay","Gonzalez Maria Andrea","Diaz Torres Alma Milena",
-  "Rodriguez Viviana","Cortes Leidy Bibiana","Gonzalez García Gloria Patricia",
-  "Velez Rodriguez Amanda","Soto Martha Lucia","Marin Consuelo",
-  "Pareja Isabel","Arbelaez Salazar Miriam","Rendon Giraldo Luz Stella",
-  "Ramirez Muñoz Carmen Edilia","Botero Rendon Maria Ludivia","Porras Maria Elena",
-  "Quiroz Roman Maria Elena","Montoya Molina Katherine","Ospina Martha Celilia",
-  "Gonzalez Montes Elizabeth","Henao Laura Lina","Usuga Lopez Ana Celmira",
-  "Agudelo Arango Claudia Patricia","Quinchia Diosa Oneyda De Jesus","Holguin Grajales Luz Adriana",
-  "Ruiz Ramos Tiemei","Medina Jaimes Martha Patricia","Lozano Maria Nubia",
-  "Vargas Vargas Rosalba","Cordoba Gomez Eimy Yamile","Solano Yolima Andrea",
-  "Barrero Rengifo Norma Cecilia","Posada Arboleda Lilalba","Nuñez Cuellar Maria Eugenia",
-  "Gonzalez Forero Gloria Piedad","Grisales Patricia","Guarnizo Jimenez Angely Patricia",
-  "Cortez Nini Jhoana","Urdinola Isabel Cristina","Mosquera Ponce Sandra Dianed",
-  "Quiros Quintero Elisabeth","Cardona Munera Sandra","Montes Paredes Jackeline",
-  "Mosquera Ruiz Maria Carmenza","Pinzon Luz Dary","Arevalo Rosa",
-  "Guzman Luisa Fernanda","Rivera Villegas Rosa Maria","Montes Valencia Jose Reinel",
-  "García Nelly","Carrillo Jhon James","Mondragon Ramirez Idalba",
-  "Alba Yaned Hernandez Bedoya","Amparo Aricapa Yusti","Luz Aida Rivera Cano",
-  "Gloria Amparo Giraldo Lopez","Sandra Patricia Virgen Noreña","Argemira Garcia Perez",
-  "Leidy Bibiana Granda Garcia","Ayda Rosa Suarez","Nohra Mildred Lopez Palacios",
-  "Luz Adriana Raigosa Martinez","Leidy Johana Villa","Mary Luz Puerta Quintero",
-  "Olga Viviana Gutierrez Garcia"
-].sort();
+  var k = mun.toLowerCase().trim();
+  var salas = SALAS_POR_MUN[k] || [];
+  salas.forEach(function(s) {
+    var label = s.id + '-' + s.sala;
+    selLugar.add(new Option(label, label));
+  });
 
-// Clínicas y hospitales — documento IDCLINICA
-var CLINICAS = [
-  "Clínica Cristo Rey","Central De Urgencias Louis Pasteur","Centro De Salud Decepaz",
-  "Centro De Salud El Cremal","Centro Dermatologíco De Cali","Centro Medico Circasia",
-  "Clinica Cancelorogica Del Quindio","Clinica Central","Clinica Central Del Quindio",
-  "Clinica Del Cafe","Clinica Del Parque","Clinica Del Parque Armenia",
-  "Clinica Del Sur I.p.s Sede Principal","Clinica Esensa","Clinica Fundación Ong Mision Por Colombia De La Union",
-  "Clinica Fundadores","Clinica Garper Medica","Clinica Guadalupe",
-  "Clinica La Estancia","Clinica Los Colores - Cali","Clinica Mariangel",
-  "Clinica María Ángel","Clinica Medicadiz","Clinica Medical Bogota",
-  "Clinica Medilaser Neiva","Clinica Medimas","Clinica Nuestra Señora De Belen",
-  "Clinica Nuestra Señora De Los Remedios","Clinica Nueva Cali","Clinica Palermo",
-  "Clinica Renal","Clinica Sagrada Familia","Clinica San Blass",
-  "Clinica San Sebastian","Clinica Santa Matilde","Clinica Sebastian De Belalcazar",
-  "Clinica Tolimed","Clínica Amiga Comfandi","Clínica Asotrauma",
-  "Clínica Avidanti","Clínica Betania","Clínica Calambeo Ibagué",
-  "Clínica Colombia","Clínica Colsubsidio","Clínica Comfamiliar Risaralda - Pereira",
-  "Clínica Comfenalco","Clínica De Ibagué","Clínica De Occidente",
-  "Clínica Del Tolima","Clínica Desa","Clínica Dumian De Girardot",
-  "Clínica El Lago - Pereira","Clínica Farallones","Clínica Girardot",
-  "Clínica Imbanaco Cali","Clínica Leon X I I I","Clínica Los Rosales - Pereira",
-  "Clínica Med","Clínica Mega Centro Pinares - San Rafael- Pereira","Clínica Nuestra",
-  "Clínica Nuestra Señora De Los Remedios","Clínica Nueva El Lago","Clínica Nueva Rafael Uribe Uribe",
-  "Clínica Palma Real","Clínica Palmira S.a","Clínica Recuperar",
-  "Clínica Rey David","Clínica San Francisco S.a.","Clínica San Juan De Dios",
-  "Clínica San Rafael (cuba)","Clínica Santa Bárbara","Clínica Santa Sofía Del Pacífico",
-  "Clínica Sharon","Clínica Sura","Clínica Versalles",
-  "Clínica Veterinaria - Universidad De Caldas","Confandi - Cartago","Cruz Roja Colombiana Seccional Caldas",
-  "E.p.s. Sanitas S.a","E.s. Hospital San Vicente De Paúl","Ese Hospital Antonio Roldan Betancur",
-  "Ese Hospital General San Isidro","Espco Clínica Regional De Occidente","Filandia Hospital San Vicente De Paul",
-  "Fundación Valle Del Lili","HOSPITAL SAN JORGE","Hogar Geriátrico Amor Y Esperanza",
-  "Hogar Geriátrico Villa De Amor Y Paz","Hopital La Misericordia","Hopital Mental",
-  "Hopital Departamental Universitario San Juan De Dios","Hopital Sagrado Corazon De Jesus",
-  "Hopital San Vicente De Paul","Hopital San Vicente","Hospital San Roque",
-  "Hospital San Vicente De Paul","Hospital Alfonso Jaramillo","Hospital Antonio Roldan Betancur",
-  "Hospital Benjamín Barney Florida Valle","Hospital Cancerologico","Hospital Cardiovascular",
-  "Hospital Carlos Holmes De Cali","Hospital Centenario De Sevilla","Hospital De Agua De Dios",
-  "Hospital De Caldas S.e.s","Hospital De La Mesa","Hospital De Los Chorros",
-  "Hospital Del Sur","Hospital Del Sur Itagui","Hospital Departamental Felipe Suarez E.s.e.",
-  "Hospital Departamental Mario Correa Rengifo","Hospital Departamental San Antonio De Marmato",
-  "Hospital Departamental San Antonio De Roldanillo","Hospital Departamental San Juan De Dios De Riosucio Caldas E.s.e.",
-  "Hospital Departamental San Rafael De Risaralda E.s.e","Hospital Departamental San Vicente De Paul",
-  "Hospital Departamental Santa Sofía De Caldas","Hospital Departamental Tomás Uribe",
-  "Hospital Departamental Universitario Evaristo Garcia","Hospital El Cincuentenario",
-  "Hospital Federico Lleras Arbelaez - Cunday","Hospital Federico Lleras De Ibague",
-  "Hospital Federico Lleras Sede Limonar","Hospital General","Hospital Gonzalo Contreras",
-  "Hospital Hernando Moncaleano Perdomo","Hospital Isaias Duarte Cancino","Hospital Joaquín Paz Borrero",
-  "Hospital José Rufino Vivas","Hospital Kennedy","Hospital Kennedy Pereira",
-  "Hospital La 40 - Pereira","Hospital La Buena Esperanza","Hospital La Mesa Cundinamarca",
-  "Hospital La Misericordia","Hospital La Misericordia Barcelona","Hospital La Misericordia Calarcá",
-  "Hospital Lindo Remeo De Cali","Hospital Local Candelaria","Hospital Local De La Mesa",
-  "Hospital Marco Fidel Suarez De Bello","Hospital Melgar Tolima","Hospital Nazareth",
-  "Hospital Nelson Restrepo","Hospital Nuestra Señora De Los Santos","Hospital Pablo Tobón Uribe",
-  "Hospital Piendamo","Hospital Piloto De Jamundí","Hospital Pio X",
-  "Hospital Pio X La Tebaida","Hospital Pio Xll De La Argelia","Hospital Primitivo Iglesias",
-  "Hospital Raúl Orejuela Bueno - Palmira Valle","Hospital Regional Alfonso Jaramillo Salazar",
-  "Hospital Reina Sofia","Hospital Roosevelt","Hospital Rubén Cruz Vélez",
-  "Hospital San Antonio","Hospital San Antonio De Caramanta E.s.e.","Hospital San Antonio De Guamo",
-  "Hospital San Camilo","Hospital San Camilo Buenavista","Hospital San Joaquin-cuba - Pereira",
-  "Hospital San Jorge","Hospital San Jose De Belalcazar","Hospital San Jose De Viterbo",
-  "Hospital San José","Hospital San José De Marsella, Risaralda","Hospital San Juan Bautista",
-  "Hospital San Juan De Dios","Hospital San Juan De Dios Tamesis","Hospital San Lorenzo",
-  "Hospital San Marcos E.s.e.","Hospital San Nicolas De Versalles","Hospital San Pedro Y San Pablo - La Virginia",
-  "Hospital San Rafael De Fusagasugá","Hospital San Rafael Del Aguila","Hospital San Rafael Del Espinal",
-  "Hospital San Rafael- Pueblo Rico","Hospital San Roque Cordoba","Hospital San Vicente",
-  "Hospital San Vicente De Arauca E.s.e.","Hospital San Vicente De Paul","Hospital San Vicente De Paul - Apia",
-  "Hospital San Vicente De Paul Alcalá","Hospital San Vicente De Paul Circasia","Hospital San Vicente De Paul Salento",
-  "Hospital San Vicente De Paul Santa Rosa De Cabal","Hospital San Vicente De Paul l",
-  "Hospital San Vicente De Paúl","Hospital San Vicente De Paúl Anserma","Hospital San Vicente De Paúl Mistrato",
-  "Hospital San Vicente De Paúl. Santuario - Risaralda","Hospital Sanjuan Dedios",
-  "Hospital Santa Ana","Hospital Santa Ana Yolanda Sanchez Ramirez","Hospital Santa Ana Anserma Nuevo",
-  "Hospital Santa Ana E.s.e.","Hospital Santa Ana Pijao","Hospital Santa Barbara",
-  "Hospital Santa Lucia El Dovio","Hospital Santa Monica - Pereira","Hospital Santa Teresita",
-  "Hospital Santamaria","Hospital Santander","Hospital Universitario San Jorge - Pereira",
-  "Instituto Del Corazón Manizales","Ips Municipal De Cartago","Ips Virrey Solis",
-  "Liga Contra El Cancer","Medicina Legal","Medicina Legal De Cartago",
-  "Medicina Legal Palmira","Medicina Legal Roldanillo","Medicina Legal Tulua",
-  "Medicina Legal-Cali","Montenegro San Vicente De Montenegro","N/a",
-  "Oncologos De Occidente","Pinares Médica - Pereira","Quimbaya Sagrado Corazon De Jesus",
-  "Sagrada Familia","Unidad De Salud De Ibague (usi)","Domicilio","Via Publica","Otro"
-].sort();
+  // Mostrar buscador si hay muchas opciones
+  if (selLugar.options.length > 5 && searchLugar) {
+    searchLugar.classList.add('visible');
+    selLugar.classList.add('with-search');
+  }
+}
+
+var COORDINADORES = ["1079033385-Acosta Pareja Edwin Jeanpoll","9994955-Agudelo Cardenas Joe","1007478218-Arango Mejia Ana Karina","1113304982-Arango Usma Isabel Cristina","1010683-Arboleda Alzate Ginna Paola","1114211160-Ayala Sánchez Mayerline","31435403-Becerra Cardenas Joanna Paola","9868781-Bermudez Quiceno Edwar Andres","1094939736-Buitrago Ardila Zaider Jose","1094953942-Caicedo Florez John Esteban","4513836-Calderon Bañol Jose Fernando","1144193605-Candil Castillo Melissa","1088260934-Cano Bustamante Vanessa","1234190505-Cardona Maria Camila","13852714-Carrascal Lopez Darwin Fernando","1105683078-Castañeda Sierra Jose Luis","1013638765-Castaño Ospina Hernan Dario","1112230258-Castro Bolivar Haiver Stiven","1088038412-Cifuentes Castaño Laura","1001016610-Colorado Morales Sofia","1059876324-Colorado Sanchez Lorena","1192899698-Cordoba Ulabarri Giselle Camila","1003357864-De Hoyos Muñoz Ana Maria","1005974816-Diaz Lopez Valentina","1070599429-Dimas Barco Diego Fernando","1112785582-Galeano Cardona Natalia","8331028-Garcia Ossa Paola Andrea","1087992208-García Alzate Yeidy Paola","6499114-Gomez Correa Giovanny Antonio","1088003650-Gomez Gonzalez Vanessa","1088250651-Gomez Velez Octavio","1005866240-Gonzalez López Chelubay","1143979425-Grijalba Restrepo Laura","1107071677-Guzman Del Campo Victor Eduardo","1112626234-Gómez González Yanily Fernanda","89004486-Gómez Gónzalez Manuela","1143843812-Henao Isaza Esneydi Patricia","1054916261-Hernandez Perez Aron Antonio","9725359-Hicapie Prieto Cesar Augusto","9725358-Hincapié Prieto José Alejandro","1088283219-Isaza Pineda Rigoberto","1054923951-Jaramillo Morales Yenifer Tatiana","1144151052-Jaramillo Rebolledo Jonathan","1126906727-Jaramillo Villada Cristian David","1006318032-Jurado Gomez Sebastian","9726222-Marin Bonilla Jhon Alexander","1069925795-Martinez Torres Angela Daniela","1088353397-Marín Restrepo Christian David","1017256046-Mateo Posada Castañeda","1073707594-Medina López Emerson Dayan","18612291-Mejia Gomez Jhon Jairo","1014221485-Mejia Leon Jonathan Mauricio","1112779829-Mendoza Fabian Steban","24396615-Morales Perez Diana Maria","1088309971-Moreno Gomez Jose Nicolas","1143857184-Narvaez Toro Yesica Paola","80358200-Niño Rincon Fredy Alexander","1070615588-Orjuela Calderon Andrea Katerina","1108388396-Ortega Urrea Erika Jaritza","1110546943-Ortega Urrea Jhonathan Farley","1070585299-Ortiz Lombo Adriana Rocio","1094948905-Ospina Castaño Cristian Samuel","93384216-Otavo Ortiz Oscar Julian","1097408388-Pachon Aguirre Sara","1110531669-Pamo Cultivar Xiomara Katherine","1659866-Parra Arce Alexander","1127624747-Perez Medina Yuskary Camila","1070616581-Pulido Carranza Angie Paola","9994597-Ramírez Palacio Jhon Fredy","88265963-Rangel Alarcon Wilson Hernan","1088335454-Restrepo Franco Sebastian","94288979-Rey Bonilla Andres Eduardo","1088025212-Rios Martinez Natalia Andrea","1151952203-Rojas Carvajal Estefania","24398747-Roman Montoya Nini Yohana","1026594795-Romero Aranzales Paula Daniela","34066460-Rozo Zapata Viviana Andrea","1110450380-Ruiz Navarrete Miguel Oswaldo","1088348929-Saldarriaga Gómez Manuela","79435429-Salinas Lopez Jesus Antonio","1039700767-Sierra Herrera Jerson Jhoany","42164134-Soto Gañan Madelen","9732654-Taborda Gonzalez John Fredy","1002595249-Tangarife López Marlon Esneyder","1054921930-Tapasco Leon Norma Cristina","11221186-Useche Perez Oscar Antonio","1006165896-Valencia Gil Catalina","88031028-Valencia Gomez Maria Alejandra","1088020337-Valle Henao Julio Cesar","1007258621-Vargas Angie","9695072-Vargas Montoya Adolfo Leon","1087486405-Velez Martinez Juan Jose","94407447-Velez Restrepo Juan Carlos","1094964579-Villa Velasquez Johan Camilo","1070602268-Villalba Cortes Jose Anibal","1113636578-Villano Valencia Carlos Eduardo","1088253779-Yepez Martinez Esmeralda","1004686501-Zamora Gonzalez Maria Camila","1121148295-Zapata Restrepo Andres David","1113637327-Zuñiga Molina Jorge Alberto"];
+
+var TANATALOGOS = ["14701771-Adrian Fernando Manzano Escobar","9992942-Albeiro Tabares Velez","80730276-Carlos Eduardo Uribe Rojas","1088342611-Daniel Felipe Molina Barrero","1114089882-Daniel Fernando Castaño","1012430513-Dayana Aguilar Fernandez","75038593-Dairo De Jesus Aricapa Saldarriaga","16776308-Edgar Augusto Rodriguez Zamora","98392867-Edisson German Rodriguez Benavides","1059598272-Elsy Mayibi Zambrano Fernandez","96193358-Elver Antonio Espinosa Correa","1114091387-Esteban Hernando Orozco Ocampo","94229299-Fabio Enrique Garcia","1054925813-Francisco Javier Velez","16717258-Geofrey Miranda Fuentes","900340724-Jardines Del Renacer","1054921884-Jeferson Jamid Giraldo Duque","11224604-Jeyrin Beltran Laguna","94493447-Jhon Jairo Penagos Pechene","1127533639-Joan Paul Stiven Correa Ariza","1033770254-Johan Arley Correa Rivera","1112628245-Jonatan Fernando Jaramillo Montoya","9772513-Jorge Erney Cartagena Varon","94281304-Jose Duberney Morales Osorio","93377237-Jose Ignacio Muñoz Artega","93438408-Jose Omar Florez Beltran","94364743-Juan Jose Maya Ortiz","93297344-Julian Garcia Loaiza","94368204-Luis Alfonso Molina Duque","16219018-Luis Alfonso Ortega","93298596-Luis Fernando Bermudez Moyano","1007577299-Maicol Steven Suares Hernandez","1116274746-Manuel Alejandro Duque","25057087-Martha Cecilia Vélez","9866623-Miguel Angel Betancur Ibarra","1116248207-Miguel Angel Molina Duque","1054926207-Muñoz Jaramillo Braian Arled","1114400784-Orlando Restrepo Patiño","1054918752-Oscar Mauricio Ocampo Londoño","79510141-Pablo Emilio Franco Urrego","18402296-Ramiro Andres Bravo Agudelo","82394930-Samuel Elias Ruiz Orjuela","10499503-Silvio Alonso Ascue Conda","1088346147-Stefany Muñoz Gomez"];
+
+var AUXILIARES_CAFE = ["Loaiza Quintero Andrea Estefanía","Garcia Castro Laura Fernanda","Patiño Quintero Diana Carolina","Valencia Santacruz Carolay","Ospina Tamayo Carolina","Mejia Rodriguez Maria Fernanda","Devia Sepulveda Alix Viviana","Jurado Montoya Natalia","Ortiz Ospina Angy Mayerli","Calero Vasquez Nicol","Franco Castaño Karen Tatiana","Perez Hernandez Diana Patricia","Bermudez Trujillo Abril Tatiana","Gonzalez Naileth Dominga","Granada Leidy","Hernandez Perez Aron Antonio","Cardona Quinter Viviana Andrea","Garces Grisales Erika Julieth","Quiros Roman Mildrey Johana","Morales Marina Teresa","Bolivar Morales Francy Estella","Suarez Villada Yessica","Grajales Grajales Sthefania","Sanchez Bedoya Jessica Andrea","Osorio Henao Tania","Henao Piedrahita Luisa Fernanda","Rivera Ramirez Maria Angelica","Rivera Olaya Maria Isabel","Aragon Alejandra","Solis Yeimy","Moreno Perdomo Gina Milena","Ortiz Ramirez Leidy","Franco Rodas Viviana Andrea","Correa Bedoya Yersy Paola","Gonzalez Velasquez Vanessa","Hincapie Valencia Luz Nelly","Mejia Serna Maria Alejandra","Garcia Martinez Yorleny Andrea","Fernandez Corre Luisa Fernanda","Rodriguez B Angie Lorena"].sort();
+
+var PLACAS = ["ARN666","BRZ208","CGB340","CHE809","CKC858","CNC123","CND628","CPM169","CUM533","CUM578","CUM597","CUM648","CUP029","CUP823","CUQ362","DBS719","DCI714","DCI952","DLV362","DQX 439","DQZ909","DRK288","DRK359","DXP499","EDY428","EWU278","EWV278","FQK728","GJX-586","GJX497","GJX506","GJX568","GXN300","GXQ387","HDR782","HKV153","HKZ144","HMF130","HWS018","HWS033","HWS829","HWT515","HYL381","ICQ333","IGN433","IGN434","IGN439","IGN448","IGX568","IPW298","IZY911","JRT411","JRT415","JRT429","KCU023","KCU124","LXZ504","LXZ505","LXZ509","LXZ512","LXZ514","MFX612","MRZ 349","MUU679","MUX134","MUZ439","MUZ447","NKP061","PEP343","PFN450","PFO147","PFT173","RDM","RDM978","RGA304","RGA539","RGA817","URQ419","WLK155","No Aplica","PROVEEDOR"];
+
+var CLINICAS = ["Clínica Cristo Rey","Central De Urgencias Louis Pasteur","Clinica Comfamiliar Risaralda - Pereira","Clínica El Lago - Pereira","Clínica Los Rosales - Pereira","Clínica San Francisco S.a.","Clínica San Rafael (cuba)","Hospital Universitario San Jorge - Pereira","Hospital La 40 - Pereira","Hospital San Joaquin-cuba - Pereira","Hospital Kennedy Pereira","Clínica Mega Centro Pinares - San Rafael- Pereira","Hospital Santa Monica - Pereira","Hospital San Jorge","Clínica Del Cafe","Clinica Del Parque Armenia","Clinica Central Del Quindio","Clinica Fundadores","Clinica La Estancia","Hospital San Vicente De Paul","Hospital Federico Lleras De Ibague","Clínica Calambeo Ibagué","Clínica De Ibagué","Hospital Departamental Mario Correa Rengifo","Fundación Valle Del Lili","Clínica Imbanaco Cali","Hospital Isaias Duarte Cancino","Hospital Carlos Holmes De Cali","Clínica Versalles","Clínica Colombia","Clínica Farallones","Hospital Rubén Cruz Vélez","Clínica Comfenalco","Hospital Joaquín Paz Borrero","Hospital Raúl Orejuela Bueno - Palmira Valle","Clinica Palmira S.a","Hospital Departamental Tomás Uribe","Hospital Centenario De Sevilla","Hospital San Antonio","Clinica Sagrada Familia","Hospital San Vicente De Paúl","Hospital Departamental San Juan De Dios De Riosucio Caldas E.s.e.","Hospital Departamental Santa Sofía De Caldas","Hospital De Caldas S.e.s","Cruz Roja Colombiana Seccional Caldas","Instituto Del Corazón Manizales","Medicina Legal","Domicilio","Via Publica","Otro"].sort();
 
 function poblarPersonal() {
-  poblarSelectDesdeArray('sel-coord',           COORDINADORES);
-  poblarSelectDesdeArray('sel-tanatologo',       TANATALOGOS);
-  poblarSelectDesdeArray('sel-recoge',           AUXILIARES);
-  poblarSelectDesdeArray('sel-culmina',          AUXILIARES);
-  poblarSelectDesdeArray('sel-prov',             AUXILIARES);
-  poblarSelectDesdeArray('sel-cafe',             AUXILIARES_CAFE);
-  poblarSelectDesdeArray('sel-asesor',           COORDINADORES);
-  poblarSelectDesdeArray('sel-placa-recogida',   PLACAS);
-  poblarSelectDesdeArray('sel-placa-velacion',   PLACAS);
-  poblarSelectDesdeArray('sel-placa-culminacion',PLACAS);
-  poblarSelectDesdeArray('sel-murio-en',         CLINICAS);
-  // N° Ref Cofre y Agente Call: texto libre
+  poblarSelectDesdeArray('sel-coord',            COORDINADORES);
+  poblarSelectDesdeArray('sel-tanatologo',        TANATALOGOS);
+  poblarSelectDesdeArray('sel-recoge',            COORDINADORES);
+  poblarSelectDesdeArray('sel-culmina',           COORDINADORES);
+  poblarSelectDesdeArray('sel-prov',              COORDINADORES);
+  poblarSelectDesdeArray('sel-cafe',              AUXILIARES_CAFE);
+  poblarSelectDesdeArray('sel-asesor',            COORDINADORES);
+  poblarSelectDesdeArray('sel-placa-recogida',    PLACAS);
+  poblarSelectDesdeArray('sel-placa-velacion',    PLACAS);
+  poblarSelectDesdeArray('sel-placa-culminacion', PLACAS);
+  poblarSelectDesdeArray('sel-murio-en',          CLINICAS);
 }
 
 function poblarSelectDesdeArray(id, arr) {
@@ -1906,18 +1606,15 @@ function filtrarSelect(selectId, inputId) {
 // DEPENDENCIAS DINÁMICAS
 // ============================================================
 function onTipoChange() {
-  var tipo   = document.getElementById('sel-tipo').value;
+  var tipo = document.getElementById('sel-tipo').value;
   var selCat = document.getElementById('sel-categoria');
-
   selCat.innerHTML = '<option value="">Seleccionar categoría...</option>';
   var cats = CATEGORIAS_POR_TIPO[tipo] || [];
   cats.forEach(function(c) { selCat.add(new Option(c, c)); });
   if (cats.length === 1) selCat.value = cats[0];
-
-  mostrarCampo('campo-motivo',  tipo === 'Afiliado Condicional');
+  mostrarCampo('campo-motivo', tipo === 'Afiliado Condicional');
   mostrarCampo('campo-entidad', tipo === 'Particular' || tipo === 'Convenio' || tipo === 'Licitacion');
-  mostrarCampo('campo-asesor',  false);
-
+  mostrarCampo('campo-asesor', false);
   onCategoriaChange();
 }
 
@@ -1949,12 +1646,7 @@ function onDestinoChange() {
 }
 
 function onSedeChange() {
-  var sede      = document.getElementById('sel-sede').value;
-  var selMunVel = document.getElementById('sel-mun-vel');
-  if (!sede || !selMunVel) return;
-  for (var i = 0; i < selMunVel.options.length; i++) {
-    if (selMunVel.options[i].value === sede) { selMunVel.value = sede; break; }
-  }
+  // Sede ya no sincroniza municipio velación (son campos independientes)
 }
 
 function mostrarCampo(id, mostrar) {
@@ -1972,11 +1664,11 @@ function calcularEdad(inputFechaNac) {
   if (!val) return;
   var parts = val.split('-');
   if (parts.length < 3) return;
-  var fn   = new Date(+parts[0], +parts[1]-1, +parts[2]);
+  var fn = new Date(+parts[0], +parts[1]-1, +parts[2]);
   if (isNaN(fn.getTime())) return;
-  var hoy  = new Date();
+  var hoy = new Date();
   var edad = hoy.getFullYear() - fn.getFullYear();
-  var m    = hoy.getMonth() - fn.getMonth();
+  var m = hoy.getMonth() - fn.getMonth();
   if (m < 0 || (m === 0 && hoy.getDate() < fn.getDate())) edad--;
   if (edad >= 0 && edad <= 130) {
     var campoEdad = document.getElementById('campo-edad');
@@ -1988,11 +1680,7 @@ function calcularEdad(inputFechaNac) {
 // FORMULARIO
 // ============================================================
 function formatDTL(d) {
-  return d.getFullYear() + '-' +
-    String(d.getMonth()+1).padStart(2,'0') + '-' +
-    String(d.getDate()).padStart(2,'0') + 'T' +
-    String(d.getHours()).padStart(2,'0') + ':' +
-    String(d.getMinutes()).padStart(2,'0');
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0') + 'T' + String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
 }
 
 function parseFecha(str) {
@@ -2011,29 +1699,13 @@ function llenarFormulario(datos) {
     var valor = datos[campo.getAttribute('data-col')];
     if (valor === undefined || valor === null || valor === '') return;
     var v = valor.toString();
-
-    if (campo.type === 'datetime-local') {
-      var p = parseFecha(v); if (p) { campo.value = formatDTL(p); return; }
-    }
-    if (campo.type === 'date') {
-      var pD = parseFecha(v);
-      if (pD) { campo.value = pD.getFullYear()+'-'+String(pD.getMonth()+1).padStart(2,'0')+'-'+String(pD.getDate()).padStart(2,'0'); return; }
-    }
-    if (campo.type === 'time') {
-      var tm = v.match(/(\d{1,2}):(\d{2})/);
-      if (tm) { campo.value = tm[1].padStart(2,'0')+':'+tm[2]; return; }
-    }
+    if (campo.type === 'datetime-local') { var p = parseFecha(v); if (p) { campo.value = formatDTL(p); return; } }
+    if (campo.type === 'date') { var pD = parseFecha(v); if (pD) { campo.value = pD.getFullYear()+'-'+String(pD.getMonth()+1).padStart(2,'0')+'-'+String(pD.getDate()).padStart(2,'0'); return; } }
+    if (campo.type === 'time') { var tm = v.match(/(\d{1,2}):(\d{2})/); if (tm) { campo.value = tm[1].padStart(2,'0')+':'+tm[2]; return; } }
     if (campo.tagName === 'SELECT') {
       var found = false;
-      for (var i = 0; i < campo.options.length; i++) {
-        if (campo.options[i].value === v) { campo.selectedIndex = i; found = true; break; }
-      }
-      if (!found) {
-        var vl = v.toLowerCase();
-        for (var j = 0; j < campo.options.length; j++) {
-          if (campo.options[j].value.toLowerCase() === vl) { campo.selectedIndex = j; found = true; break; }
-        }
-      }
+      for (var i = 0; i < campo.options.length; i++) { if (campo.options[i].value === v) { campo.selectedIndex = i; found = true; break; } }
+      if (!found) { var vl = v.toLowerCase(); for (var j = 0; j < campo.options.length; j++) { if (campo.options[j].value.toLowerCase() === vl) { campo.selectedIndex = j; found = true; break; } } }
       if (!found && v.trim()) { campo.appendChild(new Option(v,v)); campo.selectedIndex = campo.options.length-1; }
       return;
     }
@@ -2042,230 +1714,54 @@ function llenarFormulario(datos) {
   onTipoChange();
   onEstadoCivilChange();
   onDestinoChange();
+  // Si hay municipio velación guardado, repoblar lugar de velación
+  var munVel = document.getElementById('sel-mun-vel').value;
+  if (munVel) onMunicipioVelacionChange();
 }
 
 function recopilarDatos() {
   var datos = {};
-  document.querySelectorAll('[data-col]').forEach(function(c) {
-    datos[c.getAttribute('data-col')] = c.value || '';
-  });
+  document.querySelectorAll('[data-col]').forEach(function(c) { datos[c.getAttribute('data-col')] = c.value || ''; });
   return datos;
 }
 
 function guardarPrestacion() {
   var datos = recopilarDatos();
-  var btn   = document.getElementById('btn-guardar');
-
+  var btn = document.getElementById('btn-guardar');
   if (!(datos['Nombre Del Fallecido']||'').trim() && !(datos['Apellidos Del Fallecido']||'').trim()) {
     mostrarToast('⚠️ Ingresa al menos el nombre o apellido del fallecido', 'error');
     document.querySelector('[data-col="Nombre Del Fallecido"]').focus();
     return;
   }
-
-  btn.disabled    = true;
-  btn.textContent = 'Guardando...';
-
+  btn.disabled = true; btn.textContent = 'Guardando...';
   var payload = { accion: editando ? 'editar' : 'guardar', regional: regionalActual, datos: datos };
   if (editando && filaEditar) payload.fila = parseInt(filaEditar);
-
   if (modoDemo) {
-    setTimeout(function() {
-      btn.disabled    = false;
-      btn.textContent = '✓ Guardar Prestación';
-      mostrarToast(editando ? '✅ Registro actualizado (demo)' : '✅ Registro guardado (demo)', 'exito');
-      setTimeout(function() { try { window.location.href = 'index.html'; } catch(e) {} }, 1400);
-    }, 800);
+    setTimeout(function() { btn.disabled = false; btn.textContent = '✓ Guardar Prestación'; mostrarToast(editando ? '✅ Registro actualizado (demo)' : '✅ Registro guardado (demo)', 'exito'); setTimeout(function() { try { window.location.href = 'index.html'; } catch(e) {} }, 1400); }, 800);
     return;
   }
-
-  fetch(SCRIPT_URL, {
-    method: 'POST', mode: 'no-cors',
-    headers: { 'Content-Type': 'text/plain' },
-    body: JSON.stringify(payload)
-  }).then(function() {
-    btn.disabled    = false;
-    btn.textContent = '✓ Guardar Prestación';
-    mostrarToast(editando ? '✅ Registro actualizado' : '✅ Registro guardado correctamente', 'exito');
-    setTimeout(function() { window.location.href = 'index.html'; }, 1400);
-  }).catch(function(err) {
-    btn.disabled    = false;
-    btn.textContent = '✓ Guardar Prestación';
-    mostrarToast('❌ Error al guardar: ' + err.message, 'error');
-  });
+  fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain'}, body:JSON.stringify(payload) })
+    .then(function() { btn.disabled = false; btn.textContent = '✓ Guardar Prestación'; mostrarToast(editando ? '✅ Registro actualizado' : '✅ Registro guardado correctamente', 'exito'); setTimeout(function() { window.location.href = 'index.html'; }, 1400); })
+    .catch(function(err) { btn.disabled = false; btn.textContent = '✓ Guardar Prestación'; mostrarToast('❌ Error al guardar: ' + err.message, 'error'); });
 }
 
-function toggleSeccion(header) {
-  header.classList.toggle('open');
-  header.nextElementSibling.classList.toggle('open');
-}
-
-function volver() {
-  try { window.location.href = 'index.html'; } catch(e) { history.back(); }
-}
-
-function mostrarToast(msg, tipo) {
-  tipo = tipo || 'exito';
-  var t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className   = 'toast ' + tipo + ' show';
-  clearTimeout(t._timeout);
-  t._timeout = setTimeout(function() { t.classList.remove('show'); }, 4000);
-}
+function toggleSeccion(header) { header.classList.toggle('open'); header.nextElementSibling.classList.toggle('open'); }
+function volver() { try { window.location.href = 'index.html'; } catch(e) { history.back(); } }
+function mostrarToast(msg, tipo) { tipo = tipo || 'exito'; var t = document.getElementById('toast'); t.textContent = msg; t.className = 'toast ' + tipo + ' show'; clearTimeout(t._timeout); t._timeout = setTimeout(function() { t.classList.remove('show'); }, 4000); }
 
 // ============================================================
-// UPLOAD DE ARCHIVOS — sube a ImgBB (gratis, sin auth para imágenes)
-// Para PDFs usa Google Drive vía Apps Script proxy
-// La URL resultante queda en el input[data-col] oculto → se guarda en Sheets
+// UPLOADS
 // ============================================================
-
-// API key pública ImgBB (gratuita, imágenes)
-var IMGBB_KEY = 'd5e4f8a9b3c2e1f7a6b5c4d3e2f1a0b9'; // Reemplaza con tu key de imgbb.com
-
-// Para PDFs y archivos: se usa el mismo Apps Script de Google (SCRIPT_URL)
-// que debe tener un endpoint 'subirArchivo' que devuelva {url: '...'}
-
-function dragOver(e, widgetId) {
-  e.preventDefault();
-  document.getElementById(widgetId).querySelector('.upload-zona').classList.add('drag');
-}
-function dragLeave(e, widgetId) {
-  document.getElementById(widgetId).querySelector('.upload-zona').classList.remove('drag');
-}
-function dropFile(e, widgetId, colName) {
-  e.preventDefault();
-  document.getElementById(widgetId).querySelector('.upload-zona').classList.remove('drag');
-  var file = e.dataTransfer.files[0];
-  if (file) subirArchivo(file, widgetId, colName);
-}
-function seleccionarArchivo(input, widgetId, colName) {
-  var file = input.files[0];
-  if (file) subirArchivo(file, widgetId, colName);
-}
-function quitarArchivo(widgetId, colName) {
-  var w = document.getElementById(widgetId);
-  w.querySelector('.upload-preview').classList.remove('visible');
-  w.querySelector('.upload-zona').style.display = '';
-  // Limpiar input oculto
-  var hidden = document.querySelector('input[type=hidden][data-col="' + colName + '"]');
-  if (hidden) hidden.value = '';
-}
-
-function subirArchivo(file, widgetId, colName) {
-  var MAX_MB = 10;
-  if (file.size > MAX_MB * 1024 * 1024) {
-    mostrarError(widgetId, 'El archivo supera ' + MAX_MB + ' MB');
-    return;
-  }
-
-  var esPDF = file.type === 'application/pdf';
-  var zona  = document.getElementById(widgetId).querySelector('.upload-zona');
-  zona.style.display = 'none';
-  mostrarProgreso(widgetId, 0);
-
-  if (esPDF) {
-    // PDFs → Apps Script (convierte a Drive y devuelve URL pública)
-    var reader = new FileReader();
-    reader.onload = function(ev) {
-      var base64 = ev.target.result.split(',')[1];
-      var payload = {
-        accion: 'subirArchivo',
-        nombre: file.name,
-        tipo: file.type,
-        datos: base64
-      };
-      mostrarProgreso(widgetId, 40);
-      fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain' },
-        body: JSON.stringify(payload)
-      }).then(function() {
-        // no-cors no devuelve body → usamos URL de Drive placeholder
-        // En producción el Apps Script puede devolver la URL por otro canal
-        // Por ahora guardamos el nombre y mostramos aviso
-        mostrarProgreso(widgetId, 100);
-        var url = '[PDF enviado: ' + file.name + ']';
-        finalizarUpload(widgetId, colName, file.name, url);
-      }).catch(function(err) {
-        mostrarError(widgetId, 'Error al enviar: ' + err.message);
-        zona.style.display = '';
-      });
-    };
-    reader.readAsDataURL(file);
-  } else {
-    // Imágenes → ImgBB (devuelve URL directa)
-    var fd = new FormData();
-    fd.append('image', file);
-    mostrarProgreso(widgetId, 20);
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://api.imgbb.com/1/upload?key=' + IMGBB_KEY);
-    xhr.upload.onprogress = function(e) {
-      if (e.lengthComputable) {
-        var pct = Math.round((e.loaded / e.total) * 80);
-        mostrarProgreso(widgetId, pct);
-      }
-    };
-    xhr.onload = function() {
-      try {
-        var res = JSON.parse(xhr.responseText);
-        if (res.success) {
-          mostrarProgreso(widgetId, 100);
-          finalizarUpload(widgetId, colName, file.name, res.data.url);
-        } else {
-          throw new Error(res.error && res.error.message || 'Error ImgBB');
-        }
-      } catch(e) {
-        mostrarError(widgetId, 'Error al subir imagen: ' + e.message);
-        zona.style.display = '';
-      }
-    };
-    xhr.onerror = function() {
-      mostrarError(widgetId, 'Sin conexión. Reintenta.');
-      zona.style.display = '';
-    };
-    xhr.send(fd);
-  }
-}
-
-function finalizarUpload(widgetId, colName, nombre, url) {
-  // Ocultar progreso
-  var prog = document.getElementById(
-    widgetId === 'uw-cedula' ? 'prog-cedula' : 'prog-cert'
-  );
-  if (prog) { prog.classList.remove('visible'); }
-
-  // Guardar URL en input oculto
-  var hidden = document.querySelector('input[type=hidden][data-col="' + colName + '"]');
-  if (hidden) hidden.value = url;
-
-  // Mostrar preview
-  var suffix = widgetId === 'uw-cedula' ? 'cedula' : 'cert';
-  var prev = document.getElementById('prev-' + suffix);
-  document.getElementById('prev-' + suffix + '-nombre').textContent = nombre;
-  document.getElementById('prev-' + suffix + '-url').textContent    = url;
-  if (prev) prev.classList.add('visible');
-}
-
-function mostrarProgreso(widgetId, pct) {
-  var suffix = widgetId === 'uw-cedula' ? 'cedula' : 'cert';
-  var prog    = document.getElementById('prog-' + suffix);
-  var bar     = document.getElementById('progbar-' + suffix);
-  if (!prog || !bar) return;
-  prog.classList.add('visible');
-  bar.style.width = pct + '%';
-  if (pct >= 100) {
-    setTimeout(function() { prog.classList.remove('visible'); bar.style.width = '0%'; }, 700);
-  }
-}
-
-function mostrarError(widgetId, msg) {
-  var suffix = widgetId === 'uw-cedula' ? 'cedula' : 'cert';
-  var err    = document.getElementById('err-' + suffix);
-  var prog   = document.getElementById('prog-' + suffix);
-  if (prog) prog.classList.remove('visible');
-  if (err)  { err.textContent = '⚠️ ' + msg; err.classList.add('visible'); }
-  setTimeout(function() { if (err) err.classList.remove('visible'); }, 5000);
-}
+var IMGBB_KEY = 'd5e4f8a9b3c2e1f7a6b5c4d3e2f1a0b9';
+function dragOver(e,w){e.preventDefault();document.getElementById(w).querySelector('.upload-zona').classList.add('drag')}
+function dragLeave(e,w){document.getElementById(w).querySelector('.upload-zona').classList.remove('drag')}
+function dropFile(e,w,col){e.preventDefault();document.getElementById(w).querySelector('.upload-zona').classList.remove('drag');var f=e.dataTransfer.files[0];if(f)subirArchivo(f,w,col)}
+function seleccionarArchivo(inp,w,col){var f=inp.files[0];if(f)subirArchivo(f,w,col)}
+function quitarArchivo(w,col){var x=document.getElementById(w);x.querySelector('.upload-preview').classList.remove('visible');x.querySelector('.upload-zona').style.display='';var h=document.querySelector('input[type=hidden][data-col="'+col+'"]');if(h)h.value=''}
+function subirArchivo(file,widgetId,colName){var MAX_MB=10;if(file.size>MAX_MB*1024*1024){mostrarError(widgetId,'El archivo supera '+MAX_MB+' MB');return}var esPDF=file.type==='application/pdf';var zona=document.getElementById(widgetId).querySelector('.upload-zona');zona.style.display='none';mostrarProgreso(widgetId,0);if(esPDF){var reader=new FileReader();reader.onload=function(ev){var base64=ev.target.result.split(',')[1];mostrarProgreso(widgetId,40);fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({accion:'subirArchivo',nombre:file.name,tipo:file.type,datos:base64})}).then(function(){mostrarProgreso(widgetId,100);finalizarUpload(widgetId,colName,file.name,'[PDF enviado: '+file.name+']')}).catch(function(err){mostrarError(widgetId,'Error al enviar: '+err.message);zona.style.display=''})};reader.readAsDataURL(file)}else{var fd=new FormData();fd.append('image',file);mostrarProgreso(widgetId,20);var xhr=new XMLHttpRequest();xhr.open('POST','https://api.imgbb.com/1/upload?key='+IMGBB_KEY);xhr.upload.onprogress=function(e){if(e.lengthComputable)mostrarProgreso(widgetId,Math.round((e.loaded/e.total)*80))};xhr.onload=function(){try{var res=JSON.parse(xhr.responseText);if(res.success){mostrarProgreso(widgetId,100);finalizarUpload(widgetId,colName,file.name,res.data.url)}else throw new Error(res.error&&res.error.message||'Error ImgBB')}catch(e){mostrarError(widgetId,'Error al subir imagen: '+e.message);zona.style.display=''}};xhr.onerror=function(){mostrarError(widgetId,'Sin conexión. Reintenta.');zona.style.display=''};xhr.send(fd)}}
+function finalizarUpload(widgetId,colName,nombre,url){var suffix=widgetId==='uw-cedula'?'cedula':'cert';var prog=document.getElementById('prog-'+suffix);if(prog)prog.classList.remove('visible');var hidden=document.querySelector('input[type=hidden][data-col="'+colName+'"]');if(hidden)hidden.value=url;var prev=document.getElementById('prev-'+suffix);document.getElementById('prev-'+suffix+'-nombre').textContent=nombre;document.getElementById('prev-'+suffix+'-url').textContent=url;if(prev)prev.classList.add('visible')}
+function mostrarProgreso(widgetId,pct){var suffix=widgetId==='uw-cedula'?'cedula':'cert';var prog=document.getElementById('prog-'+suffix);var bar=document.getElementById('progbar-'+suffix);if(!prog||!bar)return;prog.classList.add('visible');bar.style.width=pct+'%';if(pct>=100)setTimeout(function(){prog.classList.remove('visible');bar.style.width='0%'},700)}
+function mostrarError(widgetId,msg){var suffix=widgetId==='uw-cedula'?'cedula':'cert';var err=document.getElementById('err-'+suffix);var prog=document.getElementById('prog-'+suffix);if(prog)prog.classList.remove('visible');if(err){err.textContent='⚠️ '+msg;err.classList.add('visible')}setTimeout(function(){if(err)err.classList.remove('visible')},5000)}
 </script>
 </body>
 </html>
