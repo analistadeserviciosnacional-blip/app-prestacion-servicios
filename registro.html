@@ -461,23 +461,21 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
         <!-- LUGAR DE FALLECIMIENTO -->
         <div class="field">
           <label>Lugar de Fallecimiento</label>
-          <select data-col="Lugar De Fallecimiento">
+          <select data-col="Lugar De Fallecimiento" onchange="onLugarFallecimientoChange()">
             <option value="">Seleccionar...</option>
-            <option value="Hospital">Hospital</option>
-            <option value="Clinica">Clinica</option>
-            <option value="Domicilio">Domicilio</option>
-            <option value="Via Publica">Via Publica</option>
-            <option value="Centro de Salud">Centro de Salud</option>
-            <option value="Otro">Otro</option>
+            <option value="Hospital / Clinica">Hospital / Clínica</option>
+            <option value="Via Publica">Vía Pública</option>
+            <option value="Casa / Domicilio">Casa / Domicilio</option>
           </select>
         </div>
 
-        <div class="field">
-          <label>Murio En (específico)</label>
+        <!-- MURIO EN: solo visible si es Hospital/Clinica -->
+        <div class="field campo-condicional" id="campo-murio-en">
+          <label>Murio En (clínica u hospital específico)</label>
           <div class="select-wrapper">
             <input type="text" class="select-search" id="search-murio-en" placeholder="Buscar clínica u hospital..." oninput="filtrarSelect('sel-murio-en','search-murio-en')" />
             <select data-col="Murio En" id="sel-murio-en">
-              <option value="">Seleccionar lugar...</option>
+              <option value="">Seleccionar...</option>
             </select>
           </div>
         </div>
@@ -1076,15 +1074,18 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
             <input type="text" class="select-search" id="search-iglesia" placeholder="Buscar iglesia..." oninput="filtrarSelect('sel-iglesia','search-iglesia')" />
             <select data-col="Lugar Exequias" id="sel-iglesia">
               <option value="">Seleccionar o escribir...</option>
-              <option value="Sin Ceremonia Religiosa">Sin Ceremonia Religiosa</option>
-              <option value="Sin Exequias">Sin Exequias</option>
-              <option value="Parroquia Nuestra Señora de Fatima">Parroquia Nuestra Señora de Fatima</option>
-              <option value="Parroquia San Jose">Parroquia San Jose</option>
-              <option value="Parroquia La Sagrada Familia">Parroquia La Sagrada Familia</option>
-              <option value="Catedral de Pereira">Catedral de Pereira</option>
-              <option value="Capilla Jardines del Renacer">Capilla Jardines del Renacer</option>
-              <option value="Iglesia Evangelica">Iglesia Evangelica</option>
-              <option value="Iglesia Cristiana">Iglesia Cristiana</option>
+              <option value="1824-Sin Ceremonia Religiosa">1824-Sin Ceremonia Religiosa</option>
+              <option value="382-Sin Exequias - Convenio">382-Sin Exequias - Convenio</option>
+              <option value="1-Parroquia Nuestra Señora De Fatima">1-Parroquia Nuestra Señora De Fatima</option>
+              <option value="2-Parroquia San Jose">2-Parroquia San Jose</option>
+              <option value="3-Parroquia La Sagrada Familia">3-Parroquia La Sagrada Familia</option>
+              <option value="4-Catedral De Pereira">4-Catedral De Pereira</option>
+              <option value="5-Capilla Jardines Del Renacer">5-Capilla Jardines Del Renacer</option>
+              <option value="6-Iglesia Evangelica">6-Iglesia Evangelica</option>
+              <option value="7-Iglesia Cristiana">7-Iglesia Cristiana</option>
+              <option value="8-Parroquia San Antonio">8-Parroquia San Antonio</option>
+              <option value="9-Iglesia Del Perpetuo Socorro">9-Iglesia Del Perpetuo Socorro</option>
+              <option value="10-Parroquia Santa Teresita">10-Parroquia Santa Teresita</option>
               <option value="Otro">Otro</option>
             </select>
           </div>
@@ -1121,10 +1122,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--fondo);color:var(--negro)
             <input type="text" class="select-search" id="search-cementerio" placeholder="Buscar cementerio..." oninput="filtrarSelect('sel-cementerio','search-cementerio')" />
             <select data-col="Cementerio" id="sel-cementerio">
               <option value="">Seleccionar cementerio...</option>
-              <option value="Cementerio San Camilo">Cementerio San Camilo</option>
-              <option value="Cementerio Jardines del Renacer">Cementerio Jardines del Renacer</option>
-              <option value="Cementerio Central">Cementerio Central</option>
-              <option value="Cementerio Municipal">Cementerio Municipal</option>
+              <option value="1-Jardines Del Renacer">1-Jardines Del Renacer</option>
+              <option value="2-Cementerio San Camilo">2-Cementerio San Camilo</option>
+              <option value="3-Cementerio Central">3-Cementerio Central</option>
+              <option value="4-Cementerio Municipal">4-Cementerio Municipal</option>
+              <option value="5-Cementerio Jardines De Paz">5-Cementerio Jardines De Paz</option>
+              <option value="6-Cementerio La Esperanza">6-Cementerio La Esperanza</option>
+              <option value="1078-Ambiental Pets">1078-Ambiental Pets</option>
               <option value="Otro">Otro</option>
             </select>
           </div>
@@ -1371,129 +1375,291 @@ function poblarCiudades() {
 
 // ── DATOS REALES EXTRAÍDOS DE LAS IMÁGENES ──────────────────
 var COORDINADORES = [
-  "Agudelo Cardenas Joe","Andres David Restrepo Andres","Arango Usma Isabel Cristina",
-  "Arboleda Alzate Ginna Paola","Ayala Sánchez Mayerline","Becerra Cardenas Joanna Paola",
-  "Bermudez Quiceno Edwar Andres","Buitrago Ardila Zaider Jose","Caicedo Florez John Esteban",
-  "Calderon Bañol Jose Fernando","Candil Castillo Melissa","Cano Bustamante Vanessa",
-  "Cardona Maria Camila","Carrascal Lopez Darwin Fernando","Castaño Ospina Hernan Dario",
-  "Castañeda Sierra Jose Luis","Castro Bolivar Haiver Stiven","Cifuentes Castaño Laura",
-  "Colorado Morales Sofia","Colorado Sanchez Lorena","Cordoba Ulabarri Giselle Camila",
-  "Dimas Barco Diego Fernando","Diaz Lopez Valentina","De Hoyos Muñoz Ana Maria",
-  "Galeano Cardona Natalia","García Alzate Yeidy Paola","Garcia Ossa Paola Andrea",
-  "Gomez Correa Giovanny Antonio","Gomez Gonzalez Vanessa","Gomez Velez Octavio",
-  "Gómez González Yanily Fernanda","Gómez Gónzalez Manuela","Gonzalez López Chelubay",
-  "Grijalba Restrepo Laura","Guzman Del Campo Victor Eduardo","Henao Isaza Esneydi Patricia",
-  "Hernandez Perez Aron Antonio","Hicapie Prieto Cesar Augusto","Hincapié Prieto José Alejandro",
-  "Isaza Pineda Rigoberto","Jaramillo Morales Yenifer Tatiana","Jaramillo Rebolledo Jonathan",
-  "Jaramillo Villada Cristian David","Johon Chon James","Jurado Gomez Sebastian",
-  "Ladino Perez Eugenia","Marin Bonilla Jhon Alexander","Mateo Posada Castañeda",
-  "Medina López Emerson Dayan","Mejia Gomez Jhon Jairo","Mejia Leon Jonathan Mauricio",
-  "Morales Perez Diana Maria","Moreno Gomez Jose Nicolas","Narvaez Toro Yesica Paola",
-  "Niño Rincon Fredy Alexander","Orjuela Calderon Andrea Katerina","Ortega Urrea Erika Jaritza",
-  "Ortega Urrea Jhonathan Farley","Ortiz Lombo Adriana Rocio","Ospina Castaño Cristian Samuel",
-  "Otavo Ortiz Oscar Julian","Pachon Aguirre Sara","Pamo Cultivar Xiomara Katherine",
-  "Parra Arce Alexander","Perez Medina Yuskary Camila","Pulido Carranza Angie Paola",
-  "Ramírez Palacio Jhon Fredy","Rangel Alarcon Wilson Hernan","Restrepo Franco Sebastian",
-  "Rey Bonilla Andres Eduardo","Rincon Hernandez Jhonathan","Rios Martinez Natalia Andrea",
-  "Rojas Carvajal Estefania","Roman Montoya Nini Yohana","Romero Aranzales Paula Daniela",
-  "Rozo Zapata Viviana Andrea","Ruiz Navarrete Miguel Oswaldo","Saldarriaga Gómez Manuela",
-  "Salinas Lopez Jesus Antonio","Sierra Herrera Jerson Jhoany","Soto Gañan Madelen",
-  "Taborda Gonzalez John Fredy","Tangarife López Marlon Esneyder","Tapasco Leon Norma Cristina",
-  "Useche Perez Oscar Antonio","Valencia Gil Catalina","Valencia Gomez Maria Alejandra",
-  "Valle Henao Julio Cesar","Vargas Angie","Vargas Montoya Adolfo Leon",
-  "Velez Martinez Juan Jose","Velez Restrepo Juan Carlos","Villa Velasquez Johan Camilo",
-  "Villalba Cortes Jose Anibal","Villano Valencia Carlos Eduardo","Yepez Martinez Esmeralda",
-  "Zamora Gonzalez Maria Camila","Zuñiga Molina Jorge Alberto","Acosta Pareja Edwin Jeanpoll",
-  "Arango Mejia Ana Karina","Calderon Bañol Jose Fernando","Garcia Ossa Paola Andrea",
-  "Marín Restrepo Christian David","Mendoza Fabian Steban","Morales Mejia Touray Camille",
-  "Restrepo Andres David","Tabares Velez Albeiro","Tapasco Leon Norma Cristina",
-  "Arboleda Alzate Ginna Paola","Hincapié Prieto Jose Alejandro"
-].sort();
+  "1079033385-Acosta Pareja Edwin Jeanpoll",
+  "9994955-Agudelo Cardenas Joe",
+  "1007478218-Arango Mejia Ana Karina",
+  "1113304982-Arango Usma Isabel Cristina",
+  "1010683-Arboleda Alzate Ginna Paola",
+  "1114211160-Ayala Sánchez Mayerline",
+  "31435403-Becerra Cardenas Joanna Paola",
+  "9868781-Bermudez Quiceno Edwar Andres",
+  "1094939736-Buitrago Ardila Zaider Jose",
+  "1094953942-Caicedo Florez John Esteban",
+  "4513836-Calderon Bañol Jose Fernando",
+  "1144193605-Candil Castillo Melissa",
+  "1088260934-Cano Bustamante Vanessa",
+  "1234190505-Cardona Maria Camila",
+  "13852714-Carrascal Lopez Darwin Fernando",
+  "1105683078-Castañeda Sierra Jose Luis",
+  "1013638765-Castaño Ospina Hernan Dario",
+  "1112230258-Castro Bolivar Haiver Stiven",
+  "1088038412-Cifuentes Castaño Laura",
+  "1001016610-Colorado Morales Sofia",
+  "1059876324-Colorado Sanchez Lorena",
+  "1192899698-Cordoba Ulabarri Giselle Camila",
+  "1003357864-De Hoyos Muñoz Ana Maria",
+  "1005974816-Diaz Lopez Valentina",
+  "1070599429-Dimas Barco Diego Fernando",
+  "1112785582-Galeano Cardona Natalia",
+  "8331028-Garcia Ossa Paola Andrea",
+  "1087992208-García Alzate Yeidy Paola",
+  "6499114-Gomez Correa Giovanny Antonio",
+  "1088003650-Gomez Gonzalez Vanessa",
+  "1088250651-Gomez Velez Octavio",
+  "1005866240-Gonzalez López Chelubay",
+  "1143979425-Grijalba Restrepo Laura",
+  "1107071677-Guzman Del Campo Victor Eduardo",
+  "1112626234-Gómez González Yanily Fernanda",
+  "89004486-Gómez Gónzalez Manuela",
+  "1143843812-Henao Isaza Esneydi Patricia",
+  "1054916261-Hernandez Perez Aron Antonio",
+  "9725359-Hicapie Prieto Cesar Augusto",
+  "9725358-Hincapié Prieto José Alejandro",
+  "1088283219-Isaza Pineda Rigoberto",
+  "1054923951-Jaramillo Morales Yenifer Tatiana",
+  "1144151052-Jaramillo Rebolledo Jonathan",
+  "1126906727-Jaramillo Villada Cristian David",
+  "1006318032-Jurado Gomez Sebastian",
+  "9726222-Marin Bonilla Jhon Alexander",
+  "1069925795-Martinez Torres Angela Daniela",
+  "1088353397-Marín Restrepo Christian David",
+  "1017256046-Mateo Posada Castañeda",
+  "1073707594-Medina López Emerson Dayan",
+  "18612291-Mejia Gomez Jhon Jairo",
+  "1014221485-Mejia Leon Jonathan Mauricio",
+  "1112779829-Mendoza Fabian Steban",
+  "24396615-Morales Perez Diana Maria",
+  "1088309971-Moreno Gomez Jose Nicolas",
+  "1143857184-Narvaez Toro Yesica Paola",
+  "80358200-Niño Rincon Fredy Alexander",
+  "1070615588-Orjuela Calderon Andrea Katerina",
+  "1108388396-Ortega Urrea Erika Jaritza",
+  "1110546943-Ortega Urrea Jhonathan Farley",
+  "1070585299-Ortiz Lombo Adriana Rocio",
+  "1094948905-Ospina Castaño Cristian Samuel",
+  "93384216-Otavo Ortiz Oscar Julian",
+  "1097408388-Pachon Aguirre Sara",
+  "1110531669-Pamo Cultivar Xiomara Katherine",
+  "1659866-Parra Arce Alexander",
+  "1127624747-Perez Medina Yuskary Camila",
+  "1070616581-Pulido Carranza Angie Paola",
+  "9994597-Ramírez Palacio Jhon Fredy",
+  "88265963-Rangel Alarcon Wilson Hernan",
+  "1088335454-Restrepo Franco Sebastian",
+  "94288979-Rey Bonilla Andres Eduardo",
+  "1088025212-Rios Martinez Natalia Andrea",
+  "1151952203-Rojas Carvajal Estefania",
+  "24398747-Roman Montoya Nini Yohana",
+  "1026594795-Romero Aranzales Paula Daniela",
+  "34066460-Rozo Zapata Viviana Andrea",
+  "1110450380-Ruiz Navarrete Miguel Oswaldo",
+  "1088348929-Saldarriaga Gómez Manuela",
+  "79435429-Salinas Lopez Jesus Antonio",
+  "1039700767-Sierra Herrera Jerson Jhoany",
+  "42164134-Soto Gañan Madelen",
+  "9732654-Taborda Gonzalez John Fredy",
+  "1002595249-Tangarife López Marlon Esneyder",
+  "1054921930-Tapasco Leon Norma Cristina",
+  "11221186-Useche Perez Oscar Antonio",
+  "1006165896-Valencia Gil Catalina",
+  "88031028-Valencia Gomez Maria Alejandra",
+  "1088020337-Valle Henao Julio Cesar",
+  "1007258621-Vargas Angie",
+  "9695072-Vargas Montoya Adolfo Leon",
+  "1087486405-Velez Martinez Juan Jose",
+  "94407447-Velez Restrepo Juan Carlos",
+  "1094964579-Villa Velasquez Johan Camilo",
+  "1070602268-Villalba Cortes Jose Anibal",
+  "1113636578-Villano Valencia Carlos Eduardo",
+  "1088253779-Yepez Martinez Esmeralda",
+  "1004686501-Zamora Gonzalez Maria Camila",
+  "1121148295-Zapata Restrepo Andres David",
+  "1113637327-Zuñiga Molina Jorge Alberto"
+];
 
 var TANATALOGOS = [
-  "Albeiro Tabares Velez","Adrian Fernando Manzano Escobar","Carlos Eduardo Uribe Rojas",
-  "Daniel Felipe Molina Barrero","Daniel Fernando Castaño","Dayana Aguilar Fernandez",
-  "Dairo De Jesus Aricapa Saldarriaga","Edgar Augusto Rodriguez Zamora",
-  "Edisson German Rodriguez Benavides","Elsy Mayibi Zambrano Fernandez",
-  "Elver Antonio Espinosa Correa","Esteban Hernando Orozco Ocampo",
-  "Fabio Enrique Garcia","Francisco Javier Velez","Geofrey Miranda Fuentes",
-  "Jardines Del Renacer","Jeferson Jamid Giraldo Duque","Jeyrin Beltran Laguna",
-  "Jhon Jairo Penagos Pechene","Joan Paul Stiven Correa Ariza",
-  "Johan Arley Correa Rivera","Jonatan Fernando Jaramillo Montoya",
-  "Jorge Erney Cartagena Varon","Jose Duberney Morales Osorio",
-  "Jose Ignacio Muñoz Artega","Jose Omar Florez Beltran","Juan Jose Maya Ortiz",
-  "Julian Garcia Loaiza","Luis Alfonso Molina Duque","Luis Alfonso Ortega",
-  "Luis Fernando Bermudez Moyano","Maicol Steven Suares Hernandez",
-  "Manuel Alejandro Duque","Martha Cecilia Vélez","Miguel Angel Betancur Ibarra",
-  "Miguel Angel Molina Duque","Muñoz Jaramillo Braian Arled","Orlando Restrepo Patiño",
-  "Oscar Mauricio Ocampo Londoño","Pablo Emilio Franco Urrego",
-  "Ramiro Andres Bravo Agudelo","Samuel Elias Ruiz Orjuela",
-  "Silvio Alonso Ascue Conda","Stefany Muñoz Gomez"
-].sort();
+  "14701771-Adrian Fernando Manzano Escobar",
+  "9992942-Albeiro Tabares Velez",
+  "80730276-Carlos Eduardo Uribe Rojas",
+  "1088342611-Daniel Felipe Molina Barrero",
+  "1114089882-Daniel Fernando Castaño",
+  "1012430513-Dayana Aguilar Fernandez",
+  "75038593-Dairo De Jesus Aricapa Saldarriaga",
+  "16776308-Edgar Augusto Rodriguez Zamora",
+  "98392867-Edisson German Rodriguez Benavides",
+  "1059598272-Elsy Mayibi Zambrano Fernandez",
+  "96193358-Elver Antonio Espinosa Correa",
+  "1114091387-Esteban Hernando Orozco Ocampo",
+  "94229299-Fabio Enrique Garcia",
+  "1054925813-Francisco Javier Velez",
+  "16717258-Geofrey Miranda Fuentes",
+  "900340724-Jardines Del Renacer",
+  "1054921884-Jeferson Jamid Giraldo Duque",
+  "11224604-Jeyrin Beltran Laguna",
+  "94493447-Jhon Jairo Penagos Pechene",
+  "1127533639-Joan Paul Stiven Correa Ariza",
+  "1033770254-Johan Arley Correa Rivera",
+  "1112628245-Jonatan Fernando Jaramillo Montoya",
+  "9772513-Jorge Erney Cartagena Varon",
+  "94281304-Jose Duberney Morales Osorio",
+  "93377237-Jose Ignacio Muñoz Artega",
+  "93438408-Jose Omar Florez Beltran",
+  "94364743-Juan Jose Maya Ortiz",
+  "93297344-Julian Garcia Loaiza",
+  "94368204-Luis Alfonso Molina Duque",
+  "16219018-Luis Alfonso Ortega",
+  "93298596-Luis Fernando Bermudez Moyano",
+  "1007577299-Maicol Steven Suares Hernandez",
+  "1116274746-Manuel Alejandro Duque",
+  "25057087-Martha Cecilia Vélez",
+  "9866623-Miguel Angel Betancur Ibarra",
+  "1116248207-Miguel Angel Molina Duque",
+  "1054926207-Muñoz Jaramillo Braian Arled",
+  "1114400784-Orlando Restrepo Patiño",
+  "1054918752-Oscar Mauricio Ocampo Londoño",
+  "79510141-Pablo Emilio Franco Urrego",
+  "18402296-Ramiro Andres Bravo Agudelo",
+  "82394930-Samuel Elias Ruiz Orjuela",
+  "10499503-Silvio Alonso Ascue Conda",
+  "1088346147-Stefany Muñoz Gomez"
+];
 
 var AUXILIARES = [
-  "Aguilar Fernandez Dayana","Alzate Ginna Paola Arboleda","Andres David Restrepo",
-  "Arce Sebastian Parra","Arteaga Jose Ignacio","Bayardo Victor Luis",
-  "Becerra Cardenas Joanna","Beltran Laguna Jeyrin","Benitez Gimenez Adrian",
-  "Bermudez Quiceno Edwar Andres","Betancur Ibarra Miguel Angel",
-  "Bolivar Haiver Stiven Castro","Bravo Agudelo Ramiro Andres",
-  "Buitrago Ardila Zaider Jose","Calderon Andrea Katerina","Calderon Bañol Jose Fernando",
-  "Campiño Molina Fabian","Candil Castillo Melissa","Cano Bustamante Vanessa",
-  "Cano Joanna Becerra Cardenas","Cardenas Joanna Becerra","Cartagena Varon Jorge Erney",
-  "Carvajal Estefania Rojas","Castañeda Alfredo Silva","Castañeda Sierra Jose Luis",
-  "Castillo Garcia Luis","Castillo Melissa Candil","Castaño Ospina Hernan Dario",
-  "Colorado Morales Sofia","Colorado Sanchez Lorena","Contreras Pinzón Ivan",
-  "Correa Rivera Johan Arley","Cortes Jose Anibal Villalba","Cruarte Mago Alvaro",
-  "Daniel Felipe Molina Barrero","Diaz Marcelina Lopez","Duque Patrick Morales",
-  "Duberney Lopez Luis Alfonso","Duberney Morales Joana","Edgar Augusto Rodriguez",
-  "Elsy Mayibi Zambrano Fernand","Esteban Hernando Orozco Oc","Fabian Steban Medina",
-  "Florez Beltran Jose Omar","Flores Ricardo","Franco Urrego Pablo Emilio",
-  "Galeano Cardona Natalia","Galeano Suarez Octavio","Galindo Vasquez Juan Gustavo",
-  "Gallego Gutierrez Luis","Garcia Bastos Elver William","Giraldo Duque Jefferson Jamid",
-  "Giraldo Rodriguez Alejandra","Gomez Eduardo Rolando Jesus","Gomez Juan Restrepo",
-  "Gomez Padilla Giovanny","Gomez Zapata Adrian Fernando","Gomez Zapata Adrian Fernando",
-  "Gonzalez Beltran Victor","Gonzalez Jhonatan De","Gonzalez Montoya Lula Yovana",
-  "Gonzalez Palau Jaime Alexander","Gonzalez Soto Luisa Fernanda","Gonzalez Yanily Ferna Gomez",
-  "Grisales Robinson Ada","Guerrero Jaimes Jose Maria","Gutierrez Eliana Stella",
-  "Hernadez Jeancarlo","Hernandez Perez Aron Antonio","Hicapie Prieto Cesar Augusto",
-  "Higuela Aguirre Anderson","Higuela Aguirre Ruben Antonio","Hincapie Hincapie Luisa",
-  "Hincapié Prieto Jose Alejandro","Hoyos Cortes Diyei Alexandre",
-  "Isaza Pineda Rigoberto","Jaramillo Fernando Jonatan Mo","Jaramillo Villada Cristian David",
-  "Jeferson Jamid Giraldo Duqu","Jimenez Ruiz Yaira Paola","Jorge Erney Cartagena Varon",
-  "Juan Jairo Penagos Pechene","Ladino Perez Eugenia","Lievano Parra Jorge",
-  "Lombana Gonzalez Claudia Lorena","Lopez Diaz Marcelina","Luis Alfonso Molina Duque",
-  "Luis Alfonso Ortega","Luis Fernando Bermudez Moyan","Manuel Alejandro Duque",
-  "Marin Restrepo Christian David","Martinez Mendoza Edwin Orlan","Martinez Yendry Andrea",
-  "Mazo Gonzalez Diego Fernando","Medina Fabian Steban","Mejia Gomez Jorge Ivan",
-  "Miguel Angel Betancur Ibarra","Molina Duque Luis Alfonso","Molina Molina Fabian Andres",
-  "Molina Saenz Luis Arturo","Morales Gaviria Cristian","Morales Jhon Freddy Antonio",
-  "Morales Mejia Touray Camille","Morales Natalia Andrea Rios","Morales Otavo Edwin Alfonso",
-  "Morales Tapasco Luis Fernan","Moreno Dominguez Eliana","Muñoz Gonzalez Wilson",
-  "Muñoz Gomez Stefany","Muñoz Jaramillo Braian Arled","Navarrete Miguel Oswaldo Ruiz",
-  "Obregon Galan Rosa Marcela","Ordoñez Aguilar Fernandez","Orlando Restrepo Patiño",
-  "Orozco Zapata Julian","Ortega Urrea Jhonathan Farley","Ospina Castaño Cristian Samu",
-  "Pablo Emilio Franco Urrego","Pachon Aguirre Sara","Penagos Pechene Jhon Jairo",
-  "Peña Moreno Gomay Adrian","Perez Gonzalez Luz Adriana","Piedrahita Arias Victoria Eugenia",
-  "Pinzon Sanchez Sebastian","Prada Navarro Juan Manuel","Pulido Carranza Angie Paola",
-  "Quintero Mosquera Adrian","Ramirez Jimenez Adrian","Ramos Montoya Erika Camila",
-  "Rendon Agudelo Henry","Restrepo Christian David Marin","Restrepo Jimenez Cadena",
-  "Restrepo Patiño Orlando","Rincon Hernandez Jhonathan","Rincon Villa Farouk Ivan",
-  "Rios Andres Gustavo","Rios Martinez Natalia Andrea","Rodriguez Yelson",
-  "Rojas Carvajal Estefania","Romero Aranzales Paula Daniela","Rueda Bravado",
-  "Saavedr Villegas Vanessa","Sampson Lorenzo Gabin","Sanchez Higuam William",
-  "Sierra Herrera Jerson Jhoany","Silvio Alonso Ascue Conda","Sosa Pulgarin Jose Ricardo",
-  "Stefany Muñoz Gomez","Tabares Velez Albeiro","Taborda Gonzalez John Fredy",
-  "Tapasco Leon Norma Cristina","Torres Bisaya Camill","Torres Jose Duberney",
-  "Torres Ortiz Herman","Torres Quintero Roberto","Trigo Full Lorena",
-  "Useche Perez Oscar Antonio","Valencia Lopez Yelson Fernan","Valencia Martinez Esteban",
-  "Valencia Villano Carlos Eduard","Vargas Angie","Vargas Montoya Adolfo Leon",
-  "Velez Restrepo Juan Carlos","Villa Velasquez Johan Camilo","Villa Farouk Ivan Rincon",
-  "Villalba Cortes Jose Anibal","Villano Valencia Carlos Eduardo","Yelson Guilmber Mario",
-  "Yepez Granado Maria De Jesus","Zamora Gonzalez Maria Camila","Zapata Adrian Fernando",
-  "Zuñiga Molina Jorge Alberto","Zuniga Zuñiga Molina Jorge"
-].sort();
+  "1079033385-Acosta Pareja Edwin Jeanpoll",
+  "9994955-Agudelo Cardenas Joe",
+  "1007478218-Arango Mejia Ana Karina",
+  "1113304982-Arango Usma Isabel Cristina",
+  "1010683-Arboleda Alzate Ginna Paola",
+  "1114211160-Ayala Sánchez Mayerline",
+  "31435403-Becerra Cardenas Joanna Paola",
+  "9868781-Bermudez Quiceno Edwar Andres",
+  "1094939736-Buitrago Ardila Zaider Jose",
+  "1094953942-Caicedo Florez John Esteban",
+  "4513836-Calderon Bañol Jose Fernando",
+  "1144193605-Candil Castillo Melissa",
+  "1088260934-Cano Bustamante Vanessa",
+  "1234190505-Cardona Maria Camila",
+  "13852714-Carrascal Lopez Darwin Fernando",
+  "1105683078-Castañeda Sierra Jose Luis",
+  "1013638765-Castaño Ospina Hernan Dario",
+  "1112230258-Castro Bolivar Haiver Stiven",
+  "1088038412-Cifuentes Castaño Laura",
+  "1001016610-Colorado Morales Sofia",
+  "1059876324-Colorado Sanchez Lorena",
+  "1192899698-Cordoba Ulabarri Giselle Camila",
+  "75038593-Dairo De Jesus Aricapa Saldarriaga",
+  "1012430513-Dayana Aguilar Fernandez",
+  "1003357864-De Hoyos Muñoz Ana Maria",
+  "1005974816-Diaz Lopez Valentina",
+  "1070599429-Dimas Barco Diego Fernando",
+  "16776308-Edgar Augusto Rodriguez Zamora",
+  "1059598272-Elsy Mayibi Zambrano Fernandez",
+  "96193358-Elver Antonio Espinosa Correa",
+  "1114091387-Esteban Hernando Orozco Ocampo",
+  "94229299-Fabio Enrique Garcia",
+  "1054925813-Francisco Javier Velez",
+  "1112785582-Galeano Cardona Natalia",
+  "8331028-Garcia Ossa Paola Andrea",
+  "1087992208-García Alzate Yeidy Paola",
+  "16717258-Geofrey Miranda Fuentes",
+  "6499114-Gomez Correa Giovanny Antonio",
+  "1088003650-Gomez Gonzalez Vanessa",
+  "1088250651-Gomez Velez Octavio",
+  "1005866240-Gonzalez López Chelubay",
+  "1143979425-Grijalba Restrepo Laura",
+  "1107071677-Guzman Del Campo Victor Eduardo",
+  "1112626234-Gómez González Yanily Fernanda",
+  "89004486-Gómez Gónzalez Manuela",
+  "1143843812-Henao Isaza Esneydi Patricia",
+  "1054916261-Hernandez Perez Aron Antonio",
+  "9725359-Hicapie Prieto Cesar Augusto",
+  "9725358-Hincapié Prieto José Alejandro",
+  "1088283219-Isaza Pineda Rigoberto",
+  "1054921884-Jeferson Jamid Giraldo Duque",
+  "11224604-Jeyrin Beltran Laguna",
+  "1127533639-Joan Paul Stiven Correa Ariza",
+  "1033770254-Johan Arley Correa Rivera",
+  "1112628245-Jonatan Fernando Jaramillo Montoya",
+  "9772513-Jorge Erney Cartagena Varon",
+  "94281304-Jose Duberney Morales Osorio",
+  "93438408-Jose Omar Florez Beltran",
+  "94364743-Juan Jose Maya Ortiz",
+  "93297344-Julian Garcia Loaiza",
+  "1054923951-Jaramillo Morales Yenifer Tatiana",
+  "1144151052-Jaramillo Rebolledo Jonathan",
+  "1126906727-Jaramillo Villada Cristian David",
+  "1006318032-Jurado Gomez Sebastian",
+  "94368204-Luis Alfonso Molina Duque",
+  "16219018-Luis Alfonso Ortega",
+  "93298596-Luis Fernando Bermudez Moyano",
+  "1007577299-Maicol Steven Suares Hernandez",
+  "1116274746-Manuel Alejandro Duque",
+  "9726222-Marin Bonilla Jhon Alexander",
+  "1069925795-Martinez Torres Angela Daniela",
+  "1088353397-Marín Restrepo Christian David",
+  "1017256046-Mateo Posada Castañeda",
+  "1073707594-Medina López Emerson Dayan",
+  "18612291-Mejia Gomez Jhon Jairo",
+  "1014221485-Mejia Leon Jonathan Mauricio",
+  "1112779829-Mendoza Fabian Steban",
+  "25057087-Martha Cecilia Vélez",
+  "9866623-Miguel Angel Betancur Ibarra",
+  "1116248207-Miguel Angel Molina Duque",
+  "24396615-Morales Perez Diana Maria",
+  "1088309971-Moreno Gomez Jose Nicolas",
+  "1054926207-Muñoz Jaramillo Braian Arled",
+  "1143857184-Narvaez Toro Yesica Paola",
+  "80358200-Niño Rincon Fredy Alexander",
+  "1070615588-Orjuela Calderon Andrea Katerina",
+  "1114400784-Orlando Restrepo Patiño",
+  "1054918752-Oscar Mauricio Ocampo Londoño",
+  "1108388396-Ortega Urrea Erika Jaritza",
+  "1110546943-Ortega Urrea Jhonathan Farley",
+  "1070585299-Ortiz Lombo Adriana Rocio",
+  "93384216-Otavo Ortiz Oscar Julian",
+  "79510141-Pablo Emilio Franco Urrego",
+  "1097408388-Pachon Aguirre Sara",
+  "1110531669-Pamo Cultivar Xiomara Katherine",
+  "1659866-Parra Arce Alexander",
+  "1127624747-Perez Medina Yuskary Camila",
+  "1070616581-Pulido Carranza Angie Paola",
+  "9994597-Ramírez Palacio Jhon Fredy",
+  "18402296-Ramiro Andres Bravo Agudelo",
+  "88265963-Rangel Alarcon Wilson Hernan",
+  "1088335454-Restrepo Franco Sebastian",
+  "94288979-Rey Bonilla Andres Eduardo",
+  "1088025212-Rios Martinez Natalia Andrea",
+  "1151952203-Rojas Carvajal Estefania",
+  "24398747-Roman Montoya Nini Yohana",
+  "1026594795-Romero Aranzales Paula Daniela",
+  "34066460-Rozo Zapata Viviana Andrea",
+  "1088348929-Saldarriaga Gómez Manuela",
+  "79435429-Salinas Lopez Jesus Antonio",
+  "82394930-Samuel Elias Ruiz Orjuela",
+  "1039700767-Sierra Herrera Jerson Jhoany",
+  "10499503-Silvio Alonso Ascue Conda",
+  "42164134-Soto Gañan Madelen",
+  "1088346147-Stefany Muñoz Gomez",
+  "9732654-Taborda Gonzalez John Fredy",
+  "9992942-Albeiro Tabares Velez",
+  "1002595249-Tangarife López Marlon Esneyder",
+  "1054921930-Tapasco Leon Norma Cristina",
+  "1088020337-Valle Henao Julio Cesar",
+  "88031028-Valencia Gomez Maria Alejandra",
+  "1006165896-Valencia Gil Catalina",
+  "1007258621-Vargas Angie",
+  "9695072-Vargas Montoya Adolfo Leon",
+  "1087486405-Velez Martinez Juan Jose",
+  "94407447-Velez Restrepo Juan Carlos",
+  "1094964579-Villa Velasquez Johan Camilo",
+  "1070602268-Villalba Cortes Jose Anibal",
+  "1113636578-Villano Valencia Carlos Eduardo",
+  "1088253779-Yepez Martinez Esmeralda",
+  "1004686501-Zamora Gonzalez Maria Camila",
+  "1121148295-Zapata Restrepo Andres David",
+  "1113637327-Zuñiga Molina Jorge Alberto"
+];
 
-// Placas de carrozas — Imagen 2
 var PLACAS = [
   "ARN666","BRZ208","CGB340","CHE809","CKC858","CNC123","CND628","CPM169",
   "CUM533","CUM578","CUM597","CUM648","CUP029","CUP823","CUQ362","DBS719",
@@ -1765,6 +1931,11 @@ function onCategoriaChange() {
   mostrarCampo('campo-asesor', cat === 'Auxilio Funerario' || cat === 'Convenio');
 }
 
+function onLugarFallecimientoChange() {
+  var val = document.querySelector('[data-col="Lugar De Fallecimiento"]').value;
+  mostrarCampo('campo-murio-en', val === 'Hospital / Clinica');
+}
+
 function onEstadoCivilChange() {
   var sel = document.querySelector('[data-col="Estado civil"]');
   var val = sel ? sel.value : '';
@@ -1797,13 +1968,20 @@ function toggleVisible(selectEl, campoId, valorActivador) {
 }
 
 function calcularEdad(inputFechaNac) {
-  var fn = new Date(inputFechaNac.value);
+  var val = typeof inputFechaNac === 'string' ? inputFechaNac : inputFechaNac.value;
+  if (!val) return;
+  var parts = val.split('-');
+  if (parts.length < 3) return;
+  var fn   = new Date(+parts[0], +parts[1]-1, +parts[2]);
   if (isNaN(fn.getTime())) return;
   var hoy  = new Date();
   var edad = hoy.getFullYear() - fn.getFullYear();
   var m    = hoy.getMonth() - fn.getMonth();
   if (m < 0 || (m === 0 && hoy.getDate() < fn.getDate())) edad--;
-  if (edad >= 0 && edad <= 130) document.getElementById('campo-edad').value = edad;
+  if (edad >= 0 && edad <= 130) {
+    var campoEdad = document.getElementById('campo-edad');
+    if (campoEdad) campoEdad.value = edad;
+  }
 }
 
 // ============================================================
